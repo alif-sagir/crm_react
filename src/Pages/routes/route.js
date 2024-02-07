@@ -10,6 +10,8 @@ import user_work_user_route from "../Backend/Management/Admin/Management/user_wo
 import user_work_route from "../Backend/Management/Admin/Management/user_works/Config/Routes";
 import user_work_department_route from "../Backend/Management/Admin/Management/user_work_departments/Config/Routes";
 import task_user_route from "../Backend/Management/Admin/Management/task_management/task_users/Config/Routes";
+import task_variant_task_route from "../Backend/Management/Admin/Management/task_management/task_variant_tasks/Config/Routes";
+import task_variant_value_route from "../Backend/Management/Admin/Management/task_management/task_variant_values/Config/Routes";
 
 import Main_content_page from "../Main_content_page";
 import All from "../Backend/Management/Admin/Management/User/All";
@@ -26,6 +28,8 @@ const router = {
     user_work_department_route,
     // task route
     task_user_route,
+    task_variant_task_route,
+    task_variant_value_route,
     {
       path: 'demo1',
       element: <Demo_1></Demo_1>,

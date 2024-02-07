@@ -64,13 +64,13 @@ function All() {
                                         <div className='edit_class_submanu'>
                                             <ul>
                                                 <li>
-                                                    <Link to="/user/edit">Edit</Link>
+                                                    <Link to="/task-variant-task/edit">Edit</Link>
                                                 </li>
                                                 <li>
-                                                    <Link to="/user/details">Details</Link>
+                                                    <Link to="/task-variant-task/details">Details</Link>
                                                 </li>
                                                 <li>
-                                                    <Link to="/user/edit">Deactive</Link>
+                                                    <Link to="/task-variant-task/edit">Deactive</Link>
                                                 </li>
                                                 
                                             </ul>

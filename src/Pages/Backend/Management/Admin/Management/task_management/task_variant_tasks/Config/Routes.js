@@ -6,7 +6,7 @@ import UserLayout from "../UserLayout";
 
 
 export default {
-    path: "user",
+    path: "task-variant-task",
     element: <UserLayout></UserLayout>,
     children: [
         {

@@ -24,6 +24,9 @@ function All() {
                                 <th className="cursor_n_resize edit_cursor_n_resize">
                                    Title
                                 </th>
+                                <th className="cursor_n_resize edit_cursor_n_resize">
+                                   Title
+                                </th>
                                 
                                 <th className="cursor_n_resize edit_cursor_n_resize">
                                     Status
@@ -60,13 +63,13 @@ function All() {
                                         <div className='edit_class_submanu'>
                                             <ul>
                                                 <li>
-                                                    <Link to="/user-info/edit">Edit</Link>
+                                                    <Link to="/task-variant-value/edit">Edit</Link>
                                                 </li>
                                                 <li>
-                                                    <Link to="/user-info/details">Details</Link>
+                                                    <Link to="/task-variant-value/details">Details</Link>
                                                 </li>
                                                 <li>
-                                                    <Link to="/user-info/edit">Deactive</Link>
+                                                    <Link to="/task-variant-value/edit">Deactive</Link>
                                                 </li>
                                                 
                                             </ul>

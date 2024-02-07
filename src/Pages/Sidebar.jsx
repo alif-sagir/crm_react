@@ -73,18 +73,22 @@ function Sidebar() {
                                     </a>
                                     <ul className="sub-menu" aria-expanded="false">
                                         <li>
+                                            <Link to="/task">Task</Link>
+                                        </li>
+                                        <li>
                                             <Link to="/task-user">Task user</Link>
                                         </li>
                                         <li>
-                                            <a href="calendar-full.html" key="t-full-calendar">
-                                                Variants
-                                            </a>
+                                            <Link to="/task-variant-task">Task variant task</Link>
                                         </li>
                                         <li>
-                                            <a href="calendar-full.html" key="t-full-calendar">
-                                                Variant Values
-                                            </a>
+                                            <Link to="/task-variant-value">Task variant value</Link>
                                         </li>
+                                        <li>
+                                            <Link to="/task-variant">Task variant</Link>
+                                        </li>
+
+
                                     </ul>
                                 </li>
                                 <li>
