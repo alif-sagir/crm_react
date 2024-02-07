@@ -118,7 +118,7 @@ function Sidebar() {
                                             <Link to="/customer-group-customer">Customer group customer</Link>
                                         </li>
                                         <li>
-                                            <Link to="/customer group">Customer group</Link>
+                                            <Link to="/customer-group">Customer group</Link>
                                         </li>
                                         <li>
                                             <Link to="/customer-relavent-document">Customer relavent document</Link>
