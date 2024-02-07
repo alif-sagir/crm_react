@@ -135,7 +135,7 @@ function Sidebar() {
                                         <li>
                                             <Link to="/customer">Customer</Link>
                                         </li>
-                                       
+
                                     </ul>
                                 </li>
                                 <li>
@@ -145,35 +145,30 @@ function Sidebar() {
                                     </a>
                                     <ul className="sub-menu" aria-expanded="false">
                                         <li>
-                                            <a href="calendar.html" key="t-tui-calendar">
-                                                Communication Numbers
-                                            </a>
+                                            <Link to="/contact-appointment-reason">contact-appointment-reason</Link>
                                         </li>
                                         <li>
-                                            <a href="calendar-full.html" key="t-full-calendar">
-                                                Ieads
-                                            </a>
+                                            <Link to="/contact-appointment">contact-appointment</Link>
                                         </li>
                                         <li>
-                                            <a href="calendar-full.html" key="t-full-calendar">
-                                                Appoinments
-                                            </a>
+                                            <Link to="/contact-history">contact-history</Link>
                                         </li>
                                         <li>
-                                            <a href="calendar-full.html" key="t-full-calendar">
-                                                Histories
-                                            </a>
+                                            <Link to="/contact-history-feedback">contact-history-feedback</Link>
                                         </li>
                                         <li>
-                                            <a href="calendar-full.html" key="t-full-calendar">
-                                                Feedbacks
-                                            </a>
+                                            <Link to="/contact-history-reason">contact-history-reason</Link>
                                         </li>
                                         <li>
-                                            <a href="calendar-full.html" key="t-full-calendar">
-                                                Contact Reasons
-                                            </a>
+                                            <Link to="/contact-reason">contact-reason</Link>
                                         </li>
+                                        <li>
+                                            <Link to="/contact-number">contact-number</Link>
+                                        </li>
+                                        <li>
+                                            <Link to="/contact-leads">contact-leads</Link>
+                                        </li>
+                                     
                                     </ul>
                                 </li>
 

@@ -6,7 +6,7 @@ import UserLayout from "../UserLayout";
 
 
 export default {
-    path: "user",
+    path: "contact-history",
     element: <UserLayout></UserLayout>,
     children: [
         {

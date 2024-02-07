@@ -6,7 +6,7 @@ function Details() {
         <div className="card-header ">
             <h2 className='heading'>Details</h2>
             <div className="btns d-flex gap-2 align-items-center">
-                <a href="#/user" className="btn rounded-pill btn-outline-secondary">
+                <a href="#/contact-history-reason" className="btn rounded-pill btn-outline-secondary">
                     {/* <i className="material-symbols-outlined fill">arrow_back</i> */}
                     Back
                 </a>

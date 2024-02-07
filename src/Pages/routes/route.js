@@ -25,6 +25,15 @@ import variant_route from "../Backend/Management/Admin/Management/customer_manag
 import variant_value_route from "../Backend/Management/Admin/Management/customer_management/customer_variants_values/Config/Routes";
 import customer_route from "../Backend/Management/Admin/Management/customer_management/customers/Config/Routes";
 
+import appointment_reason_route from "../Backend/Management/Admin/Management/contact_management/contact_appointement_reason/Config/Routes";
+import appointment_route from "../Backend/Management/Admin/Management/contact_management/contact_appointments/Config/Routes";
+import contact_history_route from "../Backend/Management/Admin/Management/contact_management/contact_histories/Config/Routes";
+import history_feedback_route from "../Backend/Management/Admin/Management/contact_management/contact_history_feedback/Config/Routes";
+import history_reason_route from "../Backend/Management/Admin/Management/contact_management/contact_history_reason/Config/Routes";
+import contact_reason_route from "../Backend/Management/Admin/Management/contact_management/contact_reosons/Config/Routes";
+import crm_contact_number_route from "../Backend/Management/Admin/Management/contact_management/crm_contact_numbers/Config/Routes";
+import contact_leads_route from "../Backend/Management/Admin/Management/contact_management/leads/Config/Routes";
+
 import Main_content_page from "../Main_content_page";
 import All from "../Backend/Management/Admin/Management/User/All";
 // console.log("user route", user_route);
@@ -56,6 +65,15 @@ const router = {
     variant_route,
     variant_value_route,
     customer_route,
+    // contact manageemnt route
+    appointment_reason_route,
+    appointment_route,
+    contact_history_route,
+    history_feedback_route,
+    history_reason_route,
+    contact_reason_route,
+    crm_contact_number_route,
+    contact_leads_route,
 
     {
       path: 'demo1',
