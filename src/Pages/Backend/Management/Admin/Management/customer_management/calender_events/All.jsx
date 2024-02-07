@@ -92,13 +92,13 @@ function All() {
                                         <div className='edit_class_submanu'>
                                             <ul>
                                                 <li>
-                                                    <Link to="/user/edit">Edit</Link>
+                                                    <Link to="/calender-event/edit">Edit</Link>
                                                 </li>
                                                 <li>
-                                                    <Link to="/user/details">Details</Link>
+                                                    <Link to="/calender-event/details">Details</Link>
                                                 </li>
                                                 <li>
-                                                    <Link to="/user/edit">Deactive</Link>
+                                                    <Link to="/calender-event/edit">Deactive</Link>
                                                 </li>
                                                 
                                             </ul>

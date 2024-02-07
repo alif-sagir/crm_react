@@ -41,6 +41,9 @@ function All() {
                                     Is complete
                                 </th>
                                 <th className="cursor_n_resize edit_cursor_n_resize">
+                                    Is complete
+                                </th>
+                                <th className="cursor_n_resize edit_cursor_n_resize">
                                     Assigned to
                                 </th>
                                 <th aria-label="actions">Actions</th>
@@ -100,13 +103,13 @@ function All() {
                                         <div className='edit_class_submanu'>
                                             <ul>
                                                 <li>
-                                                    <Link to="/user/edit">Edit</Link>
+                                                    <Link to="/support-ticket/edit">Edit</Link>
                                                 </li>
                                                 <li>
-                                                    <Link to="/user/details">Details</Link>
+                                                    <Link to="/support-ticket/details">Details</Link>
                                                 </li>
                                                 <li>
-                                                    <Link to="/user/edit">Deactive</Link>
+                                                    <Link to="/support-ticket/edit">Deactive</Link>
                                                 </li>
 
                                             </ul>

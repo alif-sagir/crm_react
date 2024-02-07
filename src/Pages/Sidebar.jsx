@@ -98,9 +98,7 @@ function Sidebar() {
                                     </a>
                                     <ul className="sub-menu" aria-expanded="false">
                                         <li>
-                                            <a href="calendar.html" key="t-tui-calendar">
-                                                Support Ticket
-                                            </a>
+                                            <Link to="/support-ticket">Support ticket</Link>
                                         </li>
                                     </ul>
                                 </li>
@@ -111,40 +109,33 @@ function Sidebar() {
                                     </a>
                                     <ul className="sub-menu" aria-expanded="false">
                                         <li>
-                                            <a href="calendar.html" key="t-tui-calendar">
-                                                Customer
-                                            </a>
+                                            <Link to="/calender-event">Calender event</Link>
                                         </li>
                                         <li>
-                                            <a href="calendar-full.html" key="t-full-calendar">
-                                                Groups
-                                            </a>
+                                            <Link to="/customer-contact-number">Customer contact number</Link>
                                         </li>
                                         <li>
-                                            <a href="calendar-full.html" key="t-full-calendar">
-                                                Variants
-                                            </a>
+                                            <Link to="/customer-group-customer">Customer group customer</Link>
                                         </li>
                                         <li>
-                                            <a href="calendar-full.html" key="t-full-calendar">
-                                                Variant Values
-                                            </a>
+                                            <Link to="/customer group">Customer group</Link>
                                         </li>
                                         <li>
-                                            <a href="calendar-full.html" key="t-full-calendar">
-                                                Documents
-                                            </a>
+                                            <Link to="/customer-relavent-document">Customer relavent document</Link>
                                         </li>
                                         <li>
-                                            <a href="calendar-full.html" key="t-full-calendar">
-                                                Calendar Events
-                                            </a>
+                                            <Link to="/customer-variant-customer">Customer variant customer</Link>
                                         </li>
                                         <li>
-                                            <a href="calendar-full.html" key="t-full-calendar">
-                                                Contact Numbers
-                                            </a>
+                                            <Link to="/customer-variant">Customer variant</Link>
                                         </li>
+                                        <li>
+                                            <Link to="/customer-variant-value">Customer variant value</Link>
+                                        </li>
+                                        <li>
+                                            <Link to="/customer">Customer</Link>
+                                        </li>
+                                       
                                     </ul>
                                 </li>
                                 <li>

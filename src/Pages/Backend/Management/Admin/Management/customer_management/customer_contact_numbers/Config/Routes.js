@@ -6,7 +6,7 @@ import UserLayout from "../UserLayout";
 
 
 export default {
-    path: "user",
+    path: "customer-contact-number",
     element: <UserLayout></UserLayout>,
     children: [
         {

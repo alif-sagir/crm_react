@@ -6,7 +6,7 @@ import UserLayout from "../UserLayout";
 
 
 export default {
-    path: "user",
+    path: "calender-event",
     element: <UserLayout></UserLayout>,
     children: [
         {
