@@ -19,18 +19,27 @@ function All() {
                                 <th><input type="checkbox" className="form-check-input" /></th>
 
                                 <th className="cursor_n_resize edit_cursor_n_resize">
-                                Task Id
+                                User name
                                 </th>
                                 <th className="cursor_n_resize edit_cursor_n_resize">
-                                User Id
+                                Total task
                                 </th>
                                 <th className="cursor_n_resize edit_cursor_n_resize">
-                                Is complete
+                                Complite task
+                                </th>
+                                <th className="cursor_n_resize edit_cursor_n_resize">
+                                In Complite task
                                 </th>
                                
 
                                 <th className="cursor_n_resize edit_cursor_n_resize">
-                                    Status
+                                    Department
+                                </th>
+                                <th className="cursor_n_resize edit_cursor_n_resize">
+                                    Work
+                                </th>
+                                <th className="cursor_n_resize edit_cursor_n_resize">
+                                    Designation
                                 </th>
                                 <th aria-label="actions">Actions</th>
                             </tr>
@@ -42,22 +51,33 @@ function All() {
                                 
                                 <td>
                                     <span>
-                                    Task Id
+                                    Alif sagir
                                     </span>
                                 </td>
                                 <td>
                                     <span>
-                                    User Id
+                                    70
                                     </span>
                                 </td>
                                 <td>
                                     <span>
-                                    Is complete
+                                   50
+                                    </span>
+                                </td>
+                                <td>
+                                    <span>
+                                    20
                                     </span>
                                 </td>
                                 
                                 <td>
-                                    <span>Active</span>
+                                    <span>It</span>
+                                </td>
+                                <td>
+                                    <span>Frontend developer</span>
+                                </td>
+                                <td>
+                                    <span>Team leader</span>
                                 </td>
                                 <td>
                                     <span className='edit_class_submanu_active'><i class="mdi mdi-format-list-bulleted"></i>

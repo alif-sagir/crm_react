@@ -22,7 +22,7 @@ function All() {
                                 Customer Id
                                 </th>
                                 <th className="cursor_n_resize edit_cursor_n_resize">
-                                   Event data
+                                   Event date
                                 </th>
 
                                 <th className="cursor_n_resize edit_cursor_n_resize">

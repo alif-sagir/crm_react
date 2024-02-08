@@ -12,16 +12,28 @@ function Create() {
           </a>
         </div>
       </div>
-              <form>
-      <div className="card-body">
-        <div className="container py-5">
-          <div className="row">
-            <div className="col-lg-8">
+      <form>
+        <div className="card-body">
+          <div className="container py-5">
+            <div className="row">
+              <div className="col-lg-8">
                 <div className="form-group mb-5">
                   <div className="custom_form_el">
                     <label htmlFor="">Title</label>
                     <div>:</div>
                     <div><input name="title" type="text" className="form-control" /></div>
+                  </div>
+                  <div className="custom_form_el">
+                    <label htmlFor="">Assain to</label>
+                    <div>:</div>
+                    <div>
+                      <select style={{"border":"1px solid #CED4DB", "width":"100%"}} name="cars" id="cars">
+                        <option value="volvo">Volvo</option>
+                        <option value="saab">Saab</option>
+                        <option value="opel">Opel</option>
+                        <option value="audi">Audi</option>
+                      </select>
+                    </div>
                   </div>
                   <div className="custom_form_el">
                     <label htmlFor=""> Is complete</label>
@@ -43,18 +55,18 @@ function Create() {
                     <div>:</div>
                     <div><input name="Description" type="text" className="form-control" /></div>
                   </div>
-                 
+
                 </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div className="card-footer">
-      <button className="btn btn-outline-info" type="submit" value="Create">
+        <div className="card-footer">
+          <button className="btn btn-outline-info" type="submit" value="Create">
             Submit{" "}
           </button>
-      </div>
-              </form>
+        </div>
+      </form>
     </div>
   );
 }

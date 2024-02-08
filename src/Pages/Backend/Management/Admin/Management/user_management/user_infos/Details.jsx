@@ -6,7 +6,7 @@ function Details() {
         <div className="card-header ">
             <h2 className='heading'>Details</h2>
             <div className="btns d-flex gap-2 align-items-center">
-                <a href="#/user-designation" className="btn rounded-pill btn-outline-secondary">
+                <a href="#/user-info" className="btn rounded-pill btn-outline-secondary">
                     {/* <i className="material-symbols-outlined fill">arrow_back</i> */}
                     Back
                 </a>
@@ -35,20 +35,50 @@ function Details() {
                                 </div>
                             </div>
                             <div className="custom_form_el">
-                                <div>Designation</div>
+                                <div>User name</div>
                                 <div>:</div>
                                 <div>
-                                    {"dsignation"}
+                                    {"user name"}
+                                </div>
+                            </div>
+                            <div className="custom_form_el">
+                                <div>First name</div>
+                                <div>:</div>
+                                <div>
+                                    {"alif"}
+                                </div>
+                            </div>
+                            <div className="custom_form_el">
+                                <div>Last name</div>
+                                <div>:</div>
+                                <div>
+                                    {"sagir"}
                                 </div>
                             </div>
                             
                             <div className="custom_form_el">
-                                <div>Description</div>
+                                <div>Phone number</div>
                                 <div>:</div>
                                 <div>
-                                    {"Description"}
+                                    {"phone number"}
                                 </div>
                             </div>
+                           
+                            <div className="custom_form_el">
+                                <div>Designation</div>
+                                <div>:</div>
+                                <div>
+                                    {"designation"}
+                                </div>
+                            </div>
+                            <div className="custom_form_el">
+                                <div>Date of birth</div>
+                                <div>:</div>
+                                <div>
+                                    {"10.10.24"}
+                                </div>
+                            </div>
+                           
                         </div>
 
                     </div>

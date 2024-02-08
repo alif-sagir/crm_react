@@ -20,15 +20,11 @@ function Create() {
                 <div className="form-group mb-5">
                   
                   <div className="custom_form_el">
-                    <label htmlFor="">Work id</label>
-                    <div>:</div>
-                    <div><input name="work_id" type="text" className="form-control" /></div>
-                  </div>
-                  <div className="custom_form_el">
                     <label htmlFor="">Title</label>
                     <div>:</div>
                     <div><input name="title" type="text" className="form-control" /></div>
                   </div>
+
                 </div>
             </div>
           </div>

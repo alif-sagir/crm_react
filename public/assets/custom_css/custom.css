@@ -79,7 +79,7 @@
     vertical-align: baseline;
     box-sizing: border-box;
     transition-duration: 0.2s;
-    font-family: "raleway";
+    font-family: "roboto";
     letter-spacing: 1px;
     word-spacing: 4px;
   }
@@ -591,7 +591,7 @@
   
   .btn {
     border: 1px solid var(--black_500);
-    background: transparent;
+    /* background: transparent; */
     padding: 6px 15px;
     text-transform: uppercase;
     font-size: 16px;

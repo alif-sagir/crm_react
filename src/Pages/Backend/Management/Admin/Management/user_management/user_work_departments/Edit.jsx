@@ -18,17 +18,13 @@ function Edit() {
             <div className="row">
               <div className="col-lg-8">
                 <div className="form-group mb-5">
-                 
-                  <div className="custom_form_el">
-                    <label htmlFor="">Work Id</label>
-                    <div>:</div>
-                    <div><input name="work_id" type="text" className="form-control" defaultValue={"username"} /></div>
-                  </div>
+
                   <div className="custom_form_el">
                     <label htmlFor="">Title</label>
                     <div>:</div>
                     <div><input name="title" type="text" className="form-control" defaultValue={"password"} /></div>
                   </div>
+                  
                 </div>
               </div>
             </div>

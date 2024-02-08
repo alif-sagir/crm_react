@@ -64,6 +64,42 @@ function Details() {
                                     {"dhaka"}
                                 </div>
                             </div>
+                            <div className="custom_form_el">
+                                <div>Title</div>
+                                <div>:</div>
+                                <div>
+                                    {"title"}
+                                </div>
+                            </div>
+                            <div className="custom_form_el">
+                                <div>Customer variant</div>
+                                <div>:</div>
+                                <div>
+                                    {"old"}
+                                </div>
+                            </div>
+                            <div className="custom_form_el">
+                                <div>How much event</div>
+                                <div>:</div>
+                                <div>
+                                    {"3"}
+                                </div>
+                            </div>
+                            <div className="custom_form_el">
+                                <div>Total Appointment</div>
+                                <div>:</div>
+                                <div>
+                                    {"3"}
+                                </div>
+                            </div>
+                            <div className="custom_form_el">
+                                <div>Documents</div>
+                                <div>:</div>
+                                <div>
+                                    
+                                    <a href="document.pdf">Documents.pdf</a>
+                                </div>
+                            </div>
                         </div>
 
                     </div>

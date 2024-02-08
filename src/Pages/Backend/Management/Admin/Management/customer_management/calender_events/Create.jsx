@@ -25,7 +25,7 @@ function Create() {
                     <div><input name="customer_id" type="text" className="form-control" /></div>
                   </div>
                   <div className="custom_form_el">
-                    <label htmlFor=""> Event data</label>
+                    <label htmlFor=""> Event date</label>
                     <div>:</div>
                     <div><input name="event_data" type="text" className="form-control" /></div>
                   </div>

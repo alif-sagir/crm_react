@@ -15,11 +15,11 @@ function Sidebar() {
                                     Menu
                                 </li>
                                 <li>
-                                    <a href="#/" className="has-arrow waves-effect">
+                                    <a href="#/" className=" waves-effect">
                                         <i className="bx bx-home-circle" />
                                         <span key="t-dashboards">Dashboards</span>
                                     </a>
-                                    <ul className="sub-menu" aria-expanded="false">
+                                    {/* <ul className="sub-menu" aria-expanded="false">
                                         <li>
 
                                             <Link to="demo1">Demo1</Link>
@@ -32,7 +32,7 @@ function Sidebar() {
 
                                             <Link to="demo3">Demo3</Link>
                                         </li>
-                                    </ul>
+                                    </ul> */}
                                 </li>
 
 
@@ -49,20 +49,20 @@ function Sidebar() {
 
                                         <li>
 
-                                            <Link to="/user-info">User Info</Link>
+                                            <Link to="/user-info">Info</Link>
                                         </li>
                                         <li>
 
-                                            <Link to="/user-designation">User Designation</Link>
+                                            <Link to="/user-designation">Designation</Link>
                                         </li>
                                         <li>
-                                            <Link to="/user-work">User Works</Link>
+                                            <Link to="/user-work">Works</Link>
                                         </li>
                                         <li>
-                                            <Link to="/user-work-user">User work users</Link>
+                                            <Link to="/user-work-user">Work users</Link>
                                         </li>
                                         <li>
-                                            <Link to="/user-work-department">User work department</Link>
+                                            <Link to="/user-work-department">Work department</Link>
                                         </li>
                                     </ul>
                                 </li>
@@ -76,16 +76,16 @@ function Sidebar() {
                                             <Link to="/task">Task</Link>
                                         </li>
                                         <li>
-                                            <Link to="/task-user">Task user</Link>
+                                            <Link to="/task-user">Users task</Link>
                                         </li>
                                         <li>
-                                            <Link to="/task-variant-task">Task variant task</Link>
+                                            <Link to="/task-variant-task">Variant task</Link>
                                         </li>
                                         <li>
-                                            <Link to="/task-variant-value">Task variant value</Link>
+                                            <Link to="/task-variant-value">Variant value</Link>
                                         </li>
                                         <li>
-                                            <Link to="/task-variant">Task variant</Link>
+                                            <Link to="/task-variant">Variant</Link>
                                         </li>
 
 
@@ -98,7 +98,7 @@ function Sidebar() {
                                     </a>
                                     <ul className="sub-menu" aria-expanded="false">
                                         <li>
-                                            <Link to="/support-ticket">Support ticket</Link>
+                                            <Link to="/support-ticket">Ticket</Link>
                                         </li>
                                     </ul>
                                 </li>
@@ -112,25 +112,25 @@ function Sidebar() {
                                             <Link to="/calender-event">Calender event</Link>
                                         </li>
                                         <li>
-                                            <Link to="/customer-contact-number">Customer contact number</Link>
+                                            <Link to="/customer-contact-number">Contact number</Link>
                                         </li>
                                         <li>
-                                            <Link to="/customer-group-customer">Customer group customer</Link>
+                                            <Link to="/customer-group-customer">Group customer</Link>
                                         </li>
                                         <li>
-                                            <Link to="/customer-group">Customer group</Link>
+                                            <Link to="/customer-group">Group</Link>
                                         </li>
                                         <li>
-                                            <Link to="/customer-relavent-document">Customer relavent document</Link>
+                                            <Link to="/customer-relavent-document">Relavent document</Link>
                                         </li>
                                         <li>
-                                            <Link to="/customer-variant-customer">Customer variant customer</Link>
+                                            <Link to="/customer-variant-customer">Variant customer</Link>
                                         </li>
                                         <li>
-                                            <Link to="/customer-variant">Customer variant</Link>
+                                            <Link to="/customer-variant">Variant</Link>
                                         </li>
                                         <li>
-                                            <Link to="/customer-variant-value">Customer variant value</Link>
+                                            <Link to="/customer-variant-value">Variant value</Link>
                                         </li>
                                         <li>
                                             <Link to="/customer">Customer</Link>
@@ -145,28 +145,28 @@ function Sidebar() {
                                     </a>
                                     <ul className="sub-menu" aria-expanded="false">
                                         <li>
-                                            <Link to="/contact-appointment-reason">contact-appointment-reason</Link>
+                                            <Link to="/contact-appointment-reason">Appointment-reason</Link>
                                         </li>
                                         <li>
-                                            <Link to="/contact-appointment">contact-appointment</Link>
+                                            <Link to="/contact-appointment">Appointment</Link>
                                         </li>
                                         <li>
-                                            <Link to="/contact-history">contact-history</Link>
+                                            <Link to="/contact-history">History</Link>
                                         </li>
                                         <li>
-                                            <Link to="/contact-history-feedback">contact-history-feedback</Link>
+                                            <Link to="/contact-history-feedback">History-feedback</Link>
                                         </li>
                                         <li>
-                                            <Link to="/contact-history-reason">contact-history-reason</Link>
+                                            <Link to="/contact-history-reason">History-reason</Link>
                                         </li>
                                         <li>
-                                            <Link to="/contact-reason">contact-reason</Link>
+                                            <Link to="/contact-reason">Reason</Link>
                                         </li>
                                         <li>
-                                            <Link to="/contact-number">contact-number</Link>
+                                            <Link to="/contact-number">Number</Link>
                                         </li>
                                         <li>
-                                            <Link to="/contact-leads">contact-leads</Link>
+                                            <Link to="/contact-leads">Leads</Link>
                                         </li>
                                      
                                     </ul>

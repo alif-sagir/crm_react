@@ -36,7 +36,7 @@ function Details() {
                                 </div>
                             </div>
                             <div className="custom_form_el">
-                                <div>event data</div>
+                                <div>event date</div>
                                 <div>:</div>
                                 <div>
                                     {"event_data"}

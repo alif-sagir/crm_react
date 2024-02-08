@@ -42,10 +42,17 @@ function Details() {
                                 </div>
                             </div>
                             <div className="custom_form_el">
-                                <div>Data</div>
+                                <div>Customer name</div>
                                 <div>:</div>
                                 <div>
-                                    {"Data"}
+                                    {"Customer name"}
+                                </div>
+                            </div>
+                            <div className="custom_form_el">
+                                <div>Date</div>
+                                <div>:</div>
+                                <div>
+                                    {"Date"}
                                 </div>
                             </div>
                             
@@ -61,6 +68,20 @@ function Details() {
                                 <div>:</div>
                                 <div>
                                     {"Notes"}
+                                </div>
+                            </div>      
+                            <div className="custom_form_el">
+                                <div>Feedback</div>
+                                <div>:</div>
+                                <div>
+                                    {"Feedback"}
+                                </div>
+                            </div>      
+                            <div className="custom_form_el">
+                                <div>Title</div>
+                                <div>:</div>
+                                <div>
+                                    {"Title"}
                                 </div>
                             </div>      
                             <div className="custom_form_el">

@@ -34,6 +34,11 @@ function Create() {
                     <div><input name="password" type="text" className="form-control" /></div>
                   </div>
                   <div className="custom_form_el">
+                    <label htmlFor="">Confarm Password</label>
+                    <div>:</div>
+                    <div><input name="conparm_password" type="text" className="form-control" /></div>
+                  </div>
+                  <div className="custom_form_el">
                     <label htmlFor="">Email</label>
                     <div>:</div>
                     <div><input name="email" type="text" className="form-control" /></div>

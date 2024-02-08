@@ -6,7 +6,7 @@ function Details() {
         <div className="card-header ">
             <h2 className='heading'>Details</h2>
             <div className="btns d-flex gap-2 align-items-center">
-                <a href="#/user-info" className="btn rounded-pill btn-outline-secondary">
+                <a href="#/user" className="btn rounded-pill btn-outline-secondary">
                     {/* <i className="material-symbols-outlined fill">arrow_back</i> */}
                     Back
                 </a>
@@ -35,28 +35,43 @@ function Details() {
                                 </div>
                             </div>
                             <div className="custom_form_el">
+                                <div>Username</div>
+                                <div>:</div>
+                                <div>
+                                    {"username"}
+                                </div>
+                            </div>
+                            <div className="custom_form_el">
                                 <div>First name</div>
                                 <div>:</div>
                                 <div>
-                                    {"alif"}
+                                    {"firstname"}
                                 </div>
                             </div>
                             <div className="custom_form_el">
                                 <div>Last name</div>
                                 <div>:</div>
                                 <div>
-                                    {"sagir"}
+                                    {"lastname"}
                                 </div>
                             </div>
                             
                             <div className="custom_form_el">
+                                <div>Email</div>
+                                <div>:</div>
+                                <div>
+                                    {"email"}
+                                </div>
+                            </div>
+
+                            <div className="custom_form_el">
                                 <div>Phone number</div>
                                 <div>:</div>
                                 <div>
-                                    {"phone number"}
+                                    {"phone_number"}
                                 </div>
                             </div>
-                           
+
                             <div className="custom_form_el">
                                 <div>Designation</div>
                                 <div>:</div>
@@ -64,14 +79,57 @@ function Details() {
                                     {"designation"}
                                 </div>
                             </div>
+                           
+                            <div className="custom_form_el">
+                                <div>Role</div>
+                                <div>:</div>
+                                <div>
+                                    {"role"}
+                                </div>
+                            </div>
+
                             <div className="custom_form_el">
                                 <div>Date of birth</div>
                                 <div>:</div>
                                 <div>
-                                    {"10.10.24"}
+                                    {"date_of_birth"}
                                 </div>
                             </div>
-                           
+                            <div className="custom_form_el">
+                                <div>Title</div>
+                                <div>:</div>
+                                <div>
+                                    {"title"}
+                                </div>
+                            </div>
+                            <div className="custom_form_el">
+                                <div>Work</div>
+                                <div>:</div>
+                                <div>
+                                    {"Work"}
+                                </div>
+                            </div>
+                            <div className="custom_form_el">
+                                <div>Department</div>
+                                <div>:</div>
+                                <div>
+                                    {"department"}
+                                </div>
+                            </div>
+                            <div className="custom_form_el">
+                                <div>Created At</div>
+                                <div>:</div>
+                                <div>
+                                    {"createdAt"}
+                                </div>
+                            </div>
+                            <div className="custom_form_el">
+                                <div>Updated At</div>
+                                <div>:</div>
+                                <div>
+                                    {"updatedAt"}
+                                </div>
+                            </div>
                         </div>
 
                     </div>

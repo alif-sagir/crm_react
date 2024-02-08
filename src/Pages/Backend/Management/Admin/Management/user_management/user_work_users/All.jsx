@@ -19,14 +19,15 @@ function All() {
                                 <th><input type="checkbox" className="form-check-input" /></th>
 
 
-                               
                                 <th className="cursor_n_resize edit_cursor_n_resize">
-                                   Work Id
+                                    User
                                 </th>
                                 <th className="cursor_n_resize edit_cursor_n_resize">
-                                   Title
+                                   Work
                                 </th>
-                                
+                                <th className="cursor_n_resize edit_cursor_n_resize">
+                                   Department
+                                </th>
                                 <th className="cursor_n_resize edit_cursor_n_resize">
                                     Status
                                 </th>
@@ -37,15 +38,19 @@ function All() {
 
                             <tr>
                                 <td><input type="checkbox" className="form-check-input" /></td>
-                                
                                 <td>
-                                    <span>
-                                      work id
+                                    <span >
+                                        Alif
                                     </span>
                                 </td>
                                 <td>
                                     <span>
-                                   Title
+                                      Frontend developer
+                                    </span>
+                                </td>
+                                <td>
+                                    <span>
+                                   It
                                     </span>
                                 </td>
 
@@ -57,13 +62,13 @@ function All() {
                                         <div className='edit_class_submanu'>
                                             <ul>
                                                 <li>
-                                                    <Link to="/user-work-department/edit">Edit</Link>
+                                                    <Link to="/user-work-user/edit">Edit</Link>
                                                 </li>
                                                 <li>
-                                                    <Link to="/user-work-department/details">Details</Link>
+                                                    <Link to="/user-work-user/details">Details</Link>
                                                 </li>
                                                 <li>
-                                                    <Link to="/user-work-department/edit">Deactive</Link>
+                                                    <Link to="/user-work-user/edit">Deactive</Link>
                                                 </li>
                                                 
                                             </ul>

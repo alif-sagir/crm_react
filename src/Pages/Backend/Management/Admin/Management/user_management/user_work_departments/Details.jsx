@@ -6,7 +6,7 @@ function Details() {
         <div className="card-header ">
             <h2 className='heading'>Details</h2>
             <div className="btns d-flex gap-2 align-items-center">
-                <a href="#/user-work-user" className="btn rounded-pill btn-outline-secondary">
+                <a href="#/user-work-department" className="btn rounded-pill btn-outline-secondary">
                     {/* <i className="material-symbols-outlined fill">arrow_back</i> */}
                     Back
                 </a>
@@ -27,26 +27,12 @@ function Details() {
                                 "last ID",
                             ] */}
                         <div className="form-group mb-3">
+                           
                             <div className="custom_form_el">
-                                <div>User Id</div>
+                                <div>Title</div>
                                 <div>:</div>
                                 <div>
-                                    {"_id"}
-                                </div>
-                            </div>
-                            <div className="custom_form_el">
-                                <div>Work Id</div>
-                                <div>:</div>
-                                <div>
-                                    {"work id"}
-                                </div>
-                            </div>
-                            
-                            <div className="custom_form_el">
-                                <div>Department Id</div>
-                                <div>:</div>
-                                <div>
-                                    {"department id"}
+                                    {"title"}
                                 </div>
                             </div>
                         </div>

@@ -6,7 +6,7 @@ function Details() {
         <div className="card-header ">
             <h2 className='heading'>Details</h2>
             <div className="btns d-flex gap-2 align-items-center">
-                <a href="#/user-work" className="btn rounded-pill btn-outline-secondary">
+                <a href="#/user-designation" className="btn rounded-pill btn-outline-secondary">
                     {/* <i className="material-symbols-outlined fill">arrow_back</i> */}
                     Back
                 </a>
@@ -28,10 +28,32 @@ function Details() {
                             ] */}
                         <div className="form-group mb-3">
                             <div className="custom_form_el">
-                                <div>Title</div>
+                                <div>Id</div>
                                 <div>:</div>
                                 <div>
-                                    {"title"}
+                                    {"_id"}
+                                </div>
+                            </div>
+                            <div className="custom_form_el">
+                                <div>User name</div>
+                                <div>:</div>
+                                <div>
+                                    {"user name"}
+                                </div>
+                            </div>
+                            <div className="custom_form_el">
+                                <div>Designation</div>
+                                <div>:</div>
+                                <div>
+                                    {"dsignation"}
+                                </div>
+                            </div>
+                            
+                            <div className="custom_form_el">
+                                <div>Description</div>
+                                <div>:</div>
+                                <div>
+                                    {"Description"}
                                 </div>
                             </div>
                         </div>

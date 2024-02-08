@@ -25,7 +25,7 @@ function Edit() {
                     <div><input name="customer_id" type="text" className="form-control" defaultValue={"username"} /></div>
                   </div>
                   <div className="custom_form_el">
-                    <label htmlFor="">event data</label>
+                    <label htmlFor="">event date</label>
                     <div>:</div>
                     <div><input name="event_data" type="text" className="form-control" defaultValue={"username"} /></div>
                   </div>
