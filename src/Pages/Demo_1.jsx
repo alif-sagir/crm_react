@@ -1,5 +1,5 @@
 import React from 'react'
-import Layout from './Layout'
+import Layout from './DashboardLayout'
 
 function Demo_1() {
   return (

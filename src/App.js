@@ -1,5 +1,5 @@
 import './App.css';
-import Layout from "./Pages/Layout";
+import Layout from "./Pages/DashboardLayout";
 import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
 import Demo_1 from './Pages/Demo_1';
 import Demo_2 from './Pages/Demo_2';

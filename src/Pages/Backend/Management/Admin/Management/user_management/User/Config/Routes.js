@@ -24,8 +24,6 @@ export default {
         {
             path: "edit",
             element: <Edit></Edit>,
-        }
-
-        
+        }   
     ]
 }

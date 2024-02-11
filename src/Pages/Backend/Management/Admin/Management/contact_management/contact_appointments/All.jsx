@@ -83,17 +83,17 @@ function All() {
                                     <span>Active</span>
                                 </td>
                                 <td>
-                                    <span className='edit_class_submanu_active'><i class="mdi mdi-format-list-bulleted"></i>
+                                    <span className='edit_class_submanu_active'><i className="mdi mdi-format-list-bulleted"></i>
                                         <div className='edit_class_submanu'>
                                             <ul>
                                                 <li>
-                                                    <Link to="/contact-appointment/edit">Edit</Link>
+                                                    <Link to="/dashboard/contact-appointment/edit">Edit</Link>
                                                 </li>
                                                 <li>
-                                                    <Link to="/contact-appointment/details">Details</Link>
+                                                    <Link to="/dashboard/contact-appointment/details">Details</Link>
                                                 </li>
                                                 <li>
-                                                    <Link to="/contact-appointment/edit">Deactive</Link>
+                                                    <Link to="/dashboard/contact-appointment/edit">Deactive</Link>
                                                 </li>
                                                 
                                             </ul>

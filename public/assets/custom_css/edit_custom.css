@@ -74,11 +74,10 @@
     font-size: 16px;
     color: #334155;
     text-transform: capitalize;
-    transition-duration: .4s;
+    transition-duration: 0.4s;
 }
 .tag-list_and_task-list_area .tag_list ul li a:hover {
-background-color: turquoise;
-
+    background-color: turquoise;
 }
 .tag-list_and_task-list_area .task-list {
     margin-top: 30px;
@@ -114,7 +113,6 @@ background-color: turquoise;
 }
 .tag-list_and_task-list_area .task-list ul li ul {
     gap: 10px;
-    
 }
 
 .tag-list_and_task-list_area .task-list ul li ul li {
@@ -138,6 +136,187 @@ background-color: turquoise;
     margin-left: 30px;
 }
 
-.page-content{
+.page-content {
     padding-top: 50px;
 }
+
+/* login page start */
+.login_page {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    height: 100vh;
+    background-color: #948aff;
+}
+.login_page .login_page_content {
+    align-items: center;
+    display: flex;
+    height: 100vh;
+    justify-content: end;
+}
+.login_page .login_page_content .login_form_all_content {
+    width: 300px;
+    background-color: white;
+    padding: 30px 20px;
+    border-radius: 3px;
+}
+.login_page .login_page_content .login_form_all_content .form_logo {
+}
+.login_page .login_page_content .login_form_all_content .form_logo img {
+    width: 160px;
+    /* height: 100px; */
+    object-fit: contain;
+    margin-bottom: 20px;
+}
+.login_page .login_page_content .login_form_all_content .form_title {
+    border-bottom: 1px solid #3341552b;
+    padding-bottom: 20px;
+    border-top: 1px solid #3341552b;
+    padding-top: 20px;
+}
+.login_page .login_page_content .login_form_all_content .form_title .title_text {
+    font-size: 18px;
+    font-weight: bold;
+    color: #334155;
+}
+
+/* form_area_start */
+.login_page .login_page_content .login_form_all_content form {
+    margin-top: 20px;
+}
+.login_page .login_page_content .login_form_all_content form .input_area {
+    gap: 18px;
+    display: grid;
+}
+/* email and password area start  */
+.login_page .login_page_content .login_form_all_content form .input_area .icon_and_input_text_area {
+}
+.login_page .login_page_content .login_form_all_content form .input_area .icon_and_input_text_area .icon_area {
+}
+.login_page .login_page_content .login_form_all_content form .input_area .icon_and_input_text_area .icon_area i {
+}
+.login_page .login_page_content .login_form_all_content form .input_area .icon_and_input_text_area .input_text_area {
+}
+.login_page
+    .login_page_content
+    .login_form_all_content
+    form
+    .input_area
+    .icon_and_input_text_area
+    .input_text_area
+    input {
+    border: 0px;
+    border-bottom: 1px solid #334155;
+    outline: 0;
+    width: 100%;
+}
+/* email and password area end  */
+/* login_button_area start */
+.login_page .login_page_content .login_form_all_content form .input_area .login_button_area {
+    margin-top: 15px;
+    border-top: 1px solid #3341552b;
+    padding-top: 20px;
+}
+.login_page .login_page_content .login_form_all_content form .input_area .login_button_area .login_button {
+    width: 100%;
+    padding: 3px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: #334155;
+    transition-duration: 0.4s;
+    border-radius: 3px;
+}
+.login_page .login_page_content .login_form_all_content form .input_area .login_button_area .login_button:hover {
+    background-color: #e61e25;
+    color: white;
+}
+/* login_button_area end */
+/* login page end */
+
+/* home_page start */
+.home_page{
+    /* background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+     */
+    background: rgb(52,29,100);
+background: linear-gradient(315deg, rgba(52,29,100,1) 29%, rgba(73,144,170,1) 100%);
+height: 100vh;
+}
+.home_page .home_page_content{
+
+}
+/* header_area start */
+.home_page .home_page_content{
+
+}
+.home_page .home_page_content .header_area{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0px;
+
+}
+.home_page .home_page_content .header_area .left_area{
+
+}
+.home_page .home_page_content .header_area .left_area img{
+    width: 200px;
+    object-fit: contain;
+}
+
+.home_page .home_page_content .header_area .right_area{
+
+}
+.home_page .home_page_content .header_area .right_area ul{
+    display: flex;
+    gap: 25px;
+}
+.home_page .home_page_content .header_area .right_area ul li{
+
+}
+.home_page .home_page_content .header_area .right_area ul li .menu_text{
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: capitalize;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    border-radius: 3px;
+    padding: 1px 10px;
+    transition-duration: .4s;
+}
+.home_page .home_page_content .header_area .right_area ul li .menu_text:hover{
+    color: #e61e25;
+    border: 1px solid #e61e25;
+    
+}
+/* header_area end */
+
+/* banner_area start */
+.home_page .home_page_content .banner_area{
+    justify-content: end;
+    display: flex;
+    align-items: center;
+    height: calc(100vh - 260px);
+    /* background-color: #ffffffd4; */
+}
+.home_page .home_page_content .banner_area .banner_text{
+    text-align: end;
+
+}
+.home_page .home_page_content .banner_area .banner_text .sub_title_text{
+    font-size: 35px;
+    font-weight: bold;
+    text-transform: capitalize;
+    color: #1edde6;
+}
+.home_page .home_page_content .banner_area .banner_text .title_text{
+    font-size: 60px;
+    font-weight: bold;
+    text-transform: capitalize;
+    padding: 0px 0px;
+    color: #ffffff;
+}
+/* banner_area end */
+/* home_page end */

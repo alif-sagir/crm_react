@@ -1,10 +1,23 @@
 import React from 'react'
-import TableAction from './Components/all_data_components/TableAction';
+import { useDispatch, useSelector } from 'react-redux'
+// import TableAction from './Components/all_data_components/TableAction';
 import TopPart from './Components/all_data_components/TopPart';
 import Pagination from './Components/all_data_components/Pagination';
 import { Link } from 'react-router-dom';
+import setup from './Config/setup';
+import { useEffect, useState } from 'react';
+import dataStoreSlice, { async_actions } from './Config/store';
 
 function All() {
+    const data_store = useSelector((state) => state[setup.prefix]);
+    setup.dispatch = useDispatch();
+    setup.set_async(async_actions, dataStoreSlice);
+    const { fetch_all_data } = setup.actions;
+
+    useEffect(() => {
+        fetch_all_data();
+    }, [])
+
     return (
 
         <>
@@ -17,8 +30,6 @@ function All() {
                         <thead>
                             <tr>
                                 <th><input type="checkbox" className="form-check-input" /></th>
-
-
                                 <th className="cursor_n_resize edit_cursor_n_resize">
                                     User Id
                                 </th>
@@ -26,74 +37,64 @@ function All() {
                                     Username
                                 </th>
                                 <th className="cursor_n_resize edit_cursor_n_resize">
-                                    Password
-                                </th>
-                                <th className="cursor_n_resize edit_cursor_n_resize">
                                     Email
                                 </th>
-
                                 <th className="cursor_n_resize edit_cursor_n_resize">
                                     Roll
-                                </th>
-                                <th className="cursor_n_resize edit_cursor_n_resize">
-                                    Status
                                 </th>
                                 <th aria-label="actions">Actions</th>
                             </tr>
                         </thead>
                         <tbody className="table-border-bottom-0">
+                            
+                            {
+                                data_store?.data && data_store?.data?.data?.map(item => {
+                                    return <tr key={item.id}>
+                                        <td><input type="checkbox" className="form-check-input" /></td>
+                                        <td>
+                                            <span >
+                                                {item.id}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span>
+                                                {item.user_name}
+                                            </span>
+                                        </td>
 
-                            <tr>
-                                <td><input type="checkbox" className="form-check-input" /></td>
-                                <td>
-                                    <span >
-                                        01
-                                    </span>
-                                </td>
-                                <td>
-                                    <span>
-                                        Alif Sagir
-                                    </span>
-                                </td>
-                                <td>
-                                    <span>
-                                        123456789
-                                    </span>
-                                </td>
+                                        <td>
+                                            <span>
+                                                {item.email}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span>
+                                                {item.role}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span className='edit_class_submanu_active'><i className="mdi mdi-format-list-bulleted"></i>
+                                                <div className='edit_class_submanu'>
+                                                    <ul>
+                                                        <li>
+                                                            <Link to="/dashboard/user/edit">Edit</Link>
+                                                        </li>
+                                                        <li>
+                                                            <Link to="/dashboard/user/details">Details</Link>
+                                                        </li>
+                                                        <li>
+                                                            <Link to="/dashboard/user/edit">Deactive</Link>
+                                                        </li>
 
-                                <td>
-                                    <span>
-                                        abc@gmail.com
-                                    </span>
-                                </td>
-                                <td>
-                                    <span>
-                                        100
-                                    </span>
-                                </td>
-                                <td>
-                                    <span>Active</span>
-                                </td>
-                                <td>
-                                    <span className='edit_class_submanu_active'><i class="mdi mdi-format-list-bulleted"></i>
-                                        <div className='edit_class_submanu'>
-                                            <ul>
-                                                <li>
-                                                    <Link to="/user/edit">Edit</Link>
-                                                </li>
-                                                <li>
-                                                    <Link to="/user/details">Details</Link>
-                                                </li>
-                                                <li>
-                                                    <Link to="/user/edit">Deactive</Link>
-                                                </li>
-                                                
-                                            </ul>
-                                        </div>
-                                    </span>
+                                                    </ul>
+                                                </div>
+                                            </span>
 
-                                </td>
-                            </tr>
+                                        </td>
+                                    </tr>
+                                })
+                            }
+
 
 
                         </tbody>

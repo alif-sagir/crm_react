@@ -22,8 +22,8 @@ import React, { useEffect, useState } from 'react'
 //     }
 
 //     paginationHTML.push(
-//         <li class="page-item pagination-page-nav">
-//             <a class="page-link" onClick={() => { event.preventDefault(); currentPage - 1 > 0 && set_page(currentPage - 1) }} href="/dashboard/blog?page=${currentPage - 1}" aria-label="Previous">
+//         <li className="page-item pagination-page-nav">
+//             <a className="page-link" onClick={() => { event.preventDefault(); currentPage - 1 > 0 && set_page(currentPage - 1) }} href="/dashboard/blog?page=${currentPage - 1}" aria-label="Previous">
 //                 <span aria-hidden="true">&laquo;</span>
 //             </a>
 //         </li>
@@ -32,11 +32,11 @@ import React, { useEffect, useState } from 'react'
 //     if (startPage > 1) {
 //         paginationHTML.push(
 //             <li class={"page-item pagination-page-nav " + (startPage === currentPage && 'active')}>
-//                 <a class="page-link" onClick={() => { event.preventDefault(); set_page(1) }} href="/dashboard/blog?page=1">1</a>
+//                 <a className="page-link" onClick={() => { event.preventDefault(); set_page(1) }} href="/dashboard/blog?page=1">1</a>
 //             </li>
 //         );
 //         if (startPage > 2) {
-//             paginationHTML.push(<li class="page-item">... </li>);
+//             paginationHTML.push(<li className="page-item">... </li>);
 //         }
 //     }
 
@@ -44,25 +44,25 @@ import React, { useEffect, useState } from 'react'
 //     for (let i = startPage; i <= endPage; i++) {
 //         paginationHTML.push(
 //             <li class={"page-item pagination-page-nav " + (i === currentPage && 'active')}>
-//                 <a class="page-link " onClick={() => { event.preventDefault(); set_page(i) }} href="/dashboard/blog?page=${i}">{i}</a>
+//                 <a className="page-link " onClick={() => { event.preventDefault(); set_page(i) }} href="/dashboard/blog?page=${i}">{i}</a>
 //             </li>
 //         );
 //     }
 
 //     if (endPage < pageCount) {
 //         if (endPage < pageCount - 1) {
-//             paginationHTML.push(<li class="page-item pagination-page-nav">... </li>);
+//             paginationHTML.push(<li className="page-item pagination-page-nav">... </li>);
 //         }
 //         paginationHTML.push(
 //             <li class={"page-item pagination-page-nav " + (pageCount === currentPage && 'active')}>
-//                 <a class="page-link" onClick={() => { event.preventDefault(); }} href="/dashboard/blog?page=${pageCount}">{pageCount}</a>
+//                 <a className="page-link" onClick={() => { event.preventDefault(); }} href="/dashboard/blog?page=${pageCount}">{pageCount}</a>
 //             </li>
 //         );
 //     }
 
 //     paginationHTML.push(
-//         <li class="page-item pagination-page-nav">
-//             <a class="page-link" onClick={() => { event.preventDefault(); pageCount >= currentPage + 1 && set_page(currentPage + 1) }} href="/dashboard/blog?page=${currentPage + 1}" aria-label="Next">
+//         <li className="page-item pagination-page-nav">
+//             <a className="page-link" onClick={() => { event.preventDefault(); pageCount >= currentPage + 1 && set_page(currentPage + 1) }} href="/dashboard/blog?page=${currentPage + 1}" aria-label="Next">
 //                 <span aria-hidden="true">&raquo;</span>
 //             </a>
 //         </li>

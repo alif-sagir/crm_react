@@ -62,7 +62,7 @@ import React, { useEffect, useState } from 'react'
 
 //     paginationHTML.push(
 //         <li class="page-item pagination-page-nav">
-//             <a class="page-link" onClick={() => { event.preventDefault(); pageCount >= currentPage + 1 && set_page(currentPage + 1) }} href="/dashboard/blog?page=${currentPage + 1}" aria-label="Next">
+//             <a  page-link" onClick={() => { event.preventDefault(); pageCount >= currentPage + 1 && set_page(currentPage + 1) }} href="/dashboard/blog?page=${currentPage + 1}" aria-label="Next">
 //                 <span aria-hidden="true">&raquo;</span>
 //             </a>
 //         </li>

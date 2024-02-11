@@ -80,7 +80,7 @@ function All() {
                                     <span>Team leader</span>
                                 </td>
                                 <td>
-                                    <span className='edit_class_submanu_active'><i class="mdi mdi-format-list-bulleted"></i>
+                                    <span className='edit_class_submanu_active'><i className="mdi mdi-format-list-bulleted"></i>
                                         <div className='edit_class_submanu'>
                                             <ul>
                                                 <li>

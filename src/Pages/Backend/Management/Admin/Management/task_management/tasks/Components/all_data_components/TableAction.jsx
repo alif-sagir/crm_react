@@ -7,14 +7,14 @@ function TableAction({data}) {
         <>
             <div className="table_actions">
                 <a href="#" className="btn btn-sm btn-outline-secondary">
-                    <span class="material-symbols-outlined fill">
+                    <span className="material-symbols-outlined fill">
                         settings
                     </span>
                 </a>
                 <ul>
                     {/* <li>
                         <a href="">
-                            <span class="material-symbols-outlined">
+                            <span className="material-symbols-outlined">
                                 visibility
                             </span>
                             Quick View
@@ -22,7 +22,7 @@ function TableAction({data}) {
                     </li> */}
                     <li>
                         <a className="">
-                            <span class="material-symbols-outlined">
+                            <span className="material-symbols-outlined">
                                 mystery
                             </span>
                             Details
@@ -30,7 +30,7 @@ function TableAction({data}) {
                     </li>
                     <li>
                         <a className="">
-                            <span class="material-symbols-outlined">
+                            <span className="material-symbols-outlined">
                                 edit_square
                             </span>
                             Edit

@@ -15,7 +15,7 @@ function ActionButtons() {
                 <div className="table_actions">
                     <a href="#" className="btn p-2 btn-outline-secondary">
                         {/* <i className="material-symbols-outlined fill">tune</i> */}
-                        <i class="bx bx-cog bx-spin"></i>
+                        <i className="bx bx-cog bx-spin"></i>
                     </a>
                     <ul>
                         <li>
