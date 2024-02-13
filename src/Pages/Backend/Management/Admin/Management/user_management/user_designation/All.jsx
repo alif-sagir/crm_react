@@ -57,17 +57,17 @@ function All() {
                                         <td><input type="checkbox" className="form-check-input" /></td>
                                         <td>
                                             <span >
-                                               {item.user_id}
+                                                {item.user_id}
                                             </span>
                                         </td>
                                         <td>
                                             <span>
-                                              {item.designation}
+                                                {item.designation}
                                             </span>
                                         </td>
                                         <td>
                                             <span>
-                                               {item.description}
+                                                {item.description}
                                             </span>
                                         </td>
 
