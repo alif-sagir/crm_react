@@ -47,13 +47,13 @@ function All() {
                                         <div className='edit_class_submanu'>
                                             <ul>
                                                 <li>
-                                                    <Link to="/customer-variant/edit">Edit</Link>
+                                                    <Link to="/dashboard/customer-variant/edit">Edit</Link>
                                                 </li>
                                                 <li>
-                                                    <Link to="/customer-variant/details">Details</Link>
+                                                    <Link to="/dashboard/customer-variant/details">Details</Link>
                                                 </li>
                                                 <li>
-                                                    <Link to="/customer-variant/edit">Deactive</Link>
+                                                    <Link to="/dashboard/customer-variant/edit">Deactive</Link>
                                                 </li>
                                                 
                                             </ul>
