@@ -19,7 +19,7 @@ const store = configureStore({
         user_work: userWorkSlice.reducer,
         user_work_user: userWorkUserSlice.reducer,
         user_work_department: userWorkDepartmentSlice.reducer,
-        task_User: taskUserSlice.reducer,
+        task_user: taskUserSlice.reducer,
         
     }
 });

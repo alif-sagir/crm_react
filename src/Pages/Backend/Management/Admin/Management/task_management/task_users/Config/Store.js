@@ -11,6 +11,7 @@ export const async_actions = {
     [`fetch_all_data`]: createAsyncThunk(
         `${store_prefix}/fetch_all_data`,
         async (data, thunkAPI) => {
+            console.log('store data', data);
             let state = thunkAPI.getState()[store_prefix];
             let qparams = {
                 page_limit: state[`page_limit`],

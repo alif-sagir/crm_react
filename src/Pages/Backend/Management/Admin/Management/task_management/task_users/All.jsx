@@ -83,7 +83,7 @@ function All() {
                                         </td>
                                         <td>
                                             <span>
-                                                20
+                                              {item.is_complete}
                                             </span>
                                         </td>
 
