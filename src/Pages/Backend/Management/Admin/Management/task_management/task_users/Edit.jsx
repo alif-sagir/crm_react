@@ -6,7 +6,7 @@ function Edit() {
       <div className="card-header ">
         <h2 className="heading">Edit</h2>
         <div className="btns d-flex gap-2 align-items-center">
-          <a href="#/task-user" className="btn rounded-pill btn-outline-secondary">
+          <a href="#/dashboard/task-user" className="btn rounded-pill btn-outline-secondary">
             {/* <i className="material-symbols-outlined fill">arrow_back</i> */}
             Back
           </a>

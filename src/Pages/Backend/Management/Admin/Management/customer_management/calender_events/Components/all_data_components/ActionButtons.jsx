@@ -9,7 +9,7 @@ function ActionButtons() {
     return (
         <>
             <div className="btns d-flex gap-2 align-items-center">
-                <a href={`#/calender-event/create`} className="btn rounded-pill btn-outline-secondary">
+                <a href={`#/dashboard/calender-event/create`} className="btn rounded-pill btn-outline-secondary">
                     Create
                 </a>
                 <div className="table_actions">
