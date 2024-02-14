@@ -6,6 +6,7 @@ import userWorkSlice from "../Pages/Backend/Management/Admin/Management/user_man
 import userWorkUserSlice from "../Pages/Backend/Management/Admin/Management/user_management/user_work_users/Config/store";
 import userWorkDepartmentSlice from "../Pages/Backend/Management/Admin/Management/user_management/user_work_departments/Config/store";
 import taskUserSlice from "../Pages/Backend/Management/Admin/Management/task_management/task_users/Config/store";
+import taskSlice from "../Pages/Backend/Management/Admin/Management/task_management/tasks/Config/store";
 
 
 import { configureStore } from "@reduxjs/toolkit";
@@ -20,6 +21,7 @@ const store = configureStore({
         user_work_user: userWorkUserSlice.reducer,
         user_work_department: userWorkDepartmentSlice.reducer,
         task_user: taskUserSlice.reducer,
+        task: taskSlice.reducer,
         
     }
 });
