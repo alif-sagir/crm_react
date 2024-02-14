@@ -5,6 +5,7 @@ import Pagination from './Components/all_data_components/Pagination';
 import { Link } from 'react-router-dom';
 
 function All() {
+    console.log('something for test purpous');
     return (
 
         <>
