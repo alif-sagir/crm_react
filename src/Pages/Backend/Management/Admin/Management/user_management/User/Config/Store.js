@@ -11,6 +11,7 @@ export const async_actions = {
     [`fetch_all_data`]: createAsyncThunk(
         `${store_prefix}/fetch_all_data`,
         async (data, thunkAPI) => {
+            console.log('data',data , 'thunkapi', thunkAPI);
             let state = thunkAPI.getState()[store_prefix];
             let qparams = {
                 page_limit: state[`page_limit`],
@@ -21,6 +22,7 @@ export const async_actions = {
             }
 
             let url = data?.url ? data.url : `/${store_prefix}`;
+            console.log('url', url);
             const response = await axios.get(url, {
                 params: {
                     ...qparams
@@ -29,6 +31,23 @@ export const async_actions = {
             return response.data;
         }
     ),
+    
+    // store data
+    [`store_${store_prefix}`]: createAsyncThunk(
+        `user_roles/store_${store_prefix}`,
+        async (form_data, thunkAPI) => {
+            console.log("some form data");
+            try {
+                const response = await axios.post(`/${api_prefix}/store`, form_data);
+                // thunkAPI.dispatch(storeSlice.actions.my_action())
+                // console.log(response.data);
+                return response;
+            } catch (error) {
+                window.render_alert(error)
+            }
+        }
+    ),
+
 };
 
 const storeSlice = createSlice({
