@@ -56,7 +56,7 @@ function All() {
 
                                         <td>
                                             <span>
-                                                Title
+                                            {item.title}
                                             </span>
                                         </td>
 
