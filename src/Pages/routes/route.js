@@ -3,7 +3,7 @@ import Demo_1 from "../Demo_1";
 import Demo_2 from "../Demo_2";
 import Demo_3 from "../Demo_3";
 import DashboardLayout from "../DashboardLayout";
-import user_route from "../Backend/Management/Admin/Management/user_management/User/Config/Routes";
+import user_route from "../Backend/Management/Admin/Management/user_management/User/config/Routes";
 import user_info_route from "../Backend/Management/Admin/Management/user_management/user_infos/Config/Routes";
 import user_designation_route from "../Backend/Management/Admin/Management/user_management/user_designation/Config/Routes";
 import user_work_user_route from "../Backend/Management/Admin/Management/user_management/user_work_users/Config/Routes";

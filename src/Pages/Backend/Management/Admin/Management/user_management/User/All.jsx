@@ -4,9 +4,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import TopPart from './Components/all_data_components/TopPart';
 import Pagination from './Components/all_data_components/Pagination';
 import { Link } from 'react-router-dom';
-import setup from './Config/setup';
+import setup from './config/setup.js';
 import { useEffect, useState } from 'react';
-import dataStoreSlice, { async_actions } from './Config/store';
+import dataStoreSlice, { async_actions } from './config/store.js';
 
 function All() {
     const data_store = useSelector((state) => state[setup.prefix]);
@@ -18,9 +18,6 @@ function All() {
         fetch_all_data();
     }, [])
 
-// console.log("data stroe from front end", data_store);
-// console.log("data stroe from front end", data_store);
-// console.log("data stroe from front end", data_store);
 // console.log("data stroe from front end", data_store);
 
     return (
@@ -82,10 +79,10 @@ function All() {
                                                 <div className='edit_class_submanu'>
                                                     <ul>
                                                         <li>
-                                                            <Link to="/dashboard/user/edit">Edit</Link>
+                                                            <Link to={`/dashboard/user/edit/${item.id}`}>Edit</Link>
                                                         </li>
                                                         <li>
-                                                            <Link to="/dashboard/user/details">Details</Link>
+                                                            <Link to={`/dashboard/user/details/${item.id}`}>Details</Link>
                                                         </li>
                                                         <li>
                                                             <Link to="/dashboard/user/edit">Deactive</Link>
