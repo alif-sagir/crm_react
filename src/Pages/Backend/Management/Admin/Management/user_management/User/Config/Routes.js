@@ -18,11 +18,11 @@ export default {
             element: <Create></Create>,
         },
         {
-            path: "details",
+            path: "details/:id",
             element: <Details></Details>,
         },
         {
-            path: "edit",
+            path: "edit/:id",
             element: <Edit></Edit>,
         }   
     ]

@@ -34,7 +34,7 @@ export const async_actions = {
     
     // store data
     [`store_${store_prefix}`]: createAsyncThunk(
-        `user_roles/store_${store_prefix}`,
+        `user/store_${store_prefix}`,
         async (form_data, thunkAPI) => {
             console.log("some form data");
             try {
@@ -47,6 +47,48 @@ export const async_actions = {
             }
         }
     ),
+    
+    // edit data or updated data
+    [`edit_${store_prefix}`]: createAsyncThunk(
+        `user_roles/edit_${store_prefix}`,
+        async (form_data, thunkAPI) => {
+            // console.log(thunkAPI);
+            console.log('hoiche');
+            try {
+                const response = await axios.post(`/${api_prefix}/update`, form_data);
+                // thunkAPI.dispatch(storeSlice.actions.my_action())
+                console.log(response);
+                return response;
+            } catch (error) {
+                // console.log(error);
+                // console.log(error.response?.data?.data?.keyValue?.[key]);
+                // console.log(error.response?.status);
+                window.render_alert(error)
+
+            }
+        }
+    ),
+
+    // details data
+    [`details_${store_prefix}`]: createAsyncThunk(
+        `user/details_${store_prefix}`,
+        async (id, thunkAPI) => {
+            // console.log(thunkAPI);
+            // console.log(id);
+            try {
+                const response = await axios.get(`/${api_prefix}/details/${id}`);
+                // thunkAPI.dispatch(storeSlice.actions.my_action())
+                console.log(response);
+                return response;
+            } catch (error) {
+                // console.log(error);
+                // console.log(error.response?.data?.data?.keyValue?.[key]);
+                // console.log(error.response?.status);
+                return error;
+
+            }
+        }
+    ),
 
 };
 
@@ -54,6 +96,7 @@ const storeSlice = createSlice({
     name: `${store_prefix}`,
     initialState: {
         data: {},
+        singleData: {},
         page_limit: 10,
         search_key: '',
     },
@@ -70,6 +113,10 @@ const storeSlice = createSlice({
         builder
             .addCase(async_actions[`fetch_all_data`].fulfilled, (state, { type, payload, meta }) => {
                 state[`data`] = payload;
+            })
+            .addCase(async_actions[`details_${store_prefix}`].fulfilled, (state, { type, payload, meta }) => {
+                // console.log('payload data', payload.data);
+                state[`singleData`] = payload.data;
             })
     },
 })
