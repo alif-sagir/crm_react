@@ -1,10 +1,25 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import TableAction from './Components/all_data_components/TableAction';
 import TopPart from './Components/all_data_components/TopPart';
 import Pagination from './Components/all_data_components/Pagination';
 import { Link } from 'react-router-dom';
+import setup from './Config/setup';
+import { useEffect, useState } from 'react';
+import dataStoreSlice, { async_actions } from './Config/store';
 
 function All() {
+    const data_store = useSelector((state) => state[setup.prefix]);
+    setup.dispatch = useDispatch();
+    setup.set_async(async_actions, dataStoreSlice);
+    const { fetch_all_data } = setup.actions;
+
+    useEffect(() => {
+        fetch_all_data();
+    }, [])
+
+    console.log("data stor from user info front end", data_store?.data?.data);
+
     return (
 
         <>
@@ -26,7 +41,7 @@ function All() {
                                     Data
                                 </th>
                                 <th className="cursor_n_resize edit_cursor_n_resize">
-                                   Feedback type
+                                    Feedback type
                                 </th>
                                 <th className="cursor_n_resize edit_cursor_n_resize">
                                     Notes
@@ -40,54 +55,58 @@ function All() {
                         </thead>
                         <tbody className="table-border-bottom-0">
 
-                            <tr>
-                                <td><input type="checkbox" className="form-check-input" /></td>
-                                <td>
-                                    <span >
-                                    Contact History Id
-                                    </span>
-                                </td>
+                            {
+                                data_store?.data && data_store?.data?.data?.map(item => {
+                                    return <tr key={item.id}>
+                                        <td><input type="checkbox" className="form-check-input" /></td>
+                                        <td>
+                                            <span >
+                                            {item.contact_history_id}
+                                            </span>
+                                        </td>
 
-                                <td>
-                                    <span>
-                                    Data
-                                    </span>
-                                </td>
-                                <td>
-                                    <span>
-                                    Feedback type
-                                    </span>
-                                </td>
-                                <td>
-                                    <span>
-                                    Notes
-                                    </span>
-                                </td>
-                               
-                                <td>
-                                    <span>Active</span>
-                                </td>
-                                <td>
-                                    <span className='edit_class_submanu_active'><i className="mdi mdi-format-list-bulleted"></i>
-                                        <div className='edit_class_submanu'>
-                                            <ul>
-                                                <li>
-                                                    <Link to="/dashboard/contact-history-feedback/edit">Edit</Link>
-                                                </li>
-                                                <li>
-                                                    <Link to="/dashboard/contact-history-feedback/details">Details</Link>
-                                                </li>
-                                                <li>
-                                                    <Link to="/dashboard/contact-history-feedback/edit">Deactive</Link>
-                                                </li>
-                                                
-                                            </ul>
-                                        </div>
-                                    </span>
+                                        <td>
+                                            <span>
+                                            {item.date}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span>
+                                            {item.feedback_type}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span>
+                                            {item.notes}
+                                            </span>
+                                        </td>
 
-                                </td>
-                            </tr>
+                                        <td>
+                                            <span>Active</span>
+                                        </td>
+                                        <td>
+                                            <span className='edit_class_submanu_active'><i className="mdi mdi-format-list-bulleted"></i>
+                                                <div className='edit_class_submanu'>
+                                                    <ul>
+                                                        <li>
+                                                            <Link to="/dashboard/contact-history-feedback/edit">Edit</Link>
+                                                        </li>
+                                                        <li>
+                                                            <Link to="/dashboard/contact-history-feedback/details">Details</Link>
+                                                        </li>
+                                                        <li>
+                                                            <Link to="/dashboard/contact-history-feedback/edit">Deactive</Link>
+                                                        </li>
 
+                                                    </ul>
+                                                </div>
+                                            </span>
+
+                                        </td>
+                                    </tr>
+
+                                })
+                            }
 
                         </tbody>
                     </table>

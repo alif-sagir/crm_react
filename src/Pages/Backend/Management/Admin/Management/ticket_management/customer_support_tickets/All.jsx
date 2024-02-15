@@ -1,10 +1,24 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import TableAction from './Components/all_data_components/TableAction';
 import TopPart from './Components/all_data_components/TopPart';
 import Pagination from './Components/all_data_components/Pagination';
 import { Link } from 'react-router-dom';
+import setup from './Config/setup';
+import { useEffect, useState } from 'react';
+import dataStoreSlice, { async_actions } from './Config/store';
 
 function All() {
+    const data_store = useSelector((state) => state[setup.prefix]);
+    setup.dispatch = useDispatch();
+    setup.set_async(async_actions, dataStoreSlice);
+    const { fetch_all_data } = setup.actions;
+
+    useEffect(() => {
+        fetch_all_data();
+    }, [])
+
+    console.log("data stor from user info front end", data_store?.data?.data);
     return (
 
         <>
@@ -22,7 +36,7 @@ function All() {
                                     Customer Id
                                 </th>
                                 <th className="cursor_n_resize edit_cursor_n_resize">
-                                    Ticket user id
+                                    Ticket uu id
                                 </th>
 
                                 <th className="cursor_n_resize edit_cursor_n_resize">
@@ -51,75 +65,78 @@ function All() {
                         </thead>
                         <tbody className="table-border-bottom-0">
 
-                            <tr>
-                                <td><input type="checkbox" className="form-check-input" /></td>
+                            {
+                                data_store?.data && data_store?.data?.data?.map(item => {
+                                    return <tr key={item.id}>
+                                        <td><input type="checkbox" className="form-check-input" /></td>
 
-                                <td>
-                                    <span>
-                                        customer Id
-                                    </span>
-                                </td>
-                                <td>
-                                    <span>
-                                    Ticket user id
-                                    </span>
-                                </td>
-                                <td>
-                                    <span>
-                                    Subject
-                                    </span>
-                                </td>
-                                <td>
-                                    <span>
-                                    Description
-                                    </span>
-                                </td>
-                                <td>
-                                    <span>
-                                    Status
-                                    </span>
-                                </td>
-                                <td>
-                                    <span>
-                                    Priority
-                                    </span>
-                                </td>
-                                <td>
-                                    <span>
-                                    Is complete
-                                    </span>
-                                </td>
-                                <td>
-                                    <span>
-                                    Assigned to
-                                    </span>
-                                </td>
+                                        <td>
+                                            <span>
+                                            {item.customer_id}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span>
+                                            {item.ticket_uuid}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span>
+                                            {item.subject}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span>
+                                            {item.description}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span>
+                                            {item.status}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span>
+                                            {item.priority}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span>
+                                            {item.is_complete}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span>
+                                            {item.assigned_to}
+                                            </span>
+                                        </td>
 
-                                <td>
-                                    <span>Active</span>
-                                </td>
-                                <td>
-                                    <span className='edit_class_submanu_active'><i className="mdi mdi-format-list-bulleted"></i>
-                                        <div className='edit_class_submanu'>
-                                            <ul>
-                                                <li>
-                                                    <Link to="/dashboard/support-ticket/edit">Edit</Link>
-                                                </li>
-                                                <li>
-                                                    <Link to="/dashboard/support-ticket/details">Details</Link>
-                                                </li>
-                                                <li>
-                                                    <Link to="/dashboard/support-ticket/edit">Deactive</Link>
-                                                </li>
+                                        <td>
+                                            <span>Active</span>
+                                        </td>
+                                        <td>
+                                            <span className='edit_class_submanu_active'><i className="mdi mdi-format-list-bulleted"></i>
+                                                <div className='edit_class_submanu'>
+                                                    <ul>
+                                                        <li>
+                                                            <Link to="/dashboard/support-ticket/edit">Edit</Link>
+                                                        </li>
+                                                        <li>
+                                                            <Link to="/dashboard/support-ticket/details">Details</Link>
+                                                        </li>
+                                                        <li>
+                                                            <Link to="/dashboard/support-ticket/edit">Deactive</Link>
+                                                        </li>
 
-                                            </ul>
-                                        </div>
-                                    </span>
+                                                    </ul>
+                                                </div>
+                                            </span>
 
-                                </td>
-                            </tr>
+                                        </td>
+                                    </tr>
 
-
+                                })
+                            }
                         </tbody>
                     </table>
                 </div>

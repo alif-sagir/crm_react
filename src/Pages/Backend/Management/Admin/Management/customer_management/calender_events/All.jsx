@@ -1,10 +1,25 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import TableAction from './Components/all_data_components/TableAction';
 import TopPart from './Components/all_data_components/TopPart';
 import Pagination from './Components/all_data_components/Pagination';
 import { Link } from 'react-router-dom';
+import setup from './Config/setup';
+import { useEffect, useState } from 'react';
+import dataStoreSlice, { async_actions } from './Config/store';
 
 function All() {
+    const data_store = useSelector((state) => state[setup.prefix]);
+    setup.dispatch = useDispatch();
+    setup.set_async(async_actions, dataStoreSlice);
+    const { fetch_all_data } = setup.actions;
+
+    useEffect(() => {
+        fetch_all_data();
+    }, [])
+
+    console.log("data stor from user info front end", data_store?.data?.data);
+
     return (
 
         <>
@@ -19,96 +34,98 @@ function All() {
                                 <th><input type="checkbox" className="form-check-input" /></th>
 
                                 <th className="cursor_n_resize edit_cursor_n_resize">
-                                Customer Id
+                                    Customer Id
                                 </th>
                                 <th className="cursor_n_resize edit_cursor_n_resize">
-                                   Event date
+                                    Event date
                                 </th>
 
                                 <th className="cursor_n_resize edit_cursor_n_resize">
-                                Event type
+                                    Event type
                                 </th>
                                 <th className="cursor_n_resize edit_cursor_n_resize">
-                                Event description
+                                    Event description
                                 </th>
                                 <th className="cursor_n_resize edit_cursor_n_resize">
-                                Creator
+                                    Creator
                                 </th>
                                 <th className="cursor_n_resize edit_cursor_n_resize">
-                                Is complete
+                                    Is complete
                                 </th>
                                 <th className="cursor_n_resize edit_cursor_n_resize">
-                                Meet link
+                                    Meet link
                                 </th>
                                 <th aria-label="actions">Actions</th>
                             </tr>
                         </thead>
                         <tbody className="table-border-bottom-0">
+                            {
+                                data_store?.data && data_store?.data?.data?.map(item => {
+                                    return <tr key={item.id}>
+                                        <td><input type="checkbox" className="form-check-input" /></td>
 
-                            <tr>
-                                <td><input type="checkbox" className="form-check-input" /></td>
-                                
-                                <td>
-                                    <span>
-                                    customer Id
-                                    </span>
-                                </td>
-                                <td>
-                                    <span>
-                                    event data
-                                    </span>
-                                </td>
-                                <td>
-                                    <span>
-                                    Event type
-                                    </span>
-                                </td>
-                                <td>
-                                    <span>
-                                    Event description
-                                    </span>
-                                </td>
-                                <td>
-                                    <span>
-                                    Creator
-                                    </span>
-                                </td>
-                                <td>
-                                    <span>
-                                    Is complete
-                                    </span>
-                                </td>
-                                <td>
-                                    <span>
-                                    Meet link
-                                    </span>
-                                </td>
-                                
-                                <td>
-                                    <span>Active</span>
-                                </td>
-                                <td>
-                                    <span className='edit_class_submanu_active'><i className="mdi mdi-format-list-bulleted"></i>
-                                        <div className='edit_class_submanu'>
-                                            <ul>
-                                                <li>
-                                                    <Link to="/dashboard/calender-event/edit">Edit</Link>
-                                                </li>
-                                                <li>
-                                                    <Link to="/dashboard/calender-event/details">Details</Link>
-                                                </li>
-                                                <li>
-                                                    <Link to="/dashboard/calender-event/edit">Deactive</Link>
-                                                </li>
-                                                
-                                            </ul>
-                                        </div>
-                                    </span>
+                                        <td>
+                                            <span>
+                                            {item.customer_id}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span>
+                                            {item.event_date}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span>
+                                            {item.event_type}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span>
+                                            {item.event_description}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span>
+                                            {item.creator}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span>
+                                            {item.is_complete}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span>
+                                            {item.meet_link}
+                                            </span>
+                                        </td>
 
-                                </td>
-                            </tr>
+                                        <td>
+                                            <span>Active</span>
+                                        </td>
+                                        <td>
+                                            <span className='edit_class_submanu_active'><i className="mdi mdi-format-list-bulleted"></i>
+                                                <div className='edit_class_submanu'>
+                                                    <ul>
+                                                        <li>
+                                                            <Link to="/dashboard/calender-event/edit">Edit</Link>
+                                                        </li>
+                                                        <li>
+                                                            <Link to="/dashboard/calender-event/details">Details</Link>
+                                                        </li>
+                                                        <li>
+                                                            <Link to="/dashboard/calender-event/edit">Deactive</Link>
+                                                        </li>
 
+                                                    </ul>
+                                                </div>
+                                            </span>
 
+                                        </td>
+                                    </tr>
+
+                                })
+                            }
                         </tbody>
                     </table>
                 </div>
