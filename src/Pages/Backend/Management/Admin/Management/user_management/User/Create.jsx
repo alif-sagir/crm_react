@@ -16,7 +16,7 @@ function Create() {
   
   const handleSubmit = async (event) => {
     // let e = event;
-    console.log('some from create submit', event.target.vlaue);
+    // console.log('some from create submit', event.target.vlaue);
     event.preventDefault();
     let form_data = new FormData(event.target);
     // selectedRole.forEach((e, index) => {
