@@ -36,7 +36,7 @@ export const async_actions = {
     [`store_${store_prefix}`]: createAsyncThunk(
         `user/store_${store_prefix}`,
         async (form_data, thunkAPI) => {
-            console.log("some form data");
+            console.log("some form data", form_data);
             try {
                 const response = await axios.post(`/${api_prefix}/store`, form_data);
                 // thunkAPI.dispatch(storeSlice.actions.my_action())
@@ -50,14 +50,13 @@ export const async_actions = {
     
     // edit data or updated data
     [`edit_${store_prefix}`]: createAsyncThunk(
-        `user_roles/edit_${store_prefix}`,
+        `user/edit_${store_prefix}`,
         async (form_data, thunkAPI) => {
-            // console.log(thunkAPI);
             console.log('hoiche');
             try {
                 const response = await axios.post(`/${api_prefix}/update`, form_data);
                 // thunkAPI.dispatch(storeSlice.actions.my_action())
-                console.log(response);
+                // console.log(response);
                 return response;
             } catch (error) {
                 // console.log(error);

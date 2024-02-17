@@ -20,16 +20,15 @@ function Edit() {
       set_data(null)
     };
   }, []);
+  console.log('id from edit', id);
 
-
-  const handleSubmit = async (e) => {
-    // let e = event;
-    e.preventDefault();
-    let form_data = new FormData(e.target);
-    form_data.append('id', id);
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    let form_data = new FormData(event.target);
+    // form_data.append('id', id);
     // form_data.append('role', id);
-
-    [...document.querySelectorAll('.form_error')].forEach((el => el.remove()));
+    console.log('form data', form_data);
+    // [...document.querySelectorAll('.form_error')].forEach((el => el.remove()));
     await update_data(form_data);
     // e.target.reset();
     // // e.target.serial.value = "";
@@ -38,7 +37,7 @@ function Edit() {
   };
   console.log('datra store from edit', data_store);
   if (data_store) {
-    const { user_name, user_uid, email, password, confirm_password,   } = data_store;
+    const { user_name, user_uid, email, password, confirm_password, id  } = data_store;
     return (
       <div className="card list_card">
         <div className="card-header ">
@@ -50,14 +49,19 @@ function Edit() {
             </a>
           </div>
         </div>
-        <form onSubmit={handleSubmit} id='form-data'>
+        <form onSubmit={(event) =>handleSubmit(event)} id='form-data'>
           <div className="card-body">
             <div className="container py-5">
               <div className="row">
                 <div className="col-lg-8">
                   <div className="form-group mb-5">
                     <div className="custom_form_el">
-                      <label htmlFor="">User Id</label>
+                      <label htmlFor="">Id</label>
+                      <div>:</div>
+                      <div><input name="id" type="text" className="form-control" defaultValue={id} /></div>
+                    </div>
+                    <div className="custom_form_el">
+                      <label htmlFor="">User Uid</label>
                       <div>:</div>
                       <div><input name="user_uid" type="text" className="form-control" defaultValue={user_uid} /></div>
                     </div>

@@ -82,7 +82,7 @@ function Details() {
                                         <div>Email</div>
                                         <div>:</div>
                                         <div>
-                                            {"email"}
+                                            {email}
                                         </div>
                                     </div>
     
