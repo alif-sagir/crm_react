@@ -18,7 +18,7 @@ function All() {
         fetch_all_data();
     }, [])
 
-// console.log("data stroe from front end", data_store);
+console.log("data stroe from front end", data_store?.data?.data?.length);
 
     return (
 
