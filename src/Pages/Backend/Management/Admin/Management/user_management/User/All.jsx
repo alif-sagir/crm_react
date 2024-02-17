@@ -4,9 +4,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import TopPart from './Components/all_data_components/TopPart';
 import Pagination from './Components/all_data_components/Pagination';
 import { Link } from 'react-router-dom';
-import setup from './config/setup.js';
+import setup from './Config/setup.js';
 import { useEffect, useState } from 'react';
-import dataStoreSlice, { async_actions } from './config/store.js';
+import dataStoreSlice, { async_actions } from './Config/store.js';
 
 function All() {
     const data_store = useSelector((state) => state[setup.prefix]);
