@@ -35,7 +35,7 @@ function All() {
 
 
                                 <th className="cursor_n_resize edit_cursor_n_resize">
-                                    Customer Number Id
+                                    Contact Number Id
                                 </th>
                                 <th className="cursor_n_resize edit_cursor_n_resize">
                                     Customer Id

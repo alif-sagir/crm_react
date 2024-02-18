@@ -46,7 +46,7 @@ const store = configureStore({
         task: taskSlice.reducer,
         task_variant_task: variantTaskSlice.reducer,
         task_variant_value: variantValueSlice.reducer,
-        variant: variantSlice.reducer,
+        task_variants: variantSlice.reducer,
         customer_support_ticket: supportTicketSlice.reducer,
         calender_event: customerCalenderEventSlice.reducer,
         customer_contact_number: customerContactNumberSlice.reducer,

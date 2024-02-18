@@ -14,7 +14,7 @@ function Pagination() {
             <div className="d-inline-block">
                 <ul className="pagination pagination-sm">
                     {
-                        data_store.data?.links?.map(item => {
+                        data_store?.data?.links?.map(item => {
                             return <li key={item.label} className="page-item pagination-page-nav">
                                 <a onClick={(e) => { e.preventDefault(); !item.active && fetch_all_data({ url: item.url }) }}
                                     href={item.url}

@@ -52,7 +52,7 @@ function All() {
 
                                         <td>
                                             <span>
-                                            {item.task_id}
+                                            {item.title}
                                             </span>
                                         </td>
 

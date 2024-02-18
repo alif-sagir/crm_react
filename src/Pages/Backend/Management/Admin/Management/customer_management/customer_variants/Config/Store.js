@@ -4,7 +4,7 @@ import setup from "./setup";
 // import app_config from "../../../../config/app.config";
 
 var store_prefix = setup.prefix;
-// var api_prefix = setup.api_prefix;
+var api_prefix = setup.api_prefix;
 
 export const async_actions = {
     // all data
@@ -29,6 +29,22 @@ export const async_actions = {
                 }
             });
             return response.data;
+        }
+    ),
+     
+    // store data
+    [`store_${store_prefix}`]: createAsyncThunk(
+        `user/store_${store_prefix}`,
+        async (form_data, thunkAPI) => {
+            console.log("some form data", form_data);
+            try {
+                const response = await axios.post(`/${api_prefix}/store`, form_data);
+                // thunkAPI.dispatch(storeSlice.actions.my_action())
+                // console.log(response.data);
+                return response;
+            } catch (error) {
+                window.render_alert(error)
+            }
         }
     ),
 };
