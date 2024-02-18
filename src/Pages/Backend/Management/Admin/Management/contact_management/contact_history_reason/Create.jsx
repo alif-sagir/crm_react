@@ -1,6 +1,32 @@
 import React from 'react'
+import setup from './Config/setup.js';
+import { useDispatch } from 'react-redux';
+import dataStoreSlice, { async_actions } from './Config/store.js';
+
 
 function Create() {
+  setup.dispatch = useDispatch();
+  setup.set_async(async_actions, dataStoreSlice);
+  const { store_data } = setup.actions;
+
+  // useEffect(() => {
+  //   get_roles();
+  // }, [])
+
+  
+  const handleSubmit = async (event) => {
+    // let e = event;
+    // console.log('some from create submit', event.target.vlaue);
+    event.preventDefault();
+    let form_data = new FormData(event.target);
+    // selectedRole.forEach((e, index) => {
+    //   form_data.append(`role`, e.serial);
+    // });
+    // [...document.querySelectorAll('.form_error')].forEach((el => el.remove()));
+    await store_data(form_data);
+    event.target.reset();
+  };
+
   return (
     <div className="card list_card">
       <div className="card-header ">
@@ -12,7 +38,7 @@ function Create() {
           </a>
         </div>
       </div>
-              <form>
+              <form onSubmit={(event) =>handleSubmit(event)}>
       <div className="card-body">
         <div className="container py-5">
           <div className="row">
@@ -21,7 +47,7 @@ function Create() {
                   <div className="custom_form_el">
                     <label htmlFor="">Contact History Id</label>
                     <div>:</div>
-                    <div><input name="contact_history_id" type="text" className="form-control" /></div>
+                    <div><input name="contact_histories_id" type="text" className="form-control" /></div>
                   </div>
                   
                   <div className="custom_form_el">
