@@ -44,6 +44,9 @@ export const async_actions = {
                 return response;
             } catch (error) {
                 window.render_alert(error)
+            }
+        }
+    ),
       // details data
       [`details_${store_prefix}`]: createAsyncThunk(
         `user/details_${store_prefix}`,

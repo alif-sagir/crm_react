@@ -1,5 +1,5 @@
 import React from 'react'
-// import setup from '../../Config/Setup'
+// import setup from '../../Config/setup'
 
 function TableHeading() {
     return (

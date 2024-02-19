@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-// import setup from '../../Config/Setup';
+// import setup from '../../Config/setup';
 
 function ActionButtons() {
     // const data_store = useSelector((state) => state[setup.prefix]);

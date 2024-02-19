@@ -1,5 +1,5 @@
 import React from 'react'
-// import setup from '../../config/Setup';
+// import setup from '../../Config/setup';
 
 function TableAction({data}) {
     // const { delete_data, restore_data } = setup.actions;

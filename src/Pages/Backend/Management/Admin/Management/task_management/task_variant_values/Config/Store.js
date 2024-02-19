@@ -44,6 +44,11 @@ export const async_actions = {
                 return response;
             } catch (error) {
                 window.render_alert(error)
+            }
+        }
+    ),
+    
+    // details show
     [`details_${store_prefix}`]: createAsyncThunk(
         `user/details_${store_prefix}`,
         async (id, thunkAPI) => {
