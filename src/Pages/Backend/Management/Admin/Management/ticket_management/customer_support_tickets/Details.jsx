@@ -21,6 +21,10 @@ function Details() {
     }, []);
 
     console.log(data_store, id);
+    console.log(data_store, id);
+    console.log(data_store, id);
+    console.log(data_store, id);
+    console.log(data_store, id);
 
     return (
         <div className='card list_card'>
