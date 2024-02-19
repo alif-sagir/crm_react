@@ -2,7 +2,7 @@ import React from 'react'
 import{ useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import dataStoreSlice, { async_actions } from './Config/store.js';
-import setup from './Config/setup';
+import setup from './Config/setup.js';
 import { useParams } from 'react-router-dom';
 
 function Details() {

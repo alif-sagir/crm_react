@@ -47,7 +47,7 @@ export const async_actions = {
             }
         }
     ),
-
+        // details area start here
       // details data
       [`details_${store_prefix}`]: createAsyncThunk(
         `user/details_${store_prefix}`,
