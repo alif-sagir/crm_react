@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux'
-import setup from '../../Config/setup';
+import setup from '../../Config/dsetup';
 import dataStoreSlice, { async_actions } from '../../Config/dstore';
 import parse from 'html-react-parser';
 

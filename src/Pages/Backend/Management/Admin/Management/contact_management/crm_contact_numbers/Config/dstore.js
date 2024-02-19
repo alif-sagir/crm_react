@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import setup from "./setup";
+import setup from "./dsetup";
 // import app_config from "../../../../config/app.config";
 
 var store_prefix = setup.prefix;
@@ -31,7 +31,7 @@ export const async_actions = {
             return response.data;
         }
     ),
-     
+       
     // store data
     [`store_${store_prefix}`]: createAsyncThunk(
         `user/store_${store_prefix}`,

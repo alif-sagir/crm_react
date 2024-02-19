@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import setup from "./setup";
+import setup from "./dsetup";
 // import app_config from "../../../../config/app.config";
 
 var store_prefix = setup.prefix;
@@ -48,7 +48,7 @@ export const async_actions = {
         }
     ),
     
-    // details show
+    // details data
     [`details_${store_prefix}`]: createAsyncThunk(
         `user/details_${store_prefix}`,
         async (id, thunkAPI) => {
@@ -96,6 +96,7 @@ const storeSlice = createSlice({
                 // console.log('payload data', payload.data);
                 state[`singleData`] = payload.data;
             })
+    
     },
 })
 
