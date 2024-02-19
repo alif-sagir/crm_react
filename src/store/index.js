@@ -21,8 +21,8 @@ import customerVariantCustomerSlice from "../Pages/Backend/Management/Admin/Mana
 import customerVariantSlice from "../Pages/Backend/Management/Admin/Management/customer_management/customer_variants/Config/store";
 import customerVariantValueSlice from "../Pages/Backend/Management/Admin/Management/customer_management/customer_variants_values/Config/store";
 import customerSlice from "../Pages/Backend/Management/Admin/Management/customer_management/customers/Config/store";
-import contactAppointmentReasonSlice from "../Pages/Backend/Management/Admin/Management/contact_management/contact_appointement_reason/Config/store";
-import contactAppointmentSlice from "../Pages/Backend/Management/Admin/Management/contact_management/contact_appointments/Config/store";
+import contactAppointmentReasonSlice from "../Pages/Backend/Management/Admin/Management/contact_management/contact_appointement_reason/Config/dstore";
+import contactAppointmentSlice from "../Pages/Backend/Management/Admin/Management/contact_management/contact_appointments/Config/dstore";
 import contactHistorySlice from "../Pages/Backend/Management/Admin/Management/contact_management/contact_histories/Config/store";
 import contactHistoryFeedbackSlice from "../Pages/Backend/Management/Admin/Management/contact_management/contact_history_feedback/Config/store";
 import contactHistoryReasonSlice from "../Pages/Backend/Management/Admin/Management/contact_management/contact_history_reason/Config/store";
