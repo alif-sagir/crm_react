@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import setup from "./dsetup";
+import setup from "./sddsetup";
 // import app_config from "../../../../config/app.config";
 
 var store_prefix = setup.prefix;
