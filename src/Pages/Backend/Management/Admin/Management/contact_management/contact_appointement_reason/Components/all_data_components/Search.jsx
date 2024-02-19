@@ -1,5 +1,5 @@
 import React from 'react'
-import setup from '../../Config/sddsetup';
+import setup from '../../Config/setup';
 import { useDispatch } from 'react-redux';
 
 function Search() {

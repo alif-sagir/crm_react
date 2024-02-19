@@ -1,8 +1,8 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
-import dataStoreSlice, { async_actions } from './Config/dstore.js';
-import setup from "./Config/dsetup.js";
+import dataStoreSlice, { async_actions } from './Config/store.js';
+import setup from "./Config/setup.js";
 import { useParams } from 'react-router-dom';
 
 function Edit() {

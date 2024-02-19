@@ -1,7 +1,7 @@
 import React from 'react'
-import setup from './Config/dsetup.js';
+import setup from './Config/setup.js/index.js';
 import { useDispatch } from 'react-redux';
-import dataStoreSlice, { async_actions } from './Config/dstore.js';
+import dataStoreSlice, { async_actions } from './Config/store.js';
 
 
 function Create() {

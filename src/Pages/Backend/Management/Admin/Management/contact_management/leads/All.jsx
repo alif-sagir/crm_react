@@ -4,9 +4,9 @@ import TableAction from './Components/all_data_components/TableAction';
 import TopPart from './Components/all_data_components/TopPart';
 import Pagination from './Components/all_data_components/Pagination';
 import { Link } from 'react-router-dom';
-import setup from './Config/dsetup';
+import setup from './Config/setup';
 import { useEffect, useState } from 'react';
-import dataStoreSlice, { async_actions } from './Config/dstore';
+import dataStoreSlice, { async_actions } from './Config/store';
 
 function All() {
     const data_store = useSelector((state) => state[setup.prefix]);
@@ -18,6 +18,8 @@ function All() {
         fetch_all_data();
     }, [])
 
+    console.log("data stor from user info front end", data_store?.data?.data);
+    console.log("data stor from user info front end", data_store?.data?.data);
     console.log("data stor from user info front end", data_store?.data?.data);
 
     return (
