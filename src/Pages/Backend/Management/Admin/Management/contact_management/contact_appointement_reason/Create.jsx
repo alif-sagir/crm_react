@@ -1,5 +1,5 @@
 import React from 'react'
-import setup from './Config/setup.js';
+import setup from './Config/otup.js';
 import { useDispatch } from 'react-redux';
 import dataStoreSlice, { async_actions } from './Config/store.js';
 

@@ -4,7 +4,7 @@ import TableAction from './Components/all_data_components/TableAction';
 import TopPart from './Components/all_data_components/TopPart';
 import Pagination from './Components/all_data_components/Pagination';
 import { Link } from 'react-router-dom';
-import setup from './Config/setup';
+import setup from './Config/otup';
 import { useEffect, useState } from 'react';
 import dataStoreSlice, { async_actions } from './Config/store';
 
