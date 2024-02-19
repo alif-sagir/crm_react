@@ -67,7 +67,7 @@ export const async_actions = {
             }
         }
     ),
-
+        // copy start
     // details data
     [`details_${store_prefix}`]: createAsyncThunk(
         `user/details_${store_prefix}`,
@@ -88,6 +88,7 @@ export const async_actions = {
             }
         }
     ),
+     // copy end
 
 };
 
@@ -95,7 +96,9 @@ const storeSlice = createSlice({
     name: `${store_prefix}`,
     initialState: {
         data: {},
+         // copy start
         singleData: {},
+         // copy end
         page_limit: 10,
         search_key: '',
     },
@@ -113,10 +116,13 @@ const storeSlice = createSlice({
             .addCase(async_actions[`fetch_all_data`].fulfilled, (state, { type, payload, meta }) => {
                 state[`data`] = payload;
             })
+
+             // copy start
             .addCase(async_actions[`details_${store_prefix}`].fulfilled, (state, { type, payload, meta }) => {
                 // console.log('payload data', payload.data);
                 state[`singleData`] = payload.data;
             })
+              // copy end
     },
 })
 

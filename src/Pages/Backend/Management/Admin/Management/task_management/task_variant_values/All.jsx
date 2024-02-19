@@ -77,7 +77,7 @@ function All() {
                                                             <Link to="/dashboard/task-variant-value/edit">Edit</Link>
                                                         </li>
                                                         <li>
-                                                            <Link to="/dashboard/task-variant-value/details">Details</Link>
+                                                            <Link to={`/dashboard/task-variant-value/details/${item.id}`}>Details</Link>
                                                         </li>
                                                         <li>
                                                             <Link to="/dashboard/task-variant-value/edit">Deactive</Link>

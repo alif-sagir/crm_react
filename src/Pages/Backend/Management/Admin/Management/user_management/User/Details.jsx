@@ -21,6 +21,7 @@ function Details() {
     }, []);
 
     console.log(data_store, id);
+    
     if(data_store){
         const { id, user_name,full_name, role, email, telegram_id,telegram_name,mobile_number,photo,createdAt,updatedAt } = data_store;
         return (

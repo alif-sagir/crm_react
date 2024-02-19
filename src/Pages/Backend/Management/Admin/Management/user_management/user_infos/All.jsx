@@ -67,12 +67,12 @@ function All() {
                                         <td><input type="checkbox" className="form-check-input" /></td>
                                         <td>
                                             <span >
-                                               {item.user_id}
+                                                {item.user_id}
                                             </span>
                                         </td>
                                         <td>
                                             <span>
-                                               {item.first_name}
+                                                {item.first_name}
                                             </span>
                                         </td>
                                         <td>
@@ -88,7 +88,7 @@ function All() {
 
                                         <td>
                                             <span>
-                                               {item.designation}
+                                                {item.designation}
                                             </span>
                                         </td>
                                         <td>

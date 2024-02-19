@@ -1,6 +1,25 @@
 import React from 'react'
+import{ useEffect} from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import dataStoreSlice, { async_actions } from './Config/store.js';
+import setup from './Config/setup';
+import { useParams } from 'react-router-dom';
 
 function Details() {
+    const { id } = useParams();
+    setup.dispatch = useDispatch();
+    const data_store = useSelector((state) => state[setup.prefix]["singleData"])
+    setup.set_async(async_actions, dataStoreSlice);
+    const { get_users, set_data } = setup.actions;
+    // console.log(id);
+    useEffect(() => {
+        get_users(id);
+
+        return () => {
+            set_data(null)
+        };
+    }, []);
+    console.log("data_store from designation", data_store);
   return (
     <div className='card list_card'>
         <div className="card-header ">

@@ -45,6 +45,23 @@ export const async_actions = {
                 return response;
             } catch (error) {
                 window.render_alert(error)
+     // details data
+     [`details_${store_prefix}`]: createAsyncThunk(
+        `user/details_${store_prefix}`,
+        async (id, thunkAPI) => {
+            // console.log(thunkAPI);
+            // console.log(id);
+            try {
+                const response = await axios.get(`/${api_prefix}/details/${id}`);
+                // thunkAPI.dispatch(storeSlice.actions.my_action())
+                console.log(response);
+                return response;
+            } catch (error) {
+                // console.log(error);
+                // console.log(error.response?.data?.data?.keyValue?.[key]);
+                // console.log(error.response?.status);
+                return error;
+
             }
         }
     ),
@@ -70,6 +87,10 @@ const storeSlice = createSlice({
         builder
             .addCase(async_actions[`fetch_all_data`].fulfilled, (state, { type, payload, meta }) => {
                 state[`data`] = payload;
+            })
+            .addCase(async_actions[`details_${store_prefix}`].fulfilled, (state, { type, payload, meta }) => {
+                // console.log('payload data', payload.data);
+                state[`singleData`] = payload.data;
             })
     },
 })

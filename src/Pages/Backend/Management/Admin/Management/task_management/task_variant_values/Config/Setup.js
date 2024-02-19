@@ -14,6 +14,8 @@ var setup = {
         set_page_limit: async () => null,
         set_search_key: async () => null,
         store_data: async () => null,
+        get_users: async () => null,
+        set_data: async () => null,
     },
 }
 
@@ -23,6 +25,9 @@ setup.set_async = function(async_actions, dataStoreSlice){
     // store user
     setup.actions.store_data = async (form_data) => await setup.dispatch(async_actions[`store_${setup.prefix}`](form_data));
     
+      // get user (copy start)
+      setup.actions.get_users = async (id) => await setup.dispatch(async_actions[`details_${setup.prefix}`](id))
+      // get user (copy end)
     setup.actions.set_page_limit = (limit=10) => setup.dispatch(dataStoreSlice['actions'][`set_page_limit`](limit));
     setup.actions.set_search_key = (search_key='') => setup.dispatch(dataStoreSlice['actions'][`set_search_key`](search_key));
 }

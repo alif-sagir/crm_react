@@ -58,7 +58,9 @@ function All() {
 
                                         <td>
                                             <span>
-                                            {item.task_id}
+                                            {item.
+                                            
+                                            id}
                                             </span>
                                         </td>
                                         <td>
@@ -83,7 +85,7 @@ function All() {
                                                             <Link to="/dashboard/task-variant-task/edit">Edit</Link>
                                                         </li>
                                                         <li>
-                                                            <Link to="/dashboard/task-variant-task/details">Details</Link>
+                                                            <Link to={`/dashboard/task-variant-task/details/${item.id}`}>Details</Link>
                                                         </li>
                                                         <li>
                                                             <Link to="/dashboard/task-variant-task/edit">Deactive</Link>

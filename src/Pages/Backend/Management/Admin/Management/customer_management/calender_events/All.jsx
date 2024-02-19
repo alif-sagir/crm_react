@@ -111,7 +111,7 @@ function All() {
                                                             <Link to="/dashboard/calender-event/edit">Edit</Link>
                                                         </li>
                                                         <li>
-                                                            <Link to="/dashboard/calender-event/details">Details</Link>
+                                                            <Link to={`/dashboard/calender-event/details/${item.id}`}>Details</Link>
                                                         </li>
                                                         <li>
                                                             <Link to="/dashboard/calender-event/edit">Deactive</Link>
