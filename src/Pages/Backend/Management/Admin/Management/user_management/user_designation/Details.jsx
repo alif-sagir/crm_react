@@ -19,7 +19,9 @@ function Details() {
             set_data(null)
         };
     }, []);
-    console.log("data_store from designation", data_store);
+    console.log("data_store from designation", data_store?.designation);
+    if (data_store) {
+        const { designation, description, email, password, confirm_password, id  } = data_store;
   return (
     <div className='card list_card'>
         <div className="card-header ">
@@ -50,21 +52,21 @@ function Details() {
                                 <div>Id</div>
                                 <div>:</div>
                                 <div>
-                                    {"_id"}
+                                    {id}
                                 </div>
                             </div>
-                            <div className="custom_form_el">
+                            {/* <div className="custom_form_el">
                                 <div>User name</div>
                                 <div>:</div>
                                 <div>
                                     {"user name"}
                                 </div>
-                            </div>
+                            </div> */}
                             <div className="custom_form_el">
                                 <div>Designation</div>
                                 <div>:</div>
                                 <div>
-                                    {"dsignation"}
+                                    {designation}
                                 </div>
                             </div>
                             
@@ -72,7 +74,7 @@ function Details() {
                                 <div>Description</div>
                                 <div>:</div>
                                 <div>
-                                    {"Description"}
+                                    {description}
                                 </div>
                             </div>
                         </div>
@@ -86,6 +88,7 @@ function Details() {
         </div>
     </div>
 )
+}
 }
 
 export default Details

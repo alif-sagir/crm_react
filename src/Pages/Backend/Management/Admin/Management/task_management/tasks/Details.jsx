@@ -20,7 +20,7 @@ function Details() {
         };
     }, []);
 
-    console.log(data_store, id);
+console.log('task',data_store, id);
 
   return (
     <div className='card list_card'>

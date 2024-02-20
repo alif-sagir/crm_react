@@ -98,7 +98,7 @@ function Sidebar() {
                                     </a>
                                     <ul className="sub-menu" aria-expanded="false">
                                         <li>
-                                            <Link to="/dashboard/support-ticket">Ticket</Link>
+                                            <Link to="/dashboard/customer-support-ticket">Ticket</Link>
                                         </li>
                                     </ul>
                                 </li>

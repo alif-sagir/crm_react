@@ -6,7 +6,7 @@ import UserLayout from "../UserLayout";
 
 
 export default {
-    path: "support-ticket",
+    path: "customer-support-ticket",
     element: <UserLayout></UserLayout>,
     children: [
         {
@@ -22,7 +22,7 @@ export default {
             element: <Details></Details>,
         },
         {
-            path: "edit",
+            path: "edit/:id",
             element: <Edit></Edit>,
         }
 

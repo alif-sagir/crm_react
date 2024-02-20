@@ -12,13 +12,13 @@ function All() {
     const data_store = useSelector((state) => state[setup.prefix]);
     setup.dispatch = useDispatch();
     setup.set_async(async_actions, dataStoreSlice);
-    const { fetch_all_data } = setup.actions;
+    const { fetch_all_data, delete_data, restore_data } = setup.actions;
 
     useEffect(() => {
         fetch_all_data();
     }, [])
-
-console.log("data stroe from front end", data_store?.data?.data?.length);
+    
+    // console.log("data stroe from front end", data_store?.data?.data?.length);
 
     return (
 
@@ -48,7 +48,7 @@ console.log("data stroe from front end", data_store?.data?.data?.length);
                             </tr>
                         </thead>
                         <tbody className="table-border-bottom-0">
-                            
+
                             {
                                 data_store?.data && data_store?.data?.data?.map(item => {
                                     return <tr key={item.id}>
@@ -84,10 +84,25 @@ console.log("data stroe from front end", data_store?.data?.data?.length);
                                                         <li>
                                                             <Link to={`/dashboard/user/details/${item.id}`}>Details</Link>
                                                         </li>
-                                                        <li>
+                                                        {/* <li>
                                                             <Link to="/dashboard/user/edit">Deactive</Link>
-                                                        </li>
-
+                                                        </li> */}
+                                                        {
+                                                            item.status == 1 ?
+                                                                <li>
+                                                                    <a className="" href='#' onClick={(event) => { event.preventDefault(); delete_data(item.id) }}>
+                                                                       
+                                                                        Deactive
+                                                                    </a>
+                                                                </li>
+                                                                :
+                                                                <li>
+                                                                    <a className="" href='#' onClick={(event) => { event.preventDefault(); restore_data(item.id) }}>
+                                                                       
+                                                                        Restore
+                                                                    </a>
+                                                                </li>
+                                                        }
                                                     </ul>
                                                 </div>
                                             </span>

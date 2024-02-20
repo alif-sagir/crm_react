@@ -15,6 +15,7 @@ var setup = {
         set_search_key: async () => null,
         store_data: async () => null,
         get_users: async () => null,
+        update_data: async () => null,
         set_data: async () => null,
     },
 }
@@ -28,6 +29,10 @@ setup.set_async = function(async_actions, dataStoreSlice){
        // get user (copy start)
        setup.actions.get_users = async (id) => await setup.dispatch(async_actions[`details_${setup.prefix}`](id))
        // get user (copy end)
+       
+
+    // updated data
+    setup.actions.update_data = async (form_data) => await setup.dispatch(async_actions[`edit_${setup.prefix}`](form_data))
    
     setup.actions.set_page_limit = (limit=10) => setup.dispatch(dataStoreSlice['actions'][`set_page_limit`](limit));
     setup.actions.set_search_key = (search_key='') => setup.dispatch(dataStoreSlice['actions'][`set_search_key`](search_key));
