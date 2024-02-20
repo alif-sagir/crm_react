@@ -20,7 +20,8 @@ function Details() {
         };
     }, []);
     console.log("data_store", data_store);
-  return (
+  
+    return (
     <div className='card list_card'>
         <div className="card-header ">
             <h2 className='heading'>Details</h2>

@@ -67,7 +67,7 @@ function All() {
                                                             <Link to="/dashboard/contact-reason/edit">Edit</Link>
                                                         </li>
                                                         <li>
-                                                            <Link to="/dashboard/contact-reason/details">Details</Link>
+                                                            <Link to={`/dashboard/contact-reason/details/${item.id}`}>Details</Link>
                                                         </li>
                                                         <li>
                                                             <Link to="/dashboard/contact-reason/edit">Deactive</Link>

@@ -43,6 +43,4 @@ setup.set_async = function (async_actions, dataStoreSlice) {
 
 }
 
-
-
 export default setup;
