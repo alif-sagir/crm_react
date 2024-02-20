@@ -1,6 +1,43 @@
 import React from 'react'
+import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from "react-redux";
+import dataStoreSlice, { async_actions } from './Config/store.js';
+import setup from "./Config/setup.js";
+import { useParams } from 'react-router-dom';
 
 function Edit() {
+  const { id } = useParams();
+  setup.dispatch = useDispatch();
+  const data_store = useSelector((state) => state[setup.prefix]["singleData"])
+  setup.set_async(async_actions, dataStoreSlice);
+  const { get_users, set_data, update_data } = setup.actions;
+
+  useEffect(() => {
+    get_users(id);
+
+    return () => {
+      document.getElementById('form-data')?.reset();
+      set_data(null)
+    };
+  }, []);
+  console.log('id from edit', id);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    let form_data = new FormData(event.target);
+    // form_data.append('id', id);
+    // form_data.append('role', id);
+    console.log('form data', form_data);
+    // [...document.querySelectorAll('.form_error')].forEach((el => el.remove()));
+    await update_data(form_data);
+    // e.target.reset();
+    // // e.target.serial.value = "";
+    // // e.target.title.value = "";
+
+  };
+  console.log('datra store info edit', data_store);
+  if (data_store) {
+    const { user_id, first_name, last_name, designation, phone_number, id,date_of_birth  } = data_store;
   return (
     <div className="card list_card">
       <div className="card-header ">
@@ -12,7 +49,7 @@ function Edit() {
           </a>
         </div>
       </div>
-      <form id='form-data'>
+      <form onSubmit={(event) =>handleSubmit(event)} id='form-data'>
         <div className="card-body">
           <div className="container py-5">
             <div className="row">
@@ -21,32 +58,37 @@ function Edit() {
                   <div className="custom_form_el">
                     <label htmlFor="">User Id</label>
                     <div>:</div>
-                    <div><input name="userid" type="text" className="form-control" defaultValue={"123"} /></div>
+                    <div><input name="user_id" type="text" className="form-control" defaultValue={user_id} /></div>
+                  </div>
+                  <div className="custom_form_el">
+                    <label htmlFor="">Id</label>
+                    <div>:</div>
+                    <div><input name="id" type="text" className="form-control" defaultValue={id} /></div>
                   </div>
                   <div className="custom_form_el">
                     <label htmlFor="">First name</label>
                     <div>:</div>
-                    <div><input name="firstname" type="text" className="form-control" defaultValue={"first name"} /></div>
+                    <div><input name="first_name" type="text" className="form-control" defaultValue={first_name} /></div>
                   </div>
                   <div className="custom_form_el">
                     <label htmlFor="">Last name</label>
                     <div>:</div>
-                    <div><input name="lastname" type="text" className="form-control" defaultValue={"last name"} /></div>
+                    <div><input name="last_name" type="text" className="form-control" defaultValue={last_name} /></div>
                   </div>
                   <div className="custom_form_el">
                     <label htmlFor="">Phone number</label>
                     <div>:</div>
-                    <div><input name="phonenumber" type="text" className="form-control" defaultValue={"01111111"} /></div>
+                    <div><input name="phone_number" type="text" className="form-control" defaultValue={phone_number} /></div>
                   </div>
                   <div className="custom_form_el">
                     <label htmlFor="">Designation</label>
                     <div>:</div>
-                    <div><input name="designation" type="text" className="form-control" defaultValue={"developer"} /></div>
+                    <div><input name="designation" type="text" className="form-control" defaultValue={designation} /></div>
                   </div>
                   <div className="custom_form_el">
                     <label htmlFor="">Date of birth</label>
                     <div>:</div>
-                    <div><input name="date_of_birth" type="text" className="form-control" defaultValue={"20.10.23"} /></div>
+                    <div><input name="date_of_birth" type="date" className="form-control" defaultValue={date_of_birth} /></div>
                   </div>
                   
                 </div>
@@ -62,6 +104,7 @@ function Edit() {
       </form>
     </div>
   )
+}
 }
 
 export default Edit

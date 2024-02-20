@@ -20,18 +20,14 @@ function Details() {
         };
     }, []);
 
-    console.log(data_store, id);
-    console.log(data_store, id);
-    console.log(data_store, id);
-    console.log(data_store, id);
-    console.log(data_store, id);
+    console.log("data store form ticket",data_store, id);
 
     return (
         <div className='card list_card'>
             <div className="card-header ">
                 <h2 className='heading'>Details</h2>
                 <div className="btns d-flex gap-2 align-items-center">
-                    <a href="#/dashboard/support-ticket" className="btn rounded-pill btn-outline-secondary">
+                    <a href="#/dashboard/customer-support-ticket" className="btn rounded-pill btn-outline-secondary">
                         {/* <i className="material-symbols-outlined fill">arrow_back</i> */}
                         Back
                     </a>

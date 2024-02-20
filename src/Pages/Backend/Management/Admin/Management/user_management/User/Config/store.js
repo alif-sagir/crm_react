@@ -22,7 +22,7 @@ export const async_actions = {
             }
 
             let url = data?.url ? data.url : `/${store_prefix}`;
-            console.log('url', url);
+            // console.log('url', url);
             const response = await axios.get(url, {
                 params: {
                     ...qparams
@@ -77,7 +77,7 @@ export const async_actions = {
             try {
                 const response = await axios.get(`/${api_prefix}/details/${id}`);
                 // thunkAPI.dispatch(storeSlice.actions.my_action())
-                console.log(response);
+                // console.log(response);
                 return response;
             } catch (error) {
                 // console.log(error);
@@ -89,6 +89,37 @@ export const async_actions = {
         }
     ),
      // copy end
+     
+    // delete data
+    [`delete_data`]: createAsyncThunk(
+        `${store_prefix}/delete_data`,
+        async (id, thunkAPI) => {
+            // console.log('from user delete id',id);
+            try {
+                const response = await axios.post(`/${api_prefix}/delete`, {id} );
+                thunkAPI.dispatch(async_actions.fetch_all_data());
+                // console.log('response from deltee', response);
+                return response;
+            } catch (error) {
+                return error;
+            }
+        }
+    ),
+
+    // restore data
+    [`restore_data`]: createAsyncThunk(
+        `${store_prefix}/restore_data`,
+        async (id, thunkAPI) => {
+            try {
+                const response = await axios.post(`/${api_prefix}/restore`, { id });
+                thunkAPI.dispatch(async_actions.fetch_all_data());
+                return response;
+            } catch (error) {
+                return error;
+            }
+        }
+    ),
+
 
 };
 
