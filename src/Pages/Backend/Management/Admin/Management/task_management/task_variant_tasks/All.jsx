@@ -58,9 +58,7 @@ function All() {
 
                                         <td>
                                             <span>
-                                            {item.
-                                            
-                                            id}
+                                            {item.task_id}
                                             </span>
                                         </td>
                                         <td>
