@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import TopPart from './Components/all_data_components/TopPart';
 import Pagination from './Components/all_data_components/Pagination';
 import { Link } from 'react-router-dom';
-import setup from './Config/setup.js';
+import setup from './Config/setup';
 import { useEffect, useState } from 'react';
 import dataStoreSlice, { async_actions } from './Config/store.js';
 
@@ -18,7 +18,7 @@ function All() {
         fetch_all_data();
     }, [])
     
-    // console.log("data stroe from front end", data_store?.data?.data?.length);
+    console.log("data stroe from user end", data_store?.data?.data);
 
     return (
 
