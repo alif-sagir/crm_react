@@ -47,6 +47,27 @@ export const async_actions = {
             }
         }
     ),
+        
+    // edit data or updated data
+    [`edit_${store_prefix}`]: createAsyncThunk(
+        `user/edit_${store_prefix}`,
+        async (form_data, thunkAPI) => {
+            console.log('hoiche');
+            try {
+                const response = await axios.post(`/${api_prefix}/update`, form_data);
+                // thunkAPI.dispatch(storeSlice.actions.my_action())
+                // console.log(response);
+                return response;
+            } catch (error) {
+                // console.log(error);
+                // console.log(error.response?.data?.data?.keyValue?.[key]);
+                // console.log(error.response?.status);
+                window.render_alert(error)
+
+            }
+        }
+    ),
+       
       // details data
       [`details_${store_prefix}`]: createAsyncThunk(
         `user/details_${store_prefix}`,
