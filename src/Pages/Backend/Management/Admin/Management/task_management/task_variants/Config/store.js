@@ -93,7 +93,7 @@ const storeSlice = createSlice({
     name: `${store_prefix}`,
     initialState: {
         data: {},
-        page_limit: 1,
+        page_limit: 10,
         search_key: '',
     },
     reducers: {

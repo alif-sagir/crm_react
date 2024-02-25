@@ -22,7 +22,7 @@ export default {
             element: <Details></Details>,
         },
         {
-            path: "edit",
+            path: "edit/:id",
             element: <Edit></Edit>,
         }
 
