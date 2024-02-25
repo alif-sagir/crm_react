@@ -36,7 +36,7 @@ function Edit() {
 
   };
   console.log('datra store from edit', data_store?.customer);
-  if (data_store) {
+  if (data_store && data_store.customer) {
     const { full_name, address, email, contact_number, uuid, id  } = data_store?.customer;
   return (
     <div className="card list_card">

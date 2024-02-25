@@ -38,6 +38,7 @@ import MainLanding from './../MainLanding';
 import Login from "../Login";
 import PublicLayout from "../PublicLayout";
 import HomePage from "../HomePage";
+import CrmEntry from "../Backend/Management/Admin/Management/contact_management/CrmEntry";
 
 const router = {
   path: '/',
@@ -51,6 +52,7 @@ const router = {
       path: 'login',
       element: <Login></Login>
     },
+   
     {
       path: 'dashboard',
       element: <DashboardLayout></DashboardLayout>,
@@ -59,10 +61,14 @@ const router = {
           path: '',
           element: <MainLanding></MainLanding>,
         },
-
+   {
+      path: 'crmentry',
+      element: <CrmEntry></CrmEntry>
+    },
         user_route,
         user_info_route,
         user_designation_route,
+
         user_work_route,
         user_work_user_route,
         user_work_department_route,

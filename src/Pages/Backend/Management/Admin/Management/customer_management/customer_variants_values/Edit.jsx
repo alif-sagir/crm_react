@@ -36,7 +36,7 @@ function Edit() {
 
   };
   console.log('datra store from edit', data_store);
-  if (data_store) {
+  if (data_store && data_store.customer_variant_value) {
     let data = data_store?.customer_variant_value;
     console.log('customer-variant-value', data);
     const { title, variant_id, email, password, confirm_password, id  } = data;

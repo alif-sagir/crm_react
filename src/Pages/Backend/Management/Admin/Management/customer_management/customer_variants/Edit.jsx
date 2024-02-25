@@ -36,7 +36,7 @@ function Edit() {
 
   };
   console.log('datra store from edit', data_store);
-  if (data_store) {
+  if (data_store && data_store.customer_variant) {
     const { id, title} = data_store?.customer_variant;
   return (
     <div className="card list_card">

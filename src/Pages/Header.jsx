@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function Header() {
     return (
@@ -68,6 +69,9 @@ function Header() {
                                     </div>
                                 </form>
                             </div>
+                        </div>
+                        <div>
+                            <Link to="/dashboard/crmentry"  className='btn btn-info rounded-pill px-4 m-3 border border-0'>Entry</Link>
                         </div>
 
                         <div className="dropdown d-inline-block">

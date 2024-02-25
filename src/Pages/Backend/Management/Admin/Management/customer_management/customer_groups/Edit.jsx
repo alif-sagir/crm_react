@@ -36,7 +36,7 @@ function Edit() {
 
   };
   console.log('datra store info edit', data_store?.customer_group);
-  if (data_store) {
+  if (data_store && data_store.customer_group) {
     let data = data_store?.customer_group;
   //  console.log('customer_group_data', data.title);
   return (
