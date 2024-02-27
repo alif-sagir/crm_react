@@ -1,10 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
-
-
 function CrmEntry() {
-
     return (
         <>
             <div className='mt-5'>
