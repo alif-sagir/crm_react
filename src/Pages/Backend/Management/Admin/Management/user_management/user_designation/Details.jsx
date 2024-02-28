@@ -38,15 +38,6 @@ function Details() {
             <div className="container py-5">
                 <div className="row">
                     <div className="col-lg-8">
-                        {/* [
-                                "ID",
-                                "Title",
-                                "Serial",
-                                "Status",
-                                "CreatedAt",
-                                "UpdatedAt",
-                                "last ID",
-                            ] */}
                         <div className="form-group mb-3">
                             <div className="custom_form_el">
                                 <div>Id</div>
@@ -55,13 +46,6 @@ function Details() {
                                     {id}
                                 </div>
                             </div>
-                            {/* <div className="custom_form_el">
-                                <div>User name</div>
-                                <div>:</div>
-                                <div>
-                                    {"user name"}
-                                </div>
-                            </div> */}
                             <div className="custom_form_el">
                                 <div>Designation</div>
                                 <div>:</div>
@@ -88,6 +72,10 @@ function Details() {
         </div>
     </div>
 )
+} else {
+    return <>
+        <p>loading ...</p>
+    </>
 }
 }
 

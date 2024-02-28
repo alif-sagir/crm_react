@@ -1,5 +1,5 @@
 import React from 'react'
-import{ useEffect} from 'react'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import dataStoreSlice, { async_actions } from './Config/store.js';
 import setup from './Config/setup.js';
@@ -20,23 +20,25 @@ function Details() {
         };
     }, []);
     console.log("data_store", data_store);
-  return (
-    <div className='card list_card'>
-        <div className="card-header ">
-            <h2 className='heading'>Details</h2>
-            <div className="btns d-flex gap-2 align-items-center">
-                <a href="#/dashboard/contact-leads" className="btn rounded-pill btn-outline-secondary">
-                    {/* <i className="material-symbols-outlined fill">arrow_back</i> */}
-                    Back
-                </a>
-                {/* {JSON.stringify(data_store)} */}
+    if (data_store) {
+        const { customer_id,lead_status,lead_source,assigned_to,qualification_notes,follow_up_date } = data_store;
+    return (
+        <div className='card list_card'>
+            <div className="card-header ">
+                <h2 className='heading'>Details</h2>
+                <div className="btns d-flex gap-2 align-items-center">
+                    <a href="#/dashboard/contact-leads" className="btn rounded-pill btn-outline-secondary">
+                        {/* <i className="material-symbols-outlined fill">arrow_back</i> */}
+                        Back
+                    </a>
+                    {/* {JSON.stringify(data_store)} */}
+                </div>
             </div>
-        </div>
-        <div className="card-body">
-            <div className="container py-5">
-                <div className="row">
-                    <div className="col-lg-8">
-                        {/* [
+            <div className="card-body">
+                <div className="container py-5">
+                    <div className="row">
+                        <div className="col-lg-8">
+                            {/* [
                                 "ID",
                                 "Title",
                                 "Serial",
@@ -45,62 +47,67 @@ function Details() {
                                 "UpdatedAt",
                                 "last ID",
                             ] */}
-                        <div className="form-group mb-3">
-                            
-                            <div className="custom_form_el">
-                                <div>Customer Id</div>
-                                <div>:</div>
-                                <div>
-                                    {"_id"}
-                                </div>
-                            </div>
-                            <div className="custom_form_el">
-                                <div>Lead status</div>
-                                <div>:</div>
-                                <div>
-                                    {"Lead status"}
-                                </div>
-                            </div>
-                            
-                            <div className="custom_form_el">
-                                <div>Lead source</div>
-                                <div>:</div>
-                                <div>
-                                    {"Lead source"}
-                                </div>
-                            </div>      
-                            <div className="custom_form_el">
-                                <div>Assigned to</div>
-                                <div>:</div>
-                                <div>
-                                    {"Assigned to"}
-                                </div>
-                            </div>      
-                            <div className="custom_form_el">
-                                <div>Qualification notes</div>
-                                <div>:</div>
-                                <div>
-                                    {"Qualification notes"}
-                                </div>
-                            </div>           
-                            <div className="custom_form_el">
-                                <div> Follow up date</div>
-                                <div>:</div>
-                                <div>
-                                    {" Follow up date"}
-                                </div>
-                            </div>           
-                        </div>
+                            <div className="form-group mb-3">
 
+                                <div className="custom_form_el">
+                                    <div>Customer Id</div>
+                                    <div>:</div>
+                                    <div>
+                                        {customer_id}
+                                    </div>
+                                </div>
+                                <div className="custom_form_el">
+                                    <div>Lead status</div>
+                                    <div>:</div>
+                                    <div>
+                                        {lead_status}
+                                    </div>
+                                </div>
+
+                                <div className="custom_form_el">
+                                    <div>Lead source</div>
+                                    <div>:</div>
+                                    <div>
+                                        {lead_source}
+                                    </div>
+                                </div>
+                                <div className="custom_form_el">
+                                    <div>Assigned to</div>
+                                    <div>:</div>
+                                    <div>
+                                        {assigned_to}
+                                    </div>
+                                </div>
+                                <div className="custom_form_el">
+                                    <div>Qualification notes</div>
+                                    <div>:</div>
+                                    <div>
+                                        {qualification_notes}
+                                    </div>
+                                </div>
+                                <div className="custom_form_el">
+                                    <div> Follow up date</div>
+                                    <div>:</div>
+                                    <div>
+                                        {follow_up_date}
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div className="card-footer">
+            <div className="card-footer">
 
+            </div>
         </div>
-    </div>
-)
+    )
+} else {
+    return <>
+        <p>loading ...</p>
+    </>
+}
 }
 
 export default Details

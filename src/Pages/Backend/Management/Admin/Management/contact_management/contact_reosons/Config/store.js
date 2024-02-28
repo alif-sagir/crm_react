@@ -67,6 +67,21 @@ export const async_actions = {
             }
         }
     ),
+        // delete data
+        [`delete_data`]: createAsyncThunk(
+            `${store_prefix}/delete_data`,
+            async (id, thunkAPI) => {
+                // console.log('from user delete id',id);
+                try {
+                    const response = await axios.post(`/${api_prefix}/delete`, {id} );
+                    thunkAPI.dispatch(async_actions.fetch_all_data());
+                    // console.log('response from deltee', response);
+                    return response;
+                } catch (error) {
+                    return error;
+                }
+            }
+        ),
     
 };
 

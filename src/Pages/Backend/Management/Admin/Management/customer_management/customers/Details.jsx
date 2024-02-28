@@ -19,8 +19,9 @@ function Details() {
             set_data(null)
         };
     }, []);
-    console.log("data_store", data_store);
-  
+    console.log("data_store from customer", data_store?.customer);
+    if (data_store && data_store.customer) {
+        const { address, email, full_name, contact_number } = data_store?.customer;
   return (
     <div className='card list_card'>
         <div className="card-header ">
@@ -58,7 +59,7 @@ function Details() {
                                 <div>Full name</div>
                                 <div>:</div>
                                 <div>
-                                    {"fullname"}
+                                    {full_name}
                                 </div>
                             </div>
                             
@@ -66,7 +67,7 @@ function Details() {
                                 <div>Email</div>
                                 <div>:</div>
                                 <div>
-                                    {"email"}
+                                    {email}
                                 </div>
                             </div>
                            
@@ -74,14 +75,14 @@ function Details() {
                                 <div>Contact number</div>
                                 <div>:</div>
                                 <div>
-                                    {"01748484854"}
+                                    {contact_number}
                                 </div>
                             </div>
                             <div className="custom_form_el">
                                 <div>Address</div>
                                 <div>:</div>
                                 <div>
-                                    {"dhaka"}
+                                    {address}
                                 </div>
                             </div>
                             <div className="custom_form_el">
@@ -131,6 +132,11 @@ function Details() {
         </div>
     </div>
 )
+} else {
+    return <>
+        <p>loading ...</p>
+    </>
+}
 }
 
 export default Details

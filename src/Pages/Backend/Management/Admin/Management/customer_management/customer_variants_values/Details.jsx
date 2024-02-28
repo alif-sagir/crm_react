@@ -20,7 +20,8 @@ function Details() {
         };
     }, []);
     console.log("data_store", data_store);
-  
+    if (data_store) {
+        const { title } = data_store;
   return (
     <div className='card list_card'>
         <div className="card-header ">
@@ -73,6 +74,11 @@ function Details() {
         </div>
     </div>
 )
+} else {
+    return <>
+        <p>loading ...</p>
+    </>
+}
 }
 
 export default Details
