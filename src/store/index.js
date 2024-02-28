@@ -29,6 +29,7 @@ import contactHistoryReasonSlice from "../Pages/Backend/Management/Admin/Managem
 import contactReasonSlice from "../Pages/Backend/Management/Admin/Management/contact_management/contact_reosons/Config/store";
 import contactNumberSlice from "../Pages/Backend/Management/Admin/Management/contact_management/crm_contact_numbers/Config/store";
 import contactLeadsSlice from "../Pages/Backend/Management/Admin/Management/contact_management/leads/Config/store";
+import customerInfoSlice from "../Pages/Backend/Management/Admin/Management/contact_management/crmentry/Config/store";
 
 
 import { configureStore } from "@reduxjs/toolkit";
@@ -65,6 +66,7 @@ const store = configureStore({
         contact_reason: contactReasonSlice.reducer,
         crm_contact_number: contactNumberSlice.reducer,
         lead: contactLeadsSlice.reducer,
+        customer_info: customerInfoSlice.reducer,
         
     }
 });
