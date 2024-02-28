@@ -1,7 +1,22 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux'
+// import TableAction from './Components/all_data_components/TableAction';
+import setup from './Config/setup';
+import { useEffect, useState } from 'react';
+import dataStoreSlice, { async_actions } from './Config/store.js';
 
 function CrmEntry() {
+    const data_store = useSelector((state) => state[setup.prefix]);
+    setup.dispatch = useDispatch();
+    setup.set_async(async_actions, dataStoreSlice);
+    const { fetch_all_data, set_search_key  } = setup.actions;
+
+    useEffect(() => {
+        fetch_all_data();
+    }, [])
+
+    console.log("data stroe from", data_store?.data);
+
     return (
         <>
             <div className='mt-5'>
@@ -13,15 +28,24 @@ function CrmEntry() {
                                 <div>:</div>
                                 <div><input name="lead_status" type="date" className="form-control" /></div>
                             </div>
-                            <div className="custom_form_el">
+                            {
+                                data_store?.data && data_store?.data?.map(item => {
+                                 return  <div className="custom_form_el">
                                 <label htmlFor=""> Full Name</label>
                                 <div>:</div>
-                                <div><input name="lead_status" type="text" className="form-control" /></div>
+                                <div><input name="lead_status" type="text" className="form-control" value={item.full_name} /></div>
                             </div>
+                             })
+                            }
                             <div className="custom_form_el">
                                 <label htmlFor=""> Phone Number</label>
                                 <div>:</div>
-                                <div><input name="lead_status" type="text" className="form-control" /></div>
+                                <div><input
+                                    onKeyUp={(e) => { set_search_key(e.target.value); fetch_all_data(); }}
+                                    type="text"
+                                    className="form-control border"
+                                    placeholder="Search..."
+                                ></input></div>
                             </div>
 
                             <div className="custom_form_el">

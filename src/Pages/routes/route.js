@@ -38,7 +38,7 @@ import MainLanding from './../MainLanding';
 import Login from "../Login";
 import PublicLayout from "../PublicLayout";
 import HomePage from "../HomePage";
-import CrmEntry from "../Backend/Management/Admin/Management/contact_management/CrmEntry";
+import CrmEntry from "../Backend/Management/Admin/Management/contact_management/crmentry/CrmEntry";
 
 const router = {
   path: '/',
