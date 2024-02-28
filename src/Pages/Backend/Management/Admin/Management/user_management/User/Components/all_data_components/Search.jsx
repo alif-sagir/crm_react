@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 
 function Search() {
     // const data_store = useSelector((state) => state[setup.prefix]);
+    // const data_store = useSelector((state) => state[setup.prefix]);
     setup.dispatch = useDispatch();
     const { fetch_all_data, set_search_key } = setup.actions;
  
