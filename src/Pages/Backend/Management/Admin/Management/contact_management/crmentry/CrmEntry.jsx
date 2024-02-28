@@ -16,7 +16,7 @@ function CrmEntry() {
     }, [])
 
     console.log("data stroe from", data_store?.data);
-
+    if (data_store) {
     return (
         <>
             <div className='mt-5'>
@@ -29,7 +29,7 @@ function CrmEntry() {
                                 <div><input name="lead_status" type="date" className="form-control" /></div>
                             </div>
                             {
-                                data_store?.data && data_store?.data?.map(item => {
+                                data_store?.data?.newUser && data_store?.data.newUser.map(item => {
                                  return  <div className="custom_form_el">
                                 <label htmlFor=""> Full Name</label>
                                 <div>:</div>
@@ -52,7 +52,7 @@ function CrmEntry() {
                                 <label htmlFor=""> Feedback</label>
                                 <div>:</div>
                                 <div>
-                                    <textarea name="lead_status" type="text" className="form-control" ></textarea>
+                                    <textarea name="lead_status" type="text" className="form-control" defaultValue={data_store?.data?.newFeedback?.notes}></textarea>
                                 </div>
                             </div>
                             <div className="custom_form_el">
@@ -60,7 +60,7 @@ function CrmEntry() {
                                 <div>:</div>
                                 <div>
                                     <select name="" id="">
-                                        <option value="">Group 1</option>
+                                        <option value="">{data_store?.data?.Contact_history?.contact_type}</option>
                                         <option value="">Group 2</option>
                                         <option value="">Group 3</option>
                                     </select>
@@ -219,5 +219,5 @@ function CrmEntry() {
         </>
     );
 }
-
+}
 export default CrmEntry
