@@ -9,6 +9,11 @@ function CrmEntry() {
                     <div className="card-body p-3">
                         <form className='form-group'>
                             <div className="custom_form_el">
+                                <label htmlFor="">Date moment js</label>
+                                <div>:</div>
+                                <div><input name="lead_status" type="date" className="form-control" /></div>
+                            </div>
+                            <div className="custom_form_el">
                                 <label htmlFor=""> Full Name</label>
                                 <div>:</div>
                                 <div><input name="lead_status" type="text" className="form-control" /></div>
@@ -24,6 +29,17 @@ function CrmEntry() {
                                 <div>:</div>
                                 <div>
                                     <textarea name="lead_status" type="text" className="form-control" ></textarea>
+                                </div>
+                            </div>
+                            <div className="custom_form_el">
+                                <label htmlFor="">Contact type</label>
+                                <div>:</div>
+                                <div>
+                                    <select name="" id="">
+                                        <option value="">Group 1</option>
+                                        <option value="">Group 2</option>
+                                        <option value="">Group 3</option>
+                                    </select>
                                 </div>
                             </div>
                             <div className="custom_form_el">
