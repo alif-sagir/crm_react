@@ -20,9 +20,9 @@ function Details() {
             set_data(null)
         };
     }, []);
-    console.log("data_store", data_store);
-    if (data_store) {
-        const { title } = data_store;
+    console.log(data_store, id);
+    if (data_store && data_store.customer_variant) {
+        const { title } = data_store.customer_variant;
     return (
         <div className='card list_card'>
             <div className="card-header ">
@@ -53,7 +53,7 @@ function Details() {
                                     <div>Title</div>
                                     <div>:</div>
                                     <div>
-                                        {"title"}
+                                        {title}
                                     </div>
                                 </div>
                             </div>

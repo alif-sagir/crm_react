@@ -63,7 +63,7 @@ function Edit() {
                   <div className="custom_form_el">
                     <label htmlFor=""> Id</label>
                     <div>:</div>
-                    <div><input name="id" type="text" className="form-control" defaultValue={id} /></div>
+                    <div><input disabled name="id" type="text" className="form-control" defaultValue={id} /></div>
                   </div>
                   <div className="custom_form_el">
                     <label htmlFor="">Work Id</label>

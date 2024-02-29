@@ -19,9 +19,9 @@ function Details() {
             set_data(null)
         };
     }, []);
-    console.log("data_store", data_store);
-    if (data_store) {
-        const { title } = data_store;
+    console.log(data_store, id);
+    if (data_store && data_store.customer_variant_value) {
+        const { variant_id,title } = data_store.customer_variant_value;
   return (
     <div className='card list_card'>
         <div className="card-header ">
@@ -53,14 +53,14 @@ function Details() {
                                 <div>Variant Id</div>
                                 <div>:</div>
                                 <div>
-                                    {"variant_id"}
+                                    {variant_id}
                                 </div>
                             </div>
                             <div className="custom_form_el">
                                 <div>Title</div>
                                 <div>:</div>
                                 <div>
-                                    {"title"}
+                                    {title}
                                 </div>
                             </div>
                         </div>
