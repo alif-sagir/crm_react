@@ -26,6 +26,17 @@ export const async_actions = {
             return response.data;
         }
     ),
+    // all data
+    [`fetch_all_user`]: createAsyncThunk(
+        `${store_prefix}/fetch_all_user`,
+        async (data, thunkAPI) => {
+            let url =`/all-user`;
+            console.log(url);
+            const response = await axios.get(url);
+            console.log('response', response.data);
+            return response.data;
+        }
+    ),
      
     // store data
     [`store_${store_prefix}`]: createAsyncThunk(
@@ -87,7 +98,8 @@ export const async_actions = {
 const storeSlice = createSlice({
     name: `${store_prefix}`,
     initialState: {
-        data: {},
+        crm_entry_data: {},
+        crm_user: {},
         singleData: {},
         page_limit: 10,
         search_key: '',
@@ -104,8 +116,12 @@ const storeSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(async_actions[`fetch_all_data`].fulfilled, (state, { type, payload, meta }) => {
-                state[`data`] = payload;
+                state[`crm_entry_data`] = payload;
                 // console.log('payload'01898989889, payload);
+            })
+            .addCase(async_actions[`fetch_all_user`].fulfilled, (state, { type, payload, meta }) => {
+                state[`crm_user`] = payload;
+                console.log('payload', payload);
             })
             .addCase(async_actions[`details_${store_prefix}`].fulfilled, (state, { type, payload, meta }) => {
                 // console.log('payload data', payload.data);
