@@ -21,6 +21,8 @@ function Details() {
     }, []);
     console.log("data_store", data_store);
   
+    if(data_store){
+        const { id, user_name,first_name, last_name, designation, telegram_id,telegram_name,phone_number,date_of_birth,createdAt,updatedAt } = data_store;
     return (
     <div className='card list_card'>
         <div className="card-header ">
@@ -51,28 +53,28 @@ function Details() {
                                 <div>Id</div>
                                 <div>:</div>
                                 <div>
-                                    {"_id"}
+                                    {id}
                                 </div>
                             </div>
                             <div className="custom_form_el">
                                 <div>User name</div>
                                 <div>:</div>
                                 <div>
-                                    {"user name"}
+                                    {user_name}
                                 </div>
                             </div>
                             <div className="custom_form_el">
                                 <div>First name</div>
                                 <div>:</div>
                                 <div>
-                                    {"alif"}
+                                    {first_name}
                                 </div>
                             </div>
                             <div className="custom_form_el">
                                 <div>Last name</div>
                                 <div>:</div>
                                 <div>
-                                    {"sagir"}
+                                    {last_name}
                                 </div>
                             </div>
                             
@@ -80,7 +82,7 @@ function Details() {
                                 <div>Phone number</div>
                                 <div>:</div>
                                 <div>
-                                    {"phone number"}
+                                    {phone_number}
                                 </div>
                             </div>
                            
@@ -88,14 +90,14 @@ function Details() {
                                 <div>Designation</div>
                                 <div>:</div>
                                 <div>
-                                    {"designation"}
+                                    {designation}
                                 </div>
                             </div>
                             <div className="custom_form_el">
                                 <div>Date of birth</div>
                                 <div>:</div>
                                 <div>
-                                    {"10.10.24"}
+                                    {date_of_birth}
                                 </div>
                             </div>
                            
@@ -109,7 +111,11 @@ function Details() {
 
         </div>
     </div>
-)
+)} else {
+    return <>
+        <p>loading ...</p>
+    </>
+}
 }
 
 export default Details

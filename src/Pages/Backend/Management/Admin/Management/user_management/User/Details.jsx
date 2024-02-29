@@ -1,5 +1,5 @@
 import React from 'react'
-import{ useEffect} from 'react'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import dataStoreSlice, { async_actions } from './Config/store.js';
 import setup from './Config/setup.js';
@@ -21,9 +21,9 @@ function Details() {
     }, []);
 
     console.log(data_store, id);
-    
-    if(data_store){
-        const { id, user_name,full_name, role, email, telegram_id,telegram_name,mobile_number,photo,createdAt,updatedAt } = data_store;
+
+    if (data_store) {
+        const { id, user_name, full_name, role, email, telegram_id, telegram_name, mobile_number, photo, createdAt, updatedAt } = data_store;
         return (
             <div className='card list_card'>
                 <div className="card-header ">
@@ -78,7 +78,7 @@ function Details() {
                                             {"lastname"}
                                         </div>
                                     </div>
-    
+
                                     <div className="custom_form_el">
                                         <div>Email</div>
                                         <div>:</div>
@@ -86,7 +86,7 @@ function Details() {
                                             {email}
                                         </div>
                                     </div>
-    
+
                                     <div className="custom_form_el">
                                         <div>Phone number</div>
                                         <div>:</div>
@@ -94,7 +94,7 @@ function Details() {
                                             {"phone_number"}
                                         </div>
                                     </div>
-    
+
                                     <div className="custom_form_el">
                                         <div>Designation</div>
                                         <div>:</div>
@@ -102,7 +102,7 @@ function Details() {
                                             {"designation"}
                                         </div>
                                     </div>
-    
+
                                     <div className="custom_form_el">
                                         <div>Role</div>
                                         <div>:</div>
@@ -110,7 +110,7 @@ function Details() {
                                             {"role"}
                                         </div>
                                     </div>
-    
+
                                     <div className="custom_form_el">
                                         <div>Date of birth</div>
                                         <div>:</div>
@@ -154,13 +154,13 @@ function Details() {
                                         </div>
                                     </div>
                                 </div>
-    
+
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className="card-footer">
-    
+
                 </div>
             </div>
         )

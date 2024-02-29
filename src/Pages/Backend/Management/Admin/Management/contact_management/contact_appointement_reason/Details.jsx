@@ -20,7 +20,8 @@ function Details() {
         };
     }, []);
     console.log("data_store", data_store);
-  
+    if (data_store) {
+        const { contact_reason_id,contact_appointment_id } = data_store; 
   return (
     <div className='card list_card'>
         <div className="card-header ">
@@ -51,7 +52,7 @@ function Details() {
                                 <div>Contact reason id</div>
                                 <div>:</div>
                                 <div>
-                                    {"_id"}
+                                    {contact_reason_id}
                                 </div>
                             </div>
                            
@@ -59,7 +60,7 @@ function Details() {
                                 <div> Contact appointement id</div>
                                 <div>:</div>
                                 <div>
-                                    {"Contact appointement id"}
+                                    {contact_appointment_id}
                                 </div>
                             </div>          
                         </div>
@@ -73,6 +74,11 @@ function Details() {
         </div>
     </div>
 )
+} else {
+    return <>
+        <p>loading ...</p>
+    </>
+}
 }
 
 export default Details

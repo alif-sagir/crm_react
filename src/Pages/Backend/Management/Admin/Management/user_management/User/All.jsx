@@ -12,12 +12,14 @@ function All() {
     const data_store = useSelector((state) => state[setup.prefix]);
     setup.dispatch = useDispatch();
     setup.set_async(async_actions, dataStoreSlice);
+
+    // copy...
     const { fetch_all_data, delete_data, restore_data } = setup.actions;
 
     useEffect(() => {
         fetch_all_data();
     }, [])
-    
+
     console.log("data stroe from user end", data_store?.data?.data);
 
     return (
@@ -87,18 +89,19 @@ function All() {
                                                         {/* <li>
                                                             <Link to="/dashboard/user/edit">Deactive</Link>
                                                         </li> */}
+                                                        {/* copy... */}
                                                         {
                                                             item.status == 1 ?
                                                                 <li>
                                                                     <a className="" href='#' onClick={(event) => { event.preventDefault(); delete_data(item.id) }}>
-                                                                       
+
                                                                         Deactive
                                                                     </a>
                                                                 </li>
                                                                 :
                                                                 <li>
                                                                     <a className="" href='#' onClick={(event) => { event.preventDefault(); restore_data(item.id) }}>
-                                                                       
+
                                                                         Restore
                                                                     </a>
                                                                 </li>

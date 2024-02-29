@@ -21,7 +21,8 @@ function Details() {
     }, []);
 
     console.log(data_store, id);
-
+    if (data_store) {
+        const { task_id,variant_id,task_variant_value_id } = data_store;
   return (
     <div className='card list_card'>
         <div className="card-header ">
@@ -53,21 +54,21 @@ function Details() {
                                 <div>Task Id</div>
                                 <div>:</div>
                                 <div>
-                                    {"Task Id"}
+                                    {task_id}
                                 </div>
                             </div>
                             <div className="custom_form_el">
                                 <div>Variant Id</div>
                                 <div>:</div>
                                 <div>
-                                    {"Variant Id"}
+                                    {variant_id}
                                 </div>
                             </div>
                             <div className="custom_form_el">
                                 <div>Task variant value id</div>
                                 <div>:</div>
                                 <div>
-                                    {"Task variant value id"}
+                                    {task_variant_value_id}
                                 </div>
                             </div>
                         </div>
@@ -81,6 +82,11 @@ function Details() {
         </div>
     </div>
 )
+} else {
+    return <>
+        <p>loading ...</p>
+    </>
+}
 }
 
 export default Details

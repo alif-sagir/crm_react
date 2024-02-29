@@ -21,7 +21,8 @@ function Details() {
     }, []);
 
     console.log(data_store, id);
-
+    if (data_store) {
+        const { title } = data_store;
     return (
         <div className='card list_card'>
             <div className="card-header ">
@@ -296,10 +297,24 @@ function Details() {
                 </div>
             </div>
             <div className="card-footer">
+               
+            </div>
 
+            <div className='input_message_container'>
+                <form action="#">
+                    <input className='input_area' type="text" placeholder='Message . . .' />
+                    <button className='button_area'>
+                    <i class="fa-solid fa-paper-plane hhhh"></i>
+                    </button>
+                </form>
             </div>
         </div>
     )
+} else {
+    return <>
+        <p>loading ...</p>
+    </>
+}
 }
 
 export default Details

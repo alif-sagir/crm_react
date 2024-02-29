@@ -20,6 +20,8 @@ function Details() {
         };
     }, []);
     console.log("data_store", data_store);
+    if (data_store) {
+        const { operator,details } = data_store;
   return (
     <div className='card list_card'>
         <div className="card-header ">
@@ -50,7 +52,7 @@ function Details() {
                                 <div>Operator</div>
                                 <div>:</div>
                                 <div>
-                                    {"operator"}
+                                    {operator}
                                 </div>
                             </div>
                             
@@ -58,7 +60,7 @@ function Details() {
                                 <div>Details</div>
                                 <div>:</div>
                                 <div>
-                                    {"Details"}
+                                    {details}
                                 </div>
                             </div>      
                         </div>
@@ -72,6 +74,11 @@ function Details() {
         </div>
     </div>
 )
+} else {
+    return <>
+        <p>loading ...</p>
+    </>
+}
 }
 
 export default Details

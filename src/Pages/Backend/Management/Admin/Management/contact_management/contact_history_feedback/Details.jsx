@@ -20,7 +20,8 @@ function Details() {
         };
     }, []);
     console.log("data_store", data_store);
-  
+    if (data_store) {
+        const { contact_history_id,date,feedback_type,notes } = data_store;
   return (
     <div className='card list_card'>
         <div className="card-header ">
@@ -51,7 +52,7 @@ function Details() {
                                 <div>Contact History Id</div>
                                 <div>:</div>
                                 <div>
-                                    {"_id"}
+                                    {contact_history_id}
                                 </div>
                             </div>
                            
@@ -59,7 +60,7 @@ function Details() {
                                 <div>Data</div>
                                 <div>:</div>
                                 <div>
-                                    {"Data"}
+                                    {date}
                                 </div>
                             </div>
                             
@@ -67,14 +68,14 @@ function Details() {
                                 <div>Feedback type</div>
                                 <div>:</div>
                                 <div>
-                                    {"Feedback type"}
+                                    {feedback_type}
                                 </div>
                             </div>      
                             <div className="custom_form_el">
                                 <div>Notes</div>
                                 <div>:</div>
                                 <div>
-                                    {"Notes"}
+                                    {notes}
                                 </div>
                             </div>              
                         </div>
@@ -88,6 +89,11 @@ function Details() {
         </div>
     </div>
 )
+} else {
+    return <>
+        <p>loading ...</p>
+    </>
+}
 }
 
 export default Details

@@ -16,6 +16,8 @@ var setup = {
         get_users: async () => null,
         update_data: async () => null,
         set_data: async () => null,
+        delete_data: async () => null,
+        restore_data: async () => null,
     },
 }
 
@@ -24,7 +26,10 @@ setup.set_async = function(async_actions, dataStoreSlice){
 
     setup.actions.get_users = async (id) => await setup.dispatch(async_actions[`details_${setup.prefix}`](id))
 
-    
+     // delete & restore data
+     setup.actions.delete_data = async (id) => await setup.dispatch(async_actions[`delete_data`](id))
+     setup.actions.restore_data = async (id) => await setup.dispatch(async_actions[`restore_data`](id))
+ 
 
     // updated data
     setup.actions.update_data = async (form_data) => await setup.dispatch(async_actions[`edit_${setup.prefix}`](form_data))

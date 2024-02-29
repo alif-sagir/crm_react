@@ -21,7 +21,8 @@ function Details() {
     }, []);
 
 console.log('task',data_store, id);
-
+if (data_store) {
+    const { title,is_complete,end_time,is_urgent,description } = data_store;
   return (
     <div className='card list_card'>
         <div className="card-header ">
@@ -52,14 +53,14 @@ console.log('task',data_store, id);
                                 <div>Title</div>
                                 <div>:</div>
                                 <div>
-                                    {"_id"}
+                                    {title}
                                 </div>
                             </div>
                             <div className="custom_form_el">
                                 <div>Is complete</div>
                                 <div>:</div>
                                 <div>
-                                    {"Is complete"}
+                                    {is_complete}
                                 </div>
                             </div>
                             
@@ -67,7 +68,7 @@ console.log('task',data_store, id);
                                 <div> End time</div>
                                 <div>:</div>
                                 <div>
-                                    {" End time"}
+                                    {end_time}
                                 </div>
                             </div>
                            
@@ -75,14 +76,14 @@ console.log('task',data_store, id);
                                 <div>Is urgent</div>
                                 <div>:</div>
                                 <div>
-                                    {"Is urgent"}
+                                    {is_urgent}
                                 </div>
                             </div>
                             <div className="custom_form_el">
                                 <div>Description</div>
                                 <div>:</div>
                                 <div>
-                                    {"Description"}
+                                    {description}
                                 </div>
                             </div>
                         </div>
@@ -96,6 +97,11 @@ console.log('task',data_store, id);
         </div>
     </div>
 )
+} else {
+    return <>
+        <p>loading ...</p>
+    </>
+}
 }
 
 export default Details

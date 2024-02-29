@@ -12,7 +12,7 @@ function All() {
     const data_store = useSelector((state) => state[setup.prefix]);
     setup.dispatch = useDispatch();
     setup.set_async(async_actions, dataStoreSlice);
-    const { fetch_all_data } = setup.actions;
+    const { fetch_all_data, delete_data, restore_data } = setup.actions;
 
     useEffect(() => {
         fetch_all_data();
@@ -52,7 +52,7 @@ function All() {
 
                                         <td>
                                             <span>
-                                            {item.title}
+                                                {item.title}
                                             </span>
                                         </td>
 
@@ -69,10 +69,25 @@ function All() {
                                                         <li>
                                                             <Link to={`/dashboard/contact-reason/details/${item.id}`}>Details</Link>
                                                         </li>
-                                                        <li>
+                                                        {/* <li>
                                                             <Link to="/dashboard/contact-reason/edit">Deactive</Link>
-                                                        </li>
+                                                        </li> */}
+                                                        {
+                                                            item.status == 1 ?
+                                                                <li>
+                                                                    <a className="" href='#' onClick={(event) => { event.preventDefault(); delete_data(item.id) }}>
 
+                                                                        Deactive
+                                                                    </a>
+                                                                </li>
+                                                                :
+                                                                <li>
+                                                                    <a className="" href='#' onClick={(event) => { event.preventDefault(); restore_data(item.id) }}>
+
+                                                                        Restore
+                                                                    </a>
+                                                                </li>
+                                                        }
                                                     </ul>
                                                 </div>
                                             </span>

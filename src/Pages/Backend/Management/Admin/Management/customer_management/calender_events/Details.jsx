@@ -21,6 +21,8 @@ function Details() {
     }, []);
 
     console.log(data_store, id);
+    if (data_store) {
+        const { customer_id,event_date,event_type,event_description,creator,is_complete,meet_link } = data_store;
     return (
         <div className='card list_card'>
             <div className="card-header ">
@@ -52,49 +54,49 @@ function Details() {
                                     <div>Customer Id</div>
                                     <div>:</div>
                                     <div>
-                                        {"customer_id"}
+                                        {customer_id}
                                     </div>
                                 </div>
                                 <div className="custom_form_el">
                                     <div>event date</div>
                                     <div>:</div>
                                     <div>
-                                        {"event_data"}
+                                        {event_date}
                                     </div>
                                 </div>
                                 <div className="custom_form_el">
                                     <div>Event type</div>
                                     <div>:</div>
                                     <div>
-                                        {"event_type"}
+                                        {event_type}
                                     </div>
                                 </div>
                                 <div className="custom_form_el">
                                     <div>Event description</div>
                                     <div>:</div>
                                     <div>
-                                        {"event_description"}
+                                        {event_description}
                                     </div>
                                 </div>
                                 <div className="custom_form_el">
                                     <div>Creator</div>
                                     <div>:</div>
                                     <div>
-                                        {"creator"}
+                                        {creator}
                                     </div>
                                 </div>
                                 <div className="custom_form_el">
                                     <div>Is complete</div>
                                     <div>:</div>
                                     <div>
-                                        {"is_complete"}
+                                        {is_complete}
                                     </div>
                                 </div>
                                 <div className="custom_form_el">
                                     <div>Meet link</div>
                                     <div>:</div>
                                     <div>
-                                        {"meet_link"}
+                                        {meet_link}
                                     </div>
                                 </div>
 
@@ -109,6 +111,11 @@ function Details() {
             </div>
         </div>
     )
+} else {
+    return <>
+        <p>loading ...</p>
+    </>
+}
 }
 
 export default Details

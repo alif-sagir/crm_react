@@ -21,7 +21,8 @@ function Details() {
     }, []);
 
     console.log("data store form ticket",data_store, id);
-
+    if (data_store) {
+        const { customer_id,assigned_to,subject,status,priority,is_complete } = data_store;
     return (
         <div className='card list_card'>
             <div className="card-header ">
@@ -53,7 +54,7 @@ function Details() {
                                     <div>Customer uui id</div>
                                     <div>:</div>
                                     <div>
-                                        {"ticket_user_id"}
+                                        {customer_id}
                                     </div>
                                 </div>
                                 <div className="custom_form_el">
@@ -67,7 +68,7 @@ function Details() {
                                     <div>Assain to</div>
                                     <div>:</div>
                                     <div>
-                                        {"assain_to"}
+                                        {assigned_to}
                                     </div>
                                 </div>
 
@@ -75,7 +76,7 @@ function Details() {
                                     <div>Subject</div>
                                     <div>:</div>
                                     <div>
-                                        {"subject"}
+                                        {subject}
                                     </div>
                                 </div>
                                 <div className="custom_form_el">
@@ -111,30 +112,30 @@ function Details() {
                                     <div>Status</div>
                                     <div>:</div>
                                     <div>
-                                        {"status"}
+                                        {status}
                                     </div>
                                 </div>
                                 <div className="custom_form_el">
                                     <div>Priority</div>
                                     <div>:</div>
                                     <div>
-                                        {"priority"}
+                                        {priority}
                                     </div>
                                 </div>
                                 <div className="custom_form_el">
                                     <div>Is complete</div>
                                     <div>:</div>
                                     <div>
-                                        {"is_complete"}
+                                        {is_complete}
                                     </div>
                                 </div>
-                                <div className="custom_form_el">
+                                {/* <div className="custom_form_el">
                                     <div>Assigned to</div>
                                     <div>:</div>
                                     <div>
                                         {"is_complete"}
                                     </div>
-                                </div>
+                                </div> */}
 
                             </div>
 
@@ -147,6 +148,11 @@ function Details() {
             </div>
         </div>
     )
+} else {
+    return <>
+        <p>loading ...</p>
+    </>
+}
 }
 
 export default Details

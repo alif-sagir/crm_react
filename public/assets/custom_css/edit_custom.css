@@ -137,7 +137,7 @@
 }
 
 .page-content {
-    padding-top: 50px;
+    /* padding-top: 50px; */
 }
 
 /* login page start */
@@ -320,3 +320,39 @@ height: 100vh;
 }
 /* banner_area end */
 /* home_page end */
+.input_message_container{
+    justify-content: center;
+    display: flex;
+}
+.input_message_container form{
+    width: 100%;
+    justify-content: center;
+    display: flex;
+
+}
+.input_message_container form .input_area{
+    font-family: "roboto";
+    background-color: #e3e3e3;
+    border: 0px;
+    padding: 6px 15px;
+    border-radius: 7px;
+    font-size: 18px;
+    outline: 0;
+    color: #334155;
+    width: 50%;
+}
+.input_message_container form .button_area{
+    background-color: #9090e7;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    margin-left: 10px;
+    transition-duration: .4s;
+}
+
+.input_message_container form .button_area i{
+color: white;
+}
+.input_message_container form .button_area :hover i{
+    color: black;
+ }
