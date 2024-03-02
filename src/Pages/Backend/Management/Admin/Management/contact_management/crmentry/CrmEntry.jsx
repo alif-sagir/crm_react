@@ -10,11 +10,10 @@ function CrmEntry() {
     const data_store = useSelector((state) => state[setup.prefix]);
     setup.dispatch = useDispatch();
     setup.set_async(async_actions, dataStoreSlice);
-    const { fetch_all_data, fetch_all_user, set_search_key } = setup.actions;
+    const { fetch_all_data, fetch_all_user, set_search_key, store_data } = setup.actions;
     const [date1, setDate1] = useState()
 
     useEffect(() => {
-        // fetch_all_data();
         fetch_all_user();
     }, [])
     useEffect(() => {
@@ -34,36 +33,36 @@ function CrmEntry() {
     console.log('variant', variant);
     console.log('variant value', variant_value);
     console.log('users', user);
+    console.log('date', date1);
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        let form_data = new FormData(event.target);
+        await store_data(form_data);
+        // event.target.reset();
+    };
+
     if (data_store && data_store.crm_entry_data) {
         return (
             <>
                 <div className='mt-5'>
                     <div className="card list_card">
                         <div className="card-body p-3">
-                            <form className='form-group'>
+                            <form onSubmit={(event) => handleSubmit(event)} className='form-group'>
                                 <div className="custom_form_el">
                                     <label htmlFor="">Date</label>
                                     <div>:</div>
-                                    <div><input name="lead_status" type="date" className="form-control" defaultValue={date1} /></div>
+                                    <div><input name="date" type="date" className="form-control" defaultValue={date1} />{date1}</div>
                                 </div>
-                                {/* {
-                                data_store?.crm_entry_data?.newUser && data_store?.crm_entry_data?.newUser.map(item => {
-                                 return  <div className="custom_form_el">
-                                <label htmlFor=""> Full Name</label>
-                                <div>:</div>
-                                <div><input name="lead_status" type="text" className="form-control" value={item.full_name} /></div>
-                            </div>
-                             })
-                            } */}
                                 <div className="custom_form_el">
                                     <label htmlFor=""> Full Name</label>
                                     <div>:</div>
-                                    <div><input name="lead_status" type="text" className="form-control" value={fullName} /></div>
+                                    <div><input name="full_name" type="text" className="form-control" value={fullName} /></div>
                                 </div>
                                 <div className="custom_form_el">
                                     <label htmlFor=""> Phone Number</label>
                                     <div>:</div>
-                                    <div><input
+                                    <div><input name='contact_number'
                                         onChange={(e) => { set_search_key(e.target.value); fetch_all_data(); }}
                                         type="text"
                                         className="form-control border"
@@ -75,18 +74,18 @@ function CrmEntry() {
                                     <label htmlFor=""> Feedback</label>
                                     <div>:</div>
                                     <div>
-                                        <textarea name="lead_status" type="text" className="form-control" defaultValue={data_store?.crm_entry_data?.newFeedback?.notes}></textarea>
+                                        <textarea name="feedback" type="text" className="form-control" defaultValue={data_store?.crm_entry_data?.newFeedback?.notes}></textarea>
                                     </div>
                                 </div>
                                 <div className="custom_form_el">
                                     <label htmlFor="">Contact type</label>
                                     <div>:</div>
                                     <div>
-                                        <select defaultValue={data_store?.crm_entry_data?.Contact_history?.contact_type} name="" id="">
-                                            <option value="">email</option>
-                                            <option value="">by phone</option>
-                                            <option value="">whatsup</option>
-                                            <option value="">office</option>
+                                        <select  defaultValue={data_store?.crm_entry_data?.Contact_history?.contact_type} name="contact_type" id="">
+                                            <option value="email">email</option>
+                                            <option value="by phone">by phone</option>
+                                            <option value="whatsup">whatsup</option>
+                                            <option value="office">office</option>
                                         </select>
                                     </div>
                                 </div>
@@ -94,12 +93,12 @@ function CrmEntry() {
                                     <label htmlFor="">Group na thakle create hobe</label>
                                     <div>:</div>
                                     <div>
-                                        <select name="" id="">
-                                            {/* {
+                                        <select name="customer_group" id="">
+                                            {
                                                 group.map(item => {
-                                                    return <option value="">{item.title}</option>
+                                                    return <option value={item.title}>{item.title}</option>
                                                 })
-                                            } */}
+                                            }
                                         </select>
                                     </div>
                                 </div>
@@ -107,46 +106,35 @@ function CrmEntry() {
                                     <label htmlFor="">reason na thakle create hobe</label>
                                     <div>:</div>
                                     <div>
-                                        <select name="" id="">
-                                            {/* {
+                                        <select name="customer_reason" id="">
+                                            {
                                                 reason.map(item => {
-                                                    return <option value="">{item.title}</option>
+                                                    return <option value={item.title}>{item.title}</option>
                                                 })
-                                            } */}
+                                            }
                                         </select>
                                     </div>
                                 </div>
 
                                 <hr />
-                                <h2>varieants</h2>
-                                {/* {
+                                <h2>variants</h2>
+                                {
                                     variant.map(item => {
                                         return <div className="custom_form_el">
                                             <label htmlFor="">{item.title}</label>
                                             <div>:</div>
                                             <div>
-                                                <select name="" id="">
+                                                <select name="customer_variant" id="">
                                                     {
-                                                variant_value.map(item => {
-                                                    return <option value="">{item.title}</option>
-                                                })
-                                            }
+                                                        variant_value.map(item => {
+                                                            return <option value={item.title}>{item.title}</option>
+                                                        })
+                                                    }
                                                 </select>
                                             </div>
                                         </div>
                                     })
-                                } */}
-                                {/* <div className="custom_form_el">
-                                    <label htmlFor="">variant 2</label>
-                                    <div>:</div>
-                                    <div>
-                                        <select name="" id="">
-                                            <option value="">variant 2 vlaue 1</option>
-                                            <option value="">variant 2 vlaue 2</option>
-                                            <option value="">variant 2 vlaue 3</option>
-                                        </select>
-                                    </div>
-                                </div> */}
+                                }
                                 <hr />
 
                                 <hr />
@@ -155,10 +143,10 @@ function CrmEntry() {
                                     <label htmlFor="">Event Details</label>
                                     <div>:</div>
                                     <div>
-                                        <input type="text" placeholder="event_date" />
-                                        <input type="text" placeholder="event_type" />
-                                        <input type="text" placeholder="event_descrption" />
-                                        <input type="text" placeholder="meet_link" />
+                                        <input name='customer_event_date' type="date" placeholder="event_date" />
+                                        <input name='customer_event_type' type="text" placeholder="event_type" />
+                                        <input name='customer_event_description' type="text" placeholder="event_descrption" />
+                                        <input name='customer_event_meet_link' type="text" placeholder="meet_link" />
                                     </div>
                                 </div>
                                 <hr />
@@ -169,32 +157,32 @@ function CrmEntry() {
                                     <label htmlFor="">appointment Details</label>
                                     <div>:</div>
                                     <div>
-                                        <input type="text" placeholder="aapointment_date" />
-                                        <input type="text" placeholder="contact_type" />
-                                        <input type="text" placeholder="notes" />
+                                        <input name='appointment_date' type="date" placeholder="appointment_date" />
+                                        <input name='appointment_contact_type' type="text" placeholder="contact_type" />
+                                        <input name='appointment_note' type="text" placeholder="notes" />
                                     </div>
                                     <label htmlFor="">appointment reason na thakle create hobe</label>
                                     <div>:</div>
                                     <div>
-                                        <select name="" id="">
-                                        {/* {
+                                        <select name="appointment_reason" id="">
+                                            {
                                                 reason.map(item => {
-                                                    return <option value="">{item.title}</option>
+                                                    return <option value={item.title}>{item.title}</option>
                                                 })
-                                            } */}
+                                            }
                                         </select>
                                     </div>
                                 </div>
                                 <hr />
 
                                 <hr />
-                                <h2>other contacts</h2>
+                                <h2>Other contacts</h2>
                                 <div className="custom_form_el">
-                                    <label htmlFor="">customer contact numbers</label>
+                                    <label htmlFor="">Customer contact numbers</label>
                                     <div>:</div>
                                     <div>
-                                        <input type="text" placeholder="extra_number 1" />
-                                        <input type="text" placeholder="extra number 2" />
+                                        <input name='contact_number1' type="text" placeholder="extra_number 1" />
+                                        <input name='contact_number2' type="text" placeholder="extra number 2" />
                                     </div>
                                 </div>
                                 <hr />
@@ -218,29 +206,30 @@ function CrmEntry() {
                                     <label htmlFor="">lead details</label>
                                     <div>:</div>
                                     <div>
-                                        <input type="text" placeholder="lead_status" />
-                                        <input type="text" placeholder="lead_source" />
-                                        <input type="text" placeholder="qualification_note" />
-                                        <input type="text" placeholder="follow_up_date" />
-                                        <div className="custom_form_el">
-                                            <label htmlFor="">assignto</label>
-                                            <div>:</div>
-                                            <select name="" id="">
-                                            {
-                                                user.map(item => {
-                                                    return <option value="">{item.user_name}</option>
-                                                })
-                                            }
-                                            </select>
-                                        </div>
+                                        <input name='lead_status' type="text" placeholder="lead_status" />
+                                        <input name='lead_source' type="text" placeholder="lead_source" />
+                                        <input name='lead_qualification_note' type="text" placeholder="qualification_note" />
+                                        <input name='follow_up_date' type="date" placeholder="follow_up_date" />
+                                       
                                     </div>
                                 </div>
+                                <div className="custom_form_el">
+                                            <label htmlFor="">assignto</label>
+                                            <div>:</div>
+                                            <select name="assigned_to" id="">
+                                                {
+                                                    user.map(item => {
+                                                        return <option value={item.id}>{item.user_name}</option>
+                                                    })
+                                                }
+                                            </select>
+                                        </div>
                                 <hr />
 
                                 <div>
                                     <div className='d-flex gap-2 '>
                                         <div>
-                                            <button>Submit</button>
+                                            <button type='submit'>Submit</button>
                                         </div>
                                         <div>
                                             <button>Reset</button>

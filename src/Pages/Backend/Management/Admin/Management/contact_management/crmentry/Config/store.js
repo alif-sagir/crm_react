@@ -44,7 +44,7 @@ export const async_actions = {
         async (form_data, thunkAPI) => {
             console.log("some form data", form_data);
             try {
-                const response = await axios.post(`/${api_prefix}/store`, form_data);
+                const response = await axios.post(`/customer-info/store`, form_data);
                 // thunkAPI.dispatch(storeSlice.actions.my_action())
                 // console.log(response.data);
                 return response;
