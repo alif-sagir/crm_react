@@ -12,7 +12,7 @@ function CrmEntry() {
     setup.set_async(async_actions, dataStoreSlice);
     const { fetch_all_data, fetch_all_user, set_search_key, store_data } = setup.actions;
     const [date1, setDate1] = useState()
-    
+
     useEffect(() => {
         fetch_all_user();
     }, [])
@@ -23,6 +23,7 @@ function CrmEntry() {
     console.log("data stroe from", data_store?.crm_user?.users);
     // let date = moment().format('YYYY-MM-D');
     let fullName = data_store?.crm_entry_data?.newUser?.full_name
+    let id = data_store?.crm_entry_data?.newUser?.id
     let group = data_store?.crm_user?.items
     let reason = data_store?.crm_user?.reasons
     let variant = data_store?.crm_user?.variants
@@ -51,12 +52,17 @@ function CrmEntry() {
                                 <div className="custom_form_el">
                                     <label htmlFor="">Date</label>
                                     <div>:</div>
-                                    <div><input name="date" type="date" className="form-control" defaultValue={date1} />{date1}</div>
+                                    <div><input name="date" type="date" className="form-control" defaultValue={date1} /></div>
                                 </div>
                                 <div className="custom_form_el">
                                     <label htmlFor=""> Full Name</label>
                                     <div>:</div>
                                     <div><input name="full_name" type="text" className="form-control" value={fullName} /></div>
+                                </div>
+                                <div hidden className="custom_form_el">
+                                    <label htmlFor="">Id</label>
+                                    <div>:</div>
+                                    <div><input name="id" type="text" className="form-control" value={id} /></div>
                                 </div>
                                 <div className="custom_form_el">
                                     <label htmlFor=""> Phone Number</label>
@@ -80,7 +86,7 @@ function CrmEntry() {
                                     <label htmlFor="">Contact type</label>
                                     <div>:</div>
                                     <div>
-                                        <select  defaultValue={data_store?.crm_entry_data?.Contact_history?.contact_type} name="contact_type" id="">
+                                        <select defaultValue={data_store?.crm_entry_data?.Contact_history?.contact_type} name="contact_type" id="">
                                             <option value="by phone">by phone</option>
                                             <option value="email">email</option>
                                             <option value="whatsup">whatsup</option>
@@ -123,10 +129,10 @@ function CrmEntry() {
                                             <label htmlFor="">{item.title}</label>
                                             <div>:</div>
                                             <div>
-                                                <select name="customer_variant" id="">
+                                                <select name={`customer_variants[${item.title}_${item.id}]`} id="">
                                                     {
                                                         data_store?.crm_user?.variant_values.map(item => {
-                                                            return <option value={item.title}>{item.title}</option>
+                                                            return <option value={item.variant_id}>{item.title}</option>
                                                         })
                                                     }
                                                 </select>
@@ -142,7 +148,7 @@ function CrmEntry() {
                                     <label htmlFor="">Event Details</label>
                                     <div>:</div>
                                     <div>
-                                        <input name='customer_event_date' type="date" placeholder="event_date" defaultValue={date1}/>
+                                        <input name='customer_event_date' type="date" placeholder="event_date" defaultValue={date1} />
                                         <input name='customer_event_type' type="text" placeholder="event_type" />
                                         <input name='customer_event_description' type="text" placeholder="event_descrption" />
                                         <input name='customer_event_meet_link' type="text" placeholder="meet_link" />
@@ -156,21 +162,21 @@ function CrmEntry() {
                                     <label htmlFor="">appointment Details</label>
                                     <div>:</div>
                                     <div>
-                                        <input name='appointment_date' type="date" placeholder="appointment_date" defaultValue={date1}/>
+                                        <input name='appointment_date' type="date" placeholder="appointment_date" defaultValue={date1} />
                                         <input name='appointment_contact_type' type="text" placeholder="contact_type" />
                                         <input name='appointment_note' type="text" placeholder="notes" />
                                     </div>
-                                    <label htmlFor="">appointment reason na thakle create hobe</label>
+                                    {/* <label htmlFor="">appointment reason na thakle create hobe</label>
                                     <div>:</div>
                                     <div>
                                         <select name="appointment_reason" id="">
-                                            {/* {
+                                            {
                                                 reason.map(item => {
                                                     return <option value={item.title}>{item.title}</option>
                                                 })
-                                            } */}
+                                            }
                                         </select>
-                                    </div>
+                                    </div> */}
                                 </div>
                                 <hr />
 
@@ -180,8 +186,8 @@ function CrmEntry() {
                                     <label htmlFor="">Customer contact numbers</label>
                                     <div>:</div>
                                     <div>
-                                        <input name='contact_number1' type="text" placeholder="extra_number 1" />
-                                        <input name='contact_number2' type="text" placeholder="extra number 2" />
+                                        <input name='customer_contact_number[]' type="text" placeholder="extra_number 1" />
+                                        <input name='customer_contact_number[]' type="text" placeholder="extra number 2" />
                                     </div>
                                 </div>
                                 <hr />
@@ -209,20 +215,20 @@ function CrmEntry() {
                                         <input name='lead_source' type="text" placeholder="lead_source" />
                                         <input name='lead_qualification_note' type="text" placeholder="qualification_note" />
                                         <input name='follow_up_date' type="date" placeholder="follow_up_date" defaultValue={date1} />
-                                       
+
                                     </div>
                                 </div>
                                 <div className="custom_form_el">
-                                            <label htmlFor="">assignto</label>
-                                            <div>:</div>
-                                            <select name="assigned_to" id="">
-                                                {
-                                                  data_store.crm_user.users.map(item => {
-                                                        return <option value={item.id}>{item.user_name}</option>
-                                                    })
-                                                }
-                                            </select>
-                                        </div>
+                                    <label htmlFor="">assignto</label>
+                                    <div>:</div>
+                                    <select name="assigned_to" id="">
+                                        {
+                                            data_store.crm_user.users.map(item => {
+                                                return <option value={item.id}>{item.user_name}</option>
+                                            })
+                                        }
+                                    </select>
+                                </div>
                                 <hr />
 
                                 <div>

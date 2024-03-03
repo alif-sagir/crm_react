@@ -30,7 +30,7 @@ export const async_actions = {
     [`fetch_all_user`]: createAsyncThunk(
         `${store_prefix}/fetch_all_user`,
         async (data, thunkAPI) => {
-            let url =`/all-user`;
+            let url =`/crm-dependancy`;
             console.log(url);
             const response = await axios.get(url);
             console.log('response', response.data);
