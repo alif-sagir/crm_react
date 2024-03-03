@@ -21,20 +21,11 @@ function CrmEntry() {
     }, [])
     console.log("data stroe from", data_store);
     console.log("data stroe from", data_store?.crm_user?.users);
-    // let date = moment().format('YYYY-MM-D');
+
+
     let fullName = data_store?.crm_entry_data?.newUser?.full_name
     let id = data_store?.crm_entry_data?.newUser?.id
-    let group = data_store?.crm_user?.items
-    let reason = data_store?.crm_user?.reasons
-    let variant = data_store?.crm_user?.variants
-    let variant_value = data_store?.crm_user?.variant_values
-    let user = data_store?.crm_user?.users
-    console.log('group', group);
-    console.log('reason', reason);
-    console.log('variant', variant);
-    console.log('variant value', variant_value);
-    console.log('users', user);
-    console.log('date', date1);
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         let form_data = new FormData(event.target);
@@ -171,10 +162,10 @@ function CrmEntry() {
                                     <label htmlFor="">Event Details</label>
                                     <div>:</div>
                                     <div>
-                                        <input name='customer_event_date' type="date" placeholder="event_date" defaultValue={date1} />
-                                        <input name='customer_event_type' type="text" placeholder="event_type" />
-                                        <input name='customer_event_description' type="text" placeholder="event_descrption" />
-                                        <input name='customer_event_meet_link' type="text" placeholder="meet_link" />
+                                        <input className='m-3 p-1' name='customer_event_date' type="date" placeholder="event_date" defaultValue={date1} />
+                                        <input className='m-3 p-1' name='customer_event_type' type="text" placeholder="event_type" />
+                                        <input className='m-3 p-1' name='customer_event_description' type="text" placeholder="event_descrption" />
+                                        <input className='m-3 p-1' name='customer_event_meet_link' type="text" placeholder="meet_link" />
                                     </div>
                                 </div>
                                 <hr />
@@ -185,9 +176,9 @@ function CrmEntry() {
                                     <label htmlFor="">appointment Details</label>
                                     <div>:</div>
                                     <div>
-                                        <input name='appointment_date' type="date" placeholder="appointment_date" defaultValue={date1} />
-                                        <input name='appointment_contact_type' type="text" placeholder="contact_type" />
-                                        <input name='appointment_note' type="text" placeholder="notes" />
+                                        <input className='m-3 p-1' name='appointment_date' type="date" placeholder="appointment_date" defaultValue={date1} />
+                                        <input className='m-3 p-1' name='appointment_contact_type' type="text" placeholder="contact_type" />
+                                        <input className='m-3 p-1' name='appointment_note' type="text" placeholder="notes" />
                                     </div>
                                 </div>
                                 <hr />
@@ -198,8 +189,8 @@ function CrmEntry() {
                                     <label htmlFor="">Customer contact numbers</label>
                                     <div>:</div>
                                     <div>
-                                        <input name='customer_contact_number[]' type="text" placeholder="extra_number 1" />
-                                        <input name='customer_contact_number[]' type="text" placeholder="extra number 2" />
+                                        <input className='m-3 p-1' name='customer_contact_number[]' type="text" placeholder="extra_number 1" />
+                                        <input className='m-3 p-1' name='customer_contact_number[]' type="text" placeholder="extra number 2" />
                                     </div>
                                 </div>
                                 <hr />
@@ -210,9 +201,9 @@ function CrmEntry() {
                                     <label htmlFor="">related images</label>
                                     <div>:</div>
                                     <div>
-                                        <input type="text" placeholder="doc 1" />
-                                        <input type="text" placeholder="doc 2" />
-                                        <input type="text" placeholder="imag3 3" />
+                                        <input className='m-3 p-1' type="text" placeholder="doc 1" />
+                                        <input className='m-3 p-1' type="text" placeholder="doc 2" />
+                                        <input className='m-3 p-1' type="text" placeholder="imag3 3" />
                                     </div>
                                 </div>
                                 <hr />
@@ -223,23 +214,26 @@ function CrmEntry() {
                                     <label htmlFor="">lead details</label>
                                     <div>:</div>
                                     <div>
-                                        <input name='lead_status' type="text" placeholder="lead_status" />
-                                        <input name='lead_source' type="text" placeholder="lead_source" />
-                                        <input name='lead_qualification_note' type="text" placeholder="qualification_note" />
-                                        <input name='follow_up_date' type="date" placeholder="follow_up_date" defaultValue={date1} />
+                                        <input className='m-3 p-1' name='lead_status' type="text" placeholder="lead_status" />
+                                        <input className='m-3 p-1' name='lead_source' type="text" placeholder="lead_source" />
+                                        <input className='m-3 p-1' name='lead_qualification_note' type="text" placeholder="qualification_note" />
+                                        <input className='m-3 p-1' name='follow_up_date' type="date" placeholder="follow_up_date" defaultValue={date1} />
 
                                     </div>
                                 </div>
                                 <div className="custom_form_el">
                                     <label htmlFor="">assignto</label>
                                     <div>:</div>
+                                    <div>
                                     <select name="assigned_to" id="">
                                         {
                                             data_store.crm_user.users.map(item => {
                                                 return <option value={item.id}>{item.user_name}</option>
                                             })
                                         }
+                                        
                                     </select>
+                                    </div>
                                 </div>
                                 <hr />
 
