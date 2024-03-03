@@ -42,6 +42,23 @@ function CrmEntry() {
         // event.target.reset();
     };
 
+    // Debounce function
+    const debounce = (func, delay) => {
+        let timer;
+        return function (...args) {
+            const context = this;
+            clearTimeout(timer);
+            timer = setTimeout(() => func.apply(context, args), delay);
+        };
+    };
+
+    // Function to handle search
+    const handleSearch = debounce((event) => {
+        set_search_key(event.target.value);
+        fetch_all_data();
+    }, 500); // 300ms debounce delay
+
+
     if (data_store && data_store.crm_user.users) {
         return (
             <>
@@ -67,8 +84,14 @@ function CrmEntry() {
                                 <div className="custom_form_el">
                                     <label htmlFor=""> Phone Number</label>
                                     <div>:</div>
-                                    <div><input name='contact_number'
+                                    {/*  <div><input name='contact_number'
                                         onChange={(e) => { set_search_key(e.target.value); fetch_all_data(); }}
+                                        type="text"
+                                        className="form-control border"
+                                        placeholder="Search..."
+                                    ></input></div> */}
+                                    <div><input name='contact_number'
+                                        onChange={handleSearch}
                                         type="text"
                                         className="form-control border"
                                         placeholder="Search..."
@@ -166,17 +189,6 @@ function CrmEntry() {
                                         <input name='appointment_contact_type' type="text" placeholder="contact_type" />
                                         <input name='appointment_note' type="text" placeholder="notes" />
                                     </div>
-                                    {/* <label htmlFor="">appointment reason na thakle create hobe</label>
-                                    <div>:</div>
-                                    <div>
-                                        <select name="appointment_reason" id="">
-                                            {
-                                                reason.map(item => {
-                                                    return <option value={item.title}>{item.title}</option>
-                                                })
-                                            }
-                                        </select>
-                                    </div> */}
                                 </div>
                                 <hr />
 
