@@ -5,6 +5,7 @@ import setup from './Config/setup';
 import { useEffect, useState } from 'react';
 import dataStoreSlice, { async_actions } from './Config/store.js';
 import moment from 'moment/moment.js';
+import MultiselectDropdown from './components/Multiselect_dropdown.jsx';
 
 function CrmEntry() {
     const data_store = useSelector((state) => state[setup.prefix]);
@@ -12,6 +13,8 @@ function CrmEntry() {
     setup.set_async(async_actions, dataStoreSlice);
     const { fetch_all_data, fetch_all_user, set_search_key, store_data } = setup.actions;
     const [date1, setDate1] = useState()
+    const [ selectedData, setselectedData ] = useState([])
+    console.log('selected data', selectedData);
 
     useEffect(() => {
         fetch_all_user();
@@ -21,6 +24,7 @@ function CrmEntry() {
     }, [])
     console.log("data stroe from", data_store);
     console.log("data stroe from", data_store?.crm_user?.users);
+    let data = data_store?.crm_user?.items;
 
 
     let fullName = data_store?.crm_entry_data?.newUser?.full_name
@@ -29,6 +33,9 @@ function CrmEntry() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         let form_data = new FormData(event.target);
+        selectedData.forEach((e,index)=>{
+            form_data.append(`customer_group`, e.title);
+          });
         await store_data(form_data);
         // event.target.reset();
     };
@@ -112,13 +119,14 @@ function CrmEntry() {
                                     <label htmlFor="">Group na thakle create hobe</label>
                                     <div>:</div>
                                     <div>
-                                        <select name="customer_group" id="">
+                                        {/* <select name="customer_group" id="">
                                             {
                                                 data_store?.crm_user?.items.map(item => {
                                                     return <option value={item.title}>{item.title}</option>
                                                 })
                                             }
-                                        </select>
+                                        </select> */}
+                                        <MultiselectDropdown data={data} selectedData={selectedData} setSelectedData={setselectedData}></MultiselectDropdown>
                                     </div>
                                 </div>
                                 <div className="custom_form_el">

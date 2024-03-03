@@ -14,6 +14,8 @@ const MultiselectDropdown = (props) => {
     //     console.log(taskOpen);
     // }, [props.tasklist]);
 
+    console.log('user ukey', ukey);
+
     useEffect(() => {
         setData([...props.data]);
         console.log(data);
@@ -40,11 +42,11 @@ const MultiselectDropdown = (props) => {
         if (newData) {
             // console.log(selectedData);
             // console.log(item.id);
-            let uniqueData = selectedData.filter((i) => i._id != item._id);
+            let uniqueData = selectedData.filter((i) => i.id != item.id);
             setSelectedData([...uniqueData]);
             // setSelectedData(selectedData.splice(item.id, 0));
         } else {
-            let searchData = data.find((i) => i._id == item._id);
+            let searchData = data.find((i) => i.id == item.id);
             setSelectedData([...selectedData, searchData]);
             // console.log(searchData);
             // console.log(selectedData, setSelectedData([searchData]))
@@ -52,7 +54,7 @@ const MultiselectDropdown = (props) => {
     }
 
     function removeData(item) {
-        let newTotal = selectedData.filter((i) => i._id !== item._id);
+        let newTotal = selectedData.filter((i) => i.id !== item.id);
         setSelectedData([...newTotal]);
     }
 
@@ -90,19 +92,19 @@ const MultiselectDropdown = (props) => {
                     })}
                     
                 </select> */}
-                <p>open</p>
+                {/* <p>open</p> */}
                 <ul className="">
                     {selectedData.length
                         ? selectedData.map((i, index) => {
                             return (
                                 <div>
                                     <li key={index}>
-                                        {i.serial}
+                                        <span>{i.title}</span>
                                         <span
                                             onClick={() => removeData(i)}
-                                            className="material-symbols-outlined"
+                                            className="material-symbols-outlined border border-1 bg-danger px-1 rounded rounded-3"
                                         >
-                                            close
+                                            x
                                         </span>
                                     </li>
                                     {/* <input type="text" name="role" value={i.title} id="" /> */}
@@ -120,12 +122,12 @@ const MultiselectDropdown = (props) => {
                                 onClick={() => setTaskOpen(false)}
                                 className=" material-symbols-outlined"
                             >
-                                close
+                                X
                             </span>
                         </div>
                         <div className="multiselect_search">
                             <input
-                                onKeyUp={handleSearch}
+                                // onKeyUp={handleSearch}
                                 className="form-control"
                                 type="search"
                                 name=""
@@ -136,22 +138,22 @@ const MultiselectDropdown = (props) => {
                             <ul>
                                 {data.map((i) => {
                                     return (
-                                        <li key={i._id}>
+                                        <li key={i.id}>
                                             <label
-                                                htmlFor={"checbox" + i._id + ukey}
+                                                htmlFor={"checbox" + i.id + ukey}
                                                 className="d-flex gap-2"
                                             >
                                                 <input
                                                     type="checkbox"
                                                     onChange={() => addItem(i)}
                                                     checked={
-                                                        selectedData.find((el) => el._id === i._id)
+                                                        selectedData.find((el) => el.id === i.id)
                                                             ? true
                                                             : false
                                                     }
-                                                    id={"checbox" + i._id + ukey}
+                                                    id={"checbox" + i.id + ukey}
                                                 />
-                                                <div className="">{i.name}</div>
+                                                <div className="">{i.title}</div>
                                             </label>
                                         </li>
                                     );
