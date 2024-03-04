@@ -5,6 +5,7 @@ const MultiselectDropdown = (props) => {
     // console.log(props)
     const ukey = Math.random();
     const [data, setData] = useState([]);
+    const [searchdata, searchsetData] = useState([]);
     const [selectedData, setSelectedData] = useState([]);
     const [taskOpen, setTaskOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
@@ -19,11 +20,11 @@ const MultiselectDropdown = (props) => {
     useEffect(() => {
         setData([...props.data]);
         console.log(data);
-        
+
     }, [props.data]);
-    
+
     useEffect(() => {
-        if(props.selectedData?.length){
+        if (props.selectedData?.length) {
             setSelectedData([...props.selectedData]);
         }
     }, []);
@@ -36,8 +37,8 @@ const MultiselectDropdown = (props) => {
     console.log(selectedData);
     console.log(data);
     function addItem(item) {
-        console.log(item);
-        let newData = selectedData?.find((i) => i.serial == item.serial);
+        // console.log(item);
+        let newData = selectedData?.find((i) => i.title == item.title);
 
         if (newData) {
             // console.log(selectedData);
@@ -60,10 +61,10 @@ const MultiselectDropdown = (props) => {
 
     function handleSearch(event) {
         const value = event.target.value;
-        // console.log(value);
+        console.log(value);
         let filteredData = data.filter((i) => i.title.includes(value));
         // console.log(data);
-        setData([...filteredData]);
+        searchsetData([...filteredData]);
     }
 
     return (
@@ -127,7 +128,7 @@ const MultiselectDropdown = (props) => {
                         </div>
                         <div className="multiselect_search">
                             <input
-                                // onKeyUp={handleSearch}
+                                onKeyUp={handleSearch}
                                 className="form-control"
                                 type="search"
                                 name=""
@@ -135,7 +136,33 @@ const MultiselectDropdown = (props) => {
                             />
                         </div>
                         <div className="multiselect_list">
-                            <ul>
+                            {searchdata.length ? (
+                                <ul>
+                                {searchdata.map((i) => {
+                                    return (
+                                        <li key={i.id}>
+                                            <label
+                                                htmlFor={"checbox" + i.id + ukey}
+                                                className="d-flex gap-2"
+                                            >
+                                                <input
+                                                    type="checkbox"
+                                                    onChange={() => addItem(i)}
+                                                    checked={
+                                                        selectedData.find((el) => el.id === i.id)
+                                                            ? true
+                                                            : false
+                                                    }
+                                                    id={"checbox" + i.id + ukey}
+                                                />
+                                                <div className="">{i.title}</div>
+                                            </label>
+                                        </li>
+                                    );
+                                })}
+                            </ul>
+                            ) : (
+                                <ul>
                                 {data.map((i) => {
                                     return (
                                         <li key={i.id}>
@@ -159,6 +186,31 @@ const MultiselectDropdown = (props) => {
                                     );
                                 })}
                             </ul>
+                            )}
+                            {/* <ul>
+                                {data.map((i) => {
+                                    return (
+                                        <li key={i.id}>
+                                            <label
+                                                htmlFor={"checbox" + i.id + ukey}
+                                                className="d-flex gap-2"
+                                            >
+                                                <input
+                                                    type="checkbox"
+                                                    onChange={() => addItem(i)}
+                                                    checked={
+                                                        selectedData.find((el) => el.id === i.id)
+                                                            ? true
+                                                            : false
+                                                    }
+                                                    id={"checbox" + i.id + ukey}
+                                                />
+                                                <div className="">{i.title}</div>
+                                            </label>
+                                        </li>
+                                    );
+                                })}
+                            </ul> */}
                             {/* <button cdata = {selectedData}>tandf</button> */}
                         </div>
                     </div>

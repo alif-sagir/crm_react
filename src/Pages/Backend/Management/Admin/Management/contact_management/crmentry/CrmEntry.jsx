@@ -34,7 +34,7 @@ function CrmEntry() {
         event.preventDefault();
         let form_data = new FormData(event.target);
         selectedData.forEach((e,index)=>{
-            form_data.append(`customer_group`, e.title);
+            form_data.append(`customer_group_customer[]`, e.id);
           });
         await store_data(form_data);
         // event.target.reset();
