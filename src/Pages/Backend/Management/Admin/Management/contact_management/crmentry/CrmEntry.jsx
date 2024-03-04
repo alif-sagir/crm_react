@@ -14,6 +14,7 @@ function CrmEntry() {
     const { fetch_all_data, fetch_all_user, set_search_key, store_data } = setup.actions;
     const [date1, setDate1] = useState()
     const [ selectedData, setselectedData ] = useState([])
+    const [ selectedReason, setselectedReason ] = useState([])
     console.log('selected data', selectedData);
 
     useEffect(() => {
@@ -22,9 +23,10 @@ function CrmEntry() {
     useEffect(() => {
         setDate1(moment().format('YYYY-MM-DD'))
     }, [])
-    console.log("data stroe from", data_store);
-    console.log("data stroe from", data_store?.crm_user?.users);
+
     let data = data_store?.crm_user?.items;
+    let reason =data_store?.crm_user?.reasons;
+    console.log('data', reason);
 
 
     let fullName = data_store?.crm_entry_data?.newUser?.full_name
@@ -36,6 +38,10 @@ function CrmEntry() {
         selectedData.forEach((e,index)=>{
             form_data.append(`customer_group_customer[]`, e.id);
           });
+        selectedReason.forEach((e,index)=>{
+            form_data.append(`contact_reason[]`, e.id);
+          });
+        //   form_data.append(`crm_contact_number`, e.id);
         await store_data(form_data);
         // event.target.reset();
     };
@@ -68,6 +74,20 @@ function CrmEntry() {
                                     <label htmlFor="">Date</label>
                                     <div>:</div>
                                     <div><input name="date" type="date" className="form-control" defaultValue={date1} /></div>
+                                </div>
+                                <div className="custom_form_el">
+                                    <label htmlFor="">CRM contact numbers</label>
+                                    <div>:</div>
+                                    <div>
+                                        <select name="crm_contact_number" id="">
+                                            {
+                                                data_store?.crm_user?.crm_contact_nums.map(item => {
+                                                    return <option value={item.id}>{item.details}</option>
+                                                })
+                                            }
+                                        </select>
+                                        {/* <MultiselectDropdown data={reason} selectedData={selectedReason} setSelectedData={setselectedReason}></MultiselectDropdown> */}
+                                    </div>
                                 </div>
                                 <div className="custom_form_el">
                                     <label htmlFor=""> Full Name</label>
@@ -104,6 +124,20 @@ function CrmEntry() {
                                     </div>
                                 </div>
                                 <div className="custom_form_el">
+                                    <label htmlFor="">Feedback Type</label>
+                                    <div>:</div>
+                                    <div>
+                                        <textarea name="feedback_type" type="text" className="form-control" placeholder='Write feedback type'></textarea>
+                                    </div>
+                                </div>
+                                <div className="custom_form_el">
+                                    <label htmlFor="">Contact Notes</label>
+                                    <div>:</div>
+                                    <div>
+                                        <textarea placeholder='Take some notes' name="contact_notes" type="text" className="form-control" ></textarea>
+                                    </div>
+                                </div>
+                                <div className="custom_form_el">
                                     <label htmlFor="">Contact type</label>
                                     <div>:</div>
                                     <div>
@@ -119,13 +153,6 @@ function CrmEntry() {
                                     <label htmlFor="">Group na thakle create hobe</label>
                                     <div>:</div>
                                     <div>
-                                        {/* <select name="customer_group" id="">
-                                            {
-                                                data_store?.crm_user?.items.map(item => {
-                                                    return <option value={item.title}>{item.title}</option>
-                                                })
-                                            }
-                                        </select> */}
                                         <MultiselectDropdown data={data} selectedData={selectedData} setSelectedData={setselectedData}></MultiselectDropdown>
                                     </div>
                                 </div>
@@ -133,13 +160,14 @@ function CrmEntry() {
                                     <label htmlFor="">reason na thakle create hobe</label>
                                     <div>:</div>
                                     <div>
-                                        <select name="customer_reason" id="">
+                                        {/* <select name="customer_reason" id="">
                                             {
                                                 data_store?.crm_user?.reasons.map(item => {
                                                     return <option value={item.title}>{item.title}</option>
                                                 })
                                             }
-                                        </select>
+                                        </select> */}
+                                        <MultiselectDropdown data={reason} selectedData={selectedReason} setSelectedData={setselectedReason}></MultiselectDropdown>
                                     </div>
                                 </div>
 
@@ -241,6 +269,13 @@ function CrmEntry() {
                                         }
                                         
                                     </select>
+                                    </div>
+                                </div>
+                                <div className="custom_form_el">
+                                    <label htmlFor="">Task title</label>
+                                    <div>:</div>
+                                    <div>
+                                    <input name='task_title' className='m-3 p-1' type="text" placeholder="task title" />
                                     </div>
                                 </div>
                                 <hr />
