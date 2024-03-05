@@ -198,10 +198,10 @@ function CrmEntry() {
                                     <label htmlFor="">Event Details</label>
                                     <div>:</div>
                                     <div>
-                                        <input className='m-3 p-1' name='customer_event_date' type="date" placeholder="event_date" defaultValue={date1} />
-                                        <input className='m-3 p-1' name='customer_event_type' type="text" placeholder="event_type" />
-                                        <input className='m-3 p-1' name='customer_event_description' type="text" placeholder="event_descrption" />
-                                        <input className='m-3 p-1' name='customer_event_meet_link' type="text" placeholder="meet_link" />
+                                        <input className='m-3 p-1' name='calender_event_date' type="date" placeholder="event_date" defaultValue={date1} />
+                                        <input className='m-3 p-1' name='calender_event_type' type="text" placeholder="event_type" />
+                                        <input className='m-3 p-1' name='calender_event_description' type="text" placeholder="event_descrption" />
+                                        <input className='m-3 p-1' name='calender_event_meet_link' type="text" placeholder="meet_link" />
                                     </div>
                                 </div>
                                 <hr />
