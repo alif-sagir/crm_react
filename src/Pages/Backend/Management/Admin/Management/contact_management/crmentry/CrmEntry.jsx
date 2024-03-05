@@ -237,9 +237,9 @@ function CrmEntry() {
                                     <label htmlFor="">related images</label>
                                     <div>:</div>
                                     <div>
-                                        <input className='m-3 p-1' type="text" placeholder="doc 1" />
-                                        <input className='m-3 p-1' type="text" placeholder="doc 2" />
-                                        <input className='m-3 p-1' type="text" placeholder="imag3 3" />
+                                        <input name='docu_1' className='m-3 p-1' type="file" accept="image/*,application/pdf" placeholder="docu_1" />
+                                        <input name='docu_2' className='m-3 p-1' type="text" placeholder="doc 2" />
+                                        <input name='docu_3' className='m-3 p-1' type="text" placeholder="imag3 3" />
                                     </div>
                                 </div>
                                 <hr />
