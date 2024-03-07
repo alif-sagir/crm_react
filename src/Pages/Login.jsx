@@ -22,29 +22,20 @@ function Login() {
                 // return;
 
                 if (res?.data?.data?.role === 'employee') {
-                    console.log('role', 1);
-                    // window.toaster( "success");
-                    // return location.href = "#/dashboard";
                     return navigate("/dashboard");
 
                 }
-                // if (res?.data?.title == 'RajiburRahman') {
-                //     window.toaster( "success");
-                //     return location.href = "/dashboard";
-
-                // }
                 else{
-                    // return location.href = "/home";
+                    return navigate("/dashboard/crmentry");
                 }
 
                 console.log(res);
                 console.log(res.data.access_token);
             })
             .catch(err => {
-                // let { code, data } = err.response.data;
-                // window.toaster(code, "error");
-                // console.log(data);
-                // console.log(err);
+                let { code, data } = err.response.data;
+                console.log(data);
+                console.log(err);
                 // var parentDiv = document.getElementById('email_input');
                 // parentDiv.insertAdjacentHTML('afterend', `<Div class="form_error text-danger">${err?.response?.data?.code}</Div>`)
             })
