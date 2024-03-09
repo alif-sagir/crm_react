@@ -18,10 +18,13 @@ function Login() {
             .then(res => {
                 // {{-- localStorage.token = res.data.access_token; --}}
                 console.log('from form submitddd',res.data?.data?.role);
+                console.log('token',res.data?.token);
+                let token = res.data?.token;
 
                 // return;
 
                 if (res?.data?.data?.role === 'employee') {
+                    localStorage.setItem('token', token)
                     return navigate("/dashboard");
 
                 }
