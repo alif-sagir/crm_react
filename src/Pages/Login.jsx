@@ -12,9 +12,17 @@ function Login() {
         //     email:event.target.email.value,
         //     password:event.target.email.value,
         // }
-    
-        // console.log('name value', form);
-        axios.post("api/login-submit", new FormData(event.currentTarget))
+        
+        let token = localStorage.getItem('token');
+        console.log('token value', token);
+
+        const config = {
+            headers: {
+              'Authorization': `Bearer ${token}`,
+            }
+          };
+
+        axios.post("api/login-submit", new FormData(event.currentTarget), config)
             .then(res => {
                 // {{-- localStorage.token = res.data.access_token; --}}
                 console.log('from form submitddd',res.data?.data?.role);

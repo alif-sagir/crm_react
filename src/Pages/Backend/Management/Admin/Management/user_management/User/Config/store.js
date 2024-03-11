@@ -26,12 +26,12 @@ export const async_actions = {
             const response = await axios.get(url, {
                 params: {
                     ...qparams
-                }
+                },
             });
             return response.data;
         }
     ),
-    
+
     // store data
     [`store_${store_prefix}`]: createAsyncThunk(
         `user/store_${store_prefix}`,
@@ -47,7 +47,7 @@ export const async_actions = {
             }
         }
     ),
-    
+
     // edit data or updated data
     [`edit_${store_prefix}`]: createAsyncThunk(
         `user/edit_${store_prefix}`,
@@ -89,14 +89,14 @@ export const async_actions = {
     ),
 
 
-     // copy ...
+    // copy ...
     // delete data
     [`delete_data`]: createAsyncThunk(
         `${store_prefix}/delete_data`,
         async (id, thunkAPI) => {
             // console.log('from user delete id',id);
             try {
-                const response = await axios.post(`/${api_prefix}/delete`, {id} );
+                const response = await axios.post(`/${api_prefix}/delete`, { id });
                 thunkAPI.dispatch(async_actions.fetch_all_data());
                 // console.log('response from deltee', response);
                 return response;
@@ -127,9 +127,9 @@ const storeSlice = createSlice({
     name: `${store_prefix}`,
     initialState: {
         data: {},
-       
+
         singleData: {},
- 
+
         page_limit: 10,
         search_key: '',
     },
@@ -152,7 +152,7 @@ const storeSlice = createSlice({
                 // console.log('payload data', payload.data);
                 state[`singleData`] = payload.data;
             })
-  
+
     },
 })
 

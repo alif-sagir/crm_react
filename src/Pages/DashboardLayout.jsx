@@ -1,8 +1,37 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Header from './Header';
 import Sidebar from './Sidebar';
 import Main_content_page from './Main_content_page';
+import axios from 'axios';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 function Layout() {
+    const navigate = useNavigate();
+    useEffect(() => {
+        let token = localStorage.getItem('token');
+        if (token) {
+            axios.interceptors.request.use(
+                config => {
+                    config.headers['Authorization'] = `Bearer ${token}`;
+                    return config;
+                }
+            );
+            axios.interceptors.response.use(function (response) {
+                return response;
+            }, function (error) {
+                if (error.response.status == 401) {
+                    localStorage.removeItem('token');
+                    // window.location.href = "#/login";
+                    return navigate("#/login");
+                }
+                return Promise.reject(error);
+            });
+        } else {
+            // window.location.href = "#/login";
+            return navigate("#/login");
+        }
+    }, [])
 
     return (
         <>
@@ -14,8 +43,8 @@ function Layout() {
                     </div>
 
                     <div className='sidebar_and_contentt'>
-                       <Sidebar/>
-                       <Main_content_page/>
+                        <Sidebar />
+                        <Main_content_page />
                     </div>
                 </div>
 
