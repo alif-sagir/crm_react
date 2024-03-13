@@ -22,9 +22,9 @@ function HomePage() {
                     <li>
                       <Link className='menu_text' to={'/login'}>login</Link>
                     </li>
-                    <li>
+                    {/* <li>
                       <Link className='menu_text' to={'/dashboard'}>dashboard</Link>
-                    </li>
+                    </li> */}
                   </ul>
                 </div>
               </div>

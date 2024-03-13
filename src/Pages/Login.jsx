@@ -25,7 +25,7 @@ function Login() {
         axios.post("api/login-submit", new FormData(event.currentTarget), config)
             .then(res => {
                 // {{-- localStorage.token = res.data.access_token; --}}
-                console.log('from form submitddd',res.data?.data?.role);
+                console.log('from form submitddd',res.data?.data);
                 console.log('token',res.data?.token);
                 let token = res.data?.token;
 
@@ -68,7 +68,7 @@ function Login() {
                             </div>
 
                             {/* form_area_start */}
-                            <form onSubmit={(event) =>loginSubmit(event)} method="POST" action="/login-submit" >
+                            <form onSubmit={(event) =>loginSubmit(event)} method="POST" action="/api/login-submit" >
                                 <div class="input_area">
                                     {/* email area start */}
                                     <div class="icon_and_input_text_area">

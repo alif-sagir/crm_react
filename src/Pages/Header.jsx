@@ -1,7 +1,18 @@
+import axios from 'axios';
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 function Header() {
+    const location = useLocation();
+    const handleLogout = () => {
+        axios.post('/api/logout') 
+            .then(response => {
+                window.localStorage.removeItem('token')
+                window.location.href = `/#/login`
+            })
+            .catch(error => {
+            });
+    };
     return (
         <>
             <header id="page-topbar">
@@ -72,6 +83,9 @@ function Header() {
                         </div>
                         <div>
                             <Link to="/dashboard/crmentry"  className='btn btn-info rounded-pill px-4 m-3 border border-0'>Entry</Link>
+                        </div>
+                        <div>
+                            <button onClick={handleLogout} className='btn btn-info rounded-pill px-4 m-3 border border-0'>Logout</button>
                         </div>
 
                         <div className="dropdown d-inline-block">

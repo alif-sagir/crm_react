@@ -23,13 +23,13 @@ function Layout() {
                 if (error.response.status == 401) {
                     localStorage.removeItem('token');
                     // window.location.href = "#/login";
-                    return navigate("#/login");
+                    return navigate("/login");
                 }
                 return Promise.reject(error);
             });
         } else {
             // window.location.href = "#/login";
-            return navigate("#/login");
+            return navigate("/login");
         }
     }, [])
 

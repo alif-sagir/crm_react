@@ -271,14 +271,14 @@ function CrmEntry() {
                                     </select>
                                     </div>
                                 </div>
-                                <div className="custom_form_el">
+                                {/* <div className="custom_form_el">
                                     <label htmlFor="">Task title</label>
                                     <div>:</div>
                                     <div>
                                     <input name='task_title' className='m-3 p-1' type="text" placeholder="task title" />
                                     </div>
                                 </div>
-                                <hr />
+                                <hr /> */}
 
                                 <div>
                                     <div className='d-flex gap-2 '>
