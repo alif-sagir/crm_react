@@ -1,7 +1,13 @@
 
+import { useState } from 'react';
 import { Link } from 'react-router-dom'
 
 function Sidebar(props) {
+    const [menuOpen, setMenuOpen] = useState(true)
+    const toggleMenubar = () =>{
+        setMenuOpen(!menuOpen)
+    }
+
    let isSidebarOpen = props.isSidebarOpen;
     console.log('sidebar issiedebaropen', props.isSidebarOpen);
     return (
@@ -21,29 +27,15 @@ function Sidebar(props) {
                                         <i className="bx bx-home-circle" />
                                         <span key="t-dashboards">Dashboards</span>
                                     </a>
-                                    {/* <ul className="sub-menu" aria-expanded="false">
-                                        <li>
-
-                                            <Link to="demo1">Demo1</Link>
-                                        </li>
-                                        <li>
-
-                                            <Link to="demo2">Demo2</Link>
-                                        </li>
-                                        <li>
-
-                                            <Link to="demo3">Demo3</Link>
-                                        </li>
-                                    </ul> */}
                                 </li>
 
 
                                 <li>
-                                    <a  className="has-arrow waves-effect">
+                                    <a  onClick={toggleMenubar}  className="has-arrow waves-effect">
                                         <i className="bx bx-user-circle" />
                                         <span key="t-dashboards">User Management</span>
                                     </a>
-                                    <ul className="sub-menu" aria-expanded="false">
+                                    <ul  className={`sub-menu ${menuOpen ? 'openmenu' : 'closemenu'}`}aria-expanded="false">
                                         <li>
 
                                             <Link to="/dashboard/user">User</Link>

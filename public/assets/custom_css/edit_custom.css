@@ -370,3 +370,7 @@ color: white;
  .maincontent{
     margin-left: 0;
  }
+ .openmenu{
+    border: 3px solid red;
+    display: none;
+ }
