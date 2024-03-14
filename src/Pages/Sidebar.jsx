@@ -1,10 +1,12 @@
-import React from 'react'
+
 import { Link } from 'react-router-dom'
 
-function Sidebar() {
+function Sidebar(props) {
+   let isSidebarOpen = props.isSidebarOpen;
+    console.log('sidebar issiedebaropen', props.isSidebarOpen);
     return (
         <>
-            <div className='sidebar'>
+            <div className={`sidebar ${isSidebarOpen ? 'sidebaropen' : 'closeside'}`} >
                 <div className="vertical-menu" style={{ "overflowY": "scroll" }}>
                     <div data-simplebar="" className="h-100">
                         {/*- Sidemenu */}
@@ -37,7 +39,7 @@ function Sidebar() {
 
 
                                 <li>
-                                    <a href="#/" className="has-arrow waves-effect">
+                                    <a  className="has-arrow waves-effect">
                                         <i className="bx bx-user-circle" />
                                         <span key="t-dashboards">User Management</span>
                                     </a>
@@ -67,7 +69,7 @@ function Sidebar() {
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="#/" className="has-arrow waves-effect">
+                                    <a  className="has-arrow waves-effect">
                                         <i className="bx bx-task" />
                                         <span key="t-dashboards">Task</span>
                                     </a>
@@ -92,7 +94,7 @@ function Sidebar() {
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="#/" className="has-arrow waves-effect">
+                                    <a className="has-arrow waves-effect">
                                         <i className="bx bx-file" />
                                         <span key="t-dashboards">Support Ticket</span>
                                     </a>
@@ -103,7 +105,7 @@ function Sidebar() {
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="#/" className="has-arrow waves-effect">
+                                    <a className="has-arrow waves-effect">
                                         <i className="bx bx-file" />
                                         <span key="t-dashboards">Customer</span>
                                     </a>
@@ -139,7 +141,7 @@ function Sidebar() {
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="#/" className="has-arrow waves-effect">
+                                    <a className="has-arrow waves-effect">
                                         <i className="bx bxs-user-detail" />
                                         <span key="t-dashboards">Contact</span>
                                     </a>

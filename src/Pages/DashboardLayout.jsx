@@ -32,6 +32,8 @@ function Layout() {
             return navigate("/login");
         }
     }, [])
+    const [isSidebarOpen, setSidebarOpen] = useState(true)
+    console.log('issidebaropen', isSidebarOpen);
 
     return (
         <>
@@ -39,12 +41,12 @@ function Layout() {
 
                 <div className='full_area'>
                     <div>
-                        <Header />
+                        <Header isSidebarOpen={isSidebarOpen} setSidebarOpen={setSidebarOpen} />
                     </div>
 
                     <div className='sidebar_and_contentt'>
-                        <Sidebar />
-                        <Main_content_page />
+                        <Sidebar isSidebarOpen={isSidebarOpen} setSidebarOpen={setSidebarOpen} />
+                        <Main_content_page isSidebarOpen={isSidebarOpen} />
                     </div>
                 </div>
 

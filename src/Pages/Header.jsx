@@ -1,8 +1,8 @@
 import axios from 'axios';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
-function Header() {
+function Header(props) {
     const location = useLocation();
     const handleLogout = () => {
         axios.post('/api/logout') 
@@ -13,14 +13,21 @@ function Header() {
             .catch(error => {
             });
     };
+    const [isSidebarOpen, setSidebarOpen] = useState(false)
+    const toggleSidebar = () =>{
+        setSidebarOpen(!isSidebarOpen)
+    }
+    useEffect(() => {
+        props.setSidebarOpen(isSidebarOpen)
+    },[isSidebarOpen])
     return (
         <>
             <header id="page-topbar">
                 <div className="navbar-header">
                     <div className="d-flex">
-                        -                {/* LOGO */}
-                        <div className="navbar-brand-box">
-                            <a href="index.html" className="logo logo-dark">
+                        <div className={`navbar-brand-box ${isSidebarOpen ? 'openside' : 'closeside'}`}>
+                            <a >sjlfjdsl</a>
+                            {/* <a href="index.html" className="logo logo-dark">
                                 <span className="logo-sm">
                                     <img src="assets/images/logo.svg" alt="" height={22} />
                                 </span>
@@ -35,14 +42,16 @@ function Header() {
                                 <span className="logo-lg">
                                     <img src="assets/images/logo-light.png" alt="" height={19} />
                                 </span>
-                            </a>
+                            </a> */}
                         </div>
                         <button
+                            onClick={toggleSidebar}
                             type="button"
                             className="btn btn-sm px-3 font-size-16 header-item waves-effect"
                             id="vertical-menu-btn"
                         >
-                            <i className="fa fa-fw fa-bars" />
+                            {isSidebarOpen ? "cc" : "ee"}
+                            {/* <i className="fa fa-fw fa-bars" /> */}
                         </button>
 
                     </div>

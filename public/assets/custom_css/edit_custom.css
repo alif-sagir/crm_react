@@ -356,3 +356,17 @@ color: white;
 .input_message_container form .button_area :hover i{
     color: black;
  }
+ .openside{
+    background-color: red;
+    display: none;
+ }
+ .sidebaropen{
+    border: 3px solid red;
+    display: none;
+ }
+ .page-content{
+    width: 100%;
+ }
+ .maincontent{
+    margin-left: 0;
+ }
