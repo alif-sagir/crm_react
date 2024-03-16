@@ -76,6 +76,11 @@ function CrmEntry() {
                                     <div><input name="date" type="date" className="form-control" defaultValue={date1} /></div>
                                 </div>
                                 <div className="custom_form_el">
+                                    <label htmlFor="">Next contact date</label>
+                                    <div>:</div>
+                                    <div><input name="next_contact_date" type="date" className="form-control" defaultValue={date1} /></div>
+                                </div>
+                                <div className="custom_form_el">
                                     <label htmlFor="">CRM contact numbers</label>
                                     <div>:</div>
                                     <div>
