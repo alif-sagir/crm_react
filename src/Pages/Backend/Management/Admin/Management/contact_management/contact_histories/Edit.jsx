@@ -37,7 +37,7 @@ function Edit() {
   };
   console.log('datra store from edit', data_store);
   if (data_store) {
-    const { contact_number_id, customer_id, date, contact_type, note, id, creator  } = data_store;
+    const { contact_number_id, customer_id, date,next_contact_date, contact_type, note, id, creator  } = data_store;
   return (
     <div className="card list_card">
       <div className="card-header ">
@@ -74,6 +74,11 @@ function Edit() {
                     <label htmlFor="">Date</label>
                     <div>:</div>
                     <div><input name="date" type="date" className="form-control" defaultValue={date} /></div>
+                  </div>
+                  <div className="custom_form_el">
+                    <label htmlFor="">Next Contact Date</label>
+                    <div>:</div>
+                    <div><input name="next_contact_date" type="date" className="form-control" defaultValue={date} /></div>
                   </div>
                   <div className="custom_form_el">
                     <label htmlFor="">Contact type</label>

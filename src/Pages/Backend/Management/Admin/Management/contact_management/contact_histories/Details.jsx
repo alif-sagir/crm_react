@@ -21,7 +21,7 @@ function Details() {
     }, []);
     console.log("data_store", data_store);
     if (data_store) {
-        const { contact_number_id,customer_id,date,contact_type,note,creator } = data_store;
+        const { contact_number_id,customer_id,date,next_contact_date,contact_type,note,creator } = data_store;
         return (
             <div className='card list_card'>
                 <div className="card-header ">
@@ -63,10 +63,17 @@ function Details() {
                                         </div>
                                     </div>
                                     <div className="custom_form_el">
-                                        <div>Data</div>
+                                        <div>Date</div>
                                         <div>:</div>
                                         <div>
                                             {date}
+                                        </div>
+                                    </div>
+                                    <div className="custom_form_el">
+                                        <div>Next Contact Date</div>
+                                        <div>:</div>
+                                        <div>
+                                            {next_contact_date}
                                         </div>
                                     </div>
 

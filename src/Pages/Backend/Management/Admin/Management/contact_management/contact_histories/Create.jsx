@@ -59,6 +59,11 @@ function Create() {
                     <div><input name="date" type="date" className="form-control" /></div>
                   </div>
                   <div className="custom_form_el">
+                    <label htmlFor="">Next Contact Date</label>
+                    <div>:</div>
+                    <div><input name="next_contact_date" type="date" className="form-control" /></div>
+                  </div>
+                  <div className="custom_form_el">
                     <label htmlFor="">Contact type</label>
                     <div>:</div>
                     <div><input name="contact_type" type="text" className="form-control" /></div>
