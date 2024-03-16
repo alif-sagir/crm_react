@@ -37,7 +37,7 @@ function Edit() {
   };
   console.log('datra store from edit', data_store);
   if (data_store) {
-    const { user_name, user_uid, email, password, confirm_password, id  } = data_store;
+    const { user_name,role, user_uid, email, password, confirm_password, id  } = data_store;
     return (
       <div className="card list_card">
         <div className="card-header ">
@@ -70,7 +70,7 @@ function Edit() {
                       <div>:</div>
                       <div><input name="user_name" type="text" className="form-control" defaultValue={user_name} /></div>
                     </div>
-                    <div className="custom_form_el">
+                    {/* <div className="custom_form_el">
                       <label htmlFor="">Password</label>
                       <div>:</div>
                       <div><input name="password" type="text" className="form-control" defaultValue={password} /></div>
@@ -79,7 +79,7 @@ function Edit() {
                       <label htmlFor="">Confirm Password</label>
                       <div>:</div>
                       <div><input name="confirm_password" type="text" className="form-control"  defaultValue={confirm_password} /></div>
-                    </div>
+                    </div> */}
                     <div className="custom_form_el">
                       <label htmlFor="">Email</label>
                       <div>:</div>
@@ -89,10 +89,13 @@ function Edit() {
                       <label htmlFor="">Role</label>
                       <div>:</div>
                       <div>
-                        <div id='role'>
-                          {/* <MultiselectDropdown></MultiselectDropdown> */}
-                        </div>
-                      </div>
+                      <select defaultValue={role}  name="role" id="">
+                        <option value="admin">admin</option>
+                        <option value="moderator">moderator</option>
+                        <option value="employee">employee</option>
+                        <option value="student">student</option>
+                      </select>
+                    </div>
                     </div>
                   </div>
                 </div>

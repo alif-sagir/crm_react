@@ -26,13 +26,13 @@ function Header(props) {
                 <div className="navbar-header">
                     <div className="d-flex">
                         <div className={`navbar-brand-box ${isSidebarOpen ? 'openside' : 'closeside'}`}>
-                            <a >sjlfjdsl</a>
-                            {/* <a href="index.html" className="logo logo-dark">
+                            {/* <a >sjlfjdsl</a> */}
+                            <a href="index.html" className="logo logo-dark">
                                 <span className="logo-sm">
                                     <img src="assets/images/logo.svg" alt="" height={22} />
                                 </span>
                                 <span className="logo-lg">
-                                    <img src="assets/images/logo-dark.png" alt="" height={17} />
+                                    <img src="assets/images/logo-dark.png" alt="" height={19} />
                                 </span>
                             </a>
                             <a href="index.html" className="logo logo-light">
@@ -42,16 +42,16 @@ function Header(props) {
                                 <span className="logo-lg">
                                     <img src="assets/images/logo-light.png" alt="" height={19} />
                                 </span>
-                            </a> */}
+                            </a>
                         </div>
                         <button
                             onClick={toggleSidebar}
                             type="button"
-                            className="btn btn-sm px-3 font-size-16 header-item waves-effect"
+                            className="btn btn-sm px-3 font-size-16 header-item waves-effect border-0"
                             id="vertical-menu-btn"
                         >
-                            {isSidebarOpen ? "cc" : "ee"}
-                            {/* <i className="fa fa-fw fa-bars" /> */}
+                            {/* {isSidebarOpen ? "cc" : <i className="fa fa-fw fa-bars" />} */}
+                            <i className="fa fa-fw fa-bars" />
                         </button>
 
                     </div>
@@ -59,7 +59,7 @@ function Header(props) {
                         <div className="dropdown d-inline-block d-lg-none ms-2">
                             <button
                                 type="button"
-                                className="btn header-item noti-icon waves-effect"
+                                className="btn header-item noti-icon waves-effect border-0"
                                 id="page-header-search-dropdown"
                                 data-bs-toggle="dropdown"
                                 aria-haspopup="true"
@@ -100,7 +100,7 @@ function Header(props) {
                         <div className="dropdown d-inline-block">
                             <button
                                 type="button"
-                                className="btn header-item waves-effect"
+                                className="btn header-item waves-effect border-0"
                                 id="page-header-user-dropdown"
                                 data-bs-toggle="dropdown"
                                 aria-haspopup="true"

@@ -7,11 +7,6 @@ function Login() {
     const loginSubmit = async (event) => {
 
         event.preventDefault();
-        // let name = event.target.email.value;
-        // let form = {
-        //     email:event.target.email.value,
-        //     password:event.target.email.value,
-        // }
         
         let token = localStorage.getItem('token');
         console.log('token value', token);
@@ -47,8 +42,6 @@ function Login() {
                 let { code, data } = err.response.data;
                 console.log(data);
                 console.log(err);
-                // var parentDiv = document.getElementById('email_input');
-                // parentDiv.insertAdjacentHTML('afterend', `<Div class="form_error text-danger">${err?.response?.data?.code}</Div>`)
             })
     }
     return (

@@ -13,7 +13,7 @@ function Create() {
   //   get_roles();
   // }, [])
 
-  
+
   const handleSubmit = async (event) => {
     // let e = event;
     // console.log('some from create submit', event.target.vlaue);
@@ -38,7 +38,7 @@ function Create() {
           </a>
         </div>
       </div>
-      <form onSubmit={(event) =>handleSubmit(event)}>
+      <form onSubmit={(event) => handleSubmit(event)}>
         <div className="card-body">
           <div className="container py-5">
             <div className="row">
@@ -73,9 +73,12 @@ function Create() {
                     <label htmlFor="">Role</label>
                     <div>:</div>
                     <div>
-                      <div id="role">
-                        {/* <MultiselectDropdown data={role_data_store.all_data} selectedData={selectedRole} setSelectedData={setselectedRole} taskOpen={tasklist} setTaskOpen={setTasklist}></MultiselectDropdown> */}
-                      </div>
+                      <select  name="role" id="">
+                        <option value="admin">admin</option>
+                        <option value="moderator">moderator</option>
+                        <option value="employee">employee</option>
+                        <option value="student">student</option>
+                      </select>
                     </div>
                   </div>
                 </div>

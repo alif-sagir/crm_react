@@ -3,9 +3,27 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom'
 
 function Sidebar(props) {
-    const [menuOpen, setMenuOpen] = useState(true)
-    const toggleMenubar = () =>{
-        setMenuOpen(!menuOpen)
+    const [menuOpen1, setMenuOpen1] = useState(true)
+    const [menuOpen2, setMenuOpen2] = useState(true)
+    const [menuOpen3, setMenuOpen3] = useState(true)
+    const [menuOpen4, setMenuOpen4] = useState(true)
+    const [menuOpen5, setMenuOpen5] = useState(true)
+    const toggleMenubar = (num) =>{
+        if(num == 1){
+            setMenuOpen1(!menuOpen1)
+        }
+        if(num == 2){
+            setMenuOpen2(!menuOpen2)
+        }
+        if(num == 3){
+            setMenuOpen3(!menuOpen3)
+        }
+        if(num == 4){
+            setMenuOpen4(!menuOpen4)
+        }
+        if(num == 5){
+            setMenuOpen5(!menuOpen5)
+        }
     }
 
    let isSidebarOpen = props.isSidebarOpen;
@@ -31,11 +49,11 @@ function Sidebar(props) {
 
 
                                 <li>
-                                    <a  onClick={toggleMenubar}  className="has-arrow waves-effect">
+                                    <a  onClick={()=>toggleMenubar(1)}  className="has-arrow waves-effect">
                                         <i className="bx bx-user-circle" />
                                         <span key="t-dashboards">User Management</span>
                                     </a>
-                                    <ul  className={`sub-menu ${menuOpen ? 'openmenu' : 'closemenu'}`}aria-expanded="false">
+                                    <ul  className={`sub-menu ${menuOpen1 ? 'openmenu' : 'closemenu'}`} aria-expanded="false">
                                         <li>
 
                                             <Link to="/dashboard/user">User</Link>
@@ -61,11 +79,11 @@ function Sidebar(props) {
                                     </ul>
                                 </li>
                                 <li>
-                                    <a  className="has-arrow waves-effect">
+                                    <a  onClick={()=>toggleMenubar(2)}  className="has-arrow waves-effect">
                                         <i className="bx bx-task" />
                                         <span key="t-dashboards">Task</span>
                                     </a>
-                                    <ul className="sub-menu" aria-expanded="false">
+                                    <ul className={`sub-menu ${menuOpen2 ? 'openmenu' : 'closemenu'}`} aria-expanded="false">
                                         <li>
                                             <Link to="/dashboard/task">Task</Link>
                                         </li>
@@ -86,22 +104,22 @@ function Sidebar(props) {
                                     </ul>
                                 </li>
                                 <li>
-                                    <a className="has-arrow waves-effect">
+                                    <a onClick={()=>toggleMenubar(3)}  className="has-arrow waves-effect">
                                         <i className="bx bx-file" />
                                         <span key="t-dashboards">Support Ticket</span>
                                     </a>
-                                    <ul className="sub-menu" aria-expanded="false">
+                                    <ul className={`sub-menu ${menuOpen3? 'openmenu' : 'closemenu'}`} aria-expanded="false">
                                         <li>
                                             <Link to="/dashboard/customer-support-ticket">Ticket</Link>
                                         </li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a className="has-arrow waves-effect">
+                                    <a onClick={()=>toggleMenubar(4)}  className="has-arrow waves-effect">
                                         <i className="bx bx-file" />
                                         <span key="t-dashboards">Customer</span>
                                     </a>
-                                    <ul className="sub-menu" aria-expanded="false">
+                                    <ul className={`sub-menu ${menuOpen4 ? 'openmenu' : 'closemenu'}`} aria-expanded="false">
                                         <li>
                                             <Link to="/dashboard/calender-event">Calender event</Link>
                                         </li>
@@ -133,11 +151,11 @@ function Sidebar(props) {
                                     </ul>
                                 </li>
                                 <li>
-                                    <a className="has-arrow waves-effect">
+                                    <a onClick={()=>toggleMenubar(5)}  className="has-arrow waves-effect">
                                         <i className="bx bxs-user-detail" />
                                         <span key="t-dashboards">Contact</span>
                                     </a>
-                                    <ul className="sub-menu" aria-expanded="false">
+                                    <ul className={`sub-menu ${menuOpen5 ? 'openmenu' : 'closemenu'}`} aria-expanded="false">
                                         <li>
                                             <Link to="/dashboard/contact-appointment-reason">Appointment-reason</Link>
                                         </li>

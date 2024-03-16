@@ -64,7 +64,7 @@ function Details() {
                                             {user_name}
                                         </div>
                                     </div>
-                                    <div className="custom_form_el">
+                                    {/* <div className="custom_form_el">
                                         <div>First name</div>
                                         <div>:</div>
                                         <div>
@@ -77,7 +77,7 @@ function Details() {
                                         <div>
                                             {"lastname"}
                                         </div>
-                                    </div>
+                                    </div> */}
 
                                     <div className="custom_form_el">
                                         <div>Email</div>
@@ -87,7 +87,7 @@ function Details() {
                                         </div>
                                     </div>
 
-                                    <div className="custom_form_el">
+                                    {/* <div className="custom_form_el">
                                         <div>Phone number</div>
                                         <div>:</div>
                                         <div>
@@ -101,56 +101,56 @@ function Details() {
                                         <div>
                                             {"designation"}
                                         </div>
-                                    </div>
+                                    </div> */}
 
                                     <div className="custom_form_el">
                                         <div>Role</div>
                                         <div>:</div>
                                         <div>
-                                            {"role"}
+                                            {role}
                                         </div>
                                     </div>
 
-                                    <div className="custom_form_el">
+                                    {/* <div className="custom_form_el">
                                         <div>Date of birth</div>
                                         <div>:</div>
                                         <div>
                                             {"date_of_birth"}
                                         </div>
-                                    </div>
-                                    <div className="custom_form_el">
+                                    </div> */}
+                                    {/* <div className="custom_form_el">
                                         <div>Title</div>
                                         <div>:</div>
                                         <div>
                                             {"title"}
                                         </div>
-                                    </div>
-                                    <div className="custom_form_el">
+                                    </div> */}
+                                    {/* <div className="custom_form_el">
                                         <div>Work</div>
                                         <div>:</div>
                                         <div>
                                             {"Work"}
                                         </div>
-                                    </div>
-                                    <div className="custom_form_el">
+                                    </div> */}
+                                    {/* <div className="custom_form_el">
                                         <div>Department</div>
                                         <div>:</div>
                                         <div>
                                             {"department"}
                                         </div>
-                                    </div>
+                                    </div> */}
                                     <div className="custom_form_el">
                                         <div>Created At</div>
                                         <div>:</div>
                                         <div>
-                                            {"createdAt"}
+                                            {createdAt}
                                         </div>
                                     </div>
                                     <div className="custom_form_el">
                                         <div>Updated At</div>
                                         <div>:</div>
                                         <div>
-                                            {"updatedAt"}
+                                            {updatedAt}
                                         </div>
                                     </div>
                                 </div>
