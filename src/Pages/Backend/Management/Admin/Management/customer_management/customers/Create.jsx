@@ -37,7 +37,7 @@ function Create() {
           </a>
         </div>
       </div>
-      <form onSubmit={(event) =>handleSubmit(event)}>
+      <form onSubmit={(event) => handleSubmit(event)}>
         <div className="card-body">
           <div className="container py-5">
             <div className="row">
@@ -67,6 +67,21 @@ function Create() {
                     <label htmlFor="">Address</label>
                     <div>:</div>
                     <div><input name="address" type="text" className="form-control" /></div>
+                  </div>
+                  <div className="custom_form_el">
+                    <label htmlFor="">Department</label>
+                    <div>:</div>
+                    <div><input name="department" type="text" className="form-control" /></div>
+                  </div>
+                  <div className="custom_form_el">
+                    <label htmlFor="">Admission Date</label>
+                    <div>:</div>
+                    <div><input name="admission_date" type="date" className="form-control" /></div>
+                  </div>
+                  <div className="custom_form_el">
+                    <label htmlFor="">Is Admitted</label>
+                    <div>:</div>
+                    <div><input name="is_admitted" type="number" className="form-control" /></div>
                   </div>
 
                 </div>

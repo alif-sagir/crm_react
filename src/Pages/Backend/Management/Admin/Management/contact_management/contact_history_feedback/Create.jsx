@@ -58,7 +58,18 @@ function Create() {
                   <div className="custom_form_el">
                     <label htmlFor="">Feedback type</label>
                     <div>:</div>
-                    <div><input name="feedback_type" type="text" className="form-control" /></div>
+                    <div>
+                      <select  name="feedback_type" id="">
+                        <option value="agree">agree</option>
+                        <option value="disagree">disagree</option>
+                        <option value="well wisher">well wisher</option>
+                        <option value="runnig student">runnig student</option>
+                        <option value="old student">old student</option>
+                        <option value="wrong number">wrong number</option>
+                        <option value="contact later">contact later</option>
+                        <option value="next batch">next batch</option>
+                      </select>
+                    </div>
                   </div>
                   <div className="custom_form_el">
                     <label htmlFor="">Note</label>

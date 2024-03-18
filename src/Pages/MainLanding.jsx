@@ -164,7 +164,7 @@ function MainLanding() {
                                             <div className="card-body">
                                                 <div className="d-flex">
                                                     <div className="flex-grow-1">
-                                                        <p className="text-muted fw-medium">Orders</p>
+                                                        <p className="text-muted fw-medium">Total Customer</p>
                                                         <h4 className="mb-0">1,235</h4>
                                                     </div>
 
@@ -184,7 +184,7 @@ function MainLanding() {
                                             <div className="card-body">
                                                 <div className="d-flex">
                                                     <div className="flex-grow-1">
-                                                        <p className="text-muted fw-medium">Revenue</p>
+                                                        <p className="text-muted fw-medium">Total Pending Customer</p>
                                                         <h4 className="mb-0">$35, 723</h4>
                                                     </div>
 
@@ -204,7 +204,7 @@ function MainLanding() {
                                             <div className="card-body">
                                                 <div className="d-flex">
                                                     <div className="flex-grow-1">
-                                                        <p className="text-muted fw-medium">Average Price</p>
+                                                        <p className="text-muted fw-medium">Total Interested</p>
                                                         <h4 className="mb-0">$16.2</h4>
                                                     </div>
 

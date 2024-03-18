@@ -37,68 +37,83 @@ function Edit() {
   };
   console.log('datra store from edit', data_store?.customer);
   if (data_store && data_store.customer) {
-    const { full_name, address, email, contact_number, uuid, id  } = data_store?.customer;
-  return (
-    <div className="card list_card">
-      <div className="card-header ">
-        <h2 className="heading">Edit</h2>
-        <div className="btns d-flex gap-2 align-items-center">
-          <a href="#/dashboard/customer" className="btn rounded-pill btn-outline-secondary">
-            {/* <i className="material-symbols-outlined fill">arrow_back</i> */}
-            Back
-          </a>
+    const { full_name, address, email, contact_number, uuid, id,is_admitted, department, admission_date } = data_store?.customer;
+    return (
+      <div className="card list_card">
+        <div className="card-header ">
+          <h2 className="heading">Edit</h2>
+          <div className="btns d-flex gap-2 align-items-center">
+            <a href="#/dashboard/customer" className="btn rounded-pill btn-outline-secondary">
+              {/* <i className="material-symbols-outlined fill">arrow_back</i> */}
+              Back
+            </a>
+          </div>
         </div>
-      </div>
-      <form onSubmit={(event) =>handleSubmit(event)} id='form-data'>
-        <div className="card-body">
-          <div className="container py-5">
-            <div className="row">
-              <div className="col-lg-8">
-                <div className="form-group mb-5">
-                  <div className="custom_form_el">
-                    <label htmlFor="">Id</label>
-                    <div>:</div>
-                    <div><input name="id" type="text" className="form-control" defaultValue={id} /></div>
+        <form onSubmit={(event) => handleSubmit(event)} id='form-data'>
+          <div className="card-body">
+            <div className="container py-5">
+              <div className="row">
+                <div className="col-lg-8">
+                  <div className="form-group mb-5">
+                    <div className="custom_form_el">
+                      <label htmlFor="">Id</label>
+                      <div>:</div>
+                      <div><input name="id" type="text" className="form-control" defaultValue={id} /></div>
+                    </div>
+                    <div className="custom_form_el">
+                      <label htmlFor="">UUId</label>
+                      <div>:</div>
+                      <div><input name="uuid" type="text" className="form-control" defaultValue={uuid} /></div>
+                    </div>
+                    <div className="custom_form_el">
+                      <label htmlFor="">Full name</label>
+                      <div>:</div>
+                      <div><input name="full_name" type="text" className="form-control" defaultValue={full_name} /></div>
+                    </div>
+                    <div className="custom_form_el">
+                      <label htmlFor="">Email</label>
+                      <div>:</div>
+                      <div><input name="email" type="text" className="form-control" defaultValue={email} /></div>
+                    </div>
+                    <div className="custom_form_el">
+                      <label htmlFor="">Contact number</label>
+                      <div>:</div>
+                      <div><input name="contact_number" type="text" className="form-control" defaultValue={contact_number} /></div>
+                    </div>
+                    <div className="custom_form_el">
+                      <label htmlFor="">Address</label>
+                      <div>:</div>
+                      <div><input name="address" type="text" className="form-control" defaultValue={address} /></div>
+                    </div>
+                    <div className="custom_form_el">
+                      <label htmlFor="">Department</label>
+                      <div>:</div>
+                      <div><input name="department" type="text" className="form-control" defaultValue={department} /></div>
+                    </div>
+                    <div className="custom_form_el">
+                      <label htmlFor="">Admission Date</label>
+                      <div>:</div>
+                      <div><input name="admission_date" type="date" className="form-control" defaultValue={admission_date} /></div>
+                    </div>
+                    <div className="custom_form_el">
+                      <label htmlFor="">Is Admitted</label>
+                      <div>:</div>
+                      <div><input name="is_admitted" type="number" className="form-control" defaultValue={is_admitted} /></div>
+                    </div>
+
                   </div>
-                  <div className="custom_form_el">
-                    <label htmlFor="">UUId</label>
-                    <div>:</div>
-                    <div><input name="uuid" type="text" className="form-control" defaultValue={uuid} /></div>
-                  </div>
-                  <div className="custom_form_el">
-                    <label htmlFor="">Full name</label>
-                    <div>:</div>
-                    <div><input name="full_name" type="text" className="form-control" defaultValue={full_name} /></div>
-                  </div>
-                  <div className="custom_form_el">
-                    <label htmlFor="">Email</label>
-                    <div>:</div>
-                    <div><input name="email" type="text" className="form-control" defaultValue={email} /></div>
-                  </div>
-                  <div className="custom_form_el">
-                    <label htmlFor="">Contact number</label>
-                    <div>:</div>
-                    <div><input name="contact_number" type="text" className="form-control" defaultValue={contact_number} /></div>
-                  </div>
-                  <div className="custom_form_el">
-                    <label htmlFor="">Address</label>
-                    <div>:</div>
-                    <div><input name="address" type="text" className="form-control" defaultValue={address} /></div>
-                  </div>
-                  
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div className="card-footer">
-          <button className="btn btn-outline-info" type="submit" value="Create">
-            Submit{" "}
-          </button>
-        </div>
-      </form>
-    </div>
-  )
-}
+          <div className="card-footer">
+            <button className="btn btn-outline-info" type="submit" value="Create">
+              Submit{" "}
+            </button>
+          </div>
+        </form>
+      </div>
+    )
+  }
 }
 export default Edit

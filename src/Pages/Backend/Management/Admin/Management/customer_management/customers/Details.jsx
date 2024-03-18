@@ -21,7 +21,7 @@ function Details() {
     }, []);
     console.log("data_store from customer", data_store);
     if (data_store && data_store.customer) {
-        const { id,full_name,email,contact_number,address } = data_store?.customer;
+        const { id, full_name, email, contact_number, address, department, is_admitted, admission_date } = data_store?.customer;
         return (
             <div className='card list_card'>
                 <div className="card-header ">
@@ -77,41 +77,27 @@ function Details() {
                                         </div>
                                     </div>
                                     <div className="custom_form_el">
-                                        <div>Title</div>
+                                        <div>Department</div>
                                         <div>:</div>
                                         <div>
-                                            {"title"}
+                                            {department}
                                         </div>
                                     </div>
                                     <div className="custom_form_el">
-                                        <div>Customer variant</div>
+                                        <div>Admission date</div>
                                         <div>:</div>
                                         <div>
-                                            {"old"}
+                                            {admission_date}
                                         </div>
                                     </div>
                                     <div className="custom_form_el">
-                                        <div>How much event</div>
+                                        <div>Is admitted</div>
                                         <div>:</div>
                                         <div>
-                                            {"3"}
+                                            {is_admitted}
                                         </div>
                                     </div>
-                                    <div className="custom_form_el">
-                                        <div>Total Appointment</div>
-                                        <div>:</div>
-                                        <div>
-                                            {"3"}
-                                        </div>
-                                    </div>
-                                    <div className="custom_form_el">
-                                        <div>Documents</div>
-                                        <div>:</div>
-                                        <div>
-
-                                            <a href="document.pdf">Documents.pdf</a>
-                                        </div>
-                                    </div>
+                                
                                 </div>
 
                             </div>

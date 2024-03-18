@@ -31,6 +31,22 @@ export const async_actions = {
             return response.data;
         }
     ),
+    
+    // store data
+    [`store_${store_prefix}`]: createAsyncThunk(
+        `user/store_${store_prefix}`,
+        async (form_data, thunkAPI) => {
+            console.log("some form data", form_data);
+            try {
+                const response = await axios.post(`/${api_prefix}/store`, form_data);
+                // thunkAPI.dispatch(storeSlice.actions.my_action())
+                // console.log(response.data);
+                return response;
+            } catch (error) {
+                window.render_alert(error)
+            }
+        }
+    ),
       
     // edit data or updated data
     [`edit_${store_prefix}`]: createAsyncThunk(
@@ -92,6 +108,7 @@ const storeSlice = createSlice({
     name: `${store_prefix}`,
     initialState: {
         data: {},
+        singleData: {},
         page_limit: 10,
         search_key: '',
     },
