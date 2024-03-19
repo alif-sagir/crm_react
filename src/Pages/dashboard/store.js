@@ -8,27 +8,48 @@ var api_prefix = setup.api_prefix;
 
 export const async_actions = {
     // all data
-    [`fetch_all_data`]: createAsyncThunk(
-        `${store_prefix}/fetch_all_data`,
+    // [`fetch_all_data`]: createAsyncThunk(
+    //     `${store_prefix}/fetch_all_data`,
+    //     async (data, thunkAPI) => {
+    //         // console.log('data',data , 'thunkapi', thunkAPI);
+    //         let state = thunkAPI.getState()[store_prefix];
+    //         let qparams = {
+    //             page_limit: state[`page_limit`],
+    //             search_key: state[`search_key`],
+    //             // orderByCol: state[`orderByCol`],
+    //             // orderByAsc: state[`orderByAsc`],
+    //             // show_active_data: state[`show_active_data`],
+    //         }
+
+    //         let url = data?.url ? data.url : `/${store_prefix}`;
+    //         // console.log('url', url);
+    //         const response = await axios.get(url, {
+    //             params: {
+    //                 ...qparams
+    //             },
+    //         });
+    //         return response.data;
+    //     }
+    // ),
+    // all customer
+    [`fetch_all_customer`]: createAsyncThunk(
+        `${store_prefix}/fetch_all_customer`,
         async (data, thunkAPI) => {
             // console.log('data',data , 'thunkapi', thunkAPI);
             let state = thunkAPI.getState()[store_prefix];
-            let qparams = {
-                page_limit: state[`page_limit`],
-                search_key: state[`search_key`],
-                // orderByCol: state[`orderByCol`],
-                // orderByAsc: state[`orderByAsc`],
-                // show_active_data: state[`show_active_data`],
-            }
+            // let qparams = {
+            //     page_limit: state[`page_limit`],
+            //     search_key: state[`search_key`],
+            //     // orderByCol: state[`orderByCol`],
+            //     // orderByAsc: state[`orderByAsc`],
+            //     // show_active_data: state[`show_active_data`],
+            // }
 
-            let url = data?.url ? data.url : `/${store_prefix}`;
-            // console.log('url', url);
-            const response = await axios.get(url, {
-                params: {
-                    ...qparams
-                },
-            });
-            return response.data;
+            let url = data?.url ? data.url : `/${store_prefix}/all-customer`;
+            console.log('url', url);
+            const response = await axios.get(url);
+            console.log('response customer', response);
+            return response.data.count;
         }
     ),
 
@@ -127,6 +148,7 @@ const storeSlice = createSlice({
     name: `${store_prefix}`,
     initialState: {
         data: {},
+        customer: {},
 
         singleData: {},
 
@@ -144,9 +166,12 @@ const storeSlice = createSlice({
 
     extraReducers: (builder) => {
         builder
-            .addCase(async_actions[`fetch_all_data`].fulfilled, (state, { type, payload, meta }) => {
-                // console.log('user payload data', payload);
-                state[`data`] = payload;
+            // .addCase(async_actions[`fetch_all_data`].fulfilled, (state, { type, payload, meta }) => {
+            //     state[`data`] = payload;
+            // })
+            .addCase(async_actions[`fetch_all_customer`].fulfilled, (state, { type, payload, meta }) => {
+                console.log('payload cusotmer', payload);
+                state[`customer`] = payload;
             })
 
             .addCase(async_actions[`details_${store_prefix}`].fulfilled, (state, { type, payload, meta }) => {

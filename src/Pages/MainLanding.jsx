@@ -1,5 +1,8 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react';
+import setup from './dashboard/setup';
+import dataStoreSlice, { async_actions } from './dashboard/store.js';
 
 function MainLanding() {
     useEffect(() => {
@@ -62,6 +65,19 @@ function MainLanding() {
             // document.querySelector('#stacked-column-chart div')?.remove();
         }
     }, [])
+
+    const data_store = useSelector((state) => state['report']);
+    setup.dispatch = useDispatch();
+    setup.set_async(async_actions, dataStoreSlice);
+
+    // copy...
+    const { fetch_all_customer} = setup.actions;
+
+    useEffect(() => {
+        fetch_all_customer();
+        console.log("data stroe from user end", data_store);
+    }, [])
+
 
     return (
         <>
