@@ -81,7 +81,7 @@ function MainLanding() {
         fetch_upcoming_customer();
         // console.log("data stroe from user end", data_store);
     }, [])
-    // console.log('log data_store', data_store);
+    console.log('log data_store', data_store);
     let upcoming = data_store.upcoming_customer;
     // console.log('upcoming ', upcoming);
     // const [aaa, setaaa] = useState([...upcoming])
@@ -532,7 +532,7 @@ function MainLanding() {
                                                                     </td>
                                                                     <td>
                                                                        
-                                                                        <Link to={`/dashboard/crmentry/${32}`}>Details</Link>
+                                                                        <Link to={`/dashboard/crmentry?num=${'01898989889'}`}>Details</Link>
 
                                                                     </td>
                                                                 </tr>

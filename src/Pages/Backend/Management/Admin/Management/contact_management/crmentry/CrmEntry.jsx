@@ -6,6 +6,8 @@ import { useEffect, useState } from 'react';
 import dataStoreSlice, { async_actions } from './Config/store.js';
 import moment from 'moment/moment.js';
 import MultiselectDropdown from './components/Multiselect_dropdown.jsx';
+import { useLocation } from 'react-router-dom';
+
 
 function CrmEntry() {
     const data_store = useSelector((state) => state[setup.prefix]);
@@ -13,9 +15,15 @@ function CrmEntry() {
     setup.set_async(async_actions, dataStoreSlice);
     const { fetch_all_data, fetch_all_user, set_search_key, store_data } = setup.actions;
     const [date1, setDate1] = useState()
-    const [ selectedData, setselectedData ] = useState([])
-    const [ selectedReason, setselectedReason ] = useState([])
+    const [selectedData, setselectedData] = useState([])
+    const [selectedReason, setselectedReason] = useState([])
     // console.log('selected data', selectedData);
+
+    const location = useLocation();
+    const queryParams = new URLSearchParams(location.search);
+    const value = queryParams.get('num');
+
+    console.log("Num:", value);
 
     useEffect(() => {
         fetch_all_user();
@@ -25,7 +33,7 @@ function CrmEntry() {
     }, [])
 
     let data = data_store?.crm_user?.items;
-    let reason =data_store?.crm_user?.reasons;
+    let reason = data_store?.crm_user?.reasons;
     // console.log('data', reason);
 
 
@@ -35,12 +43,12 @@ function CrmEntry() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         let form_data = new FormData(event.target);
-        selectedData.forEach((e,index)=>{
+        selectedData.forEach((e, index) => {
             form_data.append(`customer_group_customer[]`, e.id);
-          });
-        selectedReason.forEach((e,index)=>{
+        });
+        selectedReason.forEach((e, index) => {
             form_data.append(`contact_reason[]`, e.id);
-          });
+        });
         //   form_data.append(`crm_contact_number`, e.id);
         await store_data(form_data);
         // event.target.reset();
@@ -61,6 +69,18 @@ function CrmEntry() {
         set_search_key(event.target.value);
         fetch_all_data();
     }, 500); // 300ms debounce delay
+
+    useEffect(() => {
+        if (value) {
+            // Function to handle search
+            const handleSearch = debounce((value) => {
+                set_search_key(value);
+                fetch_all_data();
+            }, 500);
+            handleSearch(value)
+        }
+    }, [])
+    
 
 
     if (data_store && data_store.crm_user.users) {
@@ -266,14 +286,14 @@ function CrmEntry() {
                                     <label htmlFor="">assignto</label>
                                     <div>:</div>
                                     <div>
-                                    <select name="assigned_to" id="">
-                                        {
-                                            data_store.crm_user.users.map(item => {
-                                                return <option key={item.id} value={item.id}>{item.user_name}</option>
-                                            })
-                                        }
-                                        
-                                    </select>
+                                        <select name="assigned_to" id="">
+                                            {
+                                                data_store.crm_user.users.map(item => {
+                                                    return <option key={item.id} value={item.id}>{item.user_name}</option>
+                                                })
+                                            }
+
+                                        </select>
                                     </div>
                                 </div>
                                 {/* <div className="custom_form_el">
