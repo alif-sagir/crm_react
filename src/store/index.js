@@ -68,7 +68,7 @@ const store = configureStore({
         crm_contact_number: contactNumberSlice.reducer,
         lead: contactLeadsSlice.reducer,
         customer_info: customerInfoSlice.reducer,
-        dashboard: dashboardSlice.reducer,
+        report: dashboardSlice.reducer,
         
     }
 });

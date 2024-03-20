@@ -1548,7 +1548,7 @@ Makes editable any HTML element on the page. Applied as jQuery method.
                     }
                 }, this));
             } else {
-                this.$element.attr('tabindex', -1); //do not stop focus on element when toggled manually
+                this.$element.attr('tabIndex', -1); //do not stop focus on element when toggled manually
             }
             
             //if display is function it's far more convinient to have autotext = always to render correctly on init
@@ -1652,8 +1652,8 @@ Makes editable any HTML element on the page. Applied as jQuery method.
             this.$element.removeClass('editable-disabled');
             this.handleEmpty(this.isEmpty);
             if(this.options.toggle !== 'manual') {
-                if(this.$element.attr('tabindex') === '-1') {    
-                    this.$element.removeAttr('tabindex');                                
+                if(this.$element.attr('tabIndex') === '-1') {    
+                    this.$element.removeAttr('tabIndex');                                
                 }
             }
         },
@@ -1668,7 +1668,7 @@ Makes editable any HTML element on the page. Applied as jQuery method.
             this.$element.addClass('editable-disabled');
             this.handleEmpty(this.isEmpty);
             //do not stop focus on this element
-            this.$element.attr('tabindex', -1);                
+            this.$element.attr('tabIndex', -1);                
         },
         
         /**
@@ -4984,7 +4984,7 @@ Editableform based on Twitter Bootstrap 3
 
 		if (this.o.calendarWeeks)
 			this.picker.find('tfoot th.today')
-						.attr('colspan', function(i, val){
+						.attr('colSpan', function(i, val){
 							return parseInt(val) + 1;
 						});
 
@@ -6108,12 +6108,12 @@ Editableform based on Twitter Bootstrap 3
 		headTemplate: '<thead>'+
 							'<tr>'+
 								'<th class="prev"><i class="icon-arrow-left"/></th>'+
-								'<th colspan="5" class="datepicker-switch"></th>'+
+								'<th colSpan="5" class="datepicker-switch"></th>'+
 								'<th class="next"><i class="icon-arrow-right"/></th>'+
 							'</tr>'+
 						'</thead>',
-		contTemplate: '<tbody><tr><td colspan="7"></td></tr></tbody>',
-		footTemplate: '<tfoot><tr><th colspan="7" class="today"></th></tr><tr><th colspan="7" class="clear"></th></tr></tfoot>'
+		contTemplate: '<tbody><tr><td colSpan="7"></td></tr></tbody>',
+		footTemplate: '<tfoot><tr><th colSpan="7" class="today"></th></tr><tr><th colSpan="7" class="clear"></th></tr></tfoot>'
 	};
 	DPGlobal.template = '<div class="datepicker">'+
 							'<div class="datepicker-days">'+

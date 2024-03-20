@@ -33,7 +33,7 @@ function Layout() {
         }
     }, [])
     const [isSidebarOpen, setSidebarOpen] = useState(true)
-    console.log('issidebaropen', isSidebarOpen);
+    // console.log('issidebaropen', isSidebarOpen);
 
     return (
         <>

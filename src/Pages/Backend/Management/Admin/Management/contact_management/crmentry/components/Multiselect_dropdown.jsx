@@ -15,11 +15,11 @@ const MultiselectDropdown = (props) => {
     //     console.log(taskOpen);
     // }, [props.tasklist]);
 
-    console.log('user ukey', ukey);
+    // console.log('user ukey', ukey);
 
     useEffect(() => {
         setData([...props.data]);
-        console.log(data);
+        // console.log(data);
 
     }, [props.data]);
 
@@ -31,11 +31,11 @@ const MultiselectDropdown = (props) => {
 
     useEffect(() => {
         props.setSelectedData(selectedData)
-        console.log(selectedData);
+        // console.log(selectedData);
     }, [selectedData]);
 
-    console.log(selectedData);
-    console.log(data);
+    // console.log(selectedData);
+    // console.log(data);
     function addItem(item) {
         // console.log(item);
         let newData = selectedData?.find((i) => i.title == item.title);
@@ -61,7 +61,7 @@ const MultiselectDropdown = (props) => {
 
     function handleSearch(event) {
         const value = event.target.value;
-        console.log(value);
+        // console.log(value);
         let filteredData = data.filter((i) => i.title.includes(value));
         // console.log(data);
         searchsetData([...filteredData]);

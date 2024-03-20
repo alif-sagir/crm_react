@@ -27,7 +27,7 @@ function Sidebar(props) {
     }
 
    let isSidebarOpen = props.isSidebarOpen;
-    console.log('sidebar issiedebaropen', props.isSidebarOpen);
+    // console.log('sidebar issiedebaropen', props.isSidebarOpen);
     return (
         <>
             <div className={`sidebar ${isSidebarOpen ? 'sidebaropen' : 'closeside'}`} >

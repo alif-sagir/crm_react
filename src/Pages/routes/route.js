@@ -65,6 +65,10 @@ const router = {
           path: 'crmentry',
           element: <CrmEntry></CrmEntry>
         },
+        {
+          path: 'crmentry/:id',
+          element: <CrmEntry></CrmEntry>
+        },
         user_route,
         user_info_route,
         user_designation_route,

@@ -7,49 +7,56 @@ var store_prefix = setup.prefix;
 var api_prefix = setup.api_prefix;
 
 export const async_actions = {
-    // all data
-    // [`fetch_all_data`]: createAsyncThunk(
-    //     `${store_prefix}/fetch_all_data`,
-    //     async (data, thunkAPI) => {
-    //         // console.log('data',data , 'thunkapi', thunkAPI);
-    //         let state = thunkAPI.getState()[store_prefix];
-    //         let qparams = {
-    //             page_limit: state[`page_limit`],
-    //             search_key: state[`search_key`],
-    //             // orderByCol: state[`orderByCol`],
-    //             // orderByAsc: state[`orderByAsc`],
-    //             // show_active_data: state[`show_active_data`],
-    //         }
-
-    //         let url = data?.url ? data.url : `/${store_prefix}`;
-    //         // console.log('url', url);
-    //         const response = await axios.get(url, {
-    //             params: {
-    //                 ...qparams
-    //             },
-    //         });
-    //         return response.data;
-    //     }
-    // ),
+   
     // all customer
     [`fetch_all_customer`]: createAsyncThunk(
         `${store_prefix}/fetch_all_customer`,
-        async (data, thunkAPI) => {
-            // console.log('data',data , 'thunkapi', thunkAPI);
-            let state = thunkAPI.getState()[store_prefix];
-            // let qparams = {
-            //     page_limit: state[`page_limit`],
-            //     search_key: state[`search_key`],
-            //     // orderByCol: state[`orderByCol`],
-            //     // orderByAsc: state[`orderByAsc`],
-            //     // show_active_data: state[`show_active_data`],
-            // }
+        async (data) => {
 
             let url = data?.url ? data.url : `/${store_prefix}/all-customer`;
-            console.log('url', url);
+            // console.log('url', url);
             const response = await axios.get(url);
-            console.log('response customer', response);
+            // console.log('response customer', response);
             return response.data.count;
+        }
+    ),
+   
+    // pending customer
+    [`fetch_pending_customer`]: createAsyncThunk(
+        `${store_prefix}/fetch_pending_customer`,
+        async (data) => {
+
+            let url = data?.url ? data.url : `/${store_prefix}/pending-customer`;
+            // console.log('url', url);
+            const response = await axios.get(url);
+            // console.log('response pending customer', response);
+            return response.data.count;
+        }
+    ),
+   
+    // interested customer
+    [`fetch_interested_customer`]: createAsyncThunk(
+        `${store_prefix}/fetch_interested_customer`,
+        async (data) => {
+
+            let url = data?.url ? data.url : `/${store_prefix}/interested-customer`;
+            // console.log('url', url);
+            const response = await axios.get(url);
+            // console.log('response interested customer', response);
+            return response.data.count;
+        }
+    ),
+   
+    // upcoming customer
+    [`fetch_upcoming_customer`]: createAsyncThunk(
+        `${store_prefix}/fetch_upcoming_customer`,
+        async (data) => {
+
+            let url = data?.url ? data.url : `/${store_prefix}/upcoming-contact-list`;
+            // console.log('url', url);
+            const response = await axios.get(url);
+            // console.log('response upcoming customer', response);
+            return response.data;
         }
     ),
 
@@ -148,7 +155,10 @@ const storeSlice = createSlice({
     name: `${store_prefix}`,
     initialState: {
         data: {},
-        customer: {},
+        customer: 0,
+        pending_customer: 0,
+        interested_customer: 0,
+        upcoming_customer: {},
 
         singleData: {},
 
@@ -170,8 +180,23 @@ const storeSlice = createSlice({
             //     state[`data`] = payload;
             // })
             .addCase(async_actions[`fetch_all_customer`].fulfilled, (state, { type, payload, meta }) => {
-                console.log('payload cusotmer', payload);
+                // console.log('payload cusotmer', payload);
                 state[`customer`] = payload;
+            })
+
+            .addCase(async_actions[`fetch_pending_customer`].fulfilled, (state, { type, payload, meta }) => {
+                // console.log('payload cusotmer', payload);
+                state[`pending_customer`] = payload;
+            })
+
+            .addCase(async_actions[`fetch_interested_customer`].fulfilled, (state, { type, payload, meta }) => {
+                // console.log('payload cusotmer', payload);
+                state[`interested_customer`] = payload;
+            })
+
+            .addCase(async_actions[`fetch_upcoming_customer`].fulfilled, (state, { type, payload, meta }) => {
+                // console.log('payload cusotmer', payload);
+                state[`upcoming_customer`] = payload;
             })
 
             .addCase(async_actions[`details_${store_prefix}`].fulfilled, (state, { type, payload, meta }) => {

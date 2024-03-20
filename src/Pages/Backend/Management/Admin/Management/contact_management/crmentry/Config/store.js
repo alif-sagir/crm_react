@@ -16,13 +16,13 @@ export const async_actions = {
                 search_key: state[`search_key`],
             }
             let url =`/${setup.route_prefix}`;
-            console.log(url);
+            // console.log(url);
             const response = await axios.get(url, {
                 params: {
                     ...qparams
                 }
             });
-            console.log('response', response.data);
+            // console.log('response', response.data);
             return response.data;
         }
     ),
@@ -31,9 +31,9 @@ export const async_actions = {
         `${store_prefix}/fetch_all_user`,
         async (data, thunkAPI) => {
             let url =`/crm-dependancy`;
-            console.log(url);
+            // console.log(url);
             const response = await axios.get(url);
-            console.log('response', response.data);
+            // console.log('response', response.data);
             return response.data;
         }
     ),
@@ -42,7 +42,7 @@ export const async_actions = {
     [`store_${store_prefix}`]: createAsyncThunk(
         `user/store_${store_prefix}`,
         async (form_data, thunkAPI) => {
-            console.log("some form data", form_data);
+            // console.log("some form data", form_data);
             try {
                 const response = await axios.post(`/customer-info/store`, form_data);
                 // thunkAPI.dispatch(storeSlice.actions.my_action())
@@ -121,7 +121,7 @@ const storeSlice = createSlice({
             })
             .addCase(async_actions[`fetch_all_user`].fulfilled, (state, { type, payload, meta }) => {
                 state[`crm_user`] = payload;
-                console.log('payload', payload);
+                // console.log('payload', payload);
             })
             .addCase(async_actions[`details_${store_prefix}`].fulfilled, (state, { type, payload, meta }) => {
                 // console.log('payload data', payload.data);

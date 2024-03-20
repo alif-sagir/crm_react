@@ -15,7 +15,7 @@ function CrmEntry() {
     const [date1, setDate1] = useState()
     const [ selectedData, setselectedData ] = useState([])
     const [ selectedReason, setselectedReason ] = useState([])
-    console.log('selected data', selectedData);
+    // console.log('selected data', selectedData);
 
     useEffect(() => {
         fetch_all_user();
@@ -26,7 +26,7 @@ function CrmEntry() {
 
     let data = data_store?.crm_user?.items;
     let reason =data_store?.crm_user?.reasons;
-    console.log('data', reason);
+    // console.log('data', reason);
 
 
     let fullName = data_store?.crm_entry_data?.newUser?.full_name
@@ -87,7 +87,7 @@ function CrmEntry() {
                                         <select name="crm_contact_number" id="">
                                             {
                                                 data_store?.crm_user?.crm_contact_nums.map(item => {
-                                                    return <option value={item.id}>{item.details}</option>
+                                                    return <option key={item.id} value={item.id}>{item.details}</option>
                                                 })
                                             }
                                         </select>
@@ -187,7 +187,7 @@ function CrmEntry() {
                                                 <select name={`customer_variants[${item.title}_${item.id}]`} id="">
                                                     {
                                                         data_store?.crm_user?.variant_values.map(item => {
-                                                            return <option value={item.variant_id}>{item.title}</option>
+                                                            return <option key={item.id} value={item.variant_id}>{item.title}</option>
                                                         })
                                                     }
                                                 </select>
@@ -269,7 +269,7 @@ function CrmEntry() {
                                     <select name="assigned_to" id="">
                                         {
                                             data_store.crm_user.users.map(item => {
-                                                return <option value={item.id}>{item.user_name}</option>
+                                                return <option key={item.id} value={item.id}>{item.user_name}</option>
                                             })
                                         }
                                         
