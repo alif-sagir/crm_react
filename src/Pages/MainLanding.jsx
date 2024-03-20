@@ -536,7 +536,7 @@ function MainLanding() {
 
                                                                     </td>
                                                                 </tr>
-                                                        {/* {
+                                                        {
                                                             upcoming.map(item => {
                                                                 return <tr>
                                                                     <td>
@@ -562,12 +562,12 @@ function MainLanding() {
                                                                     </td>
                                                                     <td>
                                                                        
-                                                                        <Link to={`/dashboard/crmentry/${item.id}`}>Details</Link>
+                                                                        <Link to={`/dashboard/crmentry?num=${item.customer_contact_number.details}`}>Details</Link>
 
                                                                     </td>
                                                                 </tr>
                                                             })
-                                                        } */}
+                                                        }
 
                                                     </tbody>
                                                 </table>
