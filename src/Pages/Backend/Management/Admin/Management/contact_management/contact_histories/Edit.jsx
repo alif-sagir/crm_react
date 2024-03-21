@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import dataStoreSlice, { async_actions } from './Config/store.js';
 import setup from "./Config/setup.js";
 import { useParams } from 'react-router-dom';
+import moment from 'moment/moment.js';
 
 function Edit() {
   const { id } = useParams();
@@ -38,6 +39,9 @@ function Edit() {
   console.log('datra store from edit', data_store);
   if (data_store) {
     const { contact_number_id, customer_id, date,next_contact_date, contact_type, note, id, creator  } = data_store;
+    const toDate = moment(date).format('YYYY-MM-DD');
+    const nextDate = moment(next_contact_date).format('YYYY-MM-DD');
+    console.log('formdata', nextDate);
   return (
     <div className="card list_card">
       <div className="card-header ">
@@ -73,12 +77,12 @@ function Edit() {
                   <div className="custom_form_el">
                     <label htmlFor="">Date</label>
                     <div>:</div>
-                    <div><input name="date" type="date" className="form-control" defaultValue={date} /></div>
+                    <div><input name="date" type="date" className="form-control" defaultValue={toDate} /></div>
                   </div>
                   <div className="custom_form_el">
                     <label htmlFor="">Next Contact Date</label>
                     <div>:</div>
-                    <div><input name="next_contact_date" type="date" className="form-control" defaultValue={date} /></div>
+                    <div><input name="next_contact_date" type="date" className="form-control" defaultValue={nextDate} /></div>
                   </div>
                   <div className="custom_form_el">
                     <label htmlFor="">Contact type</label>

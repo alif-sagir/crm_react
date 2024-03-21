@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import setup from './Config/setup';
 import { useEffect, useState } from 'react';
 import dataStoreSlice, { async_actions } from './Config/store';
+import moment from 'moment/moment.js';
 
 function All() {
     const data_store = useSelector((state) => state[setup.prefix]);
@@ -41,7 +42,10 @@ function All() {
                                     Customer Id
                                 </th>
                                 <th className="cursor_n_resize edit_cursor_n_resize">
-                                   Data
+                                   Date
+                                </th>
+                                <th className="cursor_n_resize edit_cursor_n_resize">
+                                   Next date
                                 </th>
                                 <th className="cursor_n_resize edit_cursor_n_resize">
                                     Contact type
@@ -78,7 +82,12 @@ function All() {
 
                                 <td>
                                     <span>
-                                    {item.date}
+                                    {moment(item.date).format('YYYY-MM-DD')}
+                                    </span>
+                                </td>
+                                <td>
+                                    <span>
+                                    {moment(item.next_contact_date).format('YYYY-MM-DD')}
                                     </span>
                                 </td>
                                 <td>

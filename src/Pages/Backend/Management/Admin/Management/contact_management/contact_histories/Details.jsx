@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import dataStoreSlice, { async_actions } from './Config/store.js';
 import setup from './Config/setup.js';
 import { useParams } from 'react-router-dom';
+import moment from 'moment/moment.js';
 
 function Details() {
     const { id } = useParams();
@@ -22,6 +23,10 @@ function Details() {
     console.log("data_store", data_store);
     if (data_store) {
         const { contact_number_id,customer_id,date,next_contact_date,contact_type,note,creator } = data_store;
+        // let nextDate = data_store?.crm_entry_data?.Contact_history?.next_contact_date;
+    const todate = moment(date).format('YYYY-MM-DD');
+    const formattedDate = moment(next_contact_date).format('YYYY-MM-DD');
+    console.log('formdata', formattedDate);
         return (
             <div className='card list_card'>
                 <div className="card-header ">
@@ -66,14 +71,14 @@ function Details() {
                                         <div>Date</div>
                                         <div>:</div>
                                         <div>
-                                            {date}
+                                            {todate}
                                         </div>
                                     </div>
                                     <div className="custom_form_el">
                                         <div>Next Contact Date</div>
                                         <div>:</div>
                                         <div>
-                                            {next_contact_date}
+                                            {formattedDate}
                                         </div>
                                     </div>
 

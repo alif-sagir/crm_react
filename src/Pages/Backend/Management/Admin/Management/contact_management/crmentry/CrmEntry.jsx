@@ -23,7 +23,7 @@ function CrmEntry() {
     const queryParams = new URLSearchParams(location.search);
     const value = queryParams.get('num');
 
-    console.log("Num:", value);
+    // console.log("Num:", value);
 
     useEffect(() => {
         fetch_all_user();
@@ -31,6 +31,7 @@ function CrmEntry() {
     useEffect(() => {
         setDate1(moment().format('YYYY-MM-DD'))
     }, [])
+
 
     let data = data_store?.crm_user?.items;
     let reason = data_store?.crm_user?.reasons;
@@ -80,7 +81,20 @@ function CrmEntry() {
             handleSearch(value)
         }
     }, [])
-    
+
+    const [newFDate, setNewFDate] = useState("")
+
+    let nextDate = data_store?.crm_entry_data?.Contact_history?.next_contact_date;
+    const formattedDate = moment(newFDate).format('YYYY-MM-DD');
+
+
+    useEffect(() => {
+        setNewFDate(data_store?.crm_entry_data?.Contact_history?.next_contact_date)
+    }, [data_store])
+
+    console.log('data form next', newFDate);
+    console.log('data form next', formattedDate);
+
 
 
     if (data_store && data_store.crm_user.users) {
@@ -98,7 +112,7 @@ function CrmEntry() {
                                 <div className="custom_form_el">
                                     <label htmlFor="">Next contact date</label>
                                     <div>:</div>
-                                    <div><input name="next_contact_date" type="date" className="form-control" defaultValue={date1} /></div>
+                                    <div><input name="next_contact_date" type="date" className="form-control" defaultValue={formattedDate} />{formattedDate}</div>
                                 </div>
                                 <div className="custom_form_el">
                                     <label htmlFor="">CRM contact numbers</label>
@@ -152,7 +166,17 @@ function CrmEntry() {
                                     <label htmlFor="">Feedback Type</label>
                                     <div>:</div>
                                     <div>
-                                        <textarea name="feedback_type" type="text" className="form-control" placeholder='Write feedback type'></textarea>
+                                        <select name="feedback_type" id="">
+                                            <option value="agree">agree</option>
+                                            <option value="disagree">disagree</option>
+                                            <option value="well wisher">well wisher</option>
+                                            <option value="runnig student">runnig student</option>
+                                            <option value="old student">old student</option>
+                                            <option value="wrong number">wrong number</option>
+                                            <option value="contact later">contact later</option>
+                                            <option value="next batch">next batch</option>
+
+                                        </select>
                                     </div>
                                 </div>
                                 <div className="custom_form_el">

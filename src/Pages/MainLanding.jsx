@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import setup from './dashboard/setup';
 import dataStoreSlice, { async_actions } from './dashboard/store.js';
 import { Link } from 'react-router-dom';
+import moment from 'moment/moment.js';
 
 function MainLanding() {
     useEffect(() => {
@@ -502,6 +503,7 @@ function MainLanding() {
                                                             <th className="align-middle">Contact type</th>
                                                             <th className="align-middle">Date</th>
                                                             <th className="align-middle">Next Contact Date</th>
+                                                            <th className="align-middle">Contact Number</th>
                                                             <th className="align-middle">Note</th>
                                                             <th className="align-middle">Creator</th>
                                                             <th className="align-middle">View Details</th>
@@ -531,8 +533,11 @@ function MainLanding() {
                                                                         <i className="fab fa-cc-mastercard me-1"></i> {'sgsdgfds'}
                                                                     </td>
                                                                     <td>
+                                                                        <i className="fab fa-cc-mastercard me-1"></i> {'sgsdgfds'}
+                                                                    </td>
+                                                                    <td>
                                                                        
-                                                                        <Link to={`/dashboard/crmentry?num=${'01898989889'}`}>Details</Link>
+                                                                        <Link to={`/dashboard/crmentry?num=${'232444'}`}>Details</Link>
 
                                                                     </td>
                                                                 </tr>
@@ -548,21 +553,25 @@ function MainLanding() {
                                                                     <td><a href="javascript: void(0);" className="text-body fw-bold">{item.id}</a> </td>
                                                                     <td>{item.contact_type}</td>
                                                                     <td>
-                                                                        {item.date}
+                                                                        {moment(item.date).format('YYYY-MM-DD')}
                                                                     </td>
                                                                     <td>
-                                                                        {item.next_contact_date}
+                                                                        {moment(item.next_contact_date).format('YYYY-MM-DD')}
+                                                                    </td>
+                                                                    <td>
+                                                                        {item.customer_contact_number?.details}
                                                                     </td>
                                                                     <td>
                                                                        
                                                                         {item.note}
                                                                     </td>
                                                                     <td>
-                                                                        <i className="fab fa-cc-mastercard me-1"></i> {item.creator}
+                                                                        <i className="fab fa-cc-mastercard me-1"></i> {item.creator
+}
                                                                     </td>
                                                                     <td>
                                                                        
-                                                                        <Link to={`/dashboard/crmentry?num=${item.customer_contact_number.details}`}>Details</Link>
+                                                                        <Link to={`/dashboard/crmentry?num=${item.customer_contact_number?.details}`}>Details</Link>
 
                                                                     </td>
                                                                 </tr>
