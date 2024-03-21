@@ -542,7 +542,8 @@ function MainLanding() {
                                                                     </td>
                                                                 </tr>
                                                         {
-                                                            upcoming.map(item => {
+                                                            upcoming?.length &&
+                                                            upcoming?.map(item => {
                                                                 return <tr>
                                                                     <td>
                                                                         <div className="form-check font-size-16">

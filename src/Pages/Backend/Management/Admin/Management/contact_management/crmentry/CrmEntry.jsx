@@ -8,38 +8,50 @@ import moment from 'moment/moment.js';
 import MultiselectDropdown from './components/Multiselect_dropdown.jsx';
 import { useLocation } from 'react-router-dom';
 
+// Debounce function
+const debounce = (func, delay) => {
+    let timer;
+    return function (...args) {
+        const context = this;
+        clearTimeout(timer);
+        timer = setTimeout(() => func.apply(context, args), delay);
+    };
+};
 
 function CrmEntry() {
     const data_store = useSelector((state) => state[setup.prefix]);
     setup.dispatch = useDispatch();
     setup.set_async(async_actions, dataStoreSlice);
     const { fetch_all_data, fetch_all_user, set_search_key, store_data } = setup.actions;
-    const [date1, setDate1] = useState()
-    const [selectedData, setselectedData] = useState([])
-    const [selectedReason, setselectedReason] = useState([])
-    // console.log('selected data', selectedData);
+    const [date1, setDate1] = useState();
+    const [selectedData, setselectedData] = useState([]);
+    const [selectedReason, setselectedReason] = useState([]);
+    const [paramSearchNumber, setParamSearchNumber] = useState("");
+    const [formatted_date, set_formatted_date] = useState('');
+    const [customer_number, set_customer_number] = useState('');
 
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
-    const value = queryParams.get('num');
-
-    // console.log("Num:", value);
 
     useEffect(() => {
         fetch_all_user();
-    }, [])
-    useEffect(() => {
         setDate1(moment().format('YYYY-MM-DD'))
+        setParamSearchNumber(queryParams.get('num'));
     }, [])
 
+    useEffect(() => {
+        const search_data_by_param_number = debounce((value) => {
+            set_search_key(value);
+            fetch_all_data();
+        }, 500);
+        search_data_by_param_number(paramSearchNumber);
+        set_customer_number(paramSearchNumber);
+    }, [paramSearchNumber])
 
-    let data = data_store?.crm_user?.items;
-    let reason = data_store?.crm_user?.reasons;
-    // console.log('data', reason);
-
-
-    let fullName = data_store?.crm_entry_data?.newUser?.full_name
-    let id = data_store?.crm_entry_data?.newUser?.id
+    useEffect(() => {
+        let next_contact_date = data_store?.crm_entry_data?.contact_history?.next_contact_date;
+        set_formatted_date(moment(next_contact_date).format('YYYY-MM-DD'));
+    }, [data_store])
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -55,49 +67,19 @@ function CrmEntry() {
         // event.target.reset();
     };
 
-    // Debounce function
-    const debounce = (func, delay) => {
-        let timer;
-        return function (...args) {
-            const context = this;
-            clearTimeout(timer);
-            timer = setTimeout(() => func.apply(context, args), delay);
-        };
-    };
-
     // Function to handle search
     const handleSearch = debounce((event) => {
         set_search_key(event.target.value);
         fetch_all_data();
     }, 500); // 300ms debounce delay
 
-    useEffect(() => {
-        if (value) {
-            // Function to handle search
-            const handleSearch = debounce((value) => {
-                set_search_key(value);
-                fetch_all_data();
-            }, 500);
-            handleSearch(value)
-        }
-    }, [])
-
-    const [newFDate, setNewFDate] = useState("")
-
-    let nextDate = data_store?.crm_entry_data?.Contact_history?.next_contact_date;
-    const formattedDate = moment(newFDate).format('YYYY-MM-DD');
-
-
-    useEffect(() => {
-        setNewFDate(data_store?.crm_entry_data?.Contact_history?.next_contact_date)
-    }, [data_store])
-
-    console.log('data form next', newFDate);
-    console.log('data form next', formattedDate);
-
-
 
     if (data_store && data_store.crm_user.users) {
+        let data = data_store?.crm_user?.items;
+        let reason = data_store?.crm_user?.reasons;
+
+        let fullName = data_store?.crm_entry_data?.newUser?.full_name
+        let id = data_store?.crm_entry_data?.newUser?.id
         return (
             <>
                 <div className='mt-5'>
@@ -112,7 +94,9 @@ function CrmEntry() {
                                 <div className="custom_form_el">
                                     <label htmlFor="">Next contact date</label>
                                     <div>:</div>
-                                    <div><input name="next_contact_date" type="date" className="form-control" defaultValue={formattedDate} />{formattedDate}</div>
+                                    <div>
+                                        <input onChange={(e) => set_formatted_date(e.target.value)} name="next_contact_date" type="date" className="form-control" Value={formatted_date} />
+                                    </div>
                                 </div>
                                 <div className="custom_form_el">
                                     <label htmlFor="">CRM contact numbers</label>
@@ -148,7 +132,8 @@ function CrmEntry() {
                                         placeholder="Search..."
                                     ></input></div> */}
                                     <div><input name='contact_number'
-                                        onChange={handleSearch}
+                                        onChange={(e)=>(handleSearch(e), set_customer_number(e.target.value))}
+                                        value={customer_number}
                                         type="text"
                                         className="form-control border"
                                         placeholder="Search..."
