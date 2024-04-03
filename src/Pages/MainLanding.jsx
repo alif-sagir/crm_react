@@ -510,37 +510,6 @@ function MainLanding() {
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                    <tr>
-                                                                    <td>
-                                                                        <div className="form-check font-size-16">
-                                                                            <input className="form-check-input" type="checkbox" id="transactionCheck02" />
-                                                                            <label className="form-check-label" for="transactionCheck02"></label>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td><a href="javascript: void(0);" className="text-body fw-bold">{22}</a> </td>
-                                                                    <td>{'dsf'}</td>
-                                                                    <td>
-                                                                        {'sdfs'}
-                                                                    </td>
-                                                                    <td>
-                                                                        {'sdfds'}
-                                                                    </td>
-                                                                    <td>
-                                                                       
-                                                                        {'sdfdsf'}
-                                                                    </td>
-                                                                    <td>
-                                                                        <i className="fab fa-cc-mastercard me-1"></i> {'sgsdgfds'}
-                                                                    </td>
-                                                                    <td>
-                                                                        <i className="fab fa-cc-mastercard me-1"></i> {'sgsdgfds'}
-                                                                    </td>
-                                                                    <td>
-                                                                       
-                                                                        <Link to={`/dashboard/crmentry?num=${'232444'}`}>Details</Link>
-
-                                                                    </td>
-                                                                </tr>
                                                         {
                                                             upcoming?.length &&
                                                             upcoming?.map(item => {
@@ -563,15 +532,15 @@ function MainLanding() {
                                                                         {item.customer_contact_number?.details}
                                                                     </td>
                                                                     <td>
-                                                                       
+
                                                                         {item.note}
                                                                     </td>
                                                                     <td>
                                                                         <i className="fab fa-cc-mastercard me-1"></i> {item.creator
-}
+                                                                        }
                                                                     </td>
                                                                     <td>
-                                                                       
+
                                                                         <Link to={`/dashboard/crmentry?num=${item.customer_contact_number?.details}`}>Details</Link>
 
                                                                     </td>
