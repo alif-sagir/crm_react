@@ -34,28 +34,18 @@ function All() {
                                 <th><input type="checkbox" className="form-check-input" /></th>
 
                                 <th className="cursor_n_resize edit_cursor_n_resize">
-                                    User name
+                                    User
                                 </th>
                                 <th className="cursor_n_resize edit_cursor_n_resize">
-                                    Total task
+                                    Task title
                                 </th>
                                 <th className="cursor_n_resize edit_cursor_n_resize">
-                                    Complite task
+                                    Task description
                                 </th>
                                 <th className="cursor_n_resize edit_cursor_n_resize">
-                                    In Complite task
+                                    Is complete
                                 </th>
 
-
-                                <th className="cursor_n_resize edit_cursor_n_resize">
-                                    Department
-                                </th>
-                                <th className="cursor_n_resize edit_cursor_n_resize">
-                                    Work
-                                </th>
-                                <th className="cursor_n_resize edit_cursor_n_resize">
-                                    Designation
-                                </th>
                                 <th aria-label="actions">Actions</th>
                             </tr>
                         </thead>
@@ -68,34 +58,44 @@ function All() {
 
                                         <td>
                                             <span>
-                                                Alif sagir
+                                                {item?.user?.user_name}
                                             </span>
                                         </td>
                                         <td>
                                             <span>
-                                                70
+                                                {item?.task?.title}
                                             </span>
                                         </td>
                                         <td>
                                             <span>
-                                                50
+                                                {item?.task?.description}
                                             </span>
                                         </td>
                                         <td>
                                             <span>
-                                              {item.is_complete}
+                                                {/* {item?.is_complete == false ? 'incomplete' : 'complete'} */}
+                                                {
+                                                    item.is_complete == 1 ?
+
+                                                        <a className="text-success" href='#' onClick={(event) => { event.preventDefault(); delete_data(item.id) }}>
+
+                                                            complete
+                                                        </a>
+
+                                                        :
+
+                                                        <a className="text-danger" href='#' onClick={(event) => { event.preventDefault(); restore_data(item.id) }}>
+
+                                                            incomplete
+                                                        </a>
+
+                                                }
                                             </span>
                                         </td>
 
-                                        <td>
-                                            <span>It</span>
-                                        </td>
-                                        <td>
-                                            <span>Frontend developer</span>
-                                        </td>
-                                        <td>
-                                            <span>Team leader</span>
-                                        </td>
+
+
+
                                         <td>
                                             <span className='edit_class_submanu_active'><i className="mdi mdi-format-list-bulleted"></i>
                                                 <div className='edit_class_submanu'>
@@ -109,7 +109,7 @@ function All() {
                                                         {/* <li>
                                                             <Link to="/dashboard/task-user/edit">Deactive</Link>
                                                         </li> */}
-                                                            {
+                                                        {
                                                             item.status == 1 ?
                                                                 <li>
                                                                     <a className="" href='#' onClick={(event) => { event.preventDefault(); delete_data(item.id) }}>

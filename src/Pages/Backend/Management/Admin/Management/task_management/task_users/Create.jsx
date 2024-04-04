@@ -1,18 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import setup from './Config/setup.js';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import dataStoreSlice, { async_actions } from './Config/store.js';
 
 function Create() {
+  const data_store = useSelector((state) => state[setup.prefix]);
   setup.dispatch = useDispatch();
   setup.set_async(async_actions, dataStoreSlice);
-  const { store_data } = setup.actions;
+  const { store_data,fetch_all_user } = setup.actions;
 
-  // useEffect(() => {
-  //   get_roles();
-  // }, [])
+  useEffect(() => {
+    fetch_all_user();
+}, [])
 
-  
+console.log("data stor from user info front end", data_store?.user);
+
   const handleSubmit = async (event) => {
     // let e = event;
     // console.log('some from create submit', event.target.vlaue);
@@ -36,7 +38,7 @@ function Create() {
           </a>
         </div>
       </div>
-      <form onSubmit={(event) =>handleSubmit(event)}>
+      <form onSubmit={(event) => handleSubmit(event)}>
         <div className="card-body">
           <div className="container py-5">
             <div className="row">
@@ -44,15 +46,33 @@ function Create() {
                 <div className="form-group mb-5">
 
                   <div className="custom_form_el">
-                    <label htmlFor="">Task Id</label>
+                    <label htmlFor="">Task Title</label>
                     <div>:</div>
-                    <div><input name="task_id" type="text" className="form-control" /></div>
+                    <div><input name="task_title" type="text" className="form-control" /></div>
+                  </div>
+                  <div className="custom_form_el">
+                    <label htmlFor="">Task Description</label>
+                    <div>:</div>
+                    <div><input name="task_description" type="text" className="form-control" /></div>
+                  </div>
+                  <div className="custom_form_el">
+                    <label htmlFor="">End date</label>
+                    <div>:</div>
+                    <div><input name="end_time" type="date" className="form-control" /></div>
                   </div>
 
                   <div className="custom_form_el">
                     <label htmlFor="">User Id</label>
                     <div>:</div>
-                    <div><input name="user_id" type="text" className="form-control" /></div>
+                    <div>
+                      <select name='user_id' id="">
+                        {/* {
+                          data_store?.user?.map(item => {
+                            return <option key={item.id} value={item.id}>{item.user_name}</option>
+                          })
+                        } */}
+                      </select>
+                    </div>
                   </div>
 
                 </div>

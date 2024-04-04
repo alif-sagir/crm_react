@@ -37,16 +37,11 @@ function All() {
                                 <th className="cursor_n_resize edit_cursor_n_resize">
                                     Title
                                 </th>
-                                <th className="cursor_n_resize edit_cursor_n_resize">
-                                    Is complete
-                                </th>
+                              
                                 <th className="cursor_n_resize edit_cursor_n_resize">
                                     End time
                                 </th>
 
-                                <th className="cursor_n_resize edit_cursor_n_resize">
-                                    Is urgent
-                                </th>
                                 <th className="cursor_n_resize edit_cursor_n_resize">
                                     Description
                                 </th>
@@ -66,22 +61,14 @@ function All() {
                                                 {item.title}
                                             </span>
                                         </td>
-                                        <td>
-                                            <span>
-                                                {item.is_complete}
-                                            </span>
-                                        </td>
+                                      
 
                                         <td>
                                             <span>
                                                 {item.end_time}
                                             </span>
                                         </td>
-                                        <td>
-                                            <span>
-                                                {item.is_urgent}
-                                            </span>
-                                        </td>
+                                      
                                         <td>
                                             <span>
                                                 {item.description}
