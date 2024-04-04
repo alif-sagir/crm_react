@@ -93,11 +93,11 @@ function Edit() {
                       <div>:</div>
                       <div>
                         <select name='user_id' id="">
-                          {/* {
-                          data_store2?.user?.map(item => {
+                          {
+                          data_store2?.user?.length &&data_store2?.user?.map(item => {
                             return <option key={item.id} value={item.id}>{item.user_name}</option>
                           })
-                        } */}
+                        }
                           
                         </select>
                       </div>

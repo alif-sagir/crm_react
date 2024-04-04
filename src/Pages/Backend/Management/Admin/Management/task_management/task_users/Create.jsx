@@ -66,11 +66,11 @@ console.log("data stor from user info front end", data_store?.user);
                     <div>:</div>
                     <div>
                       <select name='user_id' id="">
-                        {/* {
-                          data_store?.user?.map(item => {
+                        {
+                         data_store?.user?.length && data_store?.user?.map(item => {
                             return <option key={item.id} value={item.id}>{item.user_name}</option>
                           })
-                        } */}
+                        }
                       </select>
                     </div>
                   </div>
