@@ -45,6 +45,19 @@ export const async_actions = {
             return response.data;
         }
     ),
+    // all variants
+    [`fetch_all_variants`]: createAsyncThunk(
+        `${store_prefix}/fetch_all_variants`,
+        async (data, thunkAPI) => {
+            console.log('store data', data);
+            let state = thunkAPI.getState()[store_prefix];
+           
+
+            let url = data?.url ? data.url : `/task-variant`;
+            const response = await axios.get(url);
+            return response.data;
+        }
+    ),
     
     // store data
     [`store_${store_prefix}`]: createAsyncThunk(
@@ -124,6 +137,7 @@ const storeSlice = createSlice({
     initialState: {
         data: {},
         user: {},
+        variants: {},
         page_limit: 10,
         search_key: '',
     },
@@ -143,6 +157,10 @@ const storeSlice = createSlice({
             })
             .addCase(async_actions[`fetch_all_user`].fulfilled, (state, { type, payload, meta }) => {
                 state[`user`] = payload;
+            })
+            .addCase(async_actions[`fetch_all_variants`].fulfilled, (state, { type, payload, meta }) => {
+                console.log('variants', payload);
+                state[`variants`] = payload;
             })
             .addCase(async_actions[`details_${store_prefix}`].fulfilled, (state, { type, payload, meta }) => {
                 // console.log('payload data', payload.data);
