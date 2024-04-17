@@ -5,7 +5,7 @@ import dataStoreSlice, { async_actions } from './Config/store.js';
 import setup from './Config/setup.js';
 import { useParams } from 'react-router-dom';
 import moment from 'moment/moment.js';
-import Pagination from './Components/all_data_components/Pagination.jsx';
+import PaginationVariant from './Components/all_data_components/PaginationVariant.jsx';
 
 function Details() {
     const { id } = useParams();
@@ -153,7 +153,7 @@ function Details() {
                     </form>
                 </div>
                 <div className='input_message_container m-2'>
-                    <Pagination></Pagination>
+                    <PaginationVariant></PaginationVariant>
                 </div>
             </div>
         )

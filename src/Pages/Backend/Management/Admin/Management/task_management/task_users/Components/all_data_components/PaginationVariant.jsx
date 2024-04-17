@@ -2,21 +2,24 @@ import { useSelector, useDispatch } from 'react-redux'
 import setup from '../../Config/setup';
 import dataStoreSlice, { async_actions } from '../../Config/store';
 import parse from 'html-react-parser';
+import { useParams } from 'react-router-dom';
 
-function Pagination() {
-    const data_store = useSelector((state) => state[setup.prefix]);
-    // setup.set_async(async_actions, dataStoreSlice);
+function PaginationVariant() {
+    const { id } = useParams();
+    // const data_store = useSelector((state) => state[setup.prefix]);
+    const data_store = useSelector((state) => state[setup.prefix]["singleData"])
+    setup.set_async(async_actions, dataStoreSlice);
     setup.dispatch = useDispatch();
-    const { fetch_all_data, set_page_limit } = setup.actions;
-
+    const { fetch_all_data, set_page_limit, get_users } = setup.actions;
+    console.log('iddd', id);
     return (
         <>
             <div className="d-inline-block">
                 <ul className="pagination pagination-sm">
                     {
-                        data_store?.data?.links?.map(item => {
+                        data_store?.links?.map(item => {
                             return <li key={item.label} className="page-item pagination-page-nav">
-                                <a onClick={(e) => { e.preventDefault(); !item.active && fetch_all_data({ url: item.url }) }}
+                                <a onClick={(e) => { e.preventDefault(); !item.active && get_users(id); }}
                                     href={item.url}
                                     className={`page-link ${item.active ? 'active' : ''} `}>
                                     {parse(item.label)}
@@ -28,24 +31,21 @@ function Pagination() {
             </div>
             <div className="show-limit d-inline-block">
                 <span>Limit:</span>
-                <select onChange={(e) => { set_page_limit(e.target.value); fetch_all_data(); }}>
+                <select onChange={(e) => { set_page_limit(e.target.value); get_users(id);; }}>
+                    <option value="1">
+                        1
+                    </option>
+                    <option value="2">
+                        2
+                    </option>
                     <option value="10">
                         10
-                    </option>
-                    <option value="5">
-                        5
                     </option>
                     <option value="25">
                         25
                     </option>
                     <option value="50">
                         50
-                    </option>
-                    <option value="100">
-                        100
-                    </option>
-                    <option value="1">
-                        1
                     </option>
                 </select>
             </div>
@@ -59,4 +59,4 @@ function Pagination() {
     )
 }
 
-export default Pagination
+export default PaginationVariant
