@@ -98,10 +98,16 @@ export const async_actions = {
      [`details_${store_prefix}`]: createAsyncThunk(
         `user/details_${store_prefix}`,
         async (id, thunkAPI) => {
-            // console.log(thunkAPI);
-            // console.log(id);
+            let state = thunkAPI.getState()[store_prefix];
+            let qparams = {
+                page_limit: state[`page_limit`],
+            }
             try {
-                const response = await axios.get(`/${api_prefix}/details/${id}`);
+                const response = await axios.get(`/${api_prefix}/details/${id}`, {
+                    params: {
+                        ...qparams
+                    }
+                });
                 // thunkAPI.dispatch(storeSlice.actions.my_action())
                 console.log(response);
                 return response;
@@ -138,7 +144,7 @@ const storeSlice = createSlice({
         data: {},
         user: {},
         variants: {},
-        page_limit: 10,
+        page_limit: 1,
         search_key: '',
     },
     reducers: {
