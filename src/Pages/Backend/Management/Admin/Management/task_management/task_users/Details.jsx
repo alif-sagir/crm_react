@@ -77,19 +77,19 @@ function Details() {
                                                         <li className=''>
                                                             <span>End date: {moment(item?.task?.end_time).format('MMM Do YY')}</span>
                                                         </li>
-                                                        <li className=''>
-                                                            <ul>
-                                                                <li>
-                                                                    <a href="#">Hellow</a>
-                                                                </li>
-                                                               
-                                                                <li>
-                                                                    <a href="#">hi</a>
-                                                                </li>
+                                                        <li>
+                                                            <ul className='variant'>
+
+                                                                {item?.task?.task_variant_values.length && item?.task?.task_variant_values.map(item2 => {
+                                                                    return <li>
+                                                                        <a href="#">{item2?.title}</a>
+                                                                    </li>
+                                                                })}
                                                             </ul>
+
                                                         </li>
                                                         <li className=''>
-                                                            <img src="/assets/customize_img/img.png" alt="img" />
+                                                            <img src={`http://localhost:8082/${item.user.photo}`} alt="img" />
                                                         </li>
                                                     </ul>
                                                 })

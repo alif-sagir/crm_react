@@ -90,6 +90,10 @@
     align-items: center;
     flex-wrap: wrap;
 }
+.tag-list_and_task-list_area .task-list ul .variant{
+    display: flex;
+    flex-direction: row;
+}
 .tag-list_and_task-list_area .task-list ul .input_and_label {
     display: flex;
     align-items: baseline;
