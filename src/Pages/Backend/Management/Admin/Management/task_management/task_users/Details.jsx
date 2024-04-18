@@ -47,43 +47,11 @@ function Details() {
                     <div className="container py-5">
                         <div className="">
                             <div className="col-lg-12">
-                                {/* [
-                                "ID",
-                                "Title",
-                                "Serial",
-                                "Status",
-                                "CreatedAt",
-                                "UpdatedAt",
-                                "last ID",
-                            ] */}
+
                                 <div className="form-group mb-3">
-
-                                    {/* <div className="custom_form_el">
-                                <div>Task Id</div>
-                                <div>:</div>
-                                <div>
-                                    {"Task Id"}
-                                </div>
-                            </div>
-                            <div className="custom_form_el">
-                                <div>User Id</div>
-                                <div>:</div>
-                                <div>
-                                    {"User_id"}
-                                </div>
-                            </div>
-                            <div className="custom_form_el">
-                                <div>Is complete</div>
-                                <div>:</div>
-                                <div>
-                                    {"Is complete"}
-                                </div>
-                            </div> */}
-
                                     <div className='tag-list_and_task-list_area'>
                                         <div className='tag_list'>
                                             <ul>
-
                                                 {
                                                     variants?.length && variants?.map(item => {
                                                         return <li>
@@ -96,42 +64,37 @@ function Details() {
                                             </ul>
                                         </div>
                                         <div className='task-list'>
-                                        {
-                                                    data_store?.data?.length && data_store?.data?.map(item => {
-                                                        return <ul>
-                                                        <li className='input_and_label'>
+                                            {
+                                                data_store?.data?.length && data_store?.data?.map(item => {
+                                                    return <ul className=''>
+                                                        <li className='input_and_label '>
                                                             <input type="checkbox" id="" name="" value="" />
                                                             <label for="">{item.task.title}</label>
                                                         </li>
-                                                        {/* <li>
-                                                            <span>Created: {moment(item?.task?.end_time).format('YYYY-MM-DD')}</span>
-                                                        </li> */}
-                                                        <li>
-                                                            <span>End date: {moment(item?.task?.end_time).format('YYYY-MM-DD')}</span>
+                                                        <li className=''>
+                                                            <span>Created: {moment(item?.task?.end_time).format('MMM Do YY')}</span>
                                                         </li>
-                                                        <li>
+                                                        <li className=''>
+                                                            <span>End date: {moment(item?.task?.end_time).format('MMM Do YY')}</span>
+                                                        </li>
+                                                        <li className=''>
                                                             <ul>
                                                                 <li>
                                                                     <a href="#">Hellow</a>
                                                                 </li>
+                                                               
                                                                 <li>
-                                                                    <a href="#">low</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">He</a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#">Hellow</a>
+                                                                    <a href="#">hi</a>
                                                                 </li>
                                                             </ul>
                                                         </li>
-                                                        <li>
+                                                        <li className=''>
                                                             <img src="/assets/customize_img/img.png" alt="img" />
                                                         </li>
                                                     </ul>
-                                                    })
-                                                }
-                                           
+                                                })
+                                            }
+
                                         </div>
                                     </div>
 
@@ -141,7 +104,6 @@ function Details() {
                     </div>
                 </div>
                 <div className="card-footer">
-
                 </div>
 
                 <div className='input_message_container'>
