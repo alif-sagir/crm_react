@@ -16,6 +16,7 @@ var setup = {
         set_page_limit: async () => null,
         set_search_key: async () => null,
         store_data: async () => null,
+        // store_title: async () => null,
         get_users: async () => null,
         update_data: async () => null,
         set_data: async () => null,
@@ -31,6 +32,9 @@ setup.set_async = function (async_actions, dataStoreSlice) {
 
     // store user
     setup.actions.store_data = async (form_data) => await setup.dispatch(async_actions[`store_${setup.prefix}`](form_data));
+
+    // // store task title
+    // setup.actions.store_title = async (form_data) => await setup.dispatch(async_actions[`store_${setup.prefix}`](form_data));
     // delete & restore data
     setup.actions.delete_data = async (id) => await setup.dispatch(async_actions[`delete_data`](id))
     setup.actions.restore_data = async (id) => await setup.dispatch(async_actions[`restore_data`](id))

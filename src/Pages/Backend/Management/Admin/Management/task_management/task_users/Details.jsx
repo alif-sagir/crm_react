@@ -13,7 +13,7 @@ function Details() {
     const data_store = useSelector((state) => state[setup.prefix]["singleData"])
     const data_store2 = useSelector((state) => state[setup.prefix])
     setup.set_async(async_actions, dataStoreSlice);
-    const { get_users, set_data, fetch_all_variants } = setup.actions;
+    const { get_users, set_data, fetch_all_variants, store_data } = setup.actions;
     // console.log(id);
     useEffect(() => {
         get_users(id);
@@ -24,6 +24,12 @@ function Details() {
     useEffect(() => {
         fetch_all_variants();
     }, [])
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        let form_data = new FormData(event.target);
+        await store_data(form_data);
+        event.target.reset();
+      };
 
     console.log(data_store, id);
     // console.log(data_store2, id);
@@ -107,9 +113,9 @@ function Details() {
                 </div>
 
                 <div className='input_message_container'>
-                    <form action="#">
-                        <input className='input_area' type="text" placeholder='Message . . .' />
-                        <button className='button_area'>
+                    <form onSubmit={(event) => handleSubmit(event)}>
+                        <input name="task_title" className='input_area' type="text" placeholder='Task title . . .' />
+                        <button className='button_area' type='submit'>
                             <i class="fa-solid fa-paper-plane hhhh"></i>
                         </button>
                     </form>
