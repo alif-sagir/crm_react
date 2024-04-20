@@ -54,7 +54,7 @@ function All() {
 
                                         <td>
                                             <span>
-                                            {item.customer_id}
+                                            {item.customer?.full_name}
                                             </span>
                                         </td>
                                         <td>

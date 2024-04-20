@@ -55,12 +55,12 @@ function All() {
                                 <td><input type="checkbox" className="form-check-input" /></td>
                                 <td>
                                     <span >
-                                    {item.customer_group_id}
+                                    {item?.Customer_group?.title}
                                     </span>
                                 </td>
                                 <td>
                                     <span>
-                                    {item.customer_id}
+                                    {item?.customer?.full_name}
                                     </span>
                                 </td>
                                 

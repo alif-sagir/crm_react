@@ -59,17 +59,17 @@ function All() {
 
                                         <td>
                                             <span>
-                                                {item.customer_id}
+                                                {item.customer?.full_name}
                                             </span>
                                         </td>
                                         <td>
                                             <span>
-                                            {item.variant_id}
+                                            {item.customer_variant?.title}
                                             </span>
                                         </td>
                                         <td>
                                             <span>
-                                            {item.variant_value_id}
+                                            {item?.customer_variant_value?.title}
                                             </span>
                                         </td>
 
