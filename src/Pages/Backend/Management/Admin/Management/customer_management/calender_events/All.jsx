@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import setup from './Config/setup';
 import { useEffect, useState } from 'react';
 import dataStoreSlice, { async_actions } from './Config/store';
+import moment from 'moment/moment.js';
 
 function All() {
     const data_store = useSelector((state) => state[setup.prefix]);
@@ -66,12 +67,12 @@ function All() {
 
                                         <td>
                                             <span>
-                                            {item.customer_id}
+                                            {item?.customer?.full_name}
                                             </span>
                                         </td>
                                         <td>
                                             <span>
-                                            {item.event_date}
+                                            {moment(item?.task?.end_time).format('MMM Do YY')}
                                             </span>
                                         </td>
                                         <td>
@@ -90,8 +91,24 @@ function All() {
                                             </span>
                                         </td>
                                         <td>
-                                            <span>
-                                            {item.is_complete}
+                                        <span>
+                                                {/* {item?.is_complete == false ? 'incomplete' : 'complete'} */}
+                                                {
+                                                    item.is_complete == 1 ?
+
+                                                        <a className="text-success" >
+
+                                                            complete
+                                                        </a>
+
+                                                        :
+
+                                                        <a className="text-danger" >
+
+                                                            incomplete
+                                                        </a>
+
+                                                }
                                             </span>
                                         </td>
                                         <td>
@@ -100,9 +117,7 @@ function All() {
                                             </span>
                                         </td>
 
-                                        <td>
-                                            <span>Active</span>
-                                        </td>
+                                       
                                         <td>
                                             <span className='edit_class_submanu_active'><i className="mdi mdi-format-list-bulleted"></i>
                                                 <div className='edit_class_submanu'>

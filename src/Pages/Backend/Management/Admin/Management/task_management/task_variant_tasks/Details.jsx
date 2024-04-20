@@ -22,7 +22,7 @@ function Details() {
 
     console.log(data_store, id);
     if (data_store) {
-        const { task_id,variant_id,task_variant_value_id } = data_store;
+        const { task,task_variant,task_variant_value } = data_store;
   return (
     <div className='card list_card'>
         <div className="card-header ">
@@ -54,21 +54,21 @@ function Details() {
                                 <div>Task Id</div>
                                 <div>:</div>
                                 <div>
-                                    {task_id}
+                                    {task?.title}
                                 </div>
                             </div>
                             <div className="custom_form_el">
                                 <div>Variant Id</div>
                                 <div>:</div>
                                 <div>
-                                    {variant_id}
+                                    {task_variant?.title}
                                 </div>
                             </div>
                             <div className="custom_form_el">
                                 <div>Task variant value id</div>
                                 <div>:</div>
                                 <div>
-                                    {task_variant_value_id}
+                                    {task_variant_value?.title}
                                 </div>
                             </div>
                         </div>

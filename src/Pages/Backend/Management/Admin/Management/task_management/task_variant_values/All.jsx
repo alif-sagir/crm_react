@@ -56,7 +56,7 @@ function All() {
 
                                         <td>
                                             <span>
-                                            {item.task_variant_id}
+                                            {item?.task_variant?.title}
                                             </span>
                                         </td>
                                         <td>

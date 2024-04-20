@@ -37,7 +37,7 @@ function Edit() {
   };
   console.log('datra store from edit', data_store);
   if (data_store) {
-    const { user_name, user_uid, email, password, confirm_password, id  } = data_store;
+    const { task, task_variant, task_variant_value, user_uid, email, password, confirm_password, id  } = data_store;
   return (
     <div className="card list_card">
       <div className="card-header ">
@@ -59,17 +59,17 @@ function Edit() {
                   <div className="custom_form_el">
                     <label htmlFor="">Task Id</label>
                     <div>:</div>
-                    <div><input name="customer_id" type="text" className="form-control" defaultValue={"username"} /></div>
+                    <div><input name="customer_id" type="text" className="form-control" defaultValue={task?.title} /></div>
                   </div>
                   <div className="custom_form_el">
                     <label htmlFor="">Variant Id</label>
                     <div>:</div>
-                    <div><input name="variant_id" type="text" className="form-control" defaultValue={"username"} /></div>
+                    <div><input name="variant_id" type="text" className="form-control" defaultValue={task_variant?.title} /></div>
                   </div>
                   <div className="custom_form_el">
                     <label htmlFor="">Task variant value id</label>
                     <div>:</div>
-                    <div><input name="task_variant_value_id" type="text" className="form-control" defaultValue={"username"} /></div>
+                    <div><input name="task_variant_value_id" type="text" className="form-control" defaultValue={task_variant_value?.title} /></div>
                   </div>
                 </div>
               </div>

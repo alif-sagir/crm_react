@@ -46,20 +46,15 @@ function All() {
                                     Description
                                 </th>
                                 <th className="cursor_n_resize edit_cursor_n_resize">
-                                    Status
-                                </th>
-                                <th className="cursor_n_resize edit_cursor_n_resize">
                                     Priority
                                 </th>
                                 <th className="cursor_n_resize edit_cursor_n_resize">
                                     Is complete
                                 </th>
-                                <th className="cursor_n_resize edit_cursor_n_resize">
-                                    Is complete
-                                </th>
-                                <th className="cursor_n_resize edit_cursor_n_resize">
+                               
+                                {/* <th className="cursor_n_resize edit_cursor_n_resize">
                                     Assigned to
-                                </th>
+                                </th> */}
                                 <th aria-label="actions">Actions</th>
                             </tr>
                         </thead>
@@ -72,7 +67,7 @@ function All() {
 
                                         <td>
                                             <span>
-                                            {item.customer_id}
+                                            {item?.customer?.full_name}
                                             </span>
                                         </td>
                                         <td>
@@ -92,28 +87,37 @@ function All() {
                                         </td>
                                         <td>
                                             <span>
-                                            {item.status}
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <span>
                                             {item.priority}
                                             </span>
                                         </td>
                                         <td>
-                                            <span>
-                                            {item.is_complete}
+                                        <span>
+                                                {/* {item?.is_complete == false ? 'incomplete' : 'complete'} */}
+                                                {
+                                                    item.is_complete == 1 ?
+
+                                                        <a className="text-success" >
+
+                                                            complete
+                                                        </a>
+
+                                                        :
+
+                                                        <a className="text-danger" >
+
+                                                            incomplete
+                                                        </a>
+
+                                                }
                                             </span>
                                         </td>
-                                        <td>
+                                        {/* <td>
                                             <span>
                                             {item.assigned_to}
                                             </span>
-                                        </td>
+                                        </td> */}
 
-                                        <td>
-                                            <span>Active</span>
-                                        </td>
+                                       
                                         <td>
                                             <span className='edit_class_submanu_active'><i className="mdi mdi-format-list-bulleted"></i>
                                                 <div className='edit_class_submanu'>
