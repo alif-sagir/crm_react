@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import setup from './Config/setup';
 import { useEffect, useState } from 'react';
 import dataStoreSlice, { async_actions } from './Config/store';
+import moment from 'moment/moment';
 
 function All() {
     const data_store = useSelector((state) => state[setup.prefix]);
@@ -35,7 +36,7 @@ function All() {
 
 
                                 <th className="cursor_n_resize edit_cursor_n_resize">
-                                    Contact History Id
+                                    Contact History 
                                 </th>
                                 <th className="cursor_n_resize edit_cursor_n_resize">
                                     Data
@@ -61,13 +62,13 @@ function All() {
                                         <td><input type="checkbox" className="form-check-input" /></td>
                                         <td>
                                             <span >
-                                            {item.contact_history_id}
+                                            {item?.contact_historie?.contact_type}
                                             </span>
                                         </td>
 
                                         <td>
                                             <span>
-                                            {item.date}
+                                            {moment(item.date).format('YYYY-MM-DD')}
                                             </span>
                                         </td>
                                         <td>

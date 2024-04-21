@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import setup from './Config/setup';
 import { useEffect, useState } from 'react';
 import dataStoreSlice, { async_actions } from './Config/store';
+import moment from 'moment/moment';
 
 function All() {
     const data_store = useSelector((state) => state[setup.prefix]);
@@ -67,7 +68,7 @@ function All() {
                                         <td><input type="checkbox" className="form-check-input" /></td>
                                         <td>
                                             <span >
-                                            {item.customer_id}
+                                            {item?.customer?.full_name}
                                             </span>
                                         </td>
                                         <td>
@@ -93,7 +94,7 @@ function All() {
                                         </td>
                                         <td>
                                             <span>
-                                            {item.follow_up_date}
+                                            {moment(item.follow_up_to_date).format('YYYY-MM-DD')}
                                             </span>
                                         </td>
                                         <td>

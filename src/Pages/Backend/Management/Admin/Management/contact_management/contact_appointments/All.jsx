@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import setup from './Config/setup';
 import { useEffect, useState } from 'react';
 import dataStoreSlice, { async_actions } from './Config/store';
+import moment from 'moment/moment';
 
 function All() {
     const data_store = useSelector((state) => state[setup.prefix]);
@@ -78,7 +79,7 @@ function All() {
 
                                         <td>
                                             <span>
-                                            {item.date}
+                                            {moment(item.date).format('YYYY-MM-DD')}
                                             </span>
                                         </td>
                                         <td>
