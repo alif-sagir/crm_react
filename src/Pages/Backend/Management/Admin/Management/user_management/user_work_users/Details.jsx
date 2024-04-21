@@ -22,7 +22,7 @@ function Details() {
 
     console.log(data_store, id);
     if (data_store) {
-        const { user_id,work_id,department_id } = data_store;
+        const { user_id,user,user_work,user_work_department } = data_store;
     return (
         <div className='card list_card'>
             <div className="card-header ">
@@ -60,14 +60,14 @@ function Details() {
                                     <div>User name</div>
                                     <div>:</div>
                                     <div>
-                                        {"user name"}
+                                        {user?.user_name}
                                     </div>
                                 </div>
                                 <div className="custom_form_el">
                                     <div>Work Id</div>
                                     <div>:</div>
                                     <div>
-                                        {work_id}
+                                        {user_work?.title}
                                     </div>
                                 </div>
 
@@ -75,7 +75,7 @@ function Details() {
                                     <div>Department Id</div>
                                     <div>:</div>
                                     <div>
-                                        {department_id}
+                                        {user_work_department?.title}
                                     </div>
                                 </div>
                             </div>

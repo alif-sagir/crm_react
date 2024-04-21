@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import dataStoreSlice, { async_actions } from './Config/store.js';
 import setup from './Config/setup.js';
 import { useParams } from 'react-router-dom';
+import moment from 'moment/moment.js';
 
 function Details() {
     const { id } = useParams();
@@ -33,22 +34,14 @@ function Details() {
                             {/* <i className="material-symbols-outlined fill">arrow_back</i> */}
                             Back
                         </a>
-                        {/* {JSON.stringify(data_store)} */}
+                      
                     </div>
                 </div>
                 <div className="card-body">
                     <div className="container py-5">
                         <div className="row">
                             <div className="col-lg-8">
-                                {/* [
-                                    "ID",
-                                    "Title",
-                                    "Serial",
-                                    "Status",
-                                    "CreatedAt",
-                                    "UpdatedAt",
-                                    "last ID",
-                                ] */}
+                            
                                 <div className="form-group mb-3">
                                     <div className="custom_form_el">
                                         <div>Id</div>
@@ -64,20 +57,7 @@ function Details() {
                                             {user_name}
                                         </div>
                                     </div>
-                                    {/* <div className="custom_form_el">
-                                        <div>First name</div>
-                                        <div>:</div>
-                                        <div>
-                                            {"firstname"}
-                                        </div>
-                                    </div>
-                                    <div className="custom_form_el">
-                                        <div>Last name</div>
-                                        <div>:</div>
-                                        <div>
-                                            {"lastname"}
-                                        </div>
-                                    </div> */}
+                                 
 
                                     <div className="custom_form_el">
                                         <div>Email</div>
@@ -87,21 +67,6 @@ function Details() {
                                         </div>
                                     </div>
 
-                                    {/* <div className="custom_form_el">
-                                        <div>Phone number</div>
-                                        <div>:</div>
-                                        <div>
-                                            {"phone_number"}
-                                        </div>
-                                    </div>
-
-                                    <div className="custom_form_el">
-                                        <div>Designation</div>
-                                        <div>:</div>
-                                        <div>
-                                            {"designation"}
-                                        </div>
-                                    </div> */}
 
                                     <div className="custom_form_el">
                                         <div>Role</div>
@@ -111,46 +76,19 @@ function Details() {
                                         </div>
                                     </div>
 
-                                    {/* <div className="custom_form_el">
-                                        <div>Date of birth</div>
-                                        <div>:</div>
-                                        <div>
-                                            {"date_of_birth"}
-                                        </div>
-                                    </div> */}
-                                    {/* <div className="custom_form_el">
-                                        <div>Title</div>
-                                        <div>:</div>
-                                        <div>
-                                            {"title"}
-                                        </div>
-                                    </div> */}
-                                    {/* <div className="custom_form_el">
-                                        <div>Work</div>
-                                        <div>:</div>
-                                        <div>
-                                            {"Work"}
-                                        </div>
-                                    </div> */}
-                                    {/* <div className="custom_form_el">
-                                        <div>Department</div>
-                                        <div>:</div>
-                                        <div>
-                                            {"department"}
-                                        </div>
-                                    </div> */}
+                                   
                                     <div className="custom_form_el">
                                         <div>Created At</div>
                                         <div>:</div>
                                         <div>
-                                            {createdAt}
+                                        {moment(createdAt).format('YYYY-MM-DD')}
                                         </div>
                                     </div>
                                     <div className="custom_form_el">
                                         <div>Updated At</div>
                                         <div>:</div>
                                         <div>
-                                            {updatedAt}
+                                        {moment(updatedAt).format('YYYY-MM-DD')}
                                         </div>
                                     </div>
                                 </div>

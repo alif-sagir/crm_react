@@ -35,9 +35,6 @@ function All() {
 
 
                                 <th className="cursor_n_resize edit_cursor_n_resize">
-                                    User Id
-                                </th>
-                                <th className="cursor_n_resize edit_cursor_n_resize">
                                     Designation
                                 </th>
                                 <th className="cursor_n_resize edit_cursor_n_resize">
@@ -55,11 +52,7 @@ function All() {
                                 data_store?.data && data_store?.data?.data?.map(item => {
                                     return <tr key={item.id}>
                                         <td><input type="checkbox" className="form-check-input" /></td>
-                                        <td>
-                                            <span >
-                                                {item.user_id}
-                                            </span>
-                                        </td>
+                                       
                                         <td>
                                             <span>
                                                 {item.designation}

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import dataStoreSlice, { async_actions } from './Config/store.js';
 import setup from './Config/setup.js';
 import { useParams } from 'react-router-dom';
+import moment, { isMoment } from 'moment/moment.js';
 
 function Details() {
     const { id } = useParams();
@@ -22,7 +23,7 @@ function Details() {
 
 console.log('task',data_store, id);
 if (data_store) {
-    const { title,is_complete,end_time,is_urgent,description } = data_store;
+    const { title,is_complete,end_time,is_urgent,description, status, createdAt, updatedAt } = data_store;
   return (
     <div className='card list_card'>
         <div className="card-header ">
@@ -32,23 +33,21 @@ if (data_store) {
                     {/* <i className="material-symbols-outlined fill">arrow_back</i> */}
                     Back
                 </a>
-                {/* {JSON.stringify(data_store)} */}
             </div>
         </div>
         <div className="card-body">
             <div className="container py-5">
                 <div className="row">
                     <div className="col-lg-8">
-                        {/* [
-                                "ID",
-                                "Title",
-                                "Serial",
-                                "Status",
-                                "CreatedAt",
-                                "UpdatedAt",
-                                "last ID",
-                            ] */}
+                      
                         <div className="form-group mb-3">
+                            <div className="custom_form_el">
+                                <div>ID</div>
+                                <div>:</div>
+                                <div>
+                                    {id}
+                                </div>
+                            </div>
                             <div className="custom_form_el">
                                 <div>Title</div>
                                 <div>:</div>
@@ -56,34 +55,41 @@ if (data_store) {
                                     {title}
                                 </div>
                             </div>
-                            <div className="custom_form_el">
-                                <div>Is complete</div>
-                                <div>:</div>
-                                <div>
-                                    {is_complete}
-                                </div>
-                            </div>
-                            
+                           
                             <div className="custom_form_el">
                                 <div> End time</div>
                                 <div>:</div>
                                 <div>
-                                    {end_time}
+                                {moment(end_time).format('YYYY-MM-DD')}
                                 </div>
                             </div>
                            
-                            <div className="custom_form_el">
-                                <div>Is urgent</div>
-                                <div>:</div>
-                                <div>
-                                    {is_urgent}
-                                </div>
-                            </div>
                             <div className="custom_form_el">
                                 <div>Description</div>
                                 <div>:</div>
                                 <div>
                                     {description}
+                                </div>
+                            </div>
+                            <div className="custom_form_el">
+                                <div>Status</div>
+                                <div>:</div>
+                                <div>
+                                    {status == 1 ? "true" : 'false'}
+                                </div>
+                            </div>
+                            <div className="custom_form_el">
+                                <div>Created at</div>
+                                <div>:</div>
+                                <div>
+                                {moment(createdAt).format('YYYY-MM-DD')}
+                                </div>
+                            </div>
+                            <div className="custom_form_el">
+                                <div>Updated at</div>
+                                <div>:</div>
+                                <div>
+                                {moment(updatedAt).format('YYYY-MM-DD')}
                                 </div>
                             </div>
                         </div>

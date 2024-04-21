@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import dataStoreSlice, { async_actions } from './Config/store.js';
 import setup from "./Config/setup.js";
 import { useParams } from 'react-router-dom';
+import moment from 'moment/moment.js';
 
 function Edit() {
   const { id } = useParams();
@@ -68,7 +69,7 @@ function Edit() {
                   <div className="custom_form_el">
                     <label htmlFor="">End time</label>
                     <div>:</div>
-                    <div><input name="end_time" type="date" className="form-control" defaultValue={end_time} /></div>
+                    <div><input name="end_time" type="date" className="form-control" defaultValue={moment(end_time).format('YYYY-MM-DD')} /></div>
                   </div>
                   <div className="custom_form_el">
                     <label htmlFor="">Description</label>

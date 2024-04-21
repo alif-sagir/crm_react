@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import dataStoreSlice, { async_actions } from './Config/store.js';
 import setup from './Config/setup.js';
 import { useParams } from 'react-router-dom';
+import moment from 'moment/moment.js';
 
 function Details() {
     const { id } = useParams();
@@ -22,7 +23,7 @@ function Details() {
     console.log("data_store", data_store);
   
     if(data_store){
-        const { id, user_name,first_name, last_name, designation, telegram_id,telegram_name,phone_number,date_of_birth,createdAt,updatedAt } = data_store;
+        const { id,user, user_name,first_name, last_name, designation, telegram_id,telegram_name,phone_number,date_of_birth,createdAt,updatedAt } = data_store;
     return (
     <div className='card list_card'>
         <div className="card-header ">
@@ -39,15 +40,7 @@ function Details() {
             <div className="container py-5">
                 <div className="row">
                     <div className="col-lg-8">
-                        {/* [
-                                "ID",
-                                "Title",
-                                "Serial",
-                                "Status",
-                                "CreatedAt",
-                                "UpdatedAt",
-                                "last ID",
-                            ] */}
+                       
                         <div className="form-group mb-3">
                             <div className="custom_form_el">
                                 <div>Id</div>
@@ -60,7 +53,7 @@ function Details() {
                                 <div>User name</div>
                                 <div>:</div>
                                 <div>
-                                    {user_name}
+                                    {user?.user_name}
                                 </div>
                             </div>
                             <div className="custom_form_el">
@@ -97,7 +90,7 @@ function Details() {
                                 <div>Date of birth</div>
                                 <div>:</div>
                                 <div>
-                                    {date_of_birth}
+                                {moment(date_of_birth).format('YYYY-MM-DD')}
                                 </div>
                             </div>
                            

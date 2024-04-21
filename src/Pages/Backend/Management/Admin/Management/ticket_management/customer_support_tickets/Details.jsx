@@ -22,7 +22,7 @@ function Details() {
 
     console.log("data store form ticket",data_store, id);
     if (data_store) {
-        const { customer_id,assigned_to,subject,status,priority,is_complete } = data_store;
+        const { customer_id,customer,assigned_to,description,subject,status,priority,is_complete } = data_store;
     return (
         <div className='card list_card'>
             <div className="card-header ">
@@ -32,26 +32,17 @@ function Details() {
                         {/* <i className="material-symbols-outlined fill">arrow_back</i> */}
                         Back
                     </a>
-                    {/* {JSON.stringify(data_store)} */}
                 </div>
             </div>
             <div className="card-body">
                 <div className="container py-5">
                     <div className="row">
                         <div className="col-lg-8">
-                            {/* [
-                                "ID",
-                                "Title",
-                                "Serial",
-                                "Status",
-                                "CreatedAt",
-                                "UpdatedAt",
-                                "last ID",
-                            ] */}
+                            
                             <div className="form-group mb-3">
 
                                 <div className="custom_form_el">
-                                    <div>Customer uui id</div>
+                                    <div>Customer id</div>
                                     <div>:</div>
                                     <div>
                                         {customer_id}
@@ -61,7 +52,7 @@ function Details() {
                                     <div>Customer name</div>
                                     <div>:</div>
                                     <div>
-                                        {"customer_name"}
+                                        {customer?.full_name}
                                     </div>
                                 </div>
                                 <div className="custom_form_el">
@@ -83,28 +74,28 @@ function Details() {
                                     <div>Description</div>
                                     <div>:</div>
                                     <div>
-                                        {"Description"}
+                                        {description}
                                     </div>
                                 </div>
                                 <div className="custom_form_el">
                                     <div>Email</div>
                                     <div>:</div>
                                     <div>
-                                        {"Email"}
+                                    {customer?.email}
                                     </div>
                                 </div>
                                 <div className="custom_form_el">
                                     <div>Phone number</div>
                                     <div>:</div>
                                     <div>
-                                        {"Phone number"}
+                                    {customer?.contact_number}
                                     </div>
                                 </div>
                                 <div className="custom_form_el">
                                     <div>Address</div>
                                     <div>:</div>
                                     <div>
-                                        {"Address"}
+                                    {customer?.address}
                                     </div>
                                 </div>
 
@@ -112,7 +103,7 @@ function Details() {
                                     <div>Status</div>
                                     <div>:</div>
                                     <div>
-                                        {status}
+                                        {status == 1 ? "true" : "false"}
                                     </div>
                                 </div>
                                 <div className="custom_form_el">
@@ -126,16 +117,10 @@ function Details() {
                                     <div>Is complete</div>
                                     <div>:</div>
                                     <div>
-                                        {is_complete}
+                                        {is_complete == 1 ? "yes" : "no"}
                                     </div>
                                 </div>
-                                {/* <div className="custom_form_el">
-                                    <div>Assigned to</div>
-                                    <div>:</div>
-                                    <div>
-                                        {"is_complete"}
-                                    </div>
-                                </div> */}
+                               
 
                             </div>
 
