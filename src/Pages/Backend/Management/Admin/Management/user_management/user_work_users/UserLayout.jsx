@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom'
 function UserLayout() {
   return (
     <>
-    <h2>This is user work users page</h2>
+    <h2>User work user management </h2>
     <div>
         <Outlet></Outlet>
     </div>

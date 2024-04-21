@@ -31,6 +31,70 @@ export const async_actions = {
             return response.data;
         }
     ),
+    // all user
+    [`fetch_all_user`]: createAsyncThunk(
+        `${store_prefix}/fetch_all_user`,
+        async (data, thunkAPI) => {
+            let state = thunkAPI.getState()[store_prefix];
+            let qparams = {
+                page_limit: state[`page_limit`],
+                // orderByCol: state[`orderByCol`],
+                // orderByAsc: state[`orderByAsc`],
+                // show_active_data: state[`show_active_data`],
+            }
+            if(state[`search_key`].length){
+                qparams['search_key'] = state[`search_key`]
+            }
+
+            let url = data?.url ? data.url : `/user/only`;
+            const response = await axios.get(url, {
+                params: {
+                    ...qparams
+                }
+            });
+            return response.data;
+        }
+    ),
+    // all user work
+    [`fetch_all_user_work`]: createAsyncThunk(
+        `${store_prefix}/fetch_all_user_work`,
+        async (data, thunkAPI) => {
+            let state = thunkAPI.getState()[store_prefix];
+            let qparams = {
+                page_limit: state[`page_limit`],
+                // orderByCol: state[`orderByCol`],
+                // orderByAsc: state[`orderByAsc`],
+                // show_active_data: state[`show_active_data`],
+            }
+            if(state[`search_key`].length){
+                qparams['search_key'] = state[`search_key`]
+            }
+
+            let url = data?.url ? data.url : `/user-work/only`;
+            const response = await axios.get(url);
+            return response.data;
+        }
+    ),
+    // all user work department
+    [`fetch_all_user_work_department`]: createAsyncThunk(
+        `${store_prefix}/fetch_all_user_work_department`,
+        async (data, thunkAPI) => {
+            let state = thunkAPI.getState()[store_prefix];
+            let qparams = {
+                page_limit: state[`page_limit`],
+                // orderByCol: state[`orderByCol`],
+                // orderByAsc: state[`orderByAsc`],
+                // show_active_data: state[`show_active_data`],
+            }
+            if(state[`search_key`].length){
+                qparams['search_key'] = state[`search_key`]
+            }
+
+            let url = data?.url ? data.url : `/user-work-department/only`;
+            const response = await axios.get(url);
+            return response.data;
+        }
+    ),
        
     // store data
     [`store_${store_prefix}`]: createAsyncThunk(
@@ -110,6 +174,9 @@ const storeSlice = createSlice({
     name: `${store_prefix}`,
     initialState: {
         data: {},
+        user: {},
+        user_work: {},
+        user_work_department: {},
         singleData: {},
         page_limit: 10,
         search_key: '',
@@ -127,6 +194,15 @@ const storeSlice = createSlice({
         builder
             .addCase(async_actions[`fetch_all_data`].fulfilled, (state, { type, payload, meta }) => {
                 state[`data`] = payload;
+            })
+            .addCase(async_actions[`fetch_all_user`].fulfilled, (state, { type, payload, meta }) => {
+                state[`user`] = payload;
+            })
+            .addCase(async_actions[`fetch_all_user_work`].fulfilled, (state, { type, payload, meta }) => {
+                state[`user_work`] = payload;
+            })
+            .addCase(async_actions[`fetch_all_user_work_department`].fulfilled, (state, { type, payload, meta }) => {
+                state[`user_work_department`] = payload;
             })
             .addCase(async_actions[`details_${store_prefix}`].fulfilled, (state, { type, payload, meta }) => {
                 // console.log('payload data', payload.data);
