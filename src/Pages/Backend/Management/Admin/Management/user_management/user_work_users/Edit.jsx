@@ -13,7 +13,7 @@ function Edit() {
   const data_store3 = useSelector((state) => state[setup.prefix]["user_work_department"])
   const data_store4 = useSelector((state) => state[setup.prefix]["user"])
   setup.set_async(async_actions, dataStoreSlice);
-  const { get_users, set_data, update_data, fetch_all_user_work,fetch_all_user_work_department, fetch_all_user } = setup.actions;
+  const { get_users, set_data, update_data, fetch_all_user_work, fetch_all_user_work_department, fetch_all_user } = setup.actions;
 
   useEffect(() => {
     get_users(id);
@@ -44,7 +44,7 @@ function Edit() {
 
   };
   console.log('datra store from edit', data_store);
-  if (data_store && data_store2 ) {
+  if (data_store) {
     const { user_id, work_id, department_id, password, confirm_password, id } = data_store;
     return (
       <div className="card list_card">
@@ -63,28 +63,40 @@ function Edit() {
               <div className="row">
                 <div className="col-lg-8">
                   <div className="form-group mb-5">
+                    {/* <div className="custom_form_el">
+                      <label htmlFor="">User Id</label>
+                      <div>:</div>
+                      <div>
+                        {data_store?.user?.user_name}
+                      </div>
+                    </div> */}
+                    <div className="custom_form_el">
+                      <label htmlFor="">Id</label>
+                      <div>:</div>
+                      <div><input hidden name="id" type="text" className="form-control" defaultValue={id} /></div>
+                    </div>
                     <div className="custom_form_el">
                       <label htmlFor="">User Id</label>
                       <div>:</div>
                       <div>
-                        <select defaultValue={data_store?.crm_entry_data?.Contact_history?.contact_type} name="user_id" id="">
+                        <select defaultValue={data_store?.user?.id} name="user_id" id="">
                           {
-                           data_store4.length && data_store4?.map(item => {
-                              return <option value={item.id}>{item.user_name}</option>
+                            data_store4.length && data_store4?.map(item => {
+                              return <option key={item.id} value={item.id}>{item.user_name}</option>
                             })
                           }
                         </select>
                       </div>
                     </div>
-                    
+
                     <div className="custom_form_el">
                       <label htmlFor="">user work</label>
                       <div>:</div>
                       <div>
-                        <select defaultValue={data_store?.crm_entry_data?.Contact_history?.contact_type} name="work_id" id="">
+                        <select defaultValue={data_store?.user_work?.id} name="work_id" id="">
                           {
-                           data_store2.length && data_store2?.map(item => {
-                              return <option value={item.id}>{item.title}</option>
+                            data_store2.length && data_store2?.map(item => {
+                              return <option key={item.id} value={item.id}>{item.title}</option>
                             })
                           }
                         </select>
@@ -94,10 +106,10 @@ function Edit() {
                       <label htmlFor="">Department Id</label>
                       <div>:</div>
                       <div>
-                        <select defaultValue={data_store?.crm_entry_data?.Contact_history?.contact_type} name="work_department_id" id="">
+                        <select defaultValue={data_store?.user_work_department?.id} name="department_id" id="">
                           {
-                           data_store3.length && data_store3?.map(item => {
-                              return <option value={item.id}>{item.title}</option>
+                            data_store3.length && data_store3?.map(item => {
+                              return <option key={item.id} value={item.id}>{item.title}</option>
                             })
                           }
                         </select>
