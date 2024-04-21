@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import dataStoreSlice, { async_actions } from './Config/store.js';
 import setup from './Config/setup.js';
 import { useParams } from 'react-router-dom';
+import moment from 'moment/moment.js';
 
 function Details() {
     const { id } = useParams();
@@ -87,14 +88,14 @@ function Details() {
                                         <div>Admission date</div>
                                         <div>:</div>
                                         <div>
-                                            {admission_date}
+                                        {moment(admission_date).format('YYYY-MM-DD')}
                                         </div>
                                     </div>
                                     <div className="custom_form_el">
                                         <div>Is admitted</div>
                                         <div>:</div>
                                         <div>
-                                            {is_admitted}
+                                            {is_admitted==1 ? 'yes': 'no'}
                                         </div>
                                     </div>
                                 

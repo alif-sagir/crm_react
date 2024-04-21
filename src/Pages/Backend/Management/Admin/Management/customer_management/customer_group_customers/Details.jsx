@@ -39,15 +39,7 @@ function Details() {
                     <div className="container py-5">
                         <div className="row">
                             <div className="col-lg-8">
-                                {/* [
-                                "ID",
-                                "Title",
-                                "Serial",
-                                "Status",
-                                "CreatedAt",
-                                "UpdatedAt",
-                                "last ID",
-                            ] */}
+                              
                                 <div className="form-group mb-3">
                                     <div className="custom_form_el">
                                         <div>Customer group Id</div>

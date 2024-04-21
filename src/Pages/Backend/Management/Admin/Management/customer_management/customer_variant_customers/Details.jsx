@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import dataStoreSlice, { async_actions } from './Config/store.js';
 import setup from './Config/setup.js';
 import { useParams } from 'react-router-dom';
+import moment from 'moment/moment.js';
 
 
 function Details() {
@@ -22,7 +23,7 @@ function Details() {
     }, []);
     console.log("data_store", data_store);
     if (data_store) {
-        const { customer_id,variant_id,variant_value_id } = data_store;
+        const { customer,customer_variant,customer_variant_value, status, updatedAt, createdAt } = data_store;
   return (
     <div className='card list_card'>
         <div className="card-header ">
@@ -39,36 +40,57 @@ function Details() {
             <div className="container py-5">
                 <div className="row">
                     <div className="col-lg-8">
-                        {/* [
-                                "ID",
-                                "Title",
-                                "Serial",
-                                "Status",
-                                "CreatedAt",
-                                "UpdatedAt",
-                                "last ID",
-                            ] */}
+                   
                         <div className="form-group mb-3">
                           
                             <div className="custom_form_el">
-                                <div>Customer Id</div>
+                                <div>ID </div>
                                 <div>:</div>
                                 <div>
-                                    {customer_id}
+                                    {id}
+                                </div>
+                            </div>
+                          
+                            <div className="custom_form_el">
+                                <div>Customer </div>
+                                <div>:</div>
+                                <div>
+                                    {customer?.full_name}
                                 </div>
                             </div>
                             <div className="custom_form_el">
-                                <div>Variant Id</div>
+                                <div>Customer Variant</div>
                                 <div>:</div>
                                 <div>
-                                    {variant_id}
+                                    {customer_variant?.title}
                                 </div>
                             </div>
                             <div className="custom_form_el">
-                                <div>Variant value Id</div>
+                                <div>Customer Variant value</div>
                                 <div>:</div>
                                 <div>
-                                    {variant_value_id}
+                                    {customer_variant_value?.title}
+                                </div>
+                            </div>
+                            <div className="custom_form_el">
+                                <div>Status </div>
+                                <div>:</div>
+                                <div>
+                                    {status == 1 ? "true" : "false"}
+                                </div>
+                            </div>
+                            <div className="custom_form_el">
+                                <div>Created at </div>
+                                <div>:</div>
+                                <div>
+                                {moment(createdAt).format('YYYY-MM-DD')}
+                                </div>
+                            </div>
+                            <div className="custom_form_el">
+                                <div>Updated at </div>
+                                <div>:</div>
+                                <div>
+                                {moment(updatedAt).format('YYYY-MM-DD')}
                                 </div>
                             </div>
                         </div>

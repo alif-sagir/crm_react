@@ -22,7 +22,7 @@ function Details() {
     }, []);
     console.log("data_store", data_store);
     if (data_store) {
-        const { contact_number_id,customer_id,date,next_contact_date,contact_type,note,creator } = data_store;
+        const { crm_contact_number,customer,date,next_contact_date,contact_type,note,creator, status, createdAt, updatedAt } = data_store;
         // let nextDate = data_store?.crm_entry_data?.Contact_history?.next_contact_date;
     const todate = moment(date).format('YYYY-MM-DD');
     const formattedDate = moment(next_contact_date).format('YYYY-MM-DD');
@@ -43,42 +43,41 @@ function Details() {
                     <div className="container py-5">
                         <div className="row">
                             <div className="col-lg-8">
-                                {/* [
-                                "ID",
-                                "Title",
-                                "Serial",
-                                "Status",
-                                "CreatedAt",
-                                "UpdatedAt",
-                                "last ID",
-                            ] */}
+                            
                                 <div className="form-group mb-3">
+                                    <div className="custom_form_el">
+                                        <div>Id</div>
+                                        <div>:</div>
+                                        <div>
+                                            {id}
+                                        </div>
+                                    </div>
                                     <div className="custom_form_el">
                                         <div>Contact Number Id</div>
                                         <div>:</div>
                                         <div>
-                                            {contact_number_id}
+                                            {crm_contact_number?.details}
                                         </div>
                                     </div>
                                     <div className="custom_form_el">
                                         <div>Customer Id</div>
                                         <div>:</div>
                                         <div>
-                                            {customer_id}
+                                            {customer?.full_name}
                                         </div>
                                     </div>
                                     <div className="custom_form_el">
                                         <div>Date</div>
                                         <div>:</div>
                                         <div>
-                                            {todate}
+                                        {moment(date).format('YYYY-MM-DD')}
                                         </div>
                                     </div>
                                     <div className="custom_form_el">
                                         <div>Next Contact Date</div>
                                         <div>:</div>
                                         <div>
-                                            {formattedDate}
+                                        {moment(formattedDate).format('YYYY-MM-DD')}
                                         </div>
                                     </div>
 
@@ -103,6 +102,29 @@ function Details() {
                                             {creator}
                                         </div>
                                     </div>
+                                    <div className="custom_form_el">
+                                    <div>Status</div>
+                                    <div>:</div>
+                                    <div>
+                                        {status == 1 ? "true" : "false"}
+                                    </div>
+                                </div>
+                               
+                                <div className="custom_form_el">
+                                    <div>Created at</div>
+                                    <div>:</div>
+                                    <div>
+                                    {moment(createdAt).format('YYYY-MM-DD')}
+                                    </div>
+                                </div>
+                               
+                                <div className="custom_form_el">
+                                    <div>Updated at</div>
+                                    <div>:</div>
+                                    <div>
+                                    {moment(updatedAt).format('YYYY-MM-DD')}
+                                    </div>
+                                </div>
                                 </div>
 
                             </div>

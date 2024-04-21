@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import dataStoreSlice, { async_actions } from './Config/store.js';
 import setup from './Config/setup.js';
 import { useParams } from 'react-router-dom';
+import moment from 'moment/moment.js';
 
 function Details() {
     const { id } = useParams();
@@ -21,7 +22,7 @@ function Details() {
     }, []);
     console.log("data_store", data_store);
     if (data_store) {
-        const { contact_histories_id,reason_id } = data_store;
+        const { contact_historie,contact_reason,status, createdAt, updatedAt } = data_store;
   return (
     <div className='card list_card'>
         <div className="card-header ">
@@ -38,21 +39,20 @@ function Details() {
             <div className="container py-5">
                 <div className="row">
                     <div className="col-lg-8">
-                        {/* [
-                                "ID",
-                                "Title",
-                                "Serial",
-                                "Status",
-                                "CreatedAt",
-                                "UpdatedAt",
-                                "last ID",
-                            ] */}
+                      
                         <div className="form-group mb-3">
+                            <div className="custom_form_el">
+                                <div>Id</div>
+                                <div>:</div>
+                                <div>
+                                    {id}
+                                </div>
+                            </div>
                             <div className="custom_form_el">
                                 <div>Contact History Id</div>
                                 <div>:</div>
                                 <div>
-                                    {contact_histories_id}
+                                    {contact_historie?.contact_type}
                                 </div>
                             </div>
                            
@@ -60,9 +60,32 @@ function Details() {
                                 <div> Reason id</div>
                                 <div>:</div>
                                 <div>
-                                    {reason_id}
+                                    {contact_reason?.title}
                                 </div>
-                            </div>          
+                            </div>    
+                            <div className="custom_form_el">
+                                    <div>Status</div>
+                                    <div>:</div>
+                                    <div>
+                                        {status == 1 ? "true" : "false"}
+                                    </div>
+                                </div>
+                               
+                                <div className="custom_form_el">
+                                    <div>Created at</div>
+                                    <div>:</div>
+                                    <div>
+                                    {moment(createdAt).format('YYYY-MM-DD')}
+                                    </div>
+                                </div>
+                               
+                                <div className="custom_form_el">
+                                    <div>Updated at</div>
+                                    <div>:</div>
+                                    <div>
+                                    {moment(updatedAt).format('YYYY-MM-DD')}
+                                    </div>
+                                </div>      
                         </div>
 
                     </div>

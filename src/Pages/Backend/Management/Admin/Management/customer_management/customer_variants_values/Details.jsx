@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import dataStoreSlice, { async_actions } from './Config/store.js';
 import setup from './Config/setup.js';
 import { useParams } from 'react-router-dom';
+import moment from 'moment/moment.js';
 
 function Details() {
     const { id } = useParams();
@@ -20,8 +21,8 @@ function Details() {
         };
     }, []);
     console.log(data_store, id);
-    if (data_store && data_store.customer_variant_value) {
-        const { variant_id,title } = data_store.customer_variant_value;
+    if (data_store ) {
+        const {id, status,title, customer_variant, createdAt, updatedAt  } = data_store;
   return (
     <div className='card list_card'>
         <div className="card-header ">
@@ -38,22 +39,21 @@ function Details() {
             <div className="container py-5">
                 <div className="row">
                     <div className="col-lg-8">
-                        {/* [
-                                "ID",
-                                "Title",
-                                "Serial",
-                                "Status",
-                                "CreatedAt",
-                                "UpdatedAt",
-                                "last ID",
-                            ] */}
+                       
                         <div className="form-group mb-3">
 
                             <div className="custom_form_el">
-                                <div>Variant Id</div>
+                                <div> Id</div>
                                 <div>:</div>
                                 <div>
-                                    {variant_id}
+                                    {id}
+                                </div>
+                            </div>
+                            <div className="custom_form_el">
+                                <div>Variant </div>
+                                <div>:</div>
+                                <div>
+                                    {customer_variant?.title}
                                 </div>
                             </div>
                             <div className="custom_form_el">
@@ -61,6 +61,27 @@ function Details() {
                                 <div>:</div>
                                 <div>
                                     {title}
+                                </div>
+                            </div>
+                            <div className="custom_form_el">
+                                <div>Status</div>
+                                <div>:</div>
+                                <div>
+                                    {status == 1 ? "true" : "false"}
+                                </div>
+                            </div>
+                            <div className="custom_form_el">
+                                <div>Created AT</div>
+                                <div>:</div>
+                                <div>
+                                {moment(createdAt).format('YYYY-MM-DD')}
+                                </div>
+                            </div>
+                            <div className="custom_form_el">
+                                <div>Updated At</div>
+                                <div>:</div>
+                                <div>
+                                {moment(createdAt).format('YYYY-MM-DD')}
                                 </div>
                             </div>
                         </div>
