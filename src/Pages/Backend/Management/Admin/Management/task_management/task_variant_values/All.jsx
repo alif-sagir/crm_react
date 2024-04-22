@@ -39,7 +39,7 @@ function All() {
                                 <th className="cursor_n_resize edit_cursor_n_resize">
                                     Title
                                 </th>
-                                
+
 
                                 <th className="cursor_n_resize edit_cursor_n_resize">
                                     Status
@@ -56,12 +56,12 @@ function All() {
 
                                         <td>
                                             <span>
-                                            {item?.task_variant?.title}
+                                                {item?.task_variant?.title}
                                             </span>
                                         </td>
                                         <td>
                                             <span>
-                                             
+
                                                 {item.title}
                                             </span>
                                         </td>
@@ -83,7 +83,7 @@ function All() {
                                                             <Link to="/dashboard/task-variant-value/edit">Deactive</Link>
                                                         </li> */}
 
-{
+                                                        {
                                                             item.status == 1 ?
                                                                 <li>
                                                                     <a className="" href='#' onClick={(event) => { event.preventDefault(); delete_data(item.id) }}>

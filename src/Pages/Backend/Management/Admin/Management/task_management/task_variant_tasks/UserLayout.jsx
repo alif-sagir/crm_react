@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom'
 function UserLayout() {
   return (
     <>
-    <h2>This is task variant task page</h2>
+    <h2>Task variant task management</h2>
     <div>
         <Outlet></Outlet>
     </div>

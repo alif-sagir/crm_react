@@ -80,10 +80,10 @@ function All() {
                                                 <div className='edit_class_submanu'>
                                                     <ul>
                                                         <li>
-                                                            <Link to={`/dashboard/task-variant-task/edit/${item.task_id}`}>Edit</Link>
+                                                            <Link to={`/dashboard/task-variant-task/edit/${item.rid}`}>Edit</Link>
                                                         </li>
                                                         <li>
-                                                            <Link to={`/dashboard/task-variant-task/details/${item.task_id}`}>Details</Link>
+                                                            <Link to={`/dashboard/task-variant-task/details/${item.rid}`}>Details</Link>
                                                         </li>
                                                         <li>
                                                             <Link to="/dashboard/task-variant-task/edit">Deactive</Link>

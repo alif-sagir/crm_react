@@ -1,16 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import setup from './Config/setup.js';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import dataStoreSlice, { async_actions } from './Config/store.js';
 
 function Create() {
   setup.dispatch = useDispatch();
+  const data_store1 = useSelector((state) => state[setup.prefix]["user_work"])
+  const data_store2 = useSelector((state) => state[setup.prefix]["user_work_department"])
   setup.set_async(async_actions, dataStoreSlice);
-  const { store_data } = setup.actions;
+  const { store_data , fetch_all_user_work, fetch_all_user_work_department} = setup.actions;
 
-  // useEffect(() => {
-  //   get_roles();
-  // }, [])
+  useEffect(() => {
+    fetch_all_user_work();
+    fetch_all_user_work_department();
+  }, [])
 
 
   const handleSubmit = async (event) => {
@@ -43,16 +46,32 @@ function Create() {
               <div className="col-lg-8">
                 <div className="form-group mb-5">
 
-                  <div className="custom_form_el">
-                    <label htmlFor="">Work id</label>
-                    <div>:</div>
-                    <div><input name="work_id" type="number" className="form-control" /></div>
-                  </div>
-                  <div className="custom_form_el">
-                    <label htmlFor="">Title</label>
-                    <div>:</div>
-                    <div><input name="title" type="text" className="form-control" /></div>
-                  </div>
+                <div className="custom_form_el">
+                      <label htmlFor="">user work</label>
+                      <div>:</div>
+                      <div>
+                        <select  name="work_id" id="">
+                          {
+                            data_store1.length && data_store1?.map(item => {
+                              return <option key={item.id} value={item.id}>{item.title}</option>
+                            })
+                          }
+                        </select>
+                      </div>
+                    </div>
+                    <div className="custom_form_el">
+                      <label htmlFor="">user work department</label>
+                      <div>:</div>
+                      <div>
+                        <select  name="title" id="">
+                          {
+                            data_store2.length && data_store2?.map(item => {
+                              return <option key={item.id} value={item.title}>{item.title}</option>
+                            })
+                          }
+                        </select>
+                      </div>
+                    </div>
 
                 </div>
               </div>

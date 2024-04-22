@@ -32,6 +32,39 @@ export const async_actions = {
         }
     ),
     
+    // all task
+    [`fetch_all_task`]: createAsyncThunk(
+        `${store_prefix}/fetch_all_task`,
+        async (data, thunkAPI) => {
+
+            let url = data?.url ? data.url : `/task/only`;
+            const response = await axios.get(url);
+            return response.data;
+        }
+    ),
+    
+    // all task variant
+    [`fetch_all_task_variant`]: createAsyncThunk(
+        `${store_prefix}/fetch_all_task_variant`,
+        async (data, thunkAPI) => {
+
+            let url = data?.url ? data.url : `/task-variant/only`;
+            const response = await axios.get(url);
+            return response.data;
+        }
+    ),
+    
+    // all task variant value
+    [`fetch_all_task_variant_value`]: createAsyncThunk(
+        `${store_prefix}/fetch_all_task_variant_value`,
+        async (data, thunkAPI) => {
+
+            let url = data?.url ? data.url : `/task-variant-value/only`;
+            const response = await axios.get(url);
+            return response.data;
+        }
+    ),
+    
     // store data
     [`store_${store_prefix}`]: createAsyncThunk(
         `user/store_${store_prefix}`,
@@ -93,6 +126,9 @@ const storeSlice = createSlice({
     name: `${store_prefix}`,
     initialState: {
         data: {},
+        task: {},
+        task_variant: {},
+        task_variant_value: {},
         singleData: {},
         page_limit: 10,
         search_key: '',
@@ -110,6 +146,15 @@ const storeSlice = createSlice({
         builder
             .addCase(async_actions[`fetch_all_data`].fulfilled, (state, { type, payload, meta }) => {
                 state[`data`] = payload;
+            })
+            .addCase(async_actions[`fetch_all_task`].fulfilled, (state, { type, payload, meta }) => {
+                state[`task`] = payload;
+            })
+            .addCase(async_actions[`fetch_all_task_variant`].fulfilled, (state, { type, payload, meta }) => {
+                state[`task_variant`] = payload;
+            })
+            .addCase(async_actions[`fetch_all_task_variant_value`].fulfilled, (state, { type, payload, meta }) => {
+                state[`task_variant_value`] = payload;
             })
             .addCase(async_actions[`details_${store_prefix}`].fulfilled, (state, { type, payload, meta }) => {
                 // console.log('payload data', payload.data);

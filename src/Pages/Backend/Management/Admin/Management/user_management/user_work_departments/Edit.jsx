@@ -11,6 +11,7 @@ function Edit() {
   const data_store = useSelector((state) => state[setup.prefix]["singleData"])
   const data_store1 = useSelector((state) => state[setup.prefix]["user_work"])
   const data_store2 = useSelector((state) => state[setup.prefix]["user_work_department"])
+  const data_store3 = useSelector((state) => state[setup.prefix])
   setup.set_async(async_actions, dataStoreSlice);
   const { get_users, set_data, update_data, fetch_all_user_work, fetch_all_user_work_department } = setup.actions;
 
@@ -25,12 +26,12 @@ function Edit() {
   }, []);
   console.log('id from edit', id);
   console.log('user work user ', data_store1);
-  console.log('user work user ', data_store2);
+  console.log('user work user ', data_store3);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     let form_data = new FormData(event.target);
-    // form_data.append('id', id);
+    form_data.append('id', id);
     // form_data.append('role', id);
     console.log('form data', form_data);
     // [...document.querySelectorAll('.form_error')].forEach((el => el.remove()));
@@ -41,7 +42,7 @@ function Edit() {
 
   };
   console.log('datra store from edit', data_store);
-  if (data_store) {
+  if (data_store3 ) {
     const { title, id } = data_store;
     return (
       <div className="card list_card">
@@ -62,11 +63,6 @@ function Edit() {
                   <div className="form-group mb-5">
 
                     <div className="custom_form_el">
-                      <label htmlFor="">Id</label>
-                      <div>:</div>
-                      <div><input hidden name="id" type="text" className="form-control" defaultValue={id} /></div>
-                    </div>
-                    <div className="custom_form_el">
                       <label htmlFor="">user work</label>
                       <div>:</div>
                       <div>
@@ -83,10 +79,10 @@ function Edit() {
                       <label htmlFor="">user work department</label>
                       <div>:</div>
                       <div>
-                        <select defaultValue={data_store?.user_work?.id} name="work_id" id="">
+                        <select defaultValue={data_store?.id} name="title" id="">
                           {
                             data_store2.length && data_store2?.map(item => {
-                              return <option key={item.id} value={item.id}>{item.title}</option>
+                              return <option key={item.id} value={item.title}>{item.title}</option>
                             })
                           }
                         </select>
