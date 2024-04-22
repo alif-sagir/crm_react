@@ -37,6 +37,9 @@ function All() {
 
 
                                 <th className="cursor_n_resize edit_cursor_n_resize">
+                                    User work title
+                                </th>
+                                <th className="cursor_n_resize edit_cursor_n_resize">
                                     Title
                                 </th>
 
@@ -54,6 +57,11 @@ function All() {
                                         <td><input type="checkbox" className="form-check-input" /></td>
 
 
+                                        <td>
+                                            <span>
+                                            {item?.user_work?.title}
+                                            </span>
+                                        </td>
                                         <td>
                                             <span>
                                             {item.title}

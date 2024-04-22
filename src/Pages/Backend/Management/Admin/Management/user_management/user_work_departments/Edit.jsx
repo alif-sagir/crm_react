@@ -9,18 +9,23 @@ function Edit() {
   const { id } = useParams();
   setup.dispatch = useDispatch();
   const data_store = useSelector((state) => state[setup.prefix]["singleData"])
+  const data_store1 = useSelector((state) => state[setup.prefix]["user_work"])
+  const data_store2 = useSelector((state) => state[setup.prefix]["user_work_department"])
   setup.set_async(async_actions, dataStoreSlice);
-  const { get_users, set_data, update_data } = setup.actions;
+  const { get_users, set_data, update_data, fetch_all_user_work, fetch_all_user_work_department } = setup.actions;
 
   useEffect(() => {
     get_users(id);
-
+    fetch_all_user_work();
+    fetch_all_user_work_department();
     return () => {
       document.getElementById('form-data')?.reset();
       set_data(null)
     };
   }, []);
   console.log('id from edit', id);
+  console.log('user work user ', data_store1);
+  console.log('user work user ', data_store2);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -37,49 +42,70 @@ function Edit() {
   };
   console.log('datra store from edit', data_store);
   if (data_store) {
-    const { title, id  } = data_store;
-  return (
-    <div className="card list_card">
-      <div className="card-header ">
-        <h2 className="heading">Edit</h2>
-        <div className="btns d-flex gap-2 align-items-center">
-          <a href="#/dashboard/user-work-department" className="btn rounded-pill btn-outline-secondary">
-            {/* <i className="material-symbols-outlined fill">arrow_back</i> */}
-            Back
-          </a>
+    const { title, id } = data_store;
+    return (
+      <div className="card list_card">
+        <div className="card-header ">
+          <h2 className="heading">Edit</h2>
+          <div className="btns d-flex gap-2 align-items-center">
+            <a href="#/dashboard/user-work-department" className="btn rounded-pill btn-outline-secondary">
+              {/* <i className="material-symbols-outlined fill">arrow_back</i> */}
+              Back
+            </a>
+          </div>
         </div>
-      </div>
-      <form onSubmit={(event) =>handleSubmit(event)} id='form-data'>
-        <div className="card-body">
-          <div className="container py-5">
-            <div className="row">
-              <div className="col-lg-8">
-                <div className="form-group mb-5">
+        <form onSubmit={(event) => handleSubmit(event)} id='form-data'>
+          <div className="card-body">
+            <div className="container py-5">
+              <div className="row">
+                <div className="col-lg-8">
+                  <div className="form-group mb-5">
 
-                  <div className="custom_form_el">
-                    <label htmlFor="">Id</label>
-                    <div>:</div>
-                    <div><input name="id" type="text" className="form-control" defaultValue={id} /></div>
+                    <div className="custom_form_el">
+                      <label htmlFor="">Id</label>
+                      <div>:</div>
+                      <div><input hidden name="id" type="text" className="form-control" defaultValue={id} /></div>
+                    </div>
+                    <div className="custom_form_el">
+                      <label htmlFor="">user work</label>
+                      <div>:</div>
+                      <div>
+                        <select defaultValue={data_store?.user_work?.id} name="work_id" id="">
+                          {
+                            data_store1.length && data_store1?.map(item => {
+                              return <option key={item.id} value={item.id}>{item.title}</option>
+                            })
+                          }
+                        </select>
+                      </div>
+                    </div>
+                    <div className="custom_form_el">
+                      <label htmlFor="">user work department</label>
+                      <div>:</div>
+                      <div>
+                        <select defaultValue={data_store?.user_work?.id} name="work_id" id="">
+                          {
+                            data_store2.length && data_store2?.map(item => {
+                              return <option key={item.id} value={item.id}>{item.title}</option>
+                            })
+                          }
+                        </select>
+                      </div>
+                    </div>
+
                   </div>
-                  <div className="custom_form_el">
-                    <label htmlFor="">Title</label>
-                    <div>:</div>
-                    <div><input name="title" type="text" className="form-control" defaultValue={title} /></div>
-                  </div>
-                  
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div className="card-footer">
-          <button className="btn btn-outline-info" type="submit" value="Create">
-            Submit{" "}
-          </button>
-        </div>
-      </form>
-    </div>
-  )
-}
+          <div className="card-footer">
+            <button className="btn btn-outline-info" type="submit" value="Create">
+              Submit{" "}
+            </button>
+          </div>
+        </form>
+      </div>
+    )
+  }
 }
 export default Edit
