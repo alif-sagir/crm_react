@@ -31,7 +31,7 @@ export const async_actions = {
             return response.data;
         }
     ),
-
+   
     // store data
     [`store_${store_prefix}`]: createAsyncThunk(
         `user/store_${store_prefix}`,
@@ -127,7 +127,7 @@ const storeSlice = createSlice({
     name: `${store_prefix}`,
     initialState: {
         data: {},
-
+       
         singleData: {},
 
         page_limit: 10,
@@ -148,7 +148,7 @@ const storeSlice = createSlice({
                 // console.log('user payload data', payload);
                 state[`data`] = payload;
             })
-
+          
             .addCase(async_actions[`details_${store_prefix}`].fulfilled, (state, { type, payload, meta }) => {
                 // console.log('payload data', payload.data);
                 state[`singleData`] = payload.data;

@@ -25,7 +25,7 @@ function Edit() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     let form_data = new FormData(event.target);
-    // form_data.append('id', id);
+    form_data.append('id', id);
     // form_data.append('role', id);
     console.log('form data', form_data);
     // [...document.querySelectorAll('.form_error')].forEach((el => el.remove()));
@@ -37,7 +37,7 @@ function Edit() {
   };
   console.log('datra store from edit', data_store);
   if (data_store) {
-    const { user_name,role, user_uid, email, password, confirm_password, id  } = data_store;
+    const { user_name, role, user_uid, email, password, confirm_password, id } = data_store;
     return (
       <div className="card list_card">
         <div className="card-header ">
@@ -49,37 +49,19 @@ function Edit() {
             </a>
           </div>
         </div>
-        <form onSubmit={(event) =>handleSubmit(event)} id='form-data'>
+        <form onSubmit={(event) => handleSubmit(event)} id='form-data'>
           <div className="card-body">
             <div className="container py-5">
               <div className="row">
                 <div className="col-lg-8">
                   <div className="form-group mb-5">
-                    <div className="custom_form_el">
-                      <label htmlFor="">Id</label>
-                      <div>:</div>
-                      <div><input name="id" type="text" className="form-control" defaultValue={id} /></div>
-                    </div>
-                    <div className="custom_form_el">
-                      <label htmlFor="">User Uid</label>
-                      <div>:</div>
-                      <div><input name="user_uid" type="text" className="form-control" defaultValue={user_uid} /></div>
-                    </div>
+
                     <div className="custom_form_el">
                       <label htmlFor="">Username</label>
                       <div>:</div>
                       <div><input name="user_name" type="text" className="form-control" defaultValue={user_name} /></div>
                     </div>
-                    {/* <div className="custom_form_el">
-                      <label htmlFor="">Password</label>
-                      <div>:</div>
-                      <div><input name="password" type="text" className="form-control" defaultValue={password} /></div>
-                    </div>
-                    <div className="custom_form_el">
-                      <label htmlFor="">Confirm Password</label>
-                      <div>:</div>
-                      <div><input name="confirm_password" type="text" className="form-control"  defaultValue={confirm_password} /></div>
-                    </div> */}
+                  
                     <div className="custom_form_el">
                       <label htmlFor="">Email</label>
                       <div>:</div>
@@ -89,13 +71,13 @@ function Edit() {
                       <label htmlFor="">Role</label>
                       <div>:</div>
                       <div>
-                      <select defaultValue={role}  name="role" id="">
-                        <option value="admin">admin</option>
-                        <option value="moderator">moderator</option>
-                        <option value="employee">employee</option>
-                        <option value="student">student</option>
-                      </select>
-                    </div>
+                        <select defaultValue={role} name="role" id="">
+                          <option value="admin">admin</option>
+                          <option value="moderator">moderator</option>
+                          <option value="employee">employee</option>
+                          <option value="student">student</option>
+                        </select>
+                      </div>
                     </div>
                   </div>
                 </div>

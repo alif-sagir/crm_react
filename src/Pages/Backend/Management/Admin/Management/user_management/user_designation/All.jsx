@@ -35,6 +35,9 @@ function All() {
 
 
                                 <th className="cursor_n_resize edit_cursor_n_resize">
+                                    User
+                                </th>
+                                <th className="cursor_n_resize edit_cursor_n_resize">
                                     Designation
                                 </th>
                                 <th className="cursor_n_resize edit_cursor_n_resize">
@@ -53,6 +56,11 @@ function All() {
                                     return <tr key={item.id}>
                                         <td><input type="checkbox" className="form-check-input" /></td>
                                        
+                                        <td>
+                                            <span>
+                                                {item?.user?.user_name}
+                                            </span>
+                                        </td>
                                         <td>
                                             <span>
                                                 {item.designation}

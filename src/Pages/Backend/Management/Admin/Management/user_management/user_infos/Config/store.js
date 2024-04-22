@@ -31,6 +31,16 @@ export const async_actions = {
             return response.data;
         }
     ),
+     // all user
+     [`fetch_all_user`]: createAsyncThunk(
+        `${store_prefix}/fetch_all_user`,
+        async (data, thunkAPI) => {
+            let url = data?.url ? data.url : `/user/only`;
+            const response = await axios.get(url);
+            return response.data;
+        }
+    ),
+
      
     // store data
     [`store_${store_prefix}`]: createAsyncThunk(
@@ -110,6 +120,7 @@ const storeSlice = createSlice({
     name: `${store_prefix}`,
     initialState: {
         data: {},
+        user: {},
         singleData: {},
         page_limit: 10,
         search_key: '',
@@ -127,6 +138,9 @@ const storeSlice = createSlice({
         builder
             .addCase(async_actions[`fetch_all_data`].fulfilled, (state, { type, payload, meta }) => {
                 state[`data`] = payload;
+            })
+            .addCase(async_actions[`fetch_all_user`].fulfilled, (state, { type, payload, meta }) => {
+                state[`user`] = payload;
             })
             .addCase(async_actions[`details_${store_prefix}`].fulfilled, (state, { type, payload, meta }) => {
                 // console.log('payload data', payload.data);

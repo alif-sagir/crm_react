@@ -35,9 +35,7 @@ function All() {
                                 <th className="cursor_n_resize edit_cursor_n_resize">
                                     Customer Id
                                 </th>
-                                <th className="cursor_n_resize edit_cursor_n_resize">
-                                    Ticket uu id
-                                </th>
+                               
 
                                 <th className="cursor_n_resize edit_cursor_n_resize">
                                     Subject
@@ -70,11 +68,7 @@ function All() {
                                             {item?.customer?.full_name}
                                             </span>
                                         </td>
-                                        <td>
-                                            <span>
-                                            {item.ticket_uuid}
-                                            </span>
-                                        </td>
+                                        
                                         <td>
                                             <span>
                                             {item.subject}

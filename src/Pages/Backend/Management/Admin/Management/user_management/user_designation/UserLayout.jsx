@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom'
 function UserLayout() {
   return (
     <>
-    <h2>This is user Designation page</h2>
+    <h2>User Designation Management</h2>
     <div>
         <Outlet></Outlet>
     </div>

@@ -20,7 +20,7 @@ function All() {
         fetch_all_data();
     }, [])
 
-    console.log("data stroe from user end", data_store?.data?.data);
+    console.log("data stroe from user end", data_store);
 
     return (
 

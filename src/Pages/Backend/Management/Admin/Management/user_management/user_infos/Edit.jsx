@@ -9,13 +9,13 @@ import moment from 'moment/moment.js';
 function Edit() {
   const { id } = useParams();
   setup.dispatch = useDispatch();
-  const data_store = useSelector((state) => state[setup.prefix]["singleData"])
+  const data_store = useSelector((state) => state[setup.prefix])
   setup.set_async(async_actions, dataStoreSlice);
-  const { get_users, set_data, update_data } = setup.actions;
+  const { get_users, set_data, update_data,fetch_all_user } = setup.actions;
 
   useEffect(() => {
     get_users(id);
-
+    fetch_all_user();
     return () => {
       document.getElementById('form-data')?.reset();
       set_data(null)
@@ -26,7 +26,7 @@ function Edit() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     let form_data = new FormData(event.target);
-    // form_data.append('id', id);
+    form_data.append('id', id);
     // form_data.append('role', id);
     console.log('form data', form_data);
     // [...document.querySelectorAll('.form_error')].forEach((el => el.remove()));
@@ -37,8 +37,8 @@ function Edit() {
 
   };
   console.log('datra store info edit', data_store);
-  if (data_store) {
-    const { user_id, first_name, last_name, designation, phone_number, id,date_of_birth  } = data_store;
+  if (data_store.singleData) {
+    const { user_id, first_name, last_name, designation, phone_number, id,date_of_birth  } = data_store.singleData;
   return (
     <div className="card list_card">
       <div className="card-header ">
@@ -56,16 +56,20 @@ function Edit() {
             <div className="row">
               <div className="col-lg-8">
                 <div className="form-group mb-5">
-                  <div className="custom_form_el">
-                    <label htmlFor="">User Id</label>
-                    <div>:</div>
-                    <div><input name="user_id" type="text" className="form-control" defaultValue={user_id} /></div>
-                  </div>
-                  <div className="custom_form_el">
-                    <label htmlFor="">Id</label>
-                    <div>:</div>
-                    <div><input name="id" type="text" className="form-control" defaultValue={id} /></div>
-                  </div>
+                <div className="custom_form_el">
+                      <label htmlFor="">User </label>
+                      <div>:</div>
+                      <div>
+                        <select defaultValue={data_store?.singleData?.user_id} name="user_id" id="">
+                          {
+                            data_store?.user.length && data_store?.user?.map(item => {
+                              return <option key={item.id} value={item.id}>{item.user_name}</option>
+                            })
+                          }
+                        </select>
+                      </div>
+                    </div>
+                  
                   <div className="custom_form_el">
                     <label htmlFor="">First name</label>
                     <div>:</div>

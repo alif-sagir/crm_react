@@ -20,7 +20,7 @@ function All() {
         fetch_all_data();
     }, [])
 
-    // console.log("data stor from user info front end", data_store?.data?.data);
+    console.log("data stor from user info front end", data_store?.data?.data);
 
     return (
         <>
@@ -36,6 +36,9 @@ function All() {
 
 
                                
+                                <th className="cursor_n_resize edit_cursor_n_resize">
+                                    User
+                                </th>
                                 <th className="cursor_n_resize edit_cursor_n_resize">
                                     First name
                                 </th>
@@ -65,6 +68,11 @@ function All() {
                                     return <tr key={item.id}>
                                         <td><input type="checkbox" className="form-check-input" /></td>
                                         
+                                        <td>
+                                            <span>
+                                                {item?.user?.user_name}
+                                            </span>
+                                        </td>
                                         <td>
                                             <span>
                                                 {item.first_name}
