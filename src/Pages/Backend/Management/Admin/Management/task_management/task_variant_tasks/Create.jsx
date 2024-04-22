@@ -1,18 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import setup from './Config/setup.js';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import dataStoreSlice, { async_actions } from './Config/store.js';
 
 function Create() {
   setup.dispatch = useDispatch();
+  const data_store = useSelector((state) => state[setup.prefix])
   setup.set_async(async_actions, dataStoreSlice);
-  const { store_data } = setup.actions;
+  const { store_data, fetch_all_task, fetch_all_task_variant, fetch_all_task_variant_value } = setup.actions;
 
-  // useEffect(() => {
-  //   get_roles();
-  // }, [])
+  useEffect(() => {
+    fetch_all_task();
+    fetch_all_task_variant();
+    fetch_all_task_variant_value();
+  }, [])
 
-  
+
   const handleSubmit = async (event) => {
     // let e = event;
     // console.log('some from create submit', event.target.vlaue);
@@ -25,6 +28,8 @@ function Create() {
     await store_data(form_data);
     event.target.reset();
   };
+  if (data_store) {
+    const { task, task_variant, task_variant_value, user_uid, email, password, confirm_password, id } = data_store?.singleData;
   return (
     <div className="card list_card">
       <div className="card-header ">
@@ -36,28 +41,54 @@ function Create() {
           </a>
         </div>
       </div>
-      <form onSubmit={(event) =>handleSubmit(event)}>
+      <form onSubmit={(event) => handleSubmit(event)}>
         <div className="card-body">
           <div className="container py-5">
             <div className="row">
               <div className="col-lg-8">
                 <div className="form-group mb-5">
 
-                  <div className="custom_form_el">
-                    <label htmlFor="">Task Id</label>
-                    <div>:</div>
-                    <div><input name="task_id" type="number" className="form-control" /></div>
-                  </div>
-                  <div className="custom_form_el">
-                    <label htmlFor="">Variant Id</label>
-                    <div>:</div>
-                    <div><input name="variant_id" type="number" className="form-control" /></div>
-                  </div>
-                  <div className="custom_form_el">
-                    <label htmlFor="">Task variant value id</label>
-                    <div>:</div>
-                    <div><input name="task_variant_value_id" type="number" className="form-control" /></div>
-                  </div>
+                 
+                <div className="custom_form_el">
+                      <label htmlFor="">Taks title</label>
+                      <div>:</div>
+                      <div>
+                        <select  name="task_id" id="">
+                          {
+                            data_store?.task?.length && data_store?.task?.map(item => {
+                              return <option key={item.id} value={item.id}>{item.title}</option>
+                            })
+                          }
+                        </select>
+                      </div>
+                    </div>
+                    <div className="custom_form_el">
+                      <label htmlFor="">Taks variant title</label>
+                      <div>:</div>
+                      <div>
+                        <select  name="variant_id" id="">
+                          {
+                            data_store?.task_variant?.length && data_store?.task_variant?.map(item => {
+                              return <option key={item.id} value={item.id}>{item.title}</option>
+                            })
+                          }
+                        </select>
+                      </div>
+                    </div>
+                    <div className="custom_form_el">
+                      <label htmlFor="">Taks variant value title</label>
+                      <div>:</div>
+                      <div>
+                        <select  name="task_variant_value_id" id="">
+                          {
+                            data_store?.task_variant_value?.length && data_store?.task_variant_value?.map(item => {
+                              return <option key={item.id} value={item.id}>{item.title}</option>
+                            })
+                          }
+                        </select>
+                      </div>
+                    </div>
+
 
                 </div>
               </div>
@@ -72,6 +103,7 @@ function Create() {
       </form>
     </div>
   );
+}
 }
 
 export default Create
