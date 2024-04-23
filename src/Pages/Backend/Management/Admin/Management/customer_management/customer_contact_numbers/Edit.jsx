@@ -56,7 +56,7 @@ function Edit() {
                 <div className="col-lg-8">
                   <div className="form-group mb-5">
 
-                  <div className="custom_form_el">
+                    <div className="custom_form_el">
                       <label htmlFor="">Customer Id</label>
                       <div>:</div>
                       <div>

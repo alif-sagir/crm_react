@@ -1,19 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import setup from './Config/setup.js';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import dataStoreSlice, { async_actions } from './Config/store.js';
 
 
 function Create() {
   setup.dispatch = useDispatch();
+  const data_store = useSelector((state) => state[setup.prefix])
   setup.set_async(async_actions, dataStoreSlice);
-  const { store_data } = setup.actions;
+  const { store_data, fetch_all_customer, fetch_all_customer_group } = setup.actions;
 
-  // useEffect(() => {
-  //   get_roles();
-  // }, [])
+  useEffect(() => {
+    fetch_all_customer();
+    fetch_all_customer_group();
+  }, [])
 
-  
+
   const handleSubmit = async (event) => {
     // let e = event;
     // console.log('some from create submit', event.target.vlaue);
@@ -37,22 +39,39 @@ function Create() {
           </a>
         </div>
       </div>
-      <form onSubmit={(event) =>handleSubmit(event)}>
+      <form onSubmit={(event) => handleSubmit(event)}>
         <div className="card-body">
           <div className="container py-5">
             <div className="row">
               <div className="col-lg-8">
                 <div className="form-group mb-5">
-                  <div className="custom_form_el">
-                    <label htmlFor="">Customer group Id</label>
-                    <div>:</div>
-                    <div><input name="customer_group_id" type="text" className="form-control" /></div>
-                  </div>
-                  <div className="custom_form_el">
-                    <label htmlFor="">Customer Id</label>
-                    <div>:</div>
-                    <div><input name="customer_id" type="text" className="form-control" /></div>
-                  </div>
+                  
+                <div className="custom_form_el">
+                      <label htmlFor="">Select customer group</label>
+                      <div>:</div>
+                      <div>
+                        <select  name="customer_group_id" id="">
+                          {
+                            data_store?.customer_group?.length && data_store?.customer_group?.map(item => {
+                              return <option key={item.id} value={item.id}>{item.title}</option>
+                            })
+                          }
+                        </select>
+                      </div>
+                    </div>
+                    <div className="custom_form_el">
+                      <label htmlFor="">Customer Id</label>
+                      <div>:</div>
+                      <div>
+                        <select  name="customer_id" id="">
+                          {
+                            data_store?.customer?.length && data_store?.customer?.map(item => {
+                              return <option key={item.id} value={item.id}>{item.full_name}</option>
+                            })
+                          }
+                        </select>
+                      </div>
+                    </div>
 
                 </div>
               </div>

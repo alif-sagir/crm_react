@@ -49,7 +49,7 @@ function Create() {
                     <label htmlFor="">Customer Id</label>
                     <div>:</div>
                     <div>
-                        <select defaultValue={data_store?.singleData?.customer_id} name="customer_id" id="">
+                        <select  name="customer_id" id="">
                           {
                             data_store?.customer?.length && data_store?.customer?.map(item => {
                               return <option key={item.id} value={item.id}>{item.full_name}</option>
