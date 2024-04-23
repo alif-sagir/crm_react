@@ -2,6 +2,7 @@ import React from 'react'
 import setup from './Config/setup.js';
 import { useDispatch } from 'react-redux';
 import dataStoreSlice, { async_actions } from './Config/store.js';
+import moment from 'moment/moment.js';
 
 
 function Create() {
@@ -43,11 +44,7 @@ function Create() {
             <div className="row">
               <div className="col-lg-8">
                 <div className="form-group mb-5">
-                  <div className="custom_form_el">
-                    <label htmlFor="">User Uid</label>
-                    <div>:</div>
-                    <div><input name="uuid" type="text" className="form-control" /></div>
-                  </div>
+                 
                   <div className="custom_form_el">
                     <label htmlFor="">Full name</label>
                     <div>:</div>
@@ -76,13 +73,9 @@ function Create() {
                   <div className="custom_form_el">
                     <label htmlFor="">Admission Date</label>
                     <div>:</div>
-                    <div><input name="admission_date" type="date" className="form-control" /></div>
+                    <div><input name="admission_date" type="date" className="form-control" defaultValue={moment().format('YYYY-MM-DD')} /></div>
                   </div>
-                  <div className="custom_form_el">
-                    <label htmlFor="">Is Admitted</label>
-                    <div>:</div>
-                    <div><input name="is_admitted" type="number" className="form-control" /></div>
-                  </div>
+                 
 
                 </div>
               </div>

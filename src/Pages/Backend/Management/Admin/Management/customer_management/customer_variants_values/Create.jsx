@@ -1,17 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import setup from './Config/setup.js';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import dataStoreSlice, { async_actions } from './Config/store.js';
 
 
 function Create() {
   setup.dispatch = useDispatch();
+  const data_store = useSelector((state) => state[setup.prefix])
   setup.set_async(async_actions, dataStoreSlice);
-  const { store_data } = setup.actions;
+  const { store_data,fetch_all_variant } = setup.actions;
 
-  // useEffect(() => {
-  //   get_roles();
-  // }, [])
+  useEffect(() => {
+    fetch_all_variant();
+  }, [])
 
   
   const handleSubmit = async (event) => {
@@ -45,11 +46,19 @@ function Create() {
               <div className="col-lg-8">
                 <div className="form-group mb-5">
 
-                  <div className="custom_form_el">
-                    <label htmlFor="">Variant Id</label>
-                    <div>:</div>
-                    <div><input name="variant_id" type="text" className="form-control" /></div>
-                  </div>
+                <div className="custom_form_el">
+                      <label htmlFor="">Select Customer variant</label>
+                      <div>:</div>
+                      <div>
+                        <select defaultValue={data_store?.singleData?.customer_id} name="variant_id" id="">
+                          {
+                            data_store?.variant?.length && data_store?.variant?.map(item => {
+                              return <option key={item.id} value={item.id}>{item.title}</option>
+                            })
+                          }
+                        </select>
+                      </div>
+                    </div>
                   <div className="custom_form_el">
                     <label htmlFor="">Title</label>
                     <div>:</div>
