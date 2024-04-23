@@ -30,6 +30,9 @@ user designation done
                                 </div>
 // 
 form_data.append('id', id);
+62
+67.5
+65
 // 
 1. customer group customer problem id does not found
 2. task and user task update create not ok
