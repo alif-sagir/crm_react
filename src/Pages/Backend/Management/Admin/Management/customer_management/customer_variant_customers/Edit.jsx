@@ -1,6 +1,43 @@
 import React from 'react'
+import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from "react-redux";
+import dataStoreSlice, { async_actions } from './Config/store.js';
+import setup from "./Config/setup.js";
+import { useParams } from 'react-router-dom';
 
 function Edit() {
+  const { id } = useParams();
+  setup.dispatch = useDispatch();
+  const data_store = useSelector((state) => state[setup.prefix])
+  setup.set_async(async_actions, dataStoreSlice);
+  const { get_users, set_data, update_data, fetch_all_customer, fetch_all_variant, fetch_all_variant_value } = setup.actions;
+
+  useEffect(() => {
+    get_users(id);
+    fetch_all_customer();
+    fetch_all_variant();
+    fetch_all_variant_value();
+    return () => {
+      document.getElementById('form-data')?.reset();
+      set_data(null)
+    };
+  }, []);
+  console.log('id from edit', id);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    let form_data = new FormData(event.target);
+    form_data.append('id', id);
+    // form_data.append('role', id);
+    console.log('form data', form_data);
+    // [...document.querySelectorAll('.form_error')].forEach((el => el.remove()));
+    await update_data(form_data);
+    // e.target.reset();
+    // // e.target.serial.value = "";
+    // // e.target.title.value = "";
+
+  };
+  console.log('datra store from edit', data_store);
   return (
     <div className="card list_card">
       <div className="card-header ">
@@ -12,28 +49,53 @@ function Edit() {
           </a>
         </div>
       </div>
-      <form id='form-data'>
+      <form onSubmit={(event) => handleSubmit(event)} id='form-data'>
         <div className="card-body">
           <div className="container py-5">
             <div className="row">
               <div className="col-lg-8">
                 <div className="form-group mb-5">
-                 
+
                   <div className="custom_form_el">
-                    <label htmlFor="">Customer Id</label>
+                    <label htmlFor="">Select Customer</label>
                     <div>:</div>
-                    <div><input name="customer_id" type="text" className="form-control" defaultValue={"username"} /></div>
+                    <div>
+                      <select defaultValue={data_store?.singleData?.customer_id} name="customer_id" id="">
+                        {
+                          data_store?.customer?.length && data_store?.customer?.map(item => {
+                            return <option key={item.id} value={item.id}>{item.full_name}</option>
+                          })
+                        }
+                      </select>
+                    </div>
                   </div>
                   <div className="custom_form_el">
-                    <label htmlFor="">Variant Id</label>
+                    <label htmlFor="">Select Customer variant</label>
                     <div>:</div>
-                    <div><input name="variant_id" type="text" className="form-control" defaultValue={"username"} /></div>
+                    <div>
+                      <select defaultValue={data_store?.singleData?.customer_id} name="variant_id" id="">
+                        {
+                          data_store?.variant?.length && data_store?.variant?.map(item => {
+                            return <option key={item.id} value={item.id}>{item.title}</option>
+                          })
+                        }
+                      </select>
+                    </div>
                   </div>
                   <div className="custom_form_el">
-                    <label htmlFor="">Variant value Id</label>
+                    <label htmlFor="">Select Customer variant value</label>
                     <div>:</div>
-                    <div><input name="variant_value_id" type="text" className="form-control" defaultValue={"username"} /></div>
+                    <div>
+                      <select defaultValue={data_store?.singleData?.customer_id} name="variant_value_id" id="">
+                        {
+                          data_store?.variant_value?.length && data_store?.variant_value?.map(item => {
+                            return <option key={item.id} value={item.id}>{item.title}</option>
+                          })
+                        }
+                      </select>
+                    </div>
                   </div>
+
                 </div>
               </div>
             </div>

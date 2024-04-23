@@ -31,6 +31,35 @@ export const async_actions = {
             return response.data;
         }
     ),
+    // all customer
+    [`fetch_all_customer`]: createAsyncThunk(
+        `${store_prefix}/fetch_all_customer`,
+        async (data, thunkAPI) => {
+            let url = data?.url ? data.url : `/customer/only`;
+            const response = await axios.get(url);
+            return response.data;
+        }
+    ),
+     
+    // all variant
+    [`fetch_all_variant`]: createAsyncThunk(
+        `${store_prefix}/fetch_all_variant`,
+        async (data, thunkAPI) => {
+            let url = data?.url ? data.url : `/customer-variant/only`;
+            const response = await axios.get(url);
+            return response.data;
+        }
+    ),
+     
+    // all variant_value
+    [`fetch_all_variant_value`]: createAsyncThunk(
+        `${store_prefix}/fetch_all_variant_value`,
+        async (data, thunkAPI) => {
+            let url = data?.url ? data.url : `/customer-variant-value/only`;
+            const response = await axios.get(url);
+            return response.data;
+        }
+    ),
      
     // store data
     [`store_${store_prefix}`]: createAsyncThunk(
@@ -44,6 +73,25 @@ export const async_actions = {
                 return response;
             } catch (error) {
                 window.render_alert(error)
+            }
+        }
+    ),
+    // edit data or updated data
+    [`edit_${store_prefix}`]: createAsyncThunk(
+        `user/edit_${store_prefix}`,
+        async (form_data, thunkAPI) => {
+            console.log('hoiche');
+            try {
+                const response = await axios.post(`/${api_prefix}/update`, form_data);
+                // thunkAPI.dispatch(storeSlice.actions.my_action())
+                // console.log(response);
+                return response;
+            } catch (error) {
+                // console.log(error);
+                // console.log(error.response?.data?.data?.keyValue?.[key]);
+                // console.log(error.response?.status);
+                window.render_alert(error)
+
             }
         }
     ),
@@ -73,6 +121,9 @@ const storeSlice = createSlice({
     name: `${store_prefix}`,
     initialState: {
         data: {},
+        customer: {},
+        variant: {},
+        variant_value: {},
         singleData: {},
         page_limit: 10,
         search_key: '',
@@ -90,6 +141,15 @@ const storeSlice = createSlice({
         builder
             .addCase(async_actions[`fetch_all_data`].fulfilled, (state, { type, payload, meta }) => {
                 state[`data`] = payload;
+            })
+            .addCase(async_actions[`fetch_all_customer`].fulfilled, (state, { type, payload, meta }) => {
+                state[`customer`] = payload;
+            })
+            .addCase(async_actions[`fetch_all_variant`].fulfilled, (state, { type, payload, meta }) => {
+                state[`variant`] = payload;
+            })
+            .addCase(async_actions[`fetch_all_variant_value`].fulfilled, (state, { type, payload, meta }) => {
+                state[`variant_value`] = payload;
             })
             .addCase(async_actions[`details_${store_prefix}`].fulfilled, (state, { type, payload, meta }) => {
                 // console.log('payload data', payload.data);

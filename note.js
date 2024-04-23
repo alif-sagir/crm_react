@@ -34,6 +34,6 @@ form_data.append('id', id);
 67.5
 65
 // 
-1. customer group customer problem id does not found
+1. customer relavent document
 2. task and user task update create not ok
 */

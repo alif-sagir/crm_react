@@ -18,7 +18,7 @@ export const async_actions = {
                 // orderByAsc: state[`orderByAsc`],
                 // show_active_data: state[`show_active_data`],
             }
-            if(state[`search_key`].length){
+            if (state[`search_key`].length) {
                 qparams['search_key'] = state[`search_key`]
             }
 
@@ -31,8 +31,8 @@ export const async_actions = {
             return response.data;
         }
     ),
-     // all customer
-     [`fetch_all_customer`]: createAsyncThunk(
+    // all customer
+    [`fetch_all_customer`]: createAsyncThunk(
         `${store_prefix}/fetch_all_customer`,
         async (data, thunkAPI) => {
             let url = data?.url ? data.url : `/customer/only`;
@@ -40,8 +40,8 @@ export const async_actions = {
             return response.data;
         }
     ),
-     // all customer group
-     [`fetch_all_customer_group`]: createAsyncThunk(
+    // all customer group
+    [`fetch_all_customer_group`]: createAsyncThunk(
         `${store_prefix}/fetch_all_customer_group`,
         async (data, thunkAPI) => {
             let url = data?.url ? data.url : `/customer-group/only`;
@@ -49,7 +49,7 @@ export const async_actions = {
             return response.data;
         }
     ),
-     
+
     // store data
     [`store_${store_prefix}`]: createAsyncThunk(
         `user/store_${store_prefix}`,
@@ -65,7 +65,7 @@ export const async_actions = {
             }
         }
     ),
-    
+
     // edit data or updated data
     [`edit_${store_prefix}`]: createAsyncThunk(
         `user/edit_${store_prefix}`,
@@ -85,33 +85,33 @@ export const async_actions = {
             }
         }
     ),
-        // details data
-        [`details_${store_prefix}`]: createAsyncThunk(
-            `user/details_${store_prefix}`,
-            async (id, thunkAPI) => {
-                // console.log(thunkAPI);
-                // console.log(id);
-                try {
-                    const response = await axios.get(`/${api_prefix}/details/${id}`);
-                    // thunkAPI.dispatch(storeSlice.actions.my_action())
-                    console.log(response);
-                    return response;
-                } catch (error) {
-                    // console.log(error);
-                    // console.log(error.response?.data?.data?.keyValue?.[key]);
-                    // console.log(error.response?.status);
-                    return error;
-    
-                }
+    // details data
+    [`details_${store_prefix}`]: createAsyncThunk(
+        `user/details_${store_prefix}`,
+        async (id, thunkAPI) => {
+            // console.log(thunkAPI);
+            // console.log(id);
+            try {
+                const response = await axios.get(`/${api_prefix}/details/${id}`);
+                // thunkAPI.dispatch(storeSlice.actions.my_action())
+                console.log(response);
+                return response;
+            } catch (error) {
+                // console.log(error);
+                // console.log(error.response?.data?.data?.keyValue?.[key]);
+                // console.log(error.response?.status);
+                return error;
+
             }
-        ),
-         // delete data
+        }
+    ),
+    // delete data
     [`delete_data`]: createAsyncThunk(
         `${store_prefix}/delete_data`,
         async (id, thunkAPI) => {
             // console.log('from user delete id',id);
             try {
-                const response = await axios.post(`/${api_prefix}/delete`, {id} );
+                const response = await axios.post(`/${api_prefix}/delete`, { id });
                 thunkAPI.dispatch(async_actions.fetch_all_data());
                 // console.log('response from deltee', response);
                 return response;
