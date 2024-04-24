@@ -33,13 +33,11 @@ function All() {
                         <thead>
                             <tr>
                                 <th><input type="checkbox" className="form-check-input" /></th>
-
-
                                 <th className="cursor_n_resize edit_cursor_n_resize">
-                                    Contact Number Id
+                                    Contact Number
                                 </th>
                                 <th className="cursor_n_resize edit_cursor_n_resize">
-                                    Customer Id
+                                    Customer
                                 </th>
                                 <th className="cursor_n_resize edit_cursor_n_resize">
                                     Data

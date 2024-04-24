@@ -30,12 +30,11 @@ user designation done
                                 </div>
 // 
 form_data.append('id', id);
-62
-67.5
-65
 // 
 1. customer relavent document
 2. task and user task update create not ok
 3. user
-4.appointment reason
+4. appointment reason
+5. history reason
+6. history feedback
 */

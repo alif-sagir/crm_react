@@ -25,7 +25,7 @@ function Edit() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     let form_data = new FormData(event.target);
-    // form_data.append('id', id);
+    form_data.append('id', id);
     // form_data.append('role', id);
     console.log('form data', form_data);
     // [...document.querySelectorAll('.form_error')].forEach((el => el.remove()));
@@ -55,19 +55,11 @@ function Edit() {
               <div className="row">
                 <div className="col-lg-8">
                   <div className="form-group mb-5">
-
-                    <div className="custom_form_el">
-                      <label htmlFor="">Id</label>
-                      <div>:</div>
-                      <div><input name="id" type="number" className="form-control" defaultValue={id} /></div>
-                    </div>
-
                     <div className="custom_form_el">
                       <label htmlFor="">Title</label>
                       <div>:</div>
                       <div><input name="title" type="text" className="form-control" defaultValue={title} /></div>
                     </div>
-
                   </div>
                 </div>
               </div>

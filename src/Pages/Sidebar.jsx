@@ -156,21 +156,21 @@ function Sidebar(props) {
                                         <span key="t-dashboards">Contact</span>
                                     </a>
                                     <ul className={`sub-menu ${menuOpen5 ? 'openmenu' : 'closemenu'}`} aria-expanded="false">
-                                        <li>
+                                        {/* <li>
                                             <Link to="/dashboard/contact-appointment-reason">Appointment-reason</Link>
-                                        </li>
+                                        </li> */}
                                         <li>
                                             <Link to="/dashboard/contact-appointment">Appointment</Link>
                                         </li>
                                         <li>
                                             <Link to="/dashboard/contact-history">History</Link>
                                         </li>
-                                        <li>
+                                        {/* <li>
                                             <Link to="/dashboard/contact-history-feedback">History-feedback</Link>
-                                        </li>
-                                        <li>
+                                        </li> */}
+                                        {/* <li>
                                             <Link to="/dashboard/contact-history-reason">History-reason</Link>
-                                        </li>
+                                        </li> */}
                                         <li>
                                             <Link to="/dashboard/contact-reason">Reason</Link>
                                         </li>

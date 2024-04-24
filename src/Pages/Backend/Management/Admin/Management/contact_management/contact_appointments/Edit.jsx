@@ -71,7 +71,7 @@ function Edit() {
                       </div>
                     </div>
                     <div className="custom_form_el">
-                      <label htmlFor="">Customer Id</label>
+                      <label htmlFor="">Customer </label>
                       <div>:</div>
                       <div>
                         <select defaultValue={data_store?.singleData?.customer_id} name="customer_id" id="">

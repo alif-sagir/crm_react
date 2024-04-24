@@ -39,7 +39,7 @@ function All() {
                                     Contact History 
                                 </th>
                                 <th className="cursor_n_resize edit_cursor_n_resize">
-                                    Data
+                                    Date
                                 </th>
                                 <th className="cursor_n_resize edit_cursor_n_resize">
                                     Feedback type
