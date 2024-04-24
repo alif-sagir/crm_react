@@ -31,10 +31,7 @@ user designation done
 // 
 form_data.append('id', id);
 // 
-1. customer relavent document
+1. 
 2. task and user task update create not ok
 3. user
-4. appointment reason
-5. history reason
-6. history feedback
 */

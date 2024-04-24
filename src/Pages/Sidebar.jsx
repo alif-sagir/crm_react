@@ -132,9 +132,9 @@ function Sidebar(props) {
                                         <li>
                                             <Link to="/dashboard/customer-group">Group</Link>
                                         </li>
-                                        <li>
+                                        {/* <li>
                                             <Link to="/dashboard/customer-relavent-document">Relavent document</Link>
-                                        </li>
+                                        </li> */}
                                         <li>
                                             <Link to="/dashboard/customer-variant-customer">Variant customer</Link>
                                         </li>
