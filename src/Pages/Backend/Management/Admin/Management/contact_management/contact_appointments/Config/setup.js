@@ -11,6 +11,8 @@ var setup = {
     dispatch: () => null,
     actions: {
         fetch_all_data: async () => null,
+        fetch_all_customer: async () => null,
+        fetch_all_contact_number: async () => null,
         set_page_limit: async () => null,
         set_search_key: async () => null,
         store_data: async () => null,
@@ -24,6 +26,11 @@ var setup = {
 
 setup.set_async = function(async_actions, dataStoreSlice){
     setup.actions.fetch_all_data = async (query_params) => await setup.dispatch(async_actions[`fetch_all_data`](query_params));
+
+    setup.actions.fetch_all_customer = async (query_params) => await setup.dispatch(async_actions[`fetch_all_customer`](query_params));
+
+    setup.actions.fetch_all_contact_number = async (query_params) => await setup.dispatch(async_actions[`fetch_all_contact_number`](query_params));
+
     setup.actions.get_users = async (id) => await setup.dispatch(async_actions[`details_${setup.prefix}`](id))
     // store user
     setup.actions.store_data = async (form_data) => await setup.dispatch(async_actions[`store_${setup.prefix}`](form_data));

@@ -19,11 +19,7 @@ function All() {
     }, [])
 
     console.log("data stor from user info front end", data_store?.data?.data);
-    console.log("data stor from user info front end", data_store?.data?.data);
-    console.log("data stor from user info front end", data_store?.data?.data);
-    console.log("data stor from user info front end", data_store?.data?.data);
-    console.log("data stor from user info front end", data_store?.data?.data);
-    console.log("data stor from user info front end", data_store?.data?.data);
+    
 
     return (
 
@@ -78,10 +74,10 @@ function All() {
                                                 <div className='edit_class_submanu'>
                                                     <ul>
                                                         <li>
-                                                            <Link to={`/dashboard/contact-appointment-reason/edit/${item.contact_appointment_id}`}>Edit</Link>
+                                                            <Link to={`/dashboard/contact-appointment-reason/edit/${item.rid}`}>Edit</Link>
                                                         </li>
                                                         <li>
-                                                            <Link to={`/dashboard/contact-appointment-reason/details/${item.contact_appointment_id}`}>Details</Link>
+                                                            <Link to={`/dashboard/contact-appointment-reason/details/${item.rid}`}>Details</Link>
                                                         </li>
                                                         {/* <li>
                                                             <Link to="/dashboard/contact-appointment-reason/edit">Deactive</Link>

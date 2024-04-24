@@ -36,14 +36,12 @@ function All() {
 
 
                                 <th className="cursor_n_resize edit_cursor_n_resize">
-                                    Customer Number Id
+                                    Contact Number
                                 </th>
                                 <th className="cursor_n_resize edit_cursor_n_resize">
-                                    Customer Id
+                                    Customer
                                 </th>
-                                <th className="cursor_n_resize edit_cursor_n_resize">
-                                   Date
-                                </th>
+                               
                                 <th className="cursor_n_resize edit_cursor_n_resize">
                                    Next date
                                 </th>
@@ -53,9 +51,7 @@ function All() {
                                 <th className="cursor_n_resize edit_cursor_n_resize">
                                     Notes
                                 </th>
-                                <th className="cursor_n_resize edit_cursor_n_resize">
-                                    Creator
-                                </th>
+                               
 
                                 <th className="cursor_n_resize edit_cursor_n_resize">
                                     Status
@@ -79,12 +75,6 @@ function All() {
                                     {item?.customer?.full_name}
                                     </span>
                                 </td>
-
-                                <td>
-                                    <span>
-                                    {moment(item.date).format('YYYY-MM-DD')}
-                                    </span>
-                                </td>
                                 <td>
                                     <span>
                                     {moment(item.next_contact_date).format('YYYY-MM-DD')}
@@ -100,11 +90,7 @@ function All() {
                                     {item.note}
                                     </span>
                                 </td>
-                                <td>
-                                    <span>
-                                    {item.creator}
-                                    </span>
-                                </td>
+                               
                                 <td>
                                     <span>Active</span>
                                 </td>

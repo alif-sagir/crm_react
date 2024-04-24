@@ -1,22 +1,23 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import setup from './Config/setup.js';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import dataStoreSlice, { async_actions } from './Config/store.js';
+import moment from 'moment/moment.js';
 
 
 function Create() {
   setup.dispatch = useDispatch();
+  const data_store = useSelector((state) => state[setup.prefix])
   setup.set_async(async_actions, dataStoreSlice);
-  const { store_data } = setup.actions;
+  const { store_data,fetch_all_contact_number,fetch_all_customer } = setup.actions;
 
-  // useEffect(() => {
-  //   get_roles();
-  // }, [])
+  useEffect(() => {
+    fetch_all_contact_number();
+    fetch_all_customer();
+  }, [])
 
   
   const handleSubmit = async (event) => {
-    // let e = event;
-    // console.log('some from create submit', event.target.vlaue);
     event.preventDefault();
     let form_data = new FormData(event.target);
     // selectedRole.forEach((e, index) => {
@@ -44,20 +45,36 @@ function Create() {
             <div className="row">
               <div className="col-lg-8">
                 <div className="form-group mb-5">
-                  <div className="custom_form_el">
-                    <label htmlFor="">Contact Number Id</label>
-                    <div>:</div>
-                    <div><input name="contact_number_id" type="text" className="form-control" /></div>
-                  </div>
-                  <div className="custom_form_el">
-                    <label htmlFor="">Customer Id</label>
-                    <div>:</div>
-                    <div><input name="customer_id" type="text" className="form-control" /></div>
-                  </div>
+                <div className="custom_form_el">
+                      <label htmlFor="">CRM contact number</label>
+                      <div>:</div>
+                      <div>
+                        <select defaultValue={data_store?.singleData?.customer_id} name="contact_number_id" id="">
+                          {
+                            data_store?.contact_number?.length && data_store?.contact_number?.map(item => {
+                              return <option key={item.id} value={item.id}>{item?.details}</option>
+                            })
+                          }
+                        </select>
+                      </div>
+                    </div>
+                    <div className="custom_form_el">
+                      <label htmlFor="">Customer</label>
+                      <div>:</div>
+                      <div>
+                        <select defaultValue={data_store?.singleData?.customer_id} name="customer_id" id="">
+                          {
+                            data_store?.customer?.length && data_store?.customer?.map(item => {
+                              return <option key={item.id} value={item.id}>{item.full_name}</option>
+                            })
+                          }
+                        </select>
+                      </div>
+                    </div>
                   <div className="custom_form_el">
                     <label htmlFor="">Date</label>
                     <div>:</div>
-                    <div><input name="date" type="date" className="form-control" /></div>
+                    <div><input name="date" type="date" className="form-control" defaultValue= {moment().format('YYYY-MM-DD')} /></div>
                   </div>
                   <div className="custom_form_el">
                     <label htmlFor="">Contact type</label>
@@ -69,11 +86,7 @@ function Create() {
                     <div>:</div>
                     <div><input name="note" type="text" className="form-control" /></div>
                   </div>
-                  <div className="custom_form_el">
-                    <label htmlFor="">Creator</label>
-                    <div>:</div>
-                    <div><input name="creator" type="number" className="form-control" /></div>
-                  </div>
+                 
                 </div>
               </div>
             </div>

@@ -50,9 +50,7 @@ function All() {
                                 <th className="cursor_n_resize edit_cursor_n_resize">
                                     Notes
                                 </th>
-                                <th className="cursor_n_resize edit_cursor_n_resize">
-                                    Creator
-                                </th>
+                                
 
                                 <th className="cursor_n_resize edit_cursor_n_resize">
                                     Status
@@ -92,11 +90,7 @@ function All() {
                                             {item.note}
                                             </span>
                                         </td>
-                                        <td>
-                                            <span>
-                                            {item.creator}
-                                            </span>
-                                        </td>
+                                    
                                         <td>
                                             <span>Active</span>
                                         </td>
@@ -105,10 +99,10 @@ function All() {
                                                 <div className='edit_class_submanu'>
                                                     <ul>
                                                         <li>
-                                                            <Link to={`/dashboard/contact-appointment/edit/${item.id}`}>Edit</Link>
+                                                            <Link to={`/dashboard/contact-appointment/edit/${item?.id}`}>Edit</Link>
                                                         </li>
                                                         <li>
-                                                            <Link to={`/dashboard/contact-appointment/details/${item.id}`}>Details</Link>
+                                                            <Link to={`/dashboard/contact-appointment/details/${item?.id}`}>Details</Link>
                                                         </li>
                                                         {/* <li>
                                                             <Link to="/dashboard/contact-appointment/edit">Deactive</Link>
