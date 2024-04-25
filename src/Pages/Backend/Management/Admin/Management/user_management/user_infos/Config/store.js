@@ -35,7 +35,7 @@ export const async_actions = {
      [`fetch_all_user`]: createAsyncThunk(
         `${store_prefix}/fetch_all_user`,
         async (data, thunkAPI) => {
-            let url = data?.url ? data.url : `/user/only`;
+            let url = data?.url ? data.url : `/user/all`;
             const response = await axios.get(url);
             return response.data;
         }

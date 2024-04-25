@@ -41,6 +41,53 @@ export const async_actions = {
             return response.data;
         }
     ),
+    // all user
+    [`fetch_all_user`]: createAsyncThunk(
+        `${store_prefix}/fetch_all_user`,
+        async (data, thunkAPI) => {
+
+            let url = data?.url ? data.url : `/user/only`;
+            const response = await axios.get(url);
+            return response.data;
+        }
+    ),
+    // all task_variant
+    [`fetch_all_task_variant`]: createAsyncThunk(
+        `${store_prefix}/fetch_all_task_variant`,
+        async (data, thunkAPI) => {
+
+            let url = data?.url ? data.url : `/task-variant/only`;
+            const response = await axios.get(url);
+            return response.data;
+        }
+    ),
+    // all task_variant_value
+    [`fetch_all_task_variant_value`]: createAsyncThunk(
+        `${store_prefix}/fetch_all_task_variant_value`,
+        async (data, thunkAPI) => {
+
+            let url = data?.url ? data.url : `/task-variant-value/only`;
+            const response = await axios.get(url);
+            return response.data;
+        }
+    ),
+
+      
+    // store data
+    [`store_${store_prefix}`]: createAsyncThunk(
+        `user/store_${store_prefix}`,
+        async (form_data, thunkAPI) => {
+            console.log("some form data", form_data);
+            try {
+                const response = await axios.post(`/${api_prefix}/store`, form_data);
+                // thunkAPI.dispatch(storeSlice.actions.my_action())
+                // console.log(response.data);
+                return response;
+            } catch (error) {
+                window.render_alert(error)
+            }
+        }
+    ),
      
     // edit data or updated data
     [`edit_${store_prefix}`]: createAsyncThunk(
@@ -102,6 +149,9 @@ const storeSlice = createSlice({
     name: `${store_prefix}`,
     initialState: {
         data: {},
+        user: {},
+        task_variant: {},
+        task_variant_value: {},
         task: {},
         page_limit: 10,
         search_key: '',
@@ -119,6 +169,15 @@ const storeSlice = createSlice({
         builder
             .addCase(async_actions[`fetch_all_data`].fulfilled, (state, { type, payload, meta }) => {
                 state[`data`] = payload;
+            })
+            .addCase(async_actions[`fetch_all_user`].fulfilled, (state, { type, payload, meta }) => {
+                state[`user`] = payload;
+            })
+            .addCase(async_actions[`fetch_all_task_variant`].fulfilled, (state, { type, payload, meta }) => {
+                state[`task_variant`] = payload;
+            })
+            .addCase(async_actions[`fetch_all_task_variant_value`].fulfilled, (state, { type, payload, meta }) => {
+                state[`task_variant_value`] = payload;
             })
             .addCase(async_actions[`fetch_all_task`].fulfilled, (state, { type, payload, meta }) => {
                 state[`task`] = payload;

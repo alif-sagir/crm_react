@@ -24,7 +24,7 @@ console.log("data stor from user info front end", data_store?.user);
     //   form_data.append(`role`, e.serial);
     // });
     // [...document.querySelectorAll('.form_error')].forEach((el => el.remove()));
-    await store_data(form_data);
+    // await store_data(form_data);
     event.target.reset();
   };
   return (

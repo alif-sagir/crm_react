@@ -32,7 +32,7 @@ function Edit() {
     // form_data.append('role', id);
     console.log('form data', form_data);
     // [...document.querySelectorAll('.form_error')].forEach((el => el.remove()));
-    await update_data(form_data);
+    // await update_data(form_data);
     // e.target.reset();
     // // e.target.serial.value = "";
     // // e.target.title.value = "";
