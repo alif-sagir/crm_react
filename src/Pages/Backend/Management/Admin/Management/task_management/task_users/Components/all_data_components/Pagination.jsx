@@ -16,9 +16,7 @@ function Pagination() {
                     {
                         data_store?.data?.links?.map(item => {
                             return <li key={item.label} className="page-item pagination-page-nav">
-                                <a onClick={(e) => { e.preventDefault(); !item.active && fetch_all_data({ url: item.url }) }}
-                                    href={item.url}
-                                    className={`page-link ${item.active ? 'active' : ''} `}>
+                                <a onClick={(e) => { e.preventDefault(); !item.active && fetch_all_data({ url: item.url }) }}  href={item.url} className={`page-link ${item.active ?'active' : ''} `}>
                                     {parse(item.label)}
                                 </a>
                             </li>

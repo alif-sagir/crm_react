@@ -317,16 +317,16 @@ function CrmEntry() {
 
                                 <div>
                                     <div className='d-flex gap-2 '>
-                                        <div>
-                                            <button type='submit'>Submit</button>
+                                        <div className=''>
+                                            <button className='px-3 py-1 border rounded-3 bg-danger' type='submit'>Submit</button>
                                         </div>
-                                        <div>
+                                        {/* <div>
                                             <button>Reset</button>
                                         </div>
                                         <div>
                                             <button>Last Number</button>
-                                            {/* <button>Last Number</button> */}
-                                        </div>
+                                            <button>Last Number</button>
+                                        </div> */}
                                     </div>
                                 </div>
                             </form>

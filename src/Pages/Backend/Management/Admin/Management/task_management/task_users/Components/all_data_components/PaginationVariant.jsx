@@ -12,6 +12,7 @@ function PaginationVariant() {
     setup.dispatch = useDispatch();
     const { fetch_all_data, set_page_limit, get_users,set_page_variant_limit } = setup.actions;
     console.log('iddd', id);
+    console.log('iddd', data_store);
     return (
         <>
             <div className="d-inline-block">
@@ -52,7 +53,7 @@ function PaginationVariant() {
             <div className="show-limit d-inline-block">
                 <span>Total:</span>
                 <span>
-                    {data_store?.data?.total}
+                    {data_store?.total}
                 </span>
             </div>
         </>
