@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom'
 function UserLayout() {
   return (
     <>
-    <h2>This is crm contact number page</h2>
+    <h2>CRM contact number management</h2>
     <div>
         <Outlet></Outlet>
     </div>

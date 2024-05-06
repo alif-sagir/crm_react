@@ -12,23 +12,23 @@ function Edit() {
   const data_store = useSelector((state) => state[setup.prefix]["singleData"])
   const data_store2 = useSelector((state) => state[setup.prefix]);
   setup.set_async(async_actions, dataStoreSlice);
-  const { get_users, set_data, update_data, fetch_all_user } = setup.actions;
+  const { get_users, set_data, update_data, fetch_all_user,get_only_user } = setup.actions;
 
   useEffect(() => {
-    get_users(id);
+    get_only_user(id);
     fetch_all_user();
     return () => {
       document.getElementById('form-data')?.reset();
       set_data(null)
     };
   }, []);
-  console.log('id from edit', data_store);
+  console.log('id from edit', data_store2);
   console.log("data stor from user info front end", data_store2?.user);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     let form_data = new FormData(event.target);
-    // form_data.append('id', id);
+    form_data.append('id', id);
     // form_data.append('role', id);
     console.log('form data', form_data);
     // [...document.querySelectorAll('.form_error')].forEach((el => el.remove()));
@@ -38,9 +38,9 @@ function Edit() {
     // // e.target.title.value = "";
 
   };
-  console.log('datra store from edit', data_store);
-  if (data_store ) {
-    const { task, user_id, task_id, end_time, description, id } = data_store;
+  console.log('datra store from edit', data_store2?.singleTask);
+  if (data_store2 ) {
+    // const {  } = data_store2?.singleTask[0];
     return (
       <div className="card list_card">
         <div className="card-header ">
@@ -59,34 +59,25 @@ function Edit() {
                 <div className="col-lg-8">
                   <div className="form-group mb-5">
 
-                    <div className="custom_form_el">
-                      <label htmlFor="">Id</label>
-                      <div>:</div>
-                      <div><input readOnly name="id" type="text" className="form-control" defaultValue={id} /></div>
-                    </div>
-                    <div className="custom_form_el">
-                      <label htmlFor="">Task Id</label>
-                      <div>:</div>
-                      <div><input readOnly  name="task_id" type="text" className="form-control" defaultValue={task_id} /></div>
-                    </div>
+                  
                     <div className="custom_form_el">
                       <label htmlFor="">Task title</label>
                       <div>:</div>
-                      <div><input name="task_title" type="text" className="form-control" defaultValue={task?.title} /></div>
+                      <div><input name="task_title" type="text" className="form-control" defaultValue={'tastitle'} /></div>
                     </div>
                     <div className="custom_form_el">
                       <label htmlFor="">Task Description</label>
                       <div>:</div>
-                      <div><input name="task_description" type="text" className="form-control" defaultValue={task?.description} /></div>
+                      <div><input name="task_description" type="text" className="form-control" defaultValue={'taskdescription'} /></div>
                     </div>
                     <div className="custom_form_el">
                     <label htmlFor="">End date</label>
                     <div>:</div>
-                    <div><input name="end_time" type="date" className="form-control" defaultValue={task?.end_time ? 
+                    {/* <div><input name="end_time" type="date" className="form-control" defaultValue={'taskend_time' ? 
                     moment(task?.end_time).format('YYYY-MM-DD')
                     :
                     moment().format('YYYY-MM-DD')
-                   }/></div>
+                   }/></div> */}
                   </div>
                     <div className="custom_form_el">
                       <label htmlFor="">User Id</label>

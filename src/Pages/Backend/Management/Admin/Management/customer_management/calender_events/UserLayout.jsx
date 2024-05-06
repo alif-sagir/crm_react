@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom'
 function UserLayout() {
   return (
     <>
-    <h2>This is calender event page</h2>
+    <h2>Calendar event management</h2>
     <div>
         <Outlet></Outlet>
     </div>

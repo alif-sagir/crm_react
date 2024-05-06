@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom'
 function UserLayout() {
   return (
     <>
-    <h2>This is contact history page</h2>
+    <h2>Contact history management</h2>
     <div>
         <Outlet></Outlet>
     </div>

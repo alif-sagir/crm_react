@@ -136,6 +136,24 @@ export const async_actions = {
             }
         }
     ),
+     // details for edit data
+     [`details_edit`]: createAsyncThunk(
+        `user/details_edit`,
+        async (id, thunkAPI) => {
+            try {
+                const response = await axios.get(`/${api_prefix}/details/only/${id}`);
+                // thunkAPI.dispatch(storeSlice.actions.my_action())
+                console.log(response);
+                return response;
+            } catch (error) {
+                // console.log(error);
+                // console.log(error.response?.data?.data?.keyValue?.[key]);
+                // console.log(error.response?.status);
+                return error;
+
+            }
+        }
+    ),
 
       // delete data
       [`delete_data`]: createAsyncThunk(
@@ -159,6 +177,7 @@ const storeSlice = createSlice({
     initialState: {
         data: {},
         user: {},
+        singleTask: {},
         variants: {},
         page_limit: 1,
         search_key: '',
@@ -185,8 +204,12 @@ const storeSlice = createSlice({
                 state[`variants`] = payload;
             })
             .addCase(async_actions[`details_${store_prefix}`].fulfilled, (state, { type, payload, meta }) => {
-                // console.log('payload data', payload.data);
+                console.log('payload data', payload);
                 state[`singleData`] = payload.data;
+            })
+            .addCase(async_actions[`details_edit`].fulfilled, (state, { type, payload, meta }) => {
+                console.log('payload data', payload);
+                state[`singleTask`] = payload.data;
             })
     },
 })

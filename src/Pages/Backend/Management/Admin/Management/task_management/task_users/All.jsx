@@ -100,9 +100,9 @@ function All() {
                                             <span className='edit_class_submanu_active'><i className="mdi mdi-format-list-bulleted"></i>
                                                 <div className='edit_class_submanu'>
                                                     <ul>
-                                                        <li>
-                                                            <Link to={`/dashboard/task-user/edit/${item.id}`}>Edit</Link>
-                                                        </li>
+                                                        {/* <li>
+                                                            <Link to={`/dashboard/task-user/edit/${item.task_id}`}>Edit</Link>
+                                                        </li> */}
                                                         <li>
                                                             <Link to={`/dashboard/task-user/details/${item.user_id}`}>Details</Link>
                                                         </li>

@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom'
 function UserLayout() {
   return (
     <>
-    <h2>This is customer relavent document page</h2>
+    <h2>Customer relavent document management</h2>
     <div>
         <Outlet></Outlet>
     </div>

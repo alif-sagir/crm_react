@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom'
 function UserLayout() {
   return (
     <>
-    <h2>This is contact appointment page</h2>
+    <h2>Contact appointment management</h2>
     <div>
         <Outlet></Outlet>
     </div>
