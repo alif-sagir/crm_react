@@ -14,6 +14,7 @@ var setup = {
         fetch_all_user: async () => null,
         fetch_all_variants: async () => null,
         set_page_limit: async () => null,
+        set_page_variant_limit: async () => null,
         set_search_key: async () => null,
         store_data: async () => null,
         // store_title: async () => null,
@@ -48,6 +49,9 @@ setup.set_async = function (async_actions, dataStoreSlice) {
     setup.actions.get_only_user = async (id) => await setup.dispatch(async_actions[`details_edit`](id))
     
     setup.actions.set_page_limit = (limit = 10) => setup.dispatch(dataStoreSlice['actions'][`set_page_limit`](limit));
+
+    setup.actions.set_page_variant_limit = (limit = 2) => setup.dispatch(dataStoreSlice['actions'][`set_page_variant_limit`](limit));
+
     setup.actions.set_search_key = (search_key = '') => setup.dispatch(dataStoreSlice['actions'][`set_search_key`](search_key));
 }
 

@@ -116,7 +116,7 @@ export const async_actions = {
         async (id, thunkAPI) => {
             let state = thunkAPI.getState()[store_prefix];
             let qparams = {
-                page_limit: state[`page_limit`],
+                page_limit: state[`page_variant_limit`],
             }
             try {
                 const response = await axios.get(`/${api_prefix}/details/${id}`, {
@@ -179,12 +179,16 @@ const storeSlice = createSlice({
         user: {},
         singleTask: {},
         variants: {},
-        page_limit: 1,
+        page_limit: 10,
+        page_variant_limit: 2,
         search_key: '',
     },
     reducers: {
         set_page_limit: (state, { payload }) => {
             state.page_limit = payload
+        },
+        set_page_variant_limit: (state, { payload }) => {
+            state.page_variant_limit = payload
         },
         set_search_key: (state, { payload }) => {
             state.search_key = payload

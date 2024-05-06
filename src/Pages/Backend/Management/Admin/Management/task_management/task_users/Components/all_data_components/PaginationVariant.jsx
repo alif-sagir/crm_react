@@ -10,7 +10,7 @@ function PaginationVariant() {
     const data_store = useSelector((state) => state[setup.prefix]["singleData"])
     setup.set_async(async_actions, dataStoreSlice);
     setup.dispatch = useDispatch();
-    const { fetch_all_data, set_page_limit, get_users } = setup.actions;
+    const { fetch_all_data, set_page_limit, get_users,set_page_variant_limit } = setup.actions;
     console.log('iddd', id);
     return (
         <>
@@ -31,12 +31,12 @@ function PaginationVariant() {
             </div>
             <div className="show-limit d-inline-block">
                 <span>Limit:</span>
-                <select onChange={(e) => { set_page_limit(e.target.value); get_users(id);; }}>
+                <select onChange={(e) => { set_page_variant_limit(e.target.value); get_users(id);; }}>
                     <option value="1">
                         1
                     </option>
-                    <option value="2">
-                        2
+                    <option value="5">
+                        5
                     </option>
                     <option value="10">
                         10

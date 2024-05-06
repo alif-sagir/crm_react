@@ -19,6 +19,7 @@ function All() {
     }, [])
 
     console.log("data stor from user info front end", data_store?.data?.data);
+    console.log("data stor", data_store?.data);
 
     return (
 
