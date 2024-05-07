@@ -793,6 +793,7 @@
     margin-bottom: 0;
     min-width: 100%;
     padding: 0px 15px 15px;
+   
   }
   .dark .list_card {
     background-color: var(--black_800);
@@ -911,6 +912,7 @@
     display: grid;
     grid-template-columns: 200px 2px 1fr;
     gap: 30px;
+    align-items: center;
   }
   
   .cursor_pointer {
@@ -1866,5 +1868,14 @@
     gap: 8px;
   }
   
+  .crm_form_left{
+    width: 250px;
+    border: 2px solid rgb(238, 237, 237);
+  }
+  .crm_form_left ul li{
+    font-size: 14px;
+    padding: 8px;
+    margin-left: 12px;
+  }
   /*# sourceMappingURL=style.css.map */
   

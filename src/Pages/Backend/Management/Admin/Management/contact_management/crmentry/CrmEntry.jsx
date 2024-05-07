@@ -18,6 +18,7 @@ const debounce = (func, delay) => {
     };
 };
 
+
 function CrmEntry() {
     const data_store = useSelector((state) => state[setup.prefix]);
     setup.dispatch = useDispatch();
@@ -73,6 +74,14 @@ function CrmEntry() {
         fetch_all_data();
     }, 500); // 300ms debounce delay
 
+    const scrollToRef = (id,e) => {
+        e.preventDefault();
+        let el = document.getElementById(id)
+        if (el) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    };
+
 
     if (data_store && data_store.crm_user.users) {
         let data = data_store?.crm_user?.items;
@@ -84,229 +93,272 @@ function CrmEntry() {
             <>
                 <div className='mt-5'>
                     <div className="card list_card">
-                        <div className="card-body p-3">
-                            <form onSubmit={(event) => handleSubmit(event)} className='form-group'>
-                                <div className="custom_form_el">
-                                    <label htmlFor="">Date</label>
-                                    <div>:</div>
-                                    <div><input name="date" type="date" className="form-control" defaultValue={date1} /></div>
-                                </div>
-                                
-                                <div className="custom_form_el">
-                                    <label htmlFor="">CRM contact numbers</label>
-                                    <div>:</div>
-                                    <div>
-                                        <select name="crm_contact_number" id="">
-                                            {
-                                                data_store?.crm_user?.crm_contact_nums.map(item => {
-                                                    return <option key={item.id} value={item.id}>{item.details}</option>
-                                                })
-                                            }
-                                        </select>
-                                        {/* <MultiselectDropdown data={reason} selectedData={selectedReason} setSelectedData={setselectedReason}></MultiselectDropdown> */}
-                                    </div>
-                                </div>
-                                <div className="custom_form_el">
-                                    <label htmlFor=""> Full Name</label>
-                                    <div>:</div>
-                                    <div><input name="full_name" type="text" className="form-control" value={fullName} /></div>
-                                </div>
-                                <div hidden className="custom_form_el">
-                                    <label htmlFor="">Id</label>
-                                    <div>:</div>
-                                    <div><input name="id" type="text" className="form-control" value={id} /></div>
-                                </div>
-                                <div className="custom_form_el">
-                                    <label htmlFor=""> Phone Number</label>
-                                    <div>:</div>
-                                    {/*  <div><input name='contact_number'
-                                        onChange={(e) => { set_search_key(e.target.value); fetch_all_data(); }}
-                                        type="text"
-                                        className="form-control border"
-                                        placeholder="Search..."
-                                    ></input></div> */}
-                                    <div><input name='contact_number'
-                                        onChange={(e)=>(handleSearch(e), set_customer_number(e.target.value))}
-                                        value={customer_number}
-                                        type="text"
-                                        className="form-control border"
-                                        placeholder="Search..."
-                                    ></input></div>
-                                </div>
+                        <div className='d-flex'>
+                            <div className='crm_form_left mt-3'>
 
-                                <div className="custom_form_el">
-                                    <label htmlFor=""> Feedback</label>
-                                    <div>:</div>
-                                    <div>
-                                        <textarea name="feedback" type="text" className="form-control" defaultValue={data_store?.crm_entry_data?.newFeedback?.notes}></textarea>
-                                    </div>
-                                </div>
-                                <div className="custom_form_el">
-                                    <label htmlFor="">Feedback Type</label>
-                                    <div>:</div>
-                                    <div>
-                                        <select name="feedback_type" id="">
-                                            <option value="agree">agree</option>
-                                            <option value="disagree">disagree</option>
-                                            <option value="well wisher">well wisher</option>
-                                            <option value="runnig student">runnig student</option>
-                                            <option value="old student">old student</option>
-                                            <option value="wrong number">wrong number</option>
-                                            <option value="contact later">contact later</option>
-                                            <option value="next batch">next batch</option>
+                                <ul>
+                                    <li>
+                                        <a href="">Customer info</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Customer feedback</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Contact info</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Set An Appointment</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Lead Information</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Document</a>
+                                    </li>
+                                    <li>
+                                        <a  onClick={(e)=> scrollToRef('variants',e)}>Variants</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div className="card-body p-3">
+                                <form onSubmit={(event) => handleSubmit(event)} className='form-group'>
+                                    <div className='row'>
+                                        <div className='col-lg-6'>
+                                            <div className='border border-2 p-3 mb-4 h-100'>
+                                                <h3 id='customer_info' className='mb-4'>Customer info</h3>
+                                                <div className="custom_form_el">
+                                                    <label htmlFor="">Date</label>
+                                                    <div>:</div>
+                                                    <div><input name="date" type="date" className="form-control" defaultValue={date1} /></div>
+                                                </div>
 
-                                        </select>
-                                    </div>
-                                </div>
-                                <div className="custom_form_el">
-                                    <label htmlFor="">Next contact date</label>
-                                    <div>:</div>
-                                    <div>
-                                        <input onChange={(e) => set_formatted_date(e.target.value)} name="next_contact_date" type="date" className="form-control" Value={formatted_date} />
-                                    </div>
-                                </div>
-                                <div className="custom_form_el">
-                                    <label htmlFor="">Contact Notes</label>
-                                    <div>:</div>
-                                    <div>
-                                        <textarea placeholder='Take some notes' name="contact_notes" type="text" className="form-control" ></textarea>
-                                    </div>
-                                </div>
-                                <div className="custom_form_el">
-                                    <label htmlFor="">Contact type</label>
-                                    <div>:</div>
-                                    <div>
-                                        <select defaultValue={data_store?.crm_entry_data?.Contact_history?.contact_type} name="contact_type" id="">
-                                            <option value="by phone">by phone</option>
-                                            <option value="email">email</option>
-                                            <option value="whatsup">whatsup</option>
-                                            <option value="office">office</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div className="custom_form_el">
-                                    <label htmlFor="">Group na thakle create hobe</label>
-                                    <div>:</div>
-                                    <div>
-                                        <MultiselectDropdown data={data} selectedData={selectedData} setSelectedData={setselectedData}></MultiselectDropdown>
-                                    </div>
-                                </div>
-                                <div className="custom_form_el">
-                                    <label htmlFor="">reason na thakle create hobe</label>
-                                    <div>:</div>
-                                    <div>
-                                        {/* <select name="customer_reason" id="">
-                                            {
-                                                data_store?.crm_user?.reasons.map(item => {
-                                                    return <option value={item.title}>{item.title}</option>
-                                                })
-                                            }
-                                        </select> */}
-                                        <MultiselectDropdown data={reason} selectedData={selectedReason} setSelectedData={setselectedReason}></MultiselectDropdown>
-                                    </div>
-                                </div>
-
-                                <hr />
-                                <h2>variants</h2>
-                                {
-                                    data_store?.crm_user?.variants.map(item => {
-                                        return <div className="custom_form_el">
-                                            <label htmlFor="">{item.title}</label>
-                                            <div>:</div>
-                                            <div>
-                                                <select name={`customer_variants[${item.title}_${item.id}]`} id="">
-                                                    {
-                                                        data_store?.crm_user?.variant_values.map(item => {
-                                                            return <option key={item.id} value={item.variant_id}>{item.title}</option>
-                                                        })
-                                                    }
-                                                </select>
+                                                <div className="custom_form_el">
+                                                    <label htmlFor="">CRM contact numbers</label>
+                                                    <div>:</div>
+                                                    <div>
+                                                        <select name="crm_contact_number" id="">
+                                                            {
+                                                                data_store?.crm_user?.crm_contact_nums.map(item => {
+                                                                    return <option key={item.id} value={item.id}>{item.details}</option>
+                                                                })
+                                                            }
+                                                        </select>
+                                                        {/* <MultiselectDropdown data={reason} selectedData={selectedReason} setSelectedData={setselectedReason}></MultiselectDropdown> */}
+                                                    </div>
+                                                </div>
+                                                <div className="custom_form_el">
+                                                    <label htmlFor=""> Full Name</label>
+                                                    <div>:</div>
+                                                    <div><input name="full_name" type="text" className="form-control" value={fullName} /></div>
+                                                </div>
+                                                <div hidden className="custom_form_el">
+                                                    <label htmlFor="">Id</label>
+                                                    <div>:</div>
+                                                    <div><input name="id" type="text" className="form-control" value={id} /></div>
+                                                </div>
+                                                <div className="custom_form_el">
+                                                    <label htmlFor=""> Phone Number</label>
+                                                    <div>:</div>
+                                                    <div><input name='contact_number'
+                                                        onChange={(e) => (handleSearch(e), set_customer_number(e.target.value))}
+                                                        value={customer_number}
+                                                        type="text"
+                                                        className="form-control border border-success"
+                                                        placeholder="Search..."
+                                                    ></input></div>
+                                                </div>
+                                                <div className="custom_form_el">
+                                                    <label htmlFor="">Next contact date</label>
+                                                    <div>:</div>
+                                                    <div>
+                                                        <input onChange={(e) => set_formatted_date(e.target.value)} name="next_contact_date" type="date" className="form-control" Value={formatted_date} />
+                                                    </div>
+                                                </div>
+                                                <div className="custom_form_el">
+                                                    <label htmlFor="">Additional contact numbers</label>
+                                                    <div>:</div>
+                                                    <div>
+                                                        <input className='m-3 p-1' name='customer_contact_number[]' type="text" placeholder="number 1" />
+                                                        <input className='m-3 p-1' name='customer_contact_number[]' type="text" placeholder="number 2" />
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    })
-                                }
-                                <hr />
+                                        <div className='col-lg-6'>
+                                            <div className='border border-2 p-3 mb-4 h-100'>
+                                                <h3 id='customer_feedback' className='mb-4'>Customer feedback</h3>
+                                                <div className="custom_form_el">
+                                                    <label htmlFor="">Feedback Type</label>
+                                                    <div>:</div>
+                                                    <div>
+                                                        <select name="feedback_type" id="">
+                                                            <option value="agree">agree</option>
+                                                            <option value="disagree">disagree</option>
+                                                            <option value="well wisher">well wisher</option>
+                                                            <option value="runnig student">runnig student</option>
+                                                            <option value="old student">old student</option>
+                                                            <option value="wrong number">wrong number</option>
+                                                            <option value="contact later">contact later</option>
+                                                            <option value="next batch">next batch</option>
 
-                                <hr />
-                                <h2>event</h2>
-                                <div className="custom_form_el">
-                                    <label htmlFor="">Event Details</label>
-                                    <div>:</div>
-                                    <div>
-                                        <input className='m-3 p-1' name='calender_event_date' type="date" placeholder="event_date" defaultValue={date1} />
-                                        <input className='m-3 p-1' name='calender_event_type' type="text" placeholder="event_type" />
-                                        <input className='m-3 p-1' name='calender_event_description' type="text" placeholder="event_descrption" />
-                                        <input className='m-3 p-1' name='calender_event_meet_link' type="text" placeholder="meet_link" />
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div className="custom_form_el">
+                                                    <label htmlFor=""> Feedback</label>
+                                                    <div>:</div>
+                                                    <div>
+                                                        <textarea name="feedback" type="text" className="form-control" defaultValue={data_store?.crm_entry_data?.newFeedback?.notes}></textarea>
+                                                    </div>
+                                                </div>
+                                                <div className="custom_form_el">
+                                                    <label htmlFor="">Contact Notes</label>
+                                                    <div>:</div>
+                                                    <div>
+                                                        <textarea placeholder='Take some notes' name="contact_notes" type="text" className="form-control" ></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <hr />
 
-                                <hr />
-                                <h2>appointment</h2>
-                                <div className="custom_form_el">
-                                    <label htmlFor="">appointment Details</label>
-                                    <div>:</div>
-                                    <div>
-                                        <input className='m-3 p-1' name='appointment_date' type="date" placeholder="appointment_date" defaultValue={date1} />
-                                        <input className='m-3 p-1' name='appointment_contact_type' type="text" placeholder="contact_type" />
-                                        <input className='m-3 p-1' name='appointment_note' type="text" placeholder="notes" />
+
+
+
+
+                                    <div className='row mt-4'>
+                                        <div className='col-lg-6'>
+                                            <div className='border border-2 p-3 mb-4 h-100' >
+                                                <h3 id='contact_info' className='mb-4'>Contact info</h3>
+                                                <div className="custom_form_el">
+                                                    <label htmlFor="">Contact type</label>
+                                                    <div>:</div>
+                                                    <div>
+                                                        <select defaultValue={data_store?.crm_entry_data?.Contact_history?.contact_type} name="contact_type" id="">
+                                                            <option value="by phone">by phone</option>
+                                                            <option value="email">email</option>
+                                                            <option value="whatsup">whatsup</option>
+                                                            <option value="office">office</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div className="custom_form_el">
+                                                    <label htmlFor="">Customer group</label>
+                                                    <div>:</div>
+                                                    <div>
+                                                        <MultiselectDropdown data={data} selectedData={selectedData} setSelectedData={setselectedData}></MultiselectDropdown>
+                                                    </div>
+                                                </div>
+                                                <div className="custom_form_el">
+                                                    <label htmlFor="">Contact reason</label>
+                                                    <div>:</div>
+                                                    <div>
+                                                        <MultiselectDropdown data={reason} selectedData={selectedReason} setSelectedData={setselectedReason}></MultiselectDropdown>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className='col-lg-6'>
+                                            <div className='border border-2 p-3 mb-4 h-100'>
+                                                <h3 id='set_an_appointment'>Set an appointment</h3>
+                                                <div className="custom_form_el">
+                                                    <label htmlFor="">Online</label>
+                                                    <div>:</div>
+                                                    <div>
+                                                        <input className='m-3 p-1' name='calender_event_date' type="date" placeholder="event_date" defaultValue={date1} />
+                                                        <input className='m-3 p-1' name='calender_event_type' type="text" placeholder="event_type" />
+                                                        <input className='m-3 p-1' name='calender_event_description' type="text" placeholder="event_descrption" />
+                                                        <input className='m-3 p-1' name='calender_event_meet_link' type="text" placeholder="meet_link" />
+                                                    </div>
+                                                </div>
+                                                <div className="custom_form_el">
+                                                    <label htmlFor="">Offline</label>
+                                                    <div>:</div>
+                                                    <div>
+                                                        <input className='m-3 p-1' name='appointment_date' type="date" placeholder="appointment_date" defaultValue={date1} />
+                                                        <input className='m-3 p-1' name='appointment_contact_type' type="text" placeholder="contact_type" />
+                                                        <input className='m-3 p-1' name='appointment_note' type="text" placeholder="notes" />
+                                                    </div>
+                                                </div>
+                                                <div className="custom_form_el">
+                                                    <label htmlFor="">Assignto</label>
+                                                    <div>:</div>
+                                                    <div>
+                                                        <select name="assigned_to" id="">
+                                                            {
+                                                                data_store.crm_user.users.map(item => {
+                                                                    return <option key={item.id} value={item.id}>{item.user_name}</option>
+                                                                })
+                                                            }
+
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <hr />
+                                    <div className='row'>
+                                        <div className='col-lg-12 mt-4'>
+                                            <div className='border border-2 p-3 mb-4'>
+                                                <h3 id='lead_information'>lead information</h3>
+                                                <div className="custom_form_el mb-0">
+                                                    <label htmlFor="">lead details</label>
+                                                    <div>:</div>
+                                                    <div className='d-flex flex-wrap '>
+                                                        <input className='m-3 p-1' name='lead_status' type="text" placeholder="lead_status" />
+                                                        <input className='m-3 p-1' name='lead_source' type="text" placeholder="lead_source" />
+                                                        <textarea className='m-3 p-1' style={{ "height": "34px" }} name='lead_qualification_note' type="text" placeholder="qualification_note" id=""></textarea>
+                                                        <input className='m-3 p-1' name='follow_up_date' type="date" placeholder="follow_up_date" defaultValue={date1} />
 
-                                <hr />
-                                <h2>Other contacts</h2>
-                                <div className="custom_form_el">
-                                    <label htmlFor="">Customer contact numbers</label>
-                                    <div>:</div>
-                                    <div>
-                                        <input className='m-3 p-1' name='customer_contact_number[]' type="text" placeholder="extra_number 1" />
-                                        <input className='m-3 p-1' name='customer_contact_number[]' type="text" placeholder="extra number 2" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <hr />
 
-                                <hr />
-                                <h2>document</h2>
-                                <div className="custom_form_el">
-                                    <label htmlFor="">related images</label>
-                                    <div>:</div>
-                                    <div>
-                                        <input name='docu_1' className='m-3 p-1' type="file" accept="image/*,application/pdf" placeholder="image1" />
-                                        <input name='docu_2' className='m-3 p-1' type="file" accept="image/*,application/pdf" placeholder="image2" />
-                                        <input name='docu_3' className='m-3 p-1' type="file" accept="image/*,application/pdf" placeholder="document file 3" />
+                                    <div className='row'>
+                                        <div className='col-lg-12'>
+                                            <div className='border border-2 p-3 mb-4'>
+                                                <h3 id='document'>Document</h3>
+                                                <div className="custom_form_el mb-0">
+                                                    <label htmlFor="">related images</label>
+                                                    <div>:</div>
+                                                    <div>
+                                                        <input name='docu_1' className='m-3 p-1' type="file" accept="image/*,application/pdf" placeholder="image1" />
+                                                        <input name='docu_2' className='m-3 p-1' type="file" accept="image/*,application/pdf" placeholder="image2" />
+                                                        <input name='docu_3' className='m-3 p-1' type="file" accept="image/*,application/pdf" placeholder="document file 3" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className='col-lg-12'>
+                                            <div className='border border-2 p-3 mb-4 h-100' >
+                                                <h3 id='variants'>Variants</h3>
+                                                {
+                                                    data_store?.crm_user?.variants.map(item => {
+                                                        return <div className="custom_form_el">
+                                                            <label htmlFor="">{item.title}</label>
+                                                            <div>:</div>
+                                                            <div>
+                                                                <select name={`customer_variants[${item.title}_${item.id}]`} id="">
+                                                                    {
+                                                                        data_store?.crm_user?.variant_values.map(item => {
+                                                                            return <option key={item.id} value={item.variant_id}>{item.title}</option>
+                                                                        })
+                                                                    }
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    })
+                                                }
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <hr />
 
-                                <hr />
-                                <h2>lead</h2>
-                                <div className="custom_form_el">
-                                    <label htmlFor="">lead details</label>
-                                    <div>:</div>
-                                    <div>
-                                        <input className='m-3 p-1' name='lead_status' type="text" placeholder="lead_status" />
-                                        <input className='m-3 p-1' name='lead_source' type="text" placeholder="lead_source" />
-                                        <input className='m-3 p-1' name='lead_qualification_note' type="text" placeholder="qualification_note" />
-                                        <input className='m-3 p-1' name='follow_up_date' type="date" placeholder="follow_up_date" defaultValue={date1} />
 
-                                    </div>
-                                </div>
-                                <div className="custom_form_el">
-                                    <label htmlFor="">assignto</label>
-                                    <div>:</div>
-                                    <div>
-                                        <select name="assigned_to" id="">
-                                            {
-                                                data_store.crm_user.users.map(item => {
-                                                    return <option key={item.id} value={item.id}>{item.user_name}</option>
-                                                })
-                                            }
 
-                                        </select>
-                                    </div>
-                                </div>
-                                {/* <div className="custom_form_el">
+
+                                    {/* <div className="custom_form_el">
                                     <label htmlFor="">Task title</label>
                                     <div>:</div>
                                     <div>
@@ -315,21 +367,22 @@ function CrmEntry() {
                                 </div>
                                 <hr /> */}
 
-                                <div>
-                                    <div className='d-flex gap-2 '>
-                                        <div className=''>
-                                            <button className='px-3 py-1 border rounded-3 bg-danger' type='submit'>Submit</button>
-                                        </div>
-                                        {/* <div>
+                                    <div>
+                                        <div className='d-flex gap-2 '>
+                                            <div className=''>
+                                                <button className='px-3 py-1 border rounded-3 bg-danger mt-2' type='submit'>Submit</button>
+                                            </div>
+                                            {/* <div>
                                             <button>Reset</button>
                                         </div>
                                         <div>
                                             <button>Last Number</button>
                                             <button>Last Number</button>
                                         </div> */}
+                                        </div>
                                     </div>
-                                </div>
-                            </form>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
