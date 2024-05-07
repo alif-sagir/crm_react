@@ -98,22 +98,22 @@ function CrmEntry() {
 
                                 <ul>
                                     <li>
-                                        <a href="">Customer info</a>
+                                        <a  onClick={(e)=> scrollToRef('customer_info',e)}>Customer info</a>
                                     </li>
                                     <li>
-                                        <a href="">Customer feedback</a>
+                                        <a  onClick={(e)=> scrollToRef('customer_feedback',e)}>Customer feedback</a>
                                     </li>
                                     <li>
-                                        <a href="">Contact info</a>
+                                        <a  onClick={(e)=> scrollToRef('contact_info',e)}>Contact info</a>
                                     </li>
                                     <li>
-                                        <a href="">Set An Appointment</a>
+                                        <a  onClick={(e)=> scrollToRef('set_an_appointment',e)}>Set An Appointment</a>
                                     </li>
                                     <li>
-                                        <a href="">Lead Information</a>
+                                        <a  onClick={(e)=> scrollToRef('lead_information',e)}>Lead Information</a>
                                     </li>
                                     <li>
-                                        <a href="">Document</a>
+                                        <a   onClick={(e)=> scrollToRef('document',e)}>Document</a>
                                     </li>
                                     <li>
                                         <a  onClick={(e)=> scrollToRef('variants',e)}>Variants</a>
