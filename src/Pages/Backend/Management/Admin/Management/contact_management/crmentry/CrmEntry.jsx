@@ -125,7 +125,7 @@ function CrmEntry() {
                                     <div className='row'>
                                         <div className='col-lg-6'>
                                             <div className='border border-2 p-3 mb-4 h-100'>
-                                                <h3 id='customer_info' className='mb-4'>Customer info</h3>
+                                                <h3 id='customer_info' className='mb-4 text-primary font-size-18'>Customer info</h3>
                                                 <div className="custom_form_el">
                                                     <label htmlFor="">Date</label>
                                                     <div>:</div>
@@ -186,7 +186,7 @@ function CrmEntry() {
                                         </div>
                                         <div className='col-lg-6'>
                                             <div className='border border-2 p-3 mb-4 h-100'>
-                                                <h3 id='customer_feedback' className='mb-4'>Customer feedback</h3>
+                                                <h3 id='customer_feedback' className='mb-4 text-primary font-size-18'>Customer feedback</h3>
                                                 <div className="custom_form_el">
                                                     <label htmlFor="">Feedback Type</label>
                                                     <div>:</div>
@@ -229,7 +229,7 @@ function CrmEntry() {
                                     <div className='row mt-4'>
                                         <div className='col-lg-6'>
                                             <div className='border border-2 p-3 mb-4 h-100' >
-                                                <h3 id='contact_info' className='mb-4'>Contact info</h3>
+                                                <h3 id='contact_info' className='mb-4 text-primary font-size-18'>Contact info</h3>
                                                 <div className="custom_form_el">
                                                     <label htmlFor="">Contact type</label>
                                                     <div>:</div>
@@ -260,7 +260,7 @@ function CrmEntry() {
                                         </div>
                                         <div className='col-lg-6'>
                                             <div className='border border-2 p-3 mb-4 h-100'>
-                                                <h3 id='set_an_appointment'>Set an appointment</h3>
+                                                <h3 id='set_an_appointment ' className=' text-primary font-size-18'>Set an appointment</h3>
                                                 <div className="custom_form_el">
                                                     <label htmlFor="">Online</label>
                                                     <div>:</div>
@@ -300,7 +300,7 @@ function CrmEntry() {
                                     <div className='row'>
                                         <div className='col-lg-12 mt-4'>
                                             <div className='border border-2 p-3 mb-4'>
-                                                <h3 id='lead_information'>lead information</h3>
+                                                <h3 id='lead_information' className=' text-primary font-size-18'>lead information</h3>
                                                 <div className="custom_form_el mb-0">
                                                     <label htmlFor="">lead details</label>
                                                     <div>:</div>
@@ -319,7 +319,7 @@ function CrmEntry() {
                                     <div className='row'>
                                         <div className='col-lg-12'>
                                             <div className='border border-2 p-3 mb-4'>
-                                                <h3 id='document'>Document</h3>
+                                                <h3 id='document' className=' text-primary font-size-18'>Document</h3>
                                                 <div className="custom_form_el mb-0">
                                                     <label htmlFor="">related images</label>
                                                     <div>:</div>
@@ -333,7 +333,7 @@ function CrmEntry() {
                                         </div>
                                         <div className='col-lg-12'>
                                             <div className='border border-2 p-3 mb-4 h-100' >
-                                                <h3 id='variants'>Variants</h3>
+                                                <h3 id='variants' className=' text-primary font-size-18'>Variants</h3>
                                                 {
                                                     data_store?.crm_user?.variants.map(item => {
                                                         return <div className="custom_form_el">
